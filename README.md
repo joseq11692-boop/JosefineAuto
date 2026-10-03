@@ -38,3 +38,7 @@ App instalable (PWA) para el fundador, en `web/panel/`: evaluar carros, embudo d
 ## Estudio de diseño
 
 Página interactiva para elegir la identidad visual de la web y la app (12 decisiones, 5 a 7 opciones cada una, vista previa en vivo): `companion/estudio.html`, publicada en https://claude.ai/artifact/GUpr5eq9LWSqNRen7RePha. Las elecciones se guardan en la base de datos de esa página (`decisiones/estudio`) para aplicarlas al código.
+
+## Vista previa de la web
+
+Mientras GitHub Pages no esté activo, la versión final de la web se ve en https://claude.ai/artifact/LtVvPGkCcAbXdzLRL96FfF (un solo archivo, `companion/web.html`, generado con `python3 herramientas/build/empaquetar-web.py`).
