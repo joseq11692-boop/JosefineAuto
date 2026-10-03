@@ -11,9 +11,10 @@ La identidad nace del logo de Instagram (@josefineauto): la firma "Josefine" a m
 | `marca/logo-firma-fondo-blanco.svg` | Con fondo blanco, para imprimir |
 | `web/img/logo-firma.png` / `-blanco.png` | 2400 px, transparente, para redes y documentos |
 | `web/img/compartir.png` | 1200×630, imagen al compartir la web en WhatsApp o redes |
-| `marca/logo-original-instagram.jpg` | Original de Instagram (150 px), referencia |
+| `marca/logo-perfil-instagram-320.jpg` | Foto de perfil de Instagram (320 px): **fuente del vector actual** |
+| `marca/logo-original-instagram.jpg` | Primera versión recibida (150 px), referencia |
 
-El vector se genera con `python3 herramientas/build/vectorizar-logo.py 0.33` (la firma se traza con potrace; las franjas se redibujan como vectores).
+El vector se genera con `python3 herramientas/build/vectorizar-logo.py 0.42` (la firma se traza con potrace; las franjas se redibujan como vectores).
 
 ## Colores (elegidos en el estudio de diseño)
 

@@ -9,9 +9,10 @@ RAIZ = pathlib.Path(__file__).resolve().parents[2]
 ESC = 12          # factor de ampliación antes de trazar
 UMBRAL = float(sys.argv[1]) if len(sys.argv) > 1 else 0.30
 
-img = Image.open(RAIZ / "marca/logo-original-instagram.jpg").convert("RGB")
-w, h = img.size
-grande = img.resize((w * ESC, h * ESC), Image.LANCZOS).filter(ImageFilter.GaussianBlur(ESC * 0.35))
+# Fuente: foto de perfil de Instagram (320 px). Las coordenadas se trabajan en unidades de 150 px.
+img = Image.open(RAIZ / "marca/logo-perfil-instagram-320.jpg").convert("RGB")
+w = h = 150
+grande = img.resize((w * ESC, h * ESC), Image.LANCZOS).filter(ImageFilter.GaussianBlur(ESC * 0.18))
 a = np.asarray(grande).astype(float)
 oscuridad = (255 - a.min(2)) / 255.0
 # Quitar las franjas (se redibujan como vectores): filas 92.6–107.4 a la derecha de x=28.5
@@ -35,10 +36,10 @@ firma = "".join(partes)
 
 # Franjas (coordenadas medidas sobre el original de 150 px)
 FRANJAS = [  # color, y, x inicio, x fin, grosor
-    ("#3b3fa8", 94.6, 30, 114, 1.7),
-    ("tinta",   97.6, 50, 123, 1.7),
-    ("#c0262d", 101.6, 68, 117, 1.7),
-    ("#e2b23a", 105.6, 84, 112, 1.5),
+    ("#3b3fa8", 94.6, 30, 114, 1.15),
+    ("tinta",   97.6, 50, 123, 1.15),
+    ("#c0262d", 101.6, 68, 117, 1.15),
+    ("#e2b23a", 105.6, 84, 112, 1.05),
 ]
 
 def svg(tinta, fondo=None):

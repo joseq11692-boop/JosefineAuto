@@ -199,6 +199,22 @@ em { font-style: normal; color: var(--acento); }
 /* Proyectos */
 .proyecto__foto { aspect-ratio: 16 / 10; background: var(--tinta) center / cover no-repeat; display: grid; place-items: center; color: #9a9ca3; font-family: var(--mono); font-size: .8rem; }
 
+/* Vendidos */
+.seccion--vendidos { background: #fff; border-block: 1px solid var(--linea); }
+.carro--vendido .carro__foto[style] { filter: none; opacity: 1; }
+.carro--vendido .carro__foto[style]::after { content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, .08); }
+.carro__foto[style] .carro__sobre { padding-top: 40px; background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .95) 62%); }
+
+/* En la escena */
+.escena-lista { display: grid; gap: 28px; }
+.escena { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: 16px; }
+.escena__fotos { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 14px; min-width: 0; }
+.escena__fotos img { flex: none; height: 240px; width: auto; border-radius: 12px; scroll-snap-align: start; }
+.escena__txt { display: grid; gap: 6px; padding-right: 8px; }
+.escena__txt h3 { margin: 0; }
+.escena__txt p { margin: 0; color: var(--suave); }
+@media (max-width: 760px) { .escena { grid-template-columns: 1fr; } .escena__fotos img { height: 200px; } }
+
 /* Guías */
 .guia__in { max-width: 760px; display: grid; gap: 16px; }
 .guia__volver { color: var(--suave); text-decoration: none; font-weight: 600; font-size: .92rem; }

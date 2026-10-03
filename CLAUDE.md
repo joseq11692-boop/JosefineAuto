@@ -15,6 +15,7 @@
 - Negocio de compraventa de autos seminuevos en **Panamá** (moneda USD), más contenido automotriz y proyectos propios (autos modificados y colección).
 - El fundador vende como particular, tiene menos de $5.000 de capital y dedica entre 10 y 25 horas por semana.
 - Modelo de dos partes: **Caja** (compras propias de japoneses accesibles, que se venden rápido) y **Marca** (deportivos y modificados a comisión, más los proyectos propios).
+- Historial real (Instagram @josefineauto, "JoseFine Automotive"): vendidos Ford Edge 2016, Range Rover Sport 2019, BMW 320i 2006, BMW X6 M50i, Maserati Ghibli SQ4 2019, Honda Pilot Elite 2022; proyectos: Lancer Evolution VI GSR 1999 y Honda Civic Si 2008. Fotos en `web/img/carros/`, `web/img/proyectos/`, `web/img/escena/`. La API pública de perfil de Instagram (`i.instagram.com/api/v1/users/web_profile_info/?username=josefineauto` con cabecera `x-ig-app-id: 936619743392459`) a veces responde sin login; el feed completo pide login.
 - Marca **sin cara**: el fundador no aparece en cámara. Ritmo de **1 publicación principal por semana** en Instagram.
 - En el contenido para la audiencia panameña, usar "carro" o "auto" (no "coche").
 - Estrategia y herramientas en `docs/` y `herramientas/` (ver `README.md`).

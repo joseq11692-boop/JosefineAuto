@@ -33,16 +33,21 @@
     return (orden[a.estado] || 0) - (orden[b.estado] || 0);
   });
   var hayDisponibles = carros.some(function (c) { return c.estado !== "vendido"; });
+  var listaVendidos = document.getElementById("lista-vendidos");
+  function tituloDe(c) { return [c.marca, c.modelo, c.anio].filter(Boolean).join(" "); }
+  function datosDe(c) {
+    return [c.km ? numero.format(c.km) + " km" : "", c.motor || "", c.transmision || ""].filter(Boolean);
+  }
 
   function ruta(u) { return /^(data:|https?:)/.test(u) ? u : encodeURI(u); }
   function slug(c) {
-    return (c.id || (c.marca + "-" + c.modelo + "-" + c.anio)).toString().toLowerCase()
+    return (c.id || tituloDe(c)).toString().toLowerCase()
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   }
   var porSlug = {};
 
   carros.forEach(function (c) {
-    var titulo = c.marca + " " + c.modelo + " " + c.anio;
+    var titulo = tituloDe(c);
     porSlug[slug(c)] = c;
     var foto = c.fotos && c.fotos[0];
     var vendido = c.estado === "vendido";
@@ -58,10 +63,7 @@
         '<span class="carro__estado estado--' + escapar(c.estado) + '">' + escapar(c.estado) + "</span>" +
         '<div class="carro__sobre">' +
           "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">A comisión</span>' : "") + "</h3>" +
-          '<ul class="carro__datos">' +
-            "<li>" + numero.format(c.km) + " km</li>" +
-            "<li>" + escapar(c.transmision) + "</li>" +
-          "</ul>" +
+          '<ul class="carro__datos">' + datosDe(c).map(function (d) { return "<li>" + escapar(d) + "</li>"; }).join("") + "</ul>" +
           '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
         "</div>" +
       "</div>" +
@@ -75,14 +77,15 @@
             (c.informe ? '<a class="boton boton--chico boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">Informe de inspección</a>' : "") +
           "</div>") +
       "</div>" : "");
-    lista.appendChild(tarjeta);
+    (vendido && listaVendidos ? listaVendidos : lista).appendChild(tarjeta);
   });
+  if (listaVendidos && !listaVendidos.children.length) document.getElementById("vendidos").hidden = true;
 
   /* ---------- Ficha de cada carro (con enlace propio: #carro-<slug>) ---------- */
   var $ficha = document.getElementById("ficha");
   function urlCarro(c) { return location.href.split("#")[0] + "#carro-" + slug(c); }
   function abrirFicha(c) {
-    var titulo = c.marca + " " + c.modelo + " " + c.anio;
+    var titulo = tituloDe(c);
     var fotos = (c.fotos || []).filter(Boolean);
     var vendido = c.estado === "vendido";
     var $foto = document.getElementById("ficha-foto");
@@ -101,16 +104,18 @@
       '<h2 id="ficha-titulo">' + escapar(titulo) + "</h2>" +
       '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
       '<dl class="ficha-carro__datos">' +
-        "<div><dt>Año</dt><dd>" + escapar(c.anio) + "</dd></div>" +
-        "<div><dt>Kilometraje</dt><dd>" + numero.format(c.km) + " km</dd></div>" +
-        "<div><dt>Transmisión</dt><dd>" + escapar(c.transmision) + "</dd></div>" +
-        "<div><dt>Venta</dt><dd>" + (c.tipo === "consignacion" ? "A comisión" : "Josefine Auto") + "</dd></div>" +
+        [["Año", c.anio], ["Kilometraje", c.km ? numero.format(c.km) + " km" : ""], ["Motor", c.motor], ["Transmisión", c.transmision],
+         ["Venta", c.tipo === "consignacion" ? "A comisión" : (c.tipo === "propio" ? "Josefine Auto" : "")]]
+          .filter(function (d) { return d[1]; })
+          .map(function (d) { return "<div><dt>" + d[0] + "</dt><dd>" + escapar(d[1]) + "</dd></div>"; }).join("") +
       "</dl>" +
       (c.destacado ? '<p class="carro__destacado">' + escapar(c.destacado) + "</p>" : "") +
       (c.defectos ? '<p class="carro__defectos"><strong>Defectos a la vista:</strong> ' + escapar(c.defectos) + "</p>" : "") +
       '<ul class="ficha-carro__sellos"><li>Papeles verificados</li><li>Prueba anti-inundación</li><li>Revisado en taller</li></ul>' +
       '<div class="carro__acciones">' +
-        (vendido ? "" : '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible? " + urlCarro(c)) + '">Me interesa</a>') +
+        (vendido
+          ? '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, vi que vendieron el " + titulo + ". Busco algo parecido.") + '">Busco uno parecido</a>'
+          : '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible? " + urlCarro(c)) + '">Me interesa</a>') +
         (c.informe ? '<a class="boton boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">Informe de inspección</a>' : "") +
         '<a class="boton boton--borde boton--chico" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(compartir) + '">Compartir</a>' +
       "</div>";
@@ -124,13 +129,16 @@
   document.getElementById("ficha-cerrar").onclick = cerrarFicha;
   $ficha.addEventListener("click", function (e) { if (e.target === $ficha) cerrarFicha(); });
   $ficha.addEventListener("close", function () { if (/^#carro-/.test(location.hash)) history.replaceState(null, "", "#inventario"); });
-  lista.addEventListener("click", function (e) {
-    if (e.target.closest("a")) return;
-    var t = e.target.closest("[data-slug]"); if (t && porSlug[t.getAttribute("data-slug")]) abrirFicha(porSlug[t.getAttribute("data-slug")]);
-  });
-  lista.addEventListener("keydown", function (e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    var t = e.target.closest("[data-slug]"); if (t && e.target === t) { e.preventDefault(); abrirFicha(porSlug[t.getAttribute("data-slug")]); }
+  [lista, listaVendidos].forEach(function (cont) {
+    if (!cont) return;
+    cont.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      var t = e.target.closest("[data-slug]"); if (t && porSlug[t.getAttribute("data-slug")]) abrirFicha(porSlug[t.getAttribute("data-slug")]);
+    });
+    cont.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      var t = e.target.closest("[data-slug]"); if (t && e.target === t) { e.preventDefault(); abrirFicha(porSlug[t.getAttribute("data-slug")]); }
+    });
   });
   function desdeEnlace() {
     var m = location.hash.match(/^#carro-(.+)$/);
@@ -215,6 +223,21 @@
       "</div>";
     listaProyectos.appendChild(art);
   });
+
+  // En la escena (eventos y car spotting)
+  var listaEscena = document.getElementById("lista-escena");
+  if (listaEscena) {
+    (window.ESCENA || []).forEach(function (e) {
+      var art = document.createElement("article");
+      art.className = "escena";
+      art.innerHTML = '<div class="escena__fotos">' + (e.fotos || []).map(function (f) {
+          return '<img src="' + ruta(f) + '" alt="' + escapar(e.titulo) + '" loading="lazy">';
+        }).join("") + "</div>" +
+        '<div class="escena__txt"><span class="etiqueta">' + escapar(e.fecha) + "</span><h3>" + escapar(e.titulo) + "</h3><p>" + escapar(e.texto) + "</p></div>";
+      listaEscena.appendChild(art);
+    });
+    if (!listaEscena.children.length) document.getElementById("escena").hidden = true;
+  }
 
   // Pie
   document.getElementById("zona").textContent = config.zona || "Panamá";
