@@ -139,6 +139,34 @@ em { font-style: normal; color: var(--acento); }
 .carro__acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .etiqueta-tipo { font-family: var(--mono); font-size: .68rem; font-weight: 500; color: var(--suave); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: .05em; }
 
+.carro--abrible { cursor: pointer; }
+.carro--abrible:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+
+/* Ficha de carro */
+.ficha-carro { border: 0; padding: 0; border-radius: var(--radio); width: min(980px, calc(100% - 24px)); max-height: calc(100% - 24px); background: #fff; color: var(--tinta); box-shadow: 0 30px 80px rgba(10, 11, 14, .35); }
+.ficha-carro::backdrop { background: rgba(10, 11, 14, .6); backdrop-filter: blur(3px); }
+.ficha-carro__in { display: grid; grid-template-columns: 1.2fr 1fr; position: relative; }
+.ficha-carro__cerrar { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .92); box-shadow: 0 2px 10px rgba(0, 0, 0, .15); font-size: 1rem; cursor: pointer; }
+.ficha-carro__galeria { background: var(--papel-2); display: grid; align-content: start; gap: 8px; padding-bottom: 8px; min-width: 0; }
+.ficha-carro__foto { aspect-ratio: 4 / 3; position: relative; background: linear-gradient(160deg, #e3e5e9, #ffffff); }
+.ficha-carro__foto img { width: 100%; height: 100%; object-fit: cover; }
+.ficha-carro__miniaturas { display: flex; gap: 8px; padding: 0 8px; overflow-x: auto; }
+.ficha-carro__miniaturas button { flex: none; width: 76px; aspect-ratio: 4 / 3; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; cursor: pointer; background: none; }
+.ficha-carro__miniaturas button[aria-current="true"] { border-color: var(--acento); }
+.ficha-carro__miniaturas img { width: 100%; height: 100%; object-fit: cover; }
+.ficha-carro__info { padding: 28px 26px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.ficha-carro__info h2 { margin: 0; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.ficha-carro__estado { position: static; justify-self: start; }
+.ficha-carro__info .carro__precio { color: var(--acento); }
+.ficha-carro__datos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0; }
+.ficha-carro__datos div { background: var(--papel); border: 1px solid var(--linea); border-radius: 12px; padding: 8px 12px; }
+.ficha-carro__datos dt { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--suave); }
+.ficha-carro__datos dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ficha-carro__sellos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ficha-carro__sellos li { font-size: .78rem; color: var(--suave); border: 1px solid var(--linea); border-radius: 99px; padding: 3px 10px; }
+.ficha-carro__sellos li::before { content: "✓ "; color: var(--exito); }
+@media (max-width: 760px) { .ficha-carro__in { grid-template-columns: 1fr; } .ficha-carro__info { padding: 20px 18px 24px; } }
+
 /* Estado vacío */
 .vacio { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: clamp(24px, 4vw, 40px); display: grid; gap: 10px; }
 .vacio h3 { margin: 0; font-size: 1.2rem; }
@@ -173,6 +201,27 @@ em { font-style: normal; color: var(--acento); }
 
 /* Proyectos */
 .proyecto__foto { aspect-ratio: 16 / 10; background: var(--tinta) center / cover no-repeat; display: grid; place-items: center; color: #9a9ca3; font-family: var(--mono); font-size: .8rem; }
+
+/* Guías */
+.guia__in { max-width: 760px; display: grid; gap: 16px; }
+.guia__volver { color: var(--suave); text-decoration: none; font-weight: 600; font-size: .92rem; }
+.guia h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; }
+.guia__entrada { font-size: 1.2rem; color: var(--suave); margin: 0; }
+.guia__texto { display: grid; gap: 14px; font-size: 1.06rem; line-height: 1.75; }
+.guia__texto h2 { font-size: 1.35rem; margin: 18px 0 0; }
+.guia__texto p, .guia__texto ul, .guia__texto ol { margin: 0; }
+.guia__texto li { margin-bottom: 6px; }
+.guia__texto .destacado { border-left: 4px solid var(--acento); background: #fff; padding: 14px 18px; border-radius: 0 12px 12px 0; font-weight: 600; }
+.guia__cta { margin-top: 24px; background: var(--tinta); color: #e8e9ec; border-radius: var(--radio); padding: 28px; display: grid; gap: 12px; }
+.guia__cta h2 { color: #fff; margin: 0; }
+.guia__cta p { margin: 0; }
+.guia__cta .hero__acciones { justify-content: flex-start; }
+.guia__cta .boton--borde { color: #fff; border-color: #fff; }
+.guia__texto em { color: inherit; font-style: italic; }
+.guia__cta .boton--borde:hover { background: #fff; color: var(--tinta); }
+.guia__tarjeta { text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; }
+.guia__tarjeta:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(18, 19, 22, .08); }
+.guia__tarjeta h3 { margin: 0; }
 
 /* Pie (tinta, con la firma en blanco) */
 .pie { background: var(--tinta); color: #b9bbc1; padding: 56px 0 100px; }
@@ -210,6 +259,7 @@ em { font-style: normal; color: var(--acento); }
         <a href="#vende">Vende tu carro</a>
         <a href="#metodo">Cómo trabajamos</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="guias/">Guías</a>
       </nav>
       <a class="boton boton--chico" data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
     </div>
@@ -296,6 +346,14 @@ em { font-style: normal; color: var(--acento); }
       </div>
     </section>
 
+    <section id="guias" class="seccion">
+      <div class="contenedor">
+        <div class="seccion__cab"><h2>Guías</h2><div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div><p class="seccion__sub">Lo que revisamos antes de comprar un carro, para que tú también lo puedas hacer.</p></div>
+        <div id="lista-guias" class="rejilla"></div>
+        <p style="margin-top:24px"><a class="boton boton--borde" href="guias/">Ver todas las guías</a></p>
+      </div>
+    </section>
+
     <section id="proyectos" class="seccion seccion--alterna">
       <div class="contenedor">
         <div class="seccion__cab"><h2>Proyectos de la casa</h2><div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div><p class="seccion__sub">No todo está a la venta. Estos son los nuestros.</p></div>
@@ -313,11 +371,23 @@ em { font-style: normal; color: var(--acento); }
       <div class="pie__enlaces">
         <a data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
         <a id="enlace-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="guias/">Guías</a>
         <a id="enlace-correo" href="#" hidden>Correo</a>
       </div>
       <p class="pie__legal">© <span id="anio"></span> Josefine Auto. Información sujeta a cambios; confirma disponibilidad por WhatsApp.</p>
     </div>
   </footer>
+
+  <dialog id="ficha" class="ficha-carro" aria-labelledby="ficha-titulo">
+    <div class="ficha-carro__in">
+      <button type="button" class="ficha-carro__cerrar" id="ficha-cerrar" aria-label="Cerrar">✕</button>
+      <div class="ficha-carro__galeria">
+        <div class="ficha-carro__foto" id="ficha-foto"></div>
+        <div class="ficha-carro__miniaturas" id="ficha-miniaturas"></div>
+      </div>
+      <div class="ficha-carro__info" id="ficha-info"></div>
+    </div>
+  </dialog>
 
   <a class="wa-flotante" data-wa="Hola Josefine Auto, quiero información." href="#" aria-label="Escríbenos por WhatsApp">
     <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
@@ -394,6 +464,27 @@ window.PROYECTOS = [
   },
 ];
 
+window.GUIAS = [
+ {
+  "titulo": "Cómo detectar un carro inundado en Panamá",
+  "descripcion": "Cinco revisiones de cinco minutos para no comprar un carro que estuvo bajo el agua, más qué hacer si es importado de una subasta.",
+  "url": "https://joseq11692-boop.github.io/JosefineAuto/guias/carro-inundado-panama.html",
+  "fecha": "2026-10-03"
+ },
+ {
+  "titulo": "Papeles para comprar un carro usado en Panamá",
+  "descripcion": "Qué documentos revisar antes de pagar, cómo evitar multas y prendas ajenas y cómo cerrar el traspaso de forma segura.",
+  "url": "https://joseq11692-boop.github.io/JosefineAuto/guias/papeles-carro-usado-panama.html",
+  "fecha": "2026-10-02"
+ },
+ {
+  "titulo": "Vender tu deportivo o modificado en Panamá",
+  "descripcion": "Venderlo por tu cuenta o a comisión: ventajas, riesgos, cómo fijar el precio y qué pasa con las modificaciones.",
+  "url": "https://joseq11692-boop.github.io/JosefineAuto/guias/vender-deportivo-panama.html",
+  "fecha": "2026-10-01"
+ }
+];
+
 (function () {
   "use strict";
 
@@ -430,14 +521,26 @@ window.PROYECTOS = [
   });
   var hayDisponibles = carros.some(function (c) { return c.estado !== "vendido"; });
 
+  function ruta(u) { return /^(data:|https?:)/.test(u) ? u : encodeURI(u); }
+  function slug(c) {
+    return (c.id || (c.marca + "-" + c.modelo + "-" + c.anio)).toString().toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+  var porSlug = {};
+
   carros.forEach(function (c) {
     var titulo = c.marca + " " + c.modelo + " " + c.anio;
+    porSlug[slug(c)] = c;
     var foto = c.fotos && c.fotos[0];
     var vendido = c.estado === "vendido";
     var tarjeta = document.createElement("article");
-    tarjeta.className = "tarjeta carro" + (vendido ? " carro--vendido" : "");
+    tarjeta.className = "tarjeta carro carro--abrible" + (vendido ? " carro--vendido" : "");
+    tarjeta.setAttribute("data-slug", slug(c));
+    tarjeta.tabIndex = 0;
+    tarjeta.setAttribute("role", "button");
+    tarjeta.setAttribute("aria-label", "Ver ficha del " + titulo);
     tarjeta.innerHTML =
-      '<div class="carro__foto"' + (foto ? ' style="background-image:url(\'' + encodeURI(foto) + '\')"' : "") + ">" +
+      '<div class="carro__foto"' + (foto ? ' style="background-image:url(\'' + ruta(foto) + '\')"' : "") + ">" +
         (foto ? "" : '<span class="carro__vacia" aria-label="Foto próximamente">' + SILUETA + "</span>") +
         '<span class="carro__estado estado--' + escapar(c.estado) + '">' + escapar(c.estado) + "</span>" +
         '<div class="carro__sobre">' +
@@ -461,6 +564,67 @@ window.PROYECTOS = [
       "</div>" : "");
     lista.appendChild(tarjeta);
   });
+
+  /* ---------- Ficha de cada carro (con enlace propio: #carro-<slug>) ---------- */
+  var $ficha = document.getElementById("ficha");
+  function urlCarro(c) { return location.href.split("#")[0] + "#carro-" + slug(c); }
+  function abrirFicha(c) {
+    var titulo = c.marca + " " + c.modelo + " " + c.anio;
+    var fotos = (c.fotos || []).filter(Boolean);
+    var vendido = c.estado === "vendido";
+    var $foto = document.getElementById("ficha-foto");
+    function verFoto(i) {
+      $foto.innerHTML = fotos.length ? '<img src="' + ruta(fotos[i]) + '" alt="' + escapar(titulo) + ', foto ' + (i + 1) + '">' : '<span class="carro__vacia">' + SILUETA + "</span>";
+      Array.prototype.forEach.call(document.querySelectorAll("#ficha-miniaturas button"), function (b, k) { b.setAttribute("aria-current", String(k === i)); });
+    }
+    document.getElementById("ficha-miniaturas").innerHTML = fotos.length > 1 ? fotos.map(function (f, i) {
+      return '<button type="button" data-i="' + i + '" aria-label="Foto ' + (i + 1) + '"><img src="' + ruta(f) + '" alt="" loading="lazy"></button>';
+    }).join("") : "";
+    verFoto(0);
+    document.getElementById("ficha-miniaturas").onclick = function (e) { var b = e.target.closest("button"); if (b) verFoto(Number(b.getAttribute("data-i"))); };
+    var compartir = "Mira este " + titulo + " en Josefine Auto: " + urlCarro(c);
+    document.getElementById("ficha-info").innerHTML =
+      '<span class="carro__estado estado--' + escapar(c.estado) + ' ficha-carro__estado">' + escapar(c.estado) + "</span>" +
+      '<h2 id="ficha-titulo">' + escapar(titulo) + "</h2>" +
+      '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
+      '<dl class="ficha-carro__datos">' +
+        "<div><dt>Año</dt><dd>" + escapar(c.anio) + "</dd></div>" +
+        "<div><dt>Kilometraje</dt><dd>" + numero.format(c.km) + " km</dd></div>" +
+        "<div><dt>Transmisión</dt><dd>" + escapar(c.transmision) + "</dd></div>" +
+        "<div><dt>Venta</dt><dd>" + (c.tipo === "consignacion" ? "A comisión" : "Josefine Auto") + "</dd></div>" +
+      "</dl>" +
+      (c.destacado ? '<p class="carro__destacado">' + escapar(c.destacado) + "</p>" : "") +
+      (c.defectos ? '<p class="carro__defectos"><strong>Defectos a la vista:</strong> ' + escapar(c.defectos) + "</p>" : "") +
+      '<ul class="ficha-carro__sellos"><li>Papeles verificados</li><li>Prueba anti-inundación</li><li>Revisado en taller</li></ul>' +
+      '<div class="carro__acciones">' +
+        (vendido ? "" : '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible? " + urlCarro(c)) + '">Me interesa</a>') +
+        (c.informe ? '<a class="boton boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">Informe de inspección</a>' : "") +
+        '<a class="boton boton--borde boton--chico" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(compartir) + '">Compartir</a>' +
+      "</div>";
+    if (!$ficha.open) { try { $ficha.showModal(); } catch (e) { $ficha.setAttribute("open", ""); } }
+    if (location.hash !== "#carro-" + slug(c)) history.replaceState(null, "", "#carro-" + slug(c));
+  }
+  function cerrarFicha() {
+    if ($ficha.open) $ficha.close();
+    if (/^#carro-/.test(location.hash)) history.replaceState(null, "", "#inventario");
+  }
+  document.getElementById("ficha-cerrar").onclick = cerrarFicha;
+  $ficha.addEventListener("click", function (e) { if (e.target === $ficha) cerrarFicha(); });
+  $ficha.addEventListener("close", function () { if (/^#carro-/.test(location.hash)) history.replaceState(null, "", "#inventario"); });
+  lista.addEventListener("click", function (e) {
+    if (e.target.closest("a")) return;
+    var t = e.target.closest("[data-slug]"); if (t && porSlug[t.getAttribute("data-slug")]) abrirFicha(porSlug[t.getAttribute("data-slug")]);
+  });
+  lista.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var t = e.target.closest("[data-slug]"); if (t && e.target === t) { e.preventDefault(); abrirFicha(porSlug[t.getAttribute("data-slug")]); }
+  });
+  function desdeEnlace() {
+    var m = location.hash.match(/^#carro-(.+)$/);
+    if (m && porSlug[m[1]]) abrirFicha(porSlug[m[1]]);
+  }
+  window.addEventListener("hashchange", desdeEnlace);
+  desdeEnlace();
 
   if (!hayDisponibles) {
     (window.BUSCANDO || []).forEach(function (b) {
@@ -508,6 +672,18 @@ window.PROYECTOS = [
       "Les envío fotos por aquí.";
     window.open(enlaceWhatsApp(texto), "_blank", "noopener");
   });
+
+  // Guías
+  var listaGuias = document.getElementById("lista-guias");
+  if (listaGuias) {
+    (window.GUIAS || []).slice(0, 3).forEach(function (g) {
+      var a = document.createElement("a");
+      a.className = "paso guia__tarjeta"; a.href = g.url;
+      a.innerHTML = "<span>GUÍA</span><h3>" + escapar(g.titulo) + "</h3><p>" + escapar(g.descripcion) + "</p>";
+      listaGuias.appendChild(a);
+    });
+    if (!listaGuias.children.length) document.getElementById("guias").hidden = true;
+  }
 
   // Proyectos
   var listaProyectos = document.getElementById("lista-proyectos");

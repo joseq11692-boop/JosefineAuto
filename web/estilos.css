@@ -199,6 +199,27 @@ em { font-style: normal; color: var(--acento); }
 /* Proyectos */
 .proyecto__foto { aspect-ratio: 16 / 10; background: var(--tinta) center / cover no-repeat; display: grid; place-items: center; color: #9a9ca3; font-family: var(--mono); font-size: .8rem; }
 
+/* Guías */
+.guia__in { max-width: 760px; display: grid; gap: 16px; }
+.guia__volver { color: var(--suave); text-decoration: none; font-weight: 600; font-size: .92rem; }
+.guia h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; }
+.guia__entrada { font-size: 1.2rem; color: var(--suave); margin: 0; }
+.guia__texto { display: grid; gap: 14px; font-size: 1.06rem; line-height: 1.75; }
+.guia__texto h2 { font-size: 1.35rem; margin: 18px 0 0; }
+.guia__texto p, .guia__texto ul, .guia__texto ol { margin: 0; }
+.guia__texto li { margin-bottom: 6px; }
+.guia__texto .destacado { border-left: 4px solid var(--acento); background: #fff; padding: 14px 18px; border-radius: 0 12px 12px 0; font-weight: 600; }
+.guia__cta { margin-top: 24px; background: var(--tinta); color: #e8e9ec; border-radius: var(--radio); padding: 28px; display: grid; gap: 12px; }
+.guia__cta h2 { color: #fff; margin: 0; }
+.guia__cta p { margin: 0; }
+.guia__cta .hero__acciones { justify-content: flex-start; }
+.guia__cta .boton--borde { color: #fff; border-color: #fff; }
+.guia__texto em { color: inherit; font-style: italic; }
+.guia__cta .boton--borde:hover { background: #fff; color: var(--tinta); }
+.guia__tarjeta { text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; }
+.guia__tarjeta:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(18, 19, 22, .08); }
+.guia__tarjeta h3 { margin: 0; }
+
 /* Pie (tinta, con la firma en blanco) */
 .pie { background: var(--tinta); color: #b9bbc1; padding: 56px 0 100px; }
 .pie__in { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: start; }

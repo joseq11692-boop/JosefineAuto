@@ -186,6 +186,18 @@
     window.open(enlaceWhatsApp(texto), "_blank", "noopener");
   });
 
+  // Guías
+  var listaGuias = document.getElementById("lista-guias");
+  if (listaGuias) {
+    (window.GUIAS || []).slice(0, 3).forEach(function (g) {
+      var a = document.createElement("a");
+      a.className = "paso guia__tarjeta"; a.href = g.url;
+      a.innerHTML = "<span>GUÍA</span><h3>" + escapar(g.titulo) + "</h3><p>" + escapar(g.descripcion) + "</p>";
+      listaGuias.appendChild(a);
+    });
+    if (!listaGuias.children.length) document.getElementById("guias").hidden = true;
+  }
+
   // Proyectos
   var listaProyectos = document.getElementById("lista-proyectos");
   proyectos.forEach(function (p) {
