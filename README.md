@@ -34,3 +34,7 @@ App instalable (PWA) para el fundador, en `web/panel/`: evaluar carros, embudo d
 
 - Instalable: https://joseq11692-boop.github.io/JosefineAuto/panel/ (cuando GitHub Pages esté activo)
 - Uso inmediato: https://claude.ai/artifact/CjZb1UgEMyL12v2fLHZQfB (versión en un solo archivo: `companion/app.html`, generada con `python3 herramientas/build/empaquetar-app.py`)
+
+## Estudio de diseño
+
+Página interactiva para elegir la identidad visual de la web y la app (12 decisiones, 5 a 7 opciones cada una, vista previa en vivo): `companion/estudio.html`, publicada en https://claude.ai/artifact/GUpr5eq9LWSqNRen7RePha. Las elecciones se guardan en la base de datos de esa página (`decisiones/estudio`) para aplicarlas al código.

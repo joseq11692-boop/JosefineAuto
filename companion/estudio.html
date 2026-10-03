@@ -1,0 +1,612 @@
+<title>Estudio Josefine Auto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:wght@400;600;700&family=Bebas+Neue&family=Chakra+Petch:wght@600;700&family=Familjen+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Inter:wght@400;600;700&family=Manrope:wght@400;600;800&family=Montserrat:wght@700;800&family=Oswald:wght@600;700&family=Russo+One&family=Saira+Condensed:wght@700;800&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: estudio a dos columnas. Izquierda, las decisiones con sus opciones; derecha, vista previa fija de la web y la app. En el celular, la vista previa va arriba. */
+:root {
+  --st-bg: #f3f3f1;
+  --st-panel: #ffffff;
+  --st-ink: #17181b;
+  --st-muted: #61646c;
+  --st-line: #dedfe2;
+  --st-sel: #17181b;
+  --st-sel-ink: #ffffff;
+  --st-ok: #13804a;
+  --st-display: "Familjen Grotesk", "Arial Narrow", system-ui, sans-serif;
+  --st-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --st-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --st-bg: #121315; --st-panel: #1b1c20; --st-ink: #ecedf0; --st-muted: #9a9ea8; --st-line: #2c2e34;
+    --st-sel: #ecedf0; --st-sel-ink: #121315; --st-ok: #44d088; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --st-bg: #121315; --st-panel: #1b1c20; --st-ink: #ecedf0; --st-muted: #9a9ea8; --st-line: #2c2e34;
+  --st-sel: #ecedf0; --st-sel-ink: #121315; --st-ok: #44d088; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--st-bg); color: var(--st-ink); font: 15px/1.5 var(--st-body); }
+h1, h2, h3 { font-family: var(--st-display); margin: 0; line-height: 1.15; text-wrap: balance; }
+p { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--st-ink); outline-offset: 2px; }
+
+.st-wrap { max-width: 1440px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 60px; }
+.st-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; margin-bottom: 20px; }
+.st-top h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 700; }
+.st-top p { color: var(--st-muted); max-width: 62ch; }
+.st-estado { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-family: var(--st-mono); font-size: .78rem; }
+.st-pill { border: 1px solid var(--st-line); background: var(--st-panel); border-radius: 99px; padding: 5px 12px; }
+.st-pill--ok { border-color: var(--st-ok); color: var(--st-ok); }
+
+.st-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 24px; align-items: start; }
+.st-dec { display: grid; gap: 18px; min-width: 0; }
+.st-prev { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 10px; min-width: 0; }
+.st-prev__bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.st-tabs { display: inline-flex; border: 1px solid var(--st-line); border-radius: 10px; overflow: hidden; background: var(--st-panel); }
+.st-tabs button { border: 0; background: none; padding: 7px 14px; cursor: pointer; font-weight: 600; font-size: .85rem; }
+.st-tabs button[aria-pressed="true"] { background: var(--st-sel); color: var(--st-sel-ink); }
+.st-mono { font-family: var(--st-mono); font-size: .75rem; color: var(--st-muted); letter-spacing: .02em; }
+
+.st-sec { background: var(--st-panel); border: 1px solid var(--st-line); border-radius: 14px; padding: 18px; display: grid; gap: 14px; }
+.st-sec__head { display: grid; gap: 4px; }
+.st-sec__head h2 { font-size: 1.25rem; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.st-sec__head h2 small { font-family: var(--st-mono); font-size: .72rem; font-weight: 500; color: var(--st-muted); }
+.st-sec__head p { color: var(--st-muted); }
+.st-sec.decidida .st-sec__head h2 small { color: var(--st-ok); }
+.st-ops { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.st-op { text-align: left; background: var(--st-bg); border: 2px solid var(--st-line); border-radius: 12px; padding: 10px; cursor: pointer; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.st-op:hover { border-color: var(--st-muted); }
+.st-op[aria-pressed="true"] { border-color: var(--st-sel); box-shadow: 0 0 0 2px var(--st-sel) inset; }
+.st-op__m { height: 64px; border-radius: 8px; overflow: hidden; display: grid; place-items: center; position: relative; }
+.st-op__n { font-weight: 600; display: flex; justify-content: space-between; gap: 6px; align-items: baseline; }
+.st-op__d { color: var(--st-muted); font-size: .82rem; line-height: 1.35; }
+.st-tag { font-family: var(--st-mono); font-size: .65rem; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--st-line); color: var(--st-muted); white-space: nowrap; }
+.st-nota { width: 100%; font: inherit; font-size: .9rem; color: var(--st-ink); background: var(--st-bg); border: 1px solid var(--st-line); border-radius: 10px; padding: 9px 11px; resize: vertical; min-height: 42px; }
+.st-fin { display: grid; gap: 10px; }
+.st-btn { justify-self: start; border: 0; border-radius: 10px; background: var(--st-sel); color: var(--st-sel-ink); padding: 12px 18px; font-weight: 700; cursor: pointer; }
+
+/* ---------- Muestras dentro de las opciones ---------- */
+.sw { display: flex; width: 100%; height: 100%; }
+.sw span { flex: 1; }
+.fm { font-size: 1.7rem; line-height: 1; }
+.fb { font-size: .78rem; line-height: 1.3; padding: 6px; text-align: left; }
+
+/* ================= VISTA PREVIA (usa sus propios tokens) ================= */
+.pv {
+  --acento: #e11d2e; --acento-2: #e11d2e; --sobre-acento: #ffffff;
+  --fondo: #0d0f12; --capa: #1b1f26; --texto: #f2f4f7; --suave: #a3abb8; --borde: #2a2f38;
+  --titulos: "Montserrat", sans-serif; --cuerpo: "Inter", sans-serif; --tt: none; --tls: -.01em;
+  --r: 14px; --rb: 999px;
+  background: var(--fondo); color: var(--texto); font-family: var(--cuerpo);
+  border: 1px solid var(--st-line); border-radius: 14px; overflow: hidden;
+}
+.pv h1, .pv h2, .pv h3 { font-family: var(--titulos); text-transform: var(--tt); letter-spacing: var(--tls); color: var(--texto); }
+.pv-web { display: block; container-type: inline-size; }
+.pv-app { display: none; padding: 18px; background: color-mix(in srgb, var(--fondo) 70%, #777 30%); }
+.pv[data-vista="app"] .pv-web { display: none; }
+.pv[data-vista="app"] .pv-app { display: grid; place-items: center; }
+.pv[data-vista="ambas"] .pv-app { display: grid; place-items: center; border-top: 1px solid var(--borde); }
+
+/* Fondo de la web */
+.pv-bgw { background: var(--fondo); }
+.pv[data-fondo="degradado"] .pv-bgw { background: radial-gradient(600px 300px at 90% -10%, color-mix(in srgb, var(--acento) 30%, transparent), transparent 70%), var(--fondo); }
+.pv[data-fondo="rejilla"] .pv-bgw { background-image: linear-gradient(color-mix(in srgb, var(--texto) 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--texto) 7%, transparent) 1px, transparent 1px); background-size: 28px 28px; background-color: var(--fondo); }
+.pv[data-fondo="carbono"] .pv-bgw { background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--texto) 6%, transparent) 0 4px, transparent 4px 8px), repeating-linear-gradient(-45deg, color-mix(in srgb, #000 25%, transparent) 0 4px, transparent 4px 8px), var(--fondo); }
+.pv[data-fondo="franjas"] .pv-bgw { background: linear-gradient(100deg, transparent 0 62%, var(--acento) 62% 66%, transparent 66% 68%, var(--acento-2) 68% 70%, transparent 70%), var(--fondo); }
+.pv[data-fondo="puntos"] .pv-bgw { background: radial-gradient(color-mix(in srgb, var(--texto) 12%, transparent) 1px, transparent 1.5px) 0 0 / 14px 14px, var(--fondo); }
+
+/* Barra superior web */
+.pv-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px; border-bottom: 1px solid var(--borde); }
+.pv-links { display: flex; gap: 14px; font-size: .78rem; color: var(--suave); }
+@container (max-width: 520px) { .pv-links { display: none; } }
+
+/* Logo */
+.lg { font-family: var(--titulos); font-weight: 800; color: var(--texto); display: inline-flex; align-items: center; gap: 6px; line-height: 1; white-space: nowrap; }
+.lg b { color: var(--acento); font-weight: inherit; }
+.lg--espaciado { letter-spacing: .14em; font-size: .9rem; }
+.lg--monograma i { font-style: normal; display: grid; place-items: center; width: 30px; height: 30px; background: var(--acento); color: var(--sobre-acento); border-radius: calc(var(--r) / 2); font-size: .85rem; }
+.lg--monograma span { font-size: .8rem; letter-spacing: .08em; }
+.lg--italica { font-style: italic; font-size: 1.15rem; letter-spacing: -.02em; flex-direction: column; align-items: flex-start; gap: 2px; }
+.lg--italica small { font-style: normal; font-size: .55rem; letter-spacing: .4em; color: var(--acento); border-top: 2px solid var(--acento); padding-top: 2px; }
+.lg--sello { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--acento); justify-content: center; flex-direction: column; gap: 0; font-size: .5rem; letter-spacing: .12em; text-align: center; }
+.lg--sello strong { font-size: .95rem; color: var(--acento); letter-spacing: 0; }
+.lg--franja { font-size: .9rem; letter-spacing: .06em; padding-left: 22px; position: relative; }
+.lg--franja::before { content: ""; position: absolute; left: 0; top: 50%; width: 16px; height: 14px; transform: translateY(-50%) skewX(-20deg); background: linear-gradient(90deg, var(--acento) 0 40%, transparent 40% 60%, var(--acento-2) 60%); }
+
+/* Botones */
+.bt { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; font-weight: 700; font-size: .82rem; border-radius: var(--rb); background: var(--acento); color: var(--sobre-acento); border: 2px solid var(--acento); white-space: nowrap; font-family: var(--cuerpo); }
+.bt--sec { background: transparent; color: var(--texto); border-color: var(--borde); }
+.bt--chico { padding: 6px 12px; font-size: .74rem; }
+.bt .fl { display: none; }
+.pv[data-btn="contorno"] .bt:not(.bt--sec) { background: transparent; color: var(--acento); }
+.pv[data-btn="flecha"] .bt .fl { display: inline; }
+.pv[data-btn="diagonal"] .bt { border-radius: 0; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); padding-inline: 20px; }
+.pv[data-btn="brillo"] .bt:not(.bt--sec) { box-shadow: 0 6px 22px color-mix(in srgb, var(--acento) 55%, transparent); }
+.pv[data-btn="mayus"] .bt { text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; border-radius: calc(var(--r) / 3); }
+
+/* Hero */
+.pv-hero { padding: 30px 18px; display: grid; gap: 18px; container-type: inline-size; }
+.pv-hero__txt { display: grid; gap: 10px; align-content: start; }
+.pv-eyebrow { font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--acento); font-weight: 700; }
+.pv-hero h1 { font-size: clamp(1.5rem, 4.2vw, 2.3rem); line-height: 1.05; }
+.pv-hero h1 em { font-style: normal; color: var(--acento); }
+.pv-hero p { color: var(--suave); font-size: .9rem; max-width: 46ch; }
+.pv-acc { display: flex; flex-wrap: wrap; gap: 8px; }
+.pv-car { width: 100%; max-width: 100%; display: none; }
+.pv-car svg { width: 100%; height: auto; display: block; }
+.pv-ficha { display: none; border: 1px solid var(--borde); border-radius: var(--r); padding: 12px 14px; background: var(--capa); font-size: .8rem; gap: 6px; }
+.pv-ficha div { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--borde); padding-bottom: 5px; }
+.pv-ficha div:last-child { border: 0; padding: 0; }
+.pv-ficha b { color: var(--acento); }
+.pv[data-hero="centrado"] .pv-hero__txt { text-align: center; justify-items: center; }
+.pv[data-hero="centrado"] .pv-acc { justify-content: center; }
+.pv[data-hero="dividido"] .pv-hero { grid-template-columns: 1.1fr 1fr; align-items: center; }
+.pv[data-hero="dividido"] .pv-car { display: block; }
+.pv[data-hero="foto"] .pv-hero { position: relative; min-height: 250px; align-content: end; overflow: hidden; }
+.pv[data-hero="foto"] .pv-car { display: block; position: absolute; right: -6%; top: 6%; width: 78%; opacity: .55; }
+.pv[data-hero="foto"] .pv-hero__txt { position: relative; }
+.pv[data-hero="ficha"] .pv-hero { grid-template-columns: 1.2fr 1fr; align-items: center; }
+.pv[data-hero="ficha"] .pv-ficha { display: grid; }
+.pv[data-hero="numero"] .pv-hero h1 { display: none; }
+.pv[data-hero="numero"] .pv-big { display: block; }
+.pv-big { display: none; font-family: var(--titulos); font-size: clamp(3.2rem, 11vw, 5.5rem); line-height: .85; color: var(--acento); letter-spacing: -.03em; }
+.pv-big small { display: block; font-size: .95rem; color: var(--texto); letter-spacing: .02em; margin-top: 6px; }
+@container (max-width: 480px) {
+  .pv[data-hero="dividido"] .pv-hero, .pv[data-hero="ficha"] .pv-hero { grid-template-columns: 1fr; }
+}
+
+/* Sellos */
+.pv-sellos { display: flex; flex-wrap: wrap; gap: 6px; }
+.pv-sellos span { font-size: .68rem; color: var(--suave); border: 1px solid var(--borde); border-radius: var(--rb); padding: 3px 9px; background: var(--capa); }
+
+/* Inventario */
+.pv-inv { padding: 4px 18px 24px; display: grid; gap: 12px; container-type: inline-size; }
+.pv-inv h2 { font-size: 1.05rem; }
+.pv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@container (max-width: 460px) { .pv-cards { grid-template-columns: 1fr; } }
+.cd { background: var(--capa); border: 1px solid var(--borde); border-radius: var(--r); overflow: hidden; display: grid; color: var(--texto); }
+.cd__foto { aspect-ratio: 16 / 9; background: linear-gradient(160deg, color-mix(in srgb, var(--texto) 10%, var(--capa)), var(--capa)); position: relative; display: grid; place-items: center; padding: 10px; }
+.cd__foto svg { width: 82%; height: auto; }
+.cd__est { position: absolute; top: 8px; left: 8px; font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: var(--rb); background: #22c55e; color: #052e14; }
+.cd__est--vendido { background: var(--acento); color: var(--sobre-acento); }
+.cd__body { padding: 12px; display: grid; gap: 6px; align-content: start; }
+.cd__t { font-family: var(--titulos); font-weight: 700; font-size: .92rem; text-transform: var(--tt); }
+.cd__p { font-family: var(--titulos); font-weight: 800; color: var(--acento); font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.cd__d { font-size: .74rem; color: var(--suave); }
+.cd__tabla { display: none; font-size: .74rem; gap: 3px; }
+.cd__tabla div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--borde); padding-bottom: 3px; }
+.cd__sticker-h { display: none; }
+.pv[data-card="horizontal"] .cd { grid-template-columns: 40% 1fr; }
+.pv[data-card="horizontal"] .cd__foto { aspect-ratio: auto; height: 100%; }
+.pv[data-card="ficha"] .cd__foto { display: none; }
+.pv[data-card="ficha"] .cd__tabla { display: grid; }
+.pv[data-card="ficha"] .cd { border-left: 4px solid var(--acento); }
+.pv[data-card="minimal"] .cd { background: transparent; border: 0; border-radius: 0; gap: 4px; }
+.pv[data-card="minimal"] .cd__foto { border-radius: var(--r); }
+.pv[data-card="minimal"] .cd__body { padding: 6px 0 0; }
+.pv[data-card="sticker"] .cd { background: #fbfbf8; color: #111; border: 1px solid #d9d6cc; border-radius: 4px; }
+.pv[data-card="sticker"] .cd__foto { display: none; }
+.pv[data-card="sticker"] .cd__sticker-h { display: block; background: #111; color: #fbfbf8; font-family: var(--titulos); font-size: .62rem; letter-spacing: .16em; padding: 6px 10px; text-transform: uppercase; }
+.pv[data-card="sticker"] .cd__t { color: #111; }
+.pv[data-card="sticker"] .cd__d { color: #444; }
+.pv[data-card="sticker"] .cd__tabla { display: grid; color: #222; }
+.pv[data-card="sticker"] .cd__tabla div { border-color: #d9d6cc; }
+.pv[data-card="sticker"] .cd__p { color: #111; border-top: 2px solid #111; padding-top: 6px; }
+.pv[data-card="galeria"] .cd { position: relative; }
+.pv[data-card="galeria"] .cd__foto { aspect-ratio: 4 / 3; }
+.pv[data-card="galeria"] .cd__body { position: absolute; inset: auto 0 0 0; background: linear-gradient(transparent, color-mix(in srgb, var(--fondo) 92%, transparent) 45%); padding-top: 34px; }
+.pv[data-card="galeria"] .cd__d:last-child { display: none; }
+
+/* App (teléfono) */
+.ph { width: 290px; max-width: 100%; height: 540px; background: var(--fondo); border-radius: 30px; border: 8px solid #0a0a0a; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,.35); font-size: 13px; }
+.ph__head { padding: 14px 14px 10px; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--borde); }
+.ph__head h3 { font-size: 1rem; }
+.ph__head .lg { font-size: .55rem; }
+.ph__tabs { display: none; gap: 6px; padding: 8px 12px 0; overflow: hidden; }
+.ph__tabs span { font-size: .68rem; padding: 4px 9px; border-radius: var(--rb); border: 1px solid var(--borde); color: var(--suave); white-space: nowrap; }
+.ph__tabs span.on { background: var(--texto); color: var(--fondo); }
+.ph__body { padding: 12px; display: grid; gap: 10px; align-content: start; overflow: hidden; }
+.ph__cap { background: linear-gradient(135deg, color-mix(in srgb, var(--acento) 25%, var(--capa)), var(--capa) 70%); border: 1px solid var(--borde); border-radius: var(--r); padding: 12px; display: grid; gap: 2px; }
+.ph__cap small { font-size: .6rem; text-transform: uppercase; letter-spacing: .1em; color: var(--suave); }
+.ph__cap strong { font-family: var(--titulos); font-size: 1.7rem; font-variant-numeric: tabular-nums; }
+.ph__dec { border: 2px solid #22c55e; border-radius: var(--r); padding: 10px 12px; display: grid; gap: 4px; background: color-mix(in srgb, #22c55e 10%, var(--capa)); }
+.ph__dec b { font-family: var(--titulos); color: #22c55e; font-size: 1.15rem; text-transform: var(--tt); }
+.ph__dec span { font-size: .75rem; color: var(--suave); }
+.ph__row { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-radius: calc(var(--r) * .7); background: var(--capa); border: 1px solid var(--borde); font-size: .78rem; gap: 8px; }
+.ph__pill { font-size: .6rem; font-weight: 700; padding: 2px 8px; border-radius: var(--rb); background: var(--acento); color: var(--sobre-acento); white-space: nowrap; }
+.ph__nav { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--borde); background: var(--capa); padding: 8px 4px 10px; }
+.ph__nav span { display: grid; justify-items: center; gap: 3px; font-size: .55rem; color: var(--suave); }
+.ph__nav i { width: 18px; height: 18px; border-radius: 5px; background: currentColor; opacity: .55; }
+.ph__nav span.on { color: var(--texto); }
+.ph__nav span.on i { background: var(--acento); opacity: 1; }
+.ph__nav span.c i { width: 26px; height: 26px; background: var(--acento); opacity: 1; border-radius: 8px; }
+.ph__nav span.c { color: var(--texto); }
+.pv[data-nav="iconos"] .ph__nav span.c i { width: 18px; height: 18px; background: currentColor; opacity: .55; border-radius: 5px; }
+.pv[data-nav="iconos"] .ph__nav span.c { color: var(--suave); }
+.pv[data-nav="pestanas"] .ph__nav { display: none; }
+.pv[data-nav="pestanas"] .ph__tabs { display: flex; }
+.pv[data-nav="pestanas"] .ph { grid-template-rows: auto auto 1fr; }
+.pv[data-nav="flotante"] .ph__nav { position: absolute; left: 14px; right: 14px; bottom: 12px; border: 1px solid var(--borde); border-radius: 99px; box-shadow: 0 8px 22px rgba(0,0,0,.4); padding: 7px 4px; }
+.pv[data-nav="flotante"] .ph__nav span { font-size: 0; gap: 0; }
+.pv[data-nav="lateral"] .ph { grid-template-columns: 50px 1fr; grid-template-rows: auto 1fr; }
+.pv[data-nav="lateral"] .ph__head { grid-column: 1 / -1; }
+.pv[data-nav="lateral"] .ph__nav { grid-row: 2; grid-column: 1; grid-template-columns: 1fr; grid-auto-rows: min-content; gap: 12px; border-top: 0; border-right: 1px solid var(--borde); padding: 12px 0; order: -1; }
+.pv[data-nav="lateral"] .ph__body { grid-row: 2; grid-column: 2; }
+.pv[data-nav="lateral"] .ph__nav span { font-size: 0; }
+.pv[data-nav="mayor"] .ph__nav span { font-size: .7rem; font-weight: 700; }
+.pv[data-nav="mayor"] .ph__nav i { display: none; }
+.pv[data-nav="mayor"] .ph__nav span.on { color: var(--acento); }
+.pv[data-nav="mayor"] .ph__nav { padding: 14px 4px; }
+
+@media (max-width: 960px) {
+  .st-grid { grid-template-columns: 1fr; }
+  .st-prev { position: static; order: -1; }
+}
+@media (prefers-reduced-motion: no-preference) { .pv * { transition: background-color .2s, color .2s, border-color .2s, border-radius .2s; } }
+</style>
+
+<div class="st-wrap">
+  <header class="st-top">
+    <div>
+      <p class="st-mono">JOSEFINE AUTO · ESTUDIO DE DISEÑO</p>
+      <h1>Elige cómo se ve tu marca</h1>
+      <p>Toca una opción en cada decisión y mira el cambio al instante en la web y en la app. Si quieres un matiz, escríbelo en la nota. Todo se guarda solo y yo lo leo para aplicarlo.</p>
+    </div>
+    <div class="st-estado">
+      <span class="st-pill" id="progreso">0 de 12 decididas</span>
+      <span class="st-pill" id="guardado">Conectando…</span>
+    </div>
+  </header>
+
+  <div class="st-grid">
+    <div class="st-dec" id="decisiones"></div>
+
+    <aside class="st-prev" aria-label="Vista previa">
+      <div class="st-prev__bar">
+        <span class="st-mono">VISTA PREVIA EN VIVO</span>
+        <div class="st-tabs" role="group" aria-label="Qué ver">
+          <button type="button" data-vista="web" aria-pressed="true">Web</button>
+          <button type="button" data-vista="app" aria-pressed="false">App</button>
+          <button type="button" data-vista="ambas" aria-pressed="false">Ambas</button>
+        </div>
+      </div>
+      <div class="pv" id="pv" data-vista="web">
+        <div class="pv-web pv-bgw">
+          <div class="pv-nav">
+            <span class="lg" data-logo></span>
+            <nav class="pv-links"><span>Inventario</span><span>Vende tu carro</span><span>Cómo trabajamos</span></nav>
+            <span class="bt bt--chico">WhatsApp<span class="fl">→</span></span>
+          </div>
+          <section class="pv-hero">
+            <div class="pv-hero__txt">
+              <p class="pv-eyebrow">Ciudad de Panamá</p>
+              <h1 id="pv-h1"></h1>
+              <p class="pv-big">48<small>puntos revisados antes de publicar un carro</small></p>
+              <p id="pv-sub"></p>
+              <div class="pv-acc"><span class="bt" id="pv-cta"></span><span class="bt bt--sec">Vender mi carro</span></div>
+              <div class="pv-sellos"><span>Papeles verificados</span><span>Anti-inundación</span><span>Revisado en taller</span></div>
+            </div>
+            <div class="pv-car" data-car></div>
+            <div class="pv-ficha">
+              <div><span>Papeles ATTT</span><b>✓</b></div>
+              <div><span>Prueba anti-inundación</span><b>✓</b></div>
+              <div><span>Escáner OBD2</span><b>✓</b></div>
+              <div><span>Elevador en taller</span><b>✓</b></div>
+              <div><span>Defectos a la vista</span><b>✓</b></div>
+            </div>
+          </section>
+          <section class="pv-inv">
+            <h2>Inventario</h2>
+            <div class="pv-cards">
+              <article class="cd">
+                <div class="cd__sticker-h">Josefine Auto · Ficha del carro</div>
+                <div class="cd__foto" data-car><span class="cd__est">Disponible</span></div>
+                <div class="cd__body">
+                  <span class="cd__t">Mazda3 2010</span>
+                  <span class="cd__d">150.000 km · Automática</span>
+                  <div class="cd__tabla"><div><span>Km</span><span>150.000</span></div><div><span>Caja</span><span>Automática</span></div><div><span>Inspección</span><span>48/48</span></div></div>
+                  <span class="cd__p">$4,950</span>
+                  <span class="cd__d">Defectos: rayón en parachoques</span>
+                </div>
+              </article>
+              <article class="cd">
+                <div class="cd__sticker-h">Josefine Auto · Ficha del carro</div>
+                <div class="cd__foto" data-car><span class="cd__est cd__est--vendido">Vendido</span></div>
+                <div class="cd__body">
+                  <span class="cd__t">Nissan 350Z 2008</span>
+                  <span class="cd__d">98.000 km · Manual · A comisión</span>
+                  <div class="cd__tabla"><div><span>Km</span><span>98.000</span></div><div><span>Caja</span><span>Manual</span></div><div><span>Venta</span><span>A comisión</span></div></div>
+                  <span class="cd__p">Vendido</span>
+                  <span class="cd__d">Escape y suspensión modificados</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <div class="pv-app">
+          <div class="ph">
+            <div class="ph__head"><h3>Resumen</h3><span class="lg" data-logo></span></div>
+            <div class="ph__tabs"><span class="on">Resumen</span><span>Carros</span><span>Evaluar</span><span>Precios</span></div>
+            <div class="ph__body">
+              <div class="ph__cap"><small>Capital disponible</small><strong>$4,500</strong><small style="text-transform:none;letter-spacing:0">Ejemplo · reserva $500</small></div>
+              <div class="ph__dec"><b>COMPRAR</b><span>Mazda3 2010 · máximo $3,624 · ganancia $755</span></div>
+              <div class="ph__row"><span>Honda Civic 2009</span><span class="ph__pill">Oferta</span></div>
+              <div class="ph__row"><span>Toyota Yaris 2011</span><span class="ph__pill" style="background:var(--capa);color:var(--suave);border:1px solid var(--borde)">Visto</span></div>
+              <span class="bt" style="justify-content:center">Evaluar un carro<span class="fl">→</span></span>
+            </div>
+            <div class="ph__nav"><span class="on"><i></i>Resumen</span><span><i></i>Carros</span><span class="c"><i></i>Evaluar</span><span><i></i>Precios</span><span><i></i>Ajustes</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="st-mono">Carros y cifras de ejemplo. Las fotos reales irán donde ves la silueta.</p>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CARRO = '<svg viewBox="0 0 300 110" aria-hidden="true"><path fill="var(--texto)" opacity=".9" d="M14 80c0-12 6-20 22-23l48-6c16-15 34-25 62-25h40c22 0 36 9 52 24l30 5c12 2 20 10 20 22v6H14z"/><path fill="var(--fondo)" opacity=".55" d="M96 52c14-12 28-18 48-18h18v18zm72-18h18c16 0 26 6 38 18h-56z"/><rect x="14" y="70" width="18" height="6" fill="var(--acento)"/><circle cx="76" cy="86" r="18" fill="var(--fondo)"/><circle cx="76" cy="86" r="11" fill="var(--suave)"/><circle cx="232" cy="86" r="18" fill="var(--fondo)"/><circle cx="232" cy="86" r="11" fill="var(--suave)"/></svg>';
+
+  /* ---------- Opciones ---------- */
+  var PALETAS = {
+    rojo:   { n: "Rojo carrera", d: "El rojo actual de la marca. Pasión y velocidad.", a: "#e11d2e", a2: "#e11d2e", s: "#fff" },
+    jdm:    { n: "Amarillo JDM", d: "Amarillo de taxi japonés y pista. Muy llamativo.", a: "#f5c518", a2: "#f5c518", s: "#111" },
+    gulf:   { n: "Gulf", d: "Azul cielo y naranja de las carreras clásicas.", a: "#6cb4e4", a2: "#f26b21", s: "#0b1d2a" },
+    naranja:{ n: "Naranja Fuego", d: "Energía, deportivo y cercano.", a: "#ff6a13", a2: "#ff6a13", s: "#fff" },
+    verde:  { n: "Verde británico", d: "Clásico, elegante, de coleccionista.", a: "#2f9e62", a2: "#c9a227", s: "#fff" },
+    azul:   { n: "Azul eléctrico", d: "Tecnología, confianza, moderno.", a: "#2f6bff", a2: "#2f6bff", s: "#fff" }
+  };
+  var TEMAS = {
+    grafito: { n: "Grafito oscuro", d: "El fondo actual. Elegante y nocturno.", f: "#0d0f12", c: "#1b1f26", t: "#f2f4f7", s: "#a3abb8", b: "#2a2f38" },
+    negro:   { n: "Negro puro", d: "Máximo contraste, tipo vitrina de noche.", f: "#000000", c: "#121212", t: "#ffffff", s: "#9b9b9b", b: "#262626" },
+    asfalto: { n: "Asfalto azulado", d: "Oscuro con un toque azul frío.", f: "#0f1720", c: "#17222e", t: "#eaf1f8", s: "#93a4b8", b: "#26384a" },
+    acero:   { n: "Gris acero", d: "Oscuro suave, menos dramático.", f: "#2b2f36", c: "#363b44", t: "#f1f3f5", s: "#bac0c9", b: "#4a505b" },
+    claro:   { n: "Blanco taller", d: "Claro y limpio, tipo concesionario.", f: "#f6f7f8", c: "#ffffff", t: "#14161a", s: "#5b6270", b: "#e1e4e8" },
+    hueso:   { n: "Papel de revista", d: "Claro cálido, aire de revista de autos.", f: "#efede6", c: "#faf8f3", t: "#1d1b17", s: "#69645a", b: "#dcd8cd" }
+  };
+  var TITULOS = {
+    montserrat: { n: "Montserrat", d: "La actual. Geométrica y sólida.", f: "'Montserrat', sans-serif", tt: "none", ls: "-.01em" },
+    archivo:    { n: "Archivo Black", d: "Muy gruesa, impacto de cartel.", f: "'Archivo Black', sans-serif", tt: "none", ls: "-.02em" },
+    oswald:     { n: "Oswald", d: "Condensada, estilo revista de motor.", f: "'Oswald', sans-serif", tt: "uppercase", ls: ".01em" },
+    bebas:      { n: "Bebas Neue", d: "Alta y estrecha, de póster de carreras.", f: "'Bebas Neue', sans-serif", tt: "uppercase", ls: ".03em" },
+    chakra:     { n: "Chakra Petch", d: "Angulosa y técnica, muy JDM.", f: "'Chakra Petch', sans-serif", tt: "uppercase", ls: ".01em" },
+    russo:      { n: "Russo One", d: "Redondeada y deportiva, tipo tablero.", f: "'Russo One', sans-serif", tt: "none", ls: "0" },
+    saira:      { n: "Saira Condensed", d: "Condensada de pista, rápida de leer.", f: "'Saira Condensed', sans-serif", tt: "uppercase", ls: ".02em" }
+  };
+  var CUERPOS = {
+    inter:   { n: "Inter", d: "La actual. Neutra y muy legible.", f: "'Inter', sans-serif" },
+    plex:    { n: "IBM Plex Sans", d: "Técnica, con carácter de ficha.", f: "'IBM Plex Sans', sans-serif" },
+    barlow:  { n: "Barlow", d: "Inspirada en señales de carretera.", f: "'Barlow', sans-serif" },
+    manrope: { n: "Manrope", d: "Moderna y amable.", f: "'Manrope', sans-serif" },
+    work:    { n: "Work Sans", d: "Cercana, buena en pantallas pequeñas.", f: "'Work Sans', sans-serif" }
+  };
+  var RADIOS = {
+    recto:    { n: "Recto", d: "Esquinas rectas. Serio y técnico.", r: "0px", rb: "0px" },
+    sutil:    { n: "Sutil", d: "Apenas redondeado. Preciso.", r: "6px", rb: "6px" },
+    medio:    { n: "Medio", d: "El actual en tarjetas.", r: "14px", rb: "10px" },
+    suave:    { n: "Suave", d: "Redondeado amable, tipo app.", r: "22px", rb: "16px" },
+    pildora:  { n: "Píldora", d: "Botones en cápsula (el actual).", r: "16px", rb: "999px" }
+  };
+  var TONOS = {
+    directo:   { n: "Directo", d: "El actual. Claro y seguro.", h: "Deportivos y japoneses <em>seleccionados</em>.", s: "Cada carro pasa papeles, prueba anti-inundación, escáner y taller. Sabes exactamente lo que compras.", c: "Ver inventario" },
+    cercano:   { n: "Cercano", d: "Habla como un amigo que sabe de carros.", h: "Tu próximo carro, <em>sin sorpresas</em>.", s: "Te lo revisamos de punta a punta, como si fuera nuestro. Escríbenos y lo vemos juntos.", c: "Escríbenos" },
+    tecnico:   { n: "Técnico", d: "Datos y método por delante.", h: "48 puntos de inspección. <em>Cero sorpresas</em>.", s: "Papeles ATTT, anti-inundación, escáner OBD2 y elevador antes de publicar cualquier carro.", c: "Ver fichas" },
+    premium:   { n: "Premium", d: "Pocas palabras, exclusivo.", h: "Selección <em>Josefine</em>.", s: "Pocos carros. Elegidos uno a uno.", c: "Descubrir" },
+    entusiasta:{ n: "Entusiasta", d: "Para la escena de deportivos y JDM.", h: "Para los que <em>viven</em> los carros.", s: "JDM, deportivos y proyectos de la casa. Si suena bien, está aquí.", c: "Ver los carros" }
+  };
+
+  function muestraLogo(v) { return '<span class="lg lg--' + v + '" style="--titulos:Montserrat,sans-serif">' + logoHTML(v) + "</span>"; }
+  function logoHTML(v) {
+    if (v === "monograma") return "<i>JA</i><span>JOSEFINE AUTO</span>";
+    if (v === "italica") return "Josefine<small>AUTO</small>";
+    if (v === "sello") return "<strong>JA</strong>AUTO";
+    if (v === "franja") return "JOSEFINE<b>AUTO</b>";
+    return "JOSEFINE<b>AUTO</b>";
+  }
+  function mini(css, html) { return '<div class="st-op__m" style="' + css + '">' + (html || "") + "</div>"; }
+  var oscuro = "background:#1b1f26;color:#f2f4f7;";
+
+  var DECISIONES = [
+    { id: "paleta", t: "Color de marca", q: "El color que va en botones, precios y detalles.", actual: "rojo",
+      ops: Object.keys(PALETAS).map(function (k) { var p = PALETAS[k]; return { id: k, n: p.n, d: p.d, m: mini("", '<div class="sw"><span style="background:' + p.a + '"></span><span style="background:' + p.a2 + '"></span><span style="background:#0d0f12"></span></div>') }; }) },
+    { id: "tema", t: "Fondo y ambiente", q: "Sobre qué color se presentan los carros.", actual: "grafito",
+      ops: Object.keys(TEMAS).map(function (k) { var p = TEMAS[k]; return { id: k, n: p.n, d: p.d, m: mini("background:" + p.f + ";color:" + p.t + ";border:1px solid " + p.b, '<span style="font-weight:700">Aa</span>') }; }) },
+    { id: "titulos", t: "Letra de títulos", q: "La personalidad de la marca en cada titular.", actual: "montserrat",
+      ops: Object.keys(TITULOS).map(function (k) { var p = TITULOS[k]; return { id: k, n: p.n, d: p.d, m: mini(oscuro, '<span class="fm" style="font-family:' + p.f.replace(/'/g, "") + ";text-transform:" + p.tt + '">Mazda3</span>') }; }) },
+    { id: "cuerpo", t: "Letra de textos", q: "La letra de los párrafos y datos.", actual: "inter",
+      ops: Object.keys(CUERPOS).map(function (k) { var p = CUERPOS[k]; return { id: k, n: p.n, d: p.d, m: mini(oscuro, '<span class="fb" style="font-family:' + p.f.replace(/'/g, "") + '">150.000 km · Automática · Papeles al día</span>') }; }) },
+    { id: "radio", t: "Forma de las esquinas", q: "Qué tan redondeados son tarjetas y botones.", actual: "medio",
+      ops: Object.keys(RADIOS).map(function (k) { var p = RADIOS[k]; return { id: k, n: p.n, d: p.d, m: mini("background:transparent", '<span style="width:70%;height:40px;border:2px solid currentColor;border-radius:' + p.r + '"></span>') }; }) },
+    { id: "botones", t: "Estilo de botones", q: "Cómo se ve la acción principal.", actual: "solido",
+      ops: [
+        { id: "solido", n: "Sólido", d: "Relleno de color. El actual." },
+        { id: "contorno", n: "Contorno", d: "Solo el borde, más ligero." },
+        { id: "flecha", n: "Con flecha", d: "Sólido con → que invita a avanzar." },
+        { id: "diagonal", n: "Diagonal", d: "Cortado en ángulo, estilo pista." },
+        { id: "brillo", n: "Con brillo", d: "Sólido con resplandor del color." },
+        { id: "mayus", n: "Mayúsculas", d: "Texto espaciado en mayúsculas, sobrio." }
+      ].map(function (o) { o.m = mini(oscuro + "--acento:#e11d2e;--sobre-acento:#fff;--texto:#f2f4f7;--borde:#2a2f38;--rb:999px;--r:14px", '<span class="pv" data-btn="' + o.id + '" style="background:none;border:0;border-radius:0"><span class="bt bt--chico">Ver inventario<span class="fl">→</span></span></span>'); return o; }) },
+    { id: "logo", t: "Logotipo", q: "Cómo se escribe Josefine Auto. Si ya tienes logo, súbeme la imagen en el chat y la pongo.", actual: "espaciado",
+      ops: [
+        { id: "espaciado", n: "Espaciado", d: "Texto con letras separadas. El actual." },
+        { id: "monograma", n: "Monograma JA", d: "Iniciales en un bloque de color." },
+        { id: "italica", n: "Firma", d: "Josefine en cursiva con AUTO debajo." },
+        { id: "sello", n: "Sello", d: "Insignia redonda, de club." },
+        { id: "franja", n: "Franjas", d: "Con franjas de carreras delante." }
+      ].map(function (o) { o.m = mini(oscuro + "--acento:#e11d2e;--acento-2:#e11d2e;--sobre-acento:#fff;--texto:#f2f4f7;--r:14px", muestraLogo(o.id)); return o; }) },
+    { id: "hero", t: "Portada de la web", q: "Lo primero que ve un cliente.", actual: "izquierda",
+      ops: [
+        { id: "izquierda", n: "Texto a la izquierda", d: "Titular grande y botones. La actual." },
+        { id: "centrado", n: "Centrado", d: "Todo al centro, tipo anuncio." },
+        { id: "dividido", n: "Mitad y mitad", d: "Texto a un lado, carro al otro." },
+        { id: "foto", n: "Carro de fondo", d: "El carro grande detrás del titular." },
+        { id: "ficha", n: "Con ficha de inspección", d: "Muestra el método al lado del titular." },
+        { id: "numero", n: "Número gigante", d: "\"48 puntos\" como protagonista." }
+      ].map(function (o) { return o; }) },
+    { id: "tarjeta", t: "Tarjeta de carro", q: "Cómo se presenta cada carro del inventario.", actual: "clasica",
+      ops: [
+        { id: "clasica", n: "Clásica", d: "Foto arriba, datos abajo. La actual." },
+        { id: "horizontal", n: "Horizontal", d: "Foto a la izquierda, como lista." },
+        { id: "galeria", n: "Galería", d: "Foto grande con datos encima." },
+        { id: "ficha", n: "Ficha técnica", d: "Tabla de datos con franja de color." },
+        { id: "sticker", n: "Etiqueta de ventanilla", d: "Como la hoja pegada en el vidrio de los carros en venta." },
+        { id: "minimal", n: "Minimalista", d: "Sin marco, solo foto y texto." }
+      ] },
+    { id: "nav", t: "Menú de la app", q: "Cómo te mueves por la app en el celular.", actual: "central",
+      ops: [
+        { id: "central", n: "Barra con botón central", d: "Evaluar destacado en medio. La actual." },
+        { id: "iconos", n: "Barra de iconos", d: "Cinco iconos iguales." },
+        { id: "flotante", n: "Barra flotante", d: "Cápsula flotando sobre el contenido." },
+        { id: "pestanas", n: "Pestañas arriba", d: "Secciones como pestañas bajo el título." },
+        { id: "lateral", n: "Riel lateral", d: "Iconos en una columna a la izquierda." },
+        { id: "mayor", n: "Solo palabras", d: "Texto grande sin iconos, muy claro." }
+      ] },
+    { id: "fondo", t: "Textura de fondo", q: "Un detalle detrás del contenido de la web.", actual: "degradado",
+      ops: [
+        { id: "liso", n: "Liso", d: "Sin textura, máxima limpieza." },
+        { id: "degradado", n: "Resplandor", d: "Brillo del color de marca. El actual." },
+        { id: "rejilla", n: "Rejilla técnica", d: "Cuadrícula fina, de plano de ingeniería." },
+        { id: "carbono", n: "Fibra de carbono", d: "Trama de carbono, muy de tuning." },
+        { id: "franjas", n: "Franjas de carrera", d: "Dos franjas cruzando la portada." },
+        { id: "puntos", n: "Puntos", d: "Trama sutil de puntos." }
+      ] },
+    { id: "tono", t: "Tono de los textos", q: "Cómo habla Josefine Auto a sus clientes.", actual: "directo",
+      ops: Object.keys(TONOS).map(function (k) { var p = TONOS[k]; return { id: k, n: p.n, d: p.d, m: mini(oscuro + "padding:6px", '<span class="fb" style="font-weight:700;font-size:.8rem">' + p.h.replace(/<\/?em>/g, "") + "</span>") }; }) }
+  ];
+  // Muestras para hero, tarjeta, nav y fondo: mini-esquemas.
+  var ESQ = {
+    hero: { izquierda: "▤ texto · · ·", centrado: "· texto ·", dividido: "texto | 🚗", foto: "🚗 + texto", ficha: "texto | ✓✓✓", numero: "48" },
+    tarjeta: { clasica: "▭ foto / datos", horizontal: "▯ | datos", galeria: "foto + datos", ficha: "▌ tabla", sticker: "FICHA ▤", minimal: "foto · texto" },
+    nav: { central: "▫ ▫ ■ ▫ ▫", iconos: "▫ ▫ ▫ ▫ ▫", flotante: "( ▫▫▫▫▫ )", pestanas: "▔ ▔ ▔ arriba", lateral: "▏ riel", mayor: "Aa Aa Aa" },
+    fondo: { liso: "", degradado: "radial-gradient(circle at 85% 0, #e11d2e88, transparent 60%),#0d0f12", rejilla: "linear-gradient(#ffffff18 1px,transparent 1px) 0 0/12px 12px,linear-gradient(90deg,#ffffff18 1px,transparent 1px) 0 0/12px 12px,#0d0f12", carbono: "repeating-linear-gradient(45deg,#ffffff12 0 3px,transparent 3px 6px),repeating-linear-gradient(-45deg,#00000055 0 3px,transparent 3px 6px),#0d0f12", franjas: "linear-gradient(100deg,transparent 0 55%,#e11d2e 55% 62%,transparent 62% 66%,#e11d2e 66% 70%,transparent 70%),#0d0f12", puntos: "radial-gradient(#ffffff26 1px,transparent 1.5px) 0 0/10px 10px,#0d0f12" }
+  };
+  DECISIONES.forEach(function (dc) {
+    if (dc.id === "fondo") dc.ops.forEach(function (o) { o.m = mini("background:" + (ESQ.fondo[o.id] || "#0d0f12")); });
+    else if (ESQ[dc.id]) dc.ops.forEach(function (o) { o.m = mini(oscuro + "font-family:IBM Plex Mono,monospace;font-size:.8rem", ESQ[dc.id][o.id]); });
+  });
+
+  /* ---------- Estado ---------- */
+  var LOCAL = "josefine-estudio";
+  var est = { selecciones: {}, notas: {} };
+  try { var g = JSON.parse(localStorage.getItem(LOCAL)); if (g && g.selecciones) est = g; } catch (e) {}
+  function valor(id) { var d = DECISIONES.filter(function (x) { return x.id === id; })[0]; return est.selecciones[id] || d.actual; }
+
+  var $pv = document.getElementById("pv");
+  function aplicar() {
+    var p = PALETAS[valor("paleta")], t = TEMAS[valor("tema")], ti = TITULOS[valor("titulos")], cu = CUERPOS[valor("cuerpo")], r = RADIOS[valor("radio")], to = TONOS[valor("tono")];
+    var s = $pv.style;
+    s.setProperty("--acento", p.a); s.setProperty("--acento-2", p.a2); s.setProperty("--sobre-acento", p.s);
+    s.setProperty("--fondo", t.f); s.setProperty("--capa", t.c); s.setProperty("--texto", t.t); s.setProperty("--suave", t.s); s.setProperty("--borde", t.b);
+    s.setProperty("--titulos", ti.f); s.setProperty("--tt", ti.tt); s.setProperty("--tls", ti.ls);
+    s.setProperty("--cuerpo", cu.f); s.setProperty("--r", r.r); s.setProperty("--rb", r.rb);
+    $pv.setAttribute("data-btn", valor("botones")); $pv.setAttribute("data-hero", valor("hero"));
+    $pv.setAttribute("data-card", valor("tarjeta")); $pv.setAttribute("data-nav", valor("nav")); $pv.setAttribute("data-fondo", valor("fondo"));
+    var lg = valor("logo");
+    Array.prototype.forEach.call($pv.querySelectorAll("[data-logo]"), function (el) { el.className = "lg lg--" + lg; el.innerHTML = logoHTML(lg); });
+    document.getElementById("pv-h1").innerHTML = to.h;
+    document.getElementById("pv-sub").textContent = to.s;
+    document.getElementById("pv-cta").innerHTML = to.c + '<span class="fl">→</span>';
+    var n = Object.keys(est.selecciones).length;
+    document.getElementById("progreso").textContent = n + " de " + DECISIONES.length + " decididas";
+  }
+  Array.prototype.forEach.call($pv.querySelectorAll("[data-car]"), function (el) { el.insertAdjacentHTML("afterbegin", CARRO); });
+
+  /* ---------- Pintar decisiones ---------- */
+  var $dec = document.getElementById("decisiones");
+  DECISIONES.forEach(function (dc, i) {
+    var sec = document.createElement("section");
+    sec.className = "st-sec"; sec.id = "d-" + dc.id;
+    var h = '<div class="st-sec__head"><h2>' + (i + 1) + ". " + dc.t + ' <small data-elegido></small></h2><p>' + dc.q + '</p></div><div class="st-ops">';
+    dc.ops.forEach(function (o) {
+      h += '<button type="button" class="st-op" data-d="' + dc.id + '" data-o="' + o.id + '" aria-pressed="false">' + (o.m || "") +
+        '<span class="st-op__n">' + o.n + (o.id === dc.actual ? '<span class="st-tag">actual</span>' : "") + '</span><span class="st-op__d">' + o.d + "</span></button>";
+    });
+    h += '</div><textarea class="st-nota" id="nota-' + dc.id + '" rows="1" placeholder="¿Algún matiz? Ej.: el rojo un poco más oscuro"></textarea>';
+    sec.innerHTML = h;
+    $dec.appendChild(sec);
+  });
+  var fin = document.createElement("section");
+  fin.className = "st-sec st-fin";
+  fin.innerHTML = '<div class="st-sec__head"><h2>¿Algo más?</h2><p>Ideas, marcas o webs que te gusten, colores de tu logo… lo que quieras que tenga en cuenta.</p></div><textarea class="st-nota" id="nota-general" rows="3" placeholder="Escribe aquí"></textarea><button type="button" class="st-btn" id="listo">Listo, aplica mis elecciones</button><p class="st-mono" id="listo-msg"></p>';
+  $dec.appendChild(fin);
+
+  function marcar() {
+    Array.prototype.forEach.call(document.querySelectorAll(".st-op"), function (b) {
+      var d = b.getAttribute("data-d");
+      b.setAttribute("aria-pressed", String(valor(d) === b.getAttribute("data-o") && !!est.selecciones[d]));
+    });
+    DECISIONES.forEach(function (dc) {
+      var sec = document.getElementById("d-" + dc.id), sel = est.selecciones[dc.id];
+      sec.classList.toggle("decidida", !!sel);
+      var o = sel && dc.ops.filter(function (x) { return x.id === sel; })[0];
+      sec.querySelector("[data-elegido]").textContent = o ? "✓ " + o.n : "sin decidir";
+      var ta = document.getElementById("nota-" + dc.id);
+      if (document.activeElement !== ta) ta.value = est.notas[dc.id] || "";
+    });
+    var tg = document.getElementById("nota-general");
+    if (document.activeElement !== tg) tg.value = est.notas.general || "";
+  }
+
+  $dec.addEventListener("click", function (e) {
+    var b = e.target.closest(".st-op"); if (!b) return;
+    est.selecciones[b.getAttribute("data-d")] = b.getAttribute("data-o");
+    aplicar(); marcar(); guardar();
+  });
+  $dec.addEventListener("input", function (e) {
+    if (!e.target.id || e.target.id.indexOf("nota-") !== 0) return;
+    est.notas[e.target.id.slice(5)] = e.target.value; guardar();
+  });
+  document.getElementById("listo").onclick = function () {
+    est.listo = true; guardar(true);
+    document.getElementById("listo-msg").textContent = "Enviado. Dime en el chat \"diseño listo\" y lo aplico a la web y la app.";
+  };
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-vista]"), function (b) {
+    if (b.closest(".pv")) return;
+    b.onclick = function () {
+      $pv.setAttribute("data-vista", b.getAttribute("data-vista"));
+      Array.prototype.forEach.call(document.querySelectorAll(".st-tabs button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    };
+  });
+
+  /* ---------- Guardado (para Claude) ---------- */
+  var $g = document.getElementById("guardado"), db = null, ref = null, timer = null, puedeEscribir = true;
+  function estado(t, ok) { $g.textContent = t; $g.classList.toggle("st-pill--ok", !!ok); }
+  function guardar(ya) {
+    try { localStorage.setItem(LOCAL, JSON.stringify(est)); } catch (e) {}
+    if (!ref || !puedeEscribir) { estado(db ? "Solo lectura" : "Guardado en este navegador", false); return; }
+    clearTimeout(timer);
+    estado("Guardando…", false);
+    timer = setTimeout(function () {
+      var datos = { selecciones: est.selecciones, notas: est.notas, listo: !!est.listo, actualizado: new Date().toISOString() };
+      ref.set(datos).then(function () { estado("Guardado para Claude ✓", true); })
+        .catch(function (err) { if (err && (err.code === "not_granted" || err.code === "forbidden")) puedeEscribir = false; estado("No se pudo guardar; queda en este navegador", false); });
+    }, ya ? 0 : 700);
+  }
+
+  aplicar(); marcar();
+  estado("Guardado en este navegador", false);
+  if (window.claude && window.claude.use) {
+    window.claude.use("db").then(function (d) {
+      if (!d) return;
+      db = d; ref = db.doc("decisiones/estudio");
+      return ref.get().then(function (snap) {
+        var v = snap.exists ? snap.data() : null;
+        if (v && v.selecciones) {
+          est.selecciones = Object.assign({}, v.selecciones, est.selecciones);
+          est.notas = Object.assign({}, v.notas || {}, est.notas);
+          est.listo = !!v.listo;
+          aplicar(); marcar();
+        }
+        estado("Conectado: se guarda para Claude", true);
+      });
+    }).catch(function () { estado("Guardado en este navegador", false); });
+  }
+})();
+</script>
