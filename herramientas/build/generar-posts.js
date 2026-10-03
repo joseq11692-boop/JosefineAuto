@@ -87,6 +87,7 @@ const DESTACADAS = [
   ["vende-el-tuyo", "Vende el tuyo", "M32 8v32m-14-14 14-14 14 14M10 52h44"],
   ["guias", "Guías", "M14 8h28l10 10v38H14zm28 0v10h10M22 30h20m-20 10h20"],
   ["como-trabajamos", "Cómo trabajamos", "M28 12a16 16 0 1 0 0 32 16 16 0 0 0 0-32zm12 28 14 14"],
+  ["proyectos", "Proyectos", "M44 8a12 12 0 0 0-11.3 16L10 46.7a5 5 0 0 0 7.1 7.1L39.9 31A12 12 0 0 0 56 19.6l-7.4 7.4-7.4-2.2-2.2-7.4z"],
 ];
 
 (async () => {
@@ -109,6 +110,11 @@ const DESTACADAS = [
     await p.screenshot({ path: path.join(OUT, `destacada-${id}.png`) });
     total++;
   }
+  // Variante con foto: proyecto de la casa (Evo VI) dentro del círculo
+  const foto = "data:image/jpeg;base64," + fs.readFileSync(path.join(RAIZ, "web/img/proyectos/lancer-evo-vi-gsr-1999.jpg")).toString("base64");
+  await p.setContent(base + `<div class="hl"><div style="background:url('${foto}') center 58%/170% auto no-repeat;box-shadow:inset 0 0 0 14px #f6f7f8"></div></div></body></html>`, { waitUntil: "networkidle" });
+  await p.screenshot({ path: path.join(OUT, "destacada-proyectos-foto.png") });
+  total++;
   await b.close();
   console.log("Imágenes:", total, "→", OUT);
 })();
