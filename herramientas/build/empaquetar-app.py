@@ -5,11 +5,14 @@ panel = raiz / "web" / "panel"
 html = (panel / "index.html").read_text(encoding="utf-8")
 cuerpo = re.search(r"<body>(.*)</body>", html, re.S).group(1)
 cuerpo = re.sub(r'<script src="[^"]+"></script>\s*', "", cuerpo)
+import base64
+logo = base64.b64encode((panel / "logo-firma.svg").read_bytes()).decode()
+cuerpo = cuerpo.replace('src="logo-firma.svg"', f'src="data:image/svg+xml;base64,{logo}"')
 css = (panel / "estilos.css").read_text(encoding="utf-8")
 js = (panel / "datos-base.js").read_text(encoding="utf-8") + "\n" + (panel / "app.js").read_text(encoding="utf-8")
 salida = (
     "<title>Josefine Gestión</title>\n"
-    '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">\n'
+    '<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">\n'
     f"<style>\n{css}\n</style>\n{cuerpo.strip()}\n<script>\nwindow.JA_SIN_DESCARGA = true;\n{js}\n</script>\n"
 )
 destino = raiz / "companion" / "app.html"
