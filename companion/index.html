@@ -1,0 +1,394 @@
+<title>Josefine Auto · Tus pasos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+/* Layout: una columna de lectura, fases como capítulos, cada paso es una tarjeta con casilla grande. */
+:root {
+  --bg: #f6f5f3;
+  --surface: #ffffff;
+  --ink: #1d1f24;
+  --muted: #5d6270;
+  --line: #e2e0dc;
+  --accent: #c8102e;
+  --accent-soft: #fbe9ec;
+  --ok: #157a3c;
+  --ok-soft: #e4f4ea;
+  --note: #8a5a00;
+  --note-soft: #fff4dc;
+  --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131417; --surface: #1c1e23; --ink: #eef0f3; --muted: #a2a8b4; --line: #2d3038;
+    --accent: #ff4d63; --accent-soft: #3a1a20; --ok: #4ade80; --ok-soft: #14301f; --note: #fbbf24; --note-soft: #33280f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131417; --surface: #1c1e23; --ink: #eef0f3; --muted: #a2a8b4; --line: #2d3038;
+  --accent: #ff4d63; --accent-soft: #3a1a20; --ok: #4ade80; --ok-soft: #14301f; --note: #fbbf24; --note-soft: #33280f;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font: 17px/1.6 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 80px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); font-weight: 700; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+.top { display: grid; gap: 12px; margin-bottom: 28px; }
+.eyebrow { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.lead { color: var(--muted); max-width: 60ch; }
+
+.progress { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
+.progress__row { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; font-variant-numeric: tabular-nums; margin-bottom: 8px; }
+.bar { height: 12px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: var(--ok); border-radius: 999px; transition: width .3s; }
+@media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+
+.done-box { background: var(--ok-soft); border-radius: 14px; padding: 18px 20px; margin-block: 20px 8px; display: grid; gap: 8px; }
+.done-box h2 { font-size: 1.15rem; color: var(--ok); }
+.done-box ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+
+.phase { margin-top: 40px; display: grid; gap: 14px; }
+.phase__head { display: grid; gap: 4px; }
+.phase__when { color: var(--muted); font-weight: 700; font-size: .95rem; }
+
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; grid-template-columns: auto 1fr; gap: 14px; }
+.step.is-done { border-color: var(--ok); }
+.step.is-done h3 { text-decoration: line-through; text-decoration-color: var(--ok); }
+.check { width: 34px; height: 34px; accent-color: var(--ok); margin: 0; cursor: pointer; }
+.step__body { display: grid; gap: 10px; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: .8rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.chip--time { background: var(--line); color: var(--muted); }
+.step ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.links a { display: inline-block; text-decoration: none; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 10px; font-size: .95rem; }
+.links a.alt { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+.tip { background: var(--note-soft); color: var(--ink); border-radius: 10px; padding: 10px 14px; font-size: .95rem; }
+.tip strong { color: var(--note); }
+.copy { border: 1px dashed var(--line); border-radius: 12px; padding: 12px 14px; background: var(--bg); display: grid; gap: 8px; }
+.copy pre { margin: 0; white-space: pre-wrap; font: inherit; font-size: .95rem; overflow-wrap: anywhere; }
+.copy button { justify-self: start; font: inherit; font-weight: 700; font-size: .9rem; background: var(--ink); color: var(--bg); border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+.foot { margin-top: 48px; color: var(--muted); font-size: .9rem; }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Josefine Auto · tus pasos</p>
+    <h1>Lo que solo puedes hacer tú</h1>
+    <p class="lead">Todo lo demás ya lo hice yo. Ve en orden, toca los botones rojos y marca la casilla cuando termines. Tu avance se guarda en este navegador.</p>
+  </header>
+
+  <div class="progress" aria-live="polite">
+    <div class="progress__row"><span>Tu avance</span><span id="count">0 de 0</span></div>
+    <div class="bar"><span id="bar"></span></div>
+  </div>
+
+  <section class="done-box">
+    <h2>✔ Ya hecho por Claude</h2>
+    <ul>
+      <li>Plan estratégico, checklist de compra y plan de 30 días</li>
+      <li>Calculadora con precios reales de referencia de Panamá</li>
+      <li>4 posts de Instagram con guiones y textos</li>
+      <li>Contratos de compraventa y de venta a comisión</li>
+      <li>Web completa, lista para publicarse sola</li>
+    </ul>
+  </section>
+
+  <!-- FASE 1 -->
+  <section class="phase">
+    <div class="phase__head">
+      <h2>Hoy · pon todo en marcha</h2>
+      <p class="phase__when">Unos 30 minutos en total</p>
+    </div>
+
+    <article class="step" data-id="datos">
+      <input type="checkbox" class="check" id="c-datos" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">En el chat con Claude</span><span class="chip chip--time">3 min</span></div>
+        <h3>Mándame tus datos en el chat</h3>
+        <p>Con esto pongo tu WhatsApp, tu Instagram y tu logo en la web. Escríbeme en el chat:</p>
+        <ol>
+          <li>Tu número de <strong>WhatsApp</strong></li>
+          <li>Tu usuario de <strong>Instagram</strong></li>
+          <li>Tu <strong>logo</strong> (súbelo como imagen) o los colores de tu marca</li>
+          <li>El <strong>modelo de tu proyecto JDM</strong> y 2 o 3 fotos, si quieres que salga en la web</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="step" data-id="pages">
+      <input type="checkbox" class="check" id="c-pages" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">2 min</span></div>
+        <h3>Enciende tu web (un solo clic)</h3>
+        <ol>
+          <li>Toca el botón rojo (se abre GitHub; entra con tu cuenta si te lo pide).</li>
+          <li>Busca <strong>"Source"</strong> (o "Fuente") y elige <strong>"GitHub Actions"</strong>.</li>
+          <li>Listo. Escríbeme <strong>"web activada"</strong> en el chat y yo la publico.</li>
+        </ol>
+        <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/settings/pages" target="_blank" rel="noopener">Abrir ajustes de la web</a></div>
+        <p class="tip"><strong>Tu web quedará en:</strong> joseq11692-boop.github.io/JosefineAuto</p>
+      </div>
+    </article>
+
+    <article class="step" data-id="wab">
+      <input type="checkbox" class="check" id="c-wab" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Tu celular</span><span class="chip chip--time">10 min</span></div>
+        <h3>Instala WhatsApp Business</h3>
+        <ol>
+          <li>Descárgala (es gratis y separa el negocio de tu WhatsApp personal).</li>
+          <li>Nombre del negocio: <strong>Josefine Auto</strong>. Categoría: <strong>Automotriz</strong>.</li>
+          <li>Pega esta descripción en el perfil:</li>
+        </ol>
+        <div class="copy"><pre id="t-wab">Deportivos y japoneses seleccionados en Ciudad de Panamá. Cada carro revisado en taller, con papeles verificados y defectos a la vista. ¿Quieres vender tu deportivo? Te lo vendemos a comisión.</pre><button type="button" data-copy="t-wab">Copiar texto</button></div>
+        <div class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.whatsapp.w4b" target="_blank" rel="noopener">Android</a>
+          <a href="https://apps.apple.com/app/whatsapp-business/id1386412985" target="_blank" rel="noopener">iPhone</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="step" data-id="ig">
+      <input type="checkbox" class="check" id="c-ig" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Instagram</span><span class="chip chip--time">5 min</span></div>
+        <h3>Cambia tu biografía de Instagram</h3>
+        <ol>
+          <li>Toca el botón y entra a "Editar perfil".</li>
+          <li>En <strong>Nombre</strong> escribe: Josefine Auto | Deportivos &amp; Japoneses · Panamá</li>
+          <li>En <strong>Presentación</strong> pega esto:</li>
+        </ol>
+        <div class="copy"><pre id="t-ig">Deportivos y japoneses seleccionados en Panamá 🇵🇦
+✅ Revisados y documentados: sabes lo que compras
+🔁 ¿Vendes tu deportivo? Te lo vendemos a comisión
+👇 Inventario y WhatsApp</pre><button type="button" data-copy="t-ig">Copiar texto</button></div>
+        <div class="links"><a href="https://www.instagram.com/accounts/edit/" target="_blank" rel="noopener">Editar perfil</a></div>
+        <p class="tip"><strong>Después:</strong> cuando la web esté activa, ponla como enlace del perfil.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- FASE 2 -->
+  <section class="phase">
+    <div class="phase__head">
+      <h2>Esta semana · prepara la caza</h2>
+      <p class="phase__when">Días 1 a 7</p>
+    </div>
+
+    <article class="step" data-id="mecanico">
+      <input type="checkbox" class="check" id="c-mecanico" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Llamada</span><span class="chip chip--time">10 min</span></div>
+        <h3>Llama a tu mecánico</h3>
+        <p>Queremos 3 cosas: precio fijo por revisar carros antes de comprarlos, que te atienda rápido y un descuento si le llevas las reparaciones. Puedes mandarle esto:</p>
+        <div class="copy"><pre id="t-mec">Hola [nombre], te cuento: estoy retomando la compraventa de carros y voy a necesitar revisiones antes de comprar, más o menos 1 o 2 al mes. ¿Cuánto me cobrarías por revisión (elevador, escáner y prueba rápida)? ¿Me podrías atender en 24–48 horas cuando te avise? Y las reparaciones de los carros que compre te las llevo a ti. ¿Me harías un precio especial?</pre><button type="button" data-copy="t-mec">Copiar mensaje</button></div>
+        <p class="tip"><strong>Buen precio:</strong> entre $40 y $80 por revisión.</p>
+      </div>
+    </article>
+
+    <article class="step" data-id="obd">
+      <input type="checkbox" class="check" id="c-obd" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Compra</span><span class="chip chip--time">$30–60</span></div>
+        <h3>Compra un escáner OBD2 Bluetooth</h3>
+        <ol>
+          <li>Busca uno que diga <strong>"ELM327 Bluetooth"</strong> (en iPhone necesitas que diga <strong>"BLE"</strong> o <strong>"Bluetooth 4.0"</strong>). Los de las marcas Vgate o OBDLink son buenos.</li>
+          <li>Instala la app gratis <strong>Car Scanner ELM OBD2</strong>.</li>
+          <li>Pruébalo en tu propio carro: se enchufa debajo del volante.</li>
+        </ol>
+        <div class="links">
+          <a href="https://www.amazon.com/s?k=obd2+bluetooth+elm327" target="_blank" rel="noopener">Ver escáneres</a>
+          <a class="alt" href="https://play.google.com/store/apps/details?id=com.ovz.carscanner" target="_blank" rel="noopener">App Android</a>
+        </div>
+        <p class="tip"><strong>En iPhone:</strong> busca "Car Scanner ELM OBD2" en la App Store. En Panamá también lo encuentras en tiendas de repuestos.</p>
+      </div>
+    </article>
+
+    <article class="step" data-id="alertas">
+      <input type="checkbox" class="check" id="c-alertas" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Encuentra24 y Marketplace</span><span class="chip chip--time">15 min</span></div>
+        <h3>Crea tus alertas de búsqueda</h3>
+        <p>Tu primer objetivo: <strong>Mazda3 o Honda Civic de 2008 a 2010</strong> que puedas comprar por $3.400–3.700.</p>
+        <ol>
+          <li>Abre cada búsqueda con los botones.</li>
+          <li>En Encuentra24, crea una cuenta y toca <strong>"Guardar búsqueda"</strong> o <strong>"Crear alerta"</strong>. Pon precio máximo <strong>$4.200</strong>.</li>
+          <li>En Marketplace, filtra por precio máximo $4.200 y activa las notificaciones.</li>
+        </ol>
+        <div class="links">
+          <a href="https://www.encuentra24.com/panama-es/autos-usados/mazda/mazda3" target="_blank" rel="noopener">Mazda3 en Encuentra24</a>
+          <a href="https://www.encuentra24.com/panama-en/cars-auto-trucks-used-car?q=f_make.honda%7Cf_model.Civic" target="_blank" rel="noopener">Civic en Encuentra24</a>
+          <a class="alt" href="https://www.facebook.com/marketplace/panamacity/search?query=mazda%203" target="_blank" rel="noopener">Mazda3 en Marketplace</a>
+          <a class="alt" href="https://www.facebook.com/marketplace/panamacity/search?query=honda%20civic" target="_blank" rel="noopener">Civic en Marketplace</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="step" data-id="mapa">
+      <input type="checkbox" class="check" id="c-mapa" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Calculadora</span><span class="chip chip--time">20 min al día, 3 días</span></div>
+        <h3>Anota anuncios en el Mapa de precios</h3>
+        <p>Desde aquí no puedo entrar a Encuentra24 (está bloqueado), así que ya dejé 12 precios de referencia. Tú añade unos 10 anuncios más de Mazda3 y Civic, con año, km y precio.</p>
+        <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/raw/claude/vibrant-dijkstra-gm1tot/herramientas/calculadora-rentabilidad.xlsx" target="_blank" rel="noopener">Descargar calculadora</a></div>
+        <p class="tip"><strong>Más fácil:</strong> mándame capturas de los anuncios en el chat y yo los anoto por ti.</p>
+      </div>
+    </article>
+
+    <article class="step" data-id="dinero">
+      <input type="checkbox" class="check" id="c-dinero" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Tu banco</span><span class="chip chip--time">5 min</span></div>
+        <h3>Ten el dinero listo para transferir</h3>
+        <p>Deja <strong>$4.500</strong> disponibles en tu cuenta y comprueba tu límite diario de transferencias. Si el carro bueno aparece, el que paga rápido se lo lleva más barato.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- FASE 3 -->
+  <section class="phase">
+    <div class="phase__head">
+      <h2>Semanas 2 a 4 · busca, revisa, compra</h2>
+      <p class="phase__when">45 minutos al día</p>
+    </div>
+
+    <article class="step" data-id="rutina">
+      <input type="checkbox" class="check" id="c-rutina" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Cada día</span></div>
+        <h3>Tu rutina diaria</h3>
+        <ol>
+          <li><strong>Mañana:</strong> revisa las alertas nuevas.</li>
+          <li><strong>Mediodía:</strong> escribe en menos de 1 hora a los anuncios buenos.</li>
+          <li><strong>Noche:</strong> llama a los que contestaron y pasa los números a la calculadora.</li>
+        </ol>
+        <p class="tip"><strong>Atajo:</strong> mándame el enlace o la captura de cualquier carro y yo hago la calculadora y te digo si vale la pena verlo.</p>
+      </div>
+    </article>
+
+    <article class="step" data-id="inspeccion">
+      <input type="checkbox" class="check" id="c-inspeccion" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">En persona</span></div>
+        <h3>Inspecciona 3 carros con el checklist</h3>
+        <p>Aunque no compres ninguno. Es práctica, y cada inspección te quita miedo.</p>
+        <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/02-checklist-compra-panama.md" target="_blank" rel="noopener">Abrir checklist</a></div>
+        <p class="tip"><strong>Para consultar multas y estado del carro:</strong> <a href="https://www.transito.gob.pa/" target="_blank" rel="noopener">ATTT</a></p>
+      </div>
+    </article>
+
+    <article class="step" data-id="compra">
+      <input type="checkbox" class="check" id="c-compra" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">El gran día</span></div>
+        <h3>Compra tu primer carro</h3>
+        <ol>
+          <li>Mándame los datos y el presupuesto del mecánico: te confirmo el precio máximo y te escribo la oferta.</li>
+          <li>Imprime el contrato con los datos rellenados (te lo preparo yo si me pasas los datos).</li>
+          <li>Paga por transferencia en el momento de firmar el traspaso.</li>
+        </ol>
+        <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/06-contrato-compraventa.md" target="_blank" rel="noopener">Ver contrato</a></div>
+        <p class="tip"><strong>Una vez:</strong> pide a un abogado que revise los dos contratos antes del primer uso (unos 30 minutos de consulta).</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- FASE 4 -->
+  <section class="phase">
+    <div class="phase__head">
+      <h2>Después de comprar · vende y cuéntalo</h2>
+      <p class="phase__when">Días 31 a 75</p>
+    </div>
+
+    <article class="step" data-id="fotos">
+      <input type="checkbox" class="check" id="c-fotos" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Tu celular</span><span class="chip chip--time">1 hora</span></div>
+        <h3>Graba y fotografía el carro</h3>
+        <ol>
+          <li>De día, en un lugar limpio, el carro recién lavado.</li>
+          <li>Unas 25 fotos: frente, lados, atrás, interior, motor, llantas y <strong>los defectos</strong>.</li>
+          <li>Un video del arranque en frío y un recorrido lento alrededor del carro.</li>
+          <li>Mándamelo todo: yo escribo el anuncio, lo subo a la web y te preparo los textos.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="step" data-id="publicar">
+      <input type="checkbox" class="check" id="c-publicar" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Tus cuentas</span><span class="chip chip--time">20 min</span></div>
+        <h3>Publica el anuncio</h3>
+        <p>Pega en cada sitio el texto que yo te prepare: Encuentra24, Marketplace, Instagram y estados de WhatsApp.</p>
+        <div class="links">
+          <a href="https://www.encuentra24.com/panama-es/publicar" target="_blank" rel="noopener">Publicar en Encuentra24</a>
+          <a class="alt" href="https://www.facebook.com/marketplace/create/vehicle" target="_blank" rel="noopener">Publicar en Marketplace</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <p class="foot">Esta guía se actualiza cada vez que aparece algo nuevo que solo puedas hacer tú.</p>
+</div>
+
+<script>
+(function () {
+  var KEY = "josefine-pasos";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+  var count = document.getElementById("count");
+  var bar = document.getElementById("bar");
+
+  function render() {
+    var done = 0;
+    steps.forEach(function (s) {
+      var box = s.querySelector(".check");
+      s.classList.toggle("is-done", box.checked);
+      if (box.checked) done++;
+    });
+    count.textContent = done + " de " + steps.length;
+    bar.style.width = (steps.length ? (done / steps.length) * 100 : 0) + "%";
+  }
+
+  steps.forEach(function (s) {
+    var id = s.getAttribute("data-id");
+    var box = s.querySelector(".check");
+    box.checked = !!saved[id];
+    box.addEventListener("change", function () {
+      saved[id] = box.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      render();
+    });
+  });
+  render();
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var pre = document.getElementById(btn.getAttribute("data-copy"));
+      var label = btn.textContent;
+      function selectText() {
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        btn.textContent = "Seleccionado: cópialo";
+      }
+      try {
+        navigator.clipboard.writeText(pre.textContent).then(function () {
+          btn.textContent = "¡Copiado!";
+          setTimeout(function () { btn.textContent = label; }, 1800);
+        }, selectText);
+      } catch (e) { selectText(); }
+    });
+  });
+})();
+</script>

@@ -23,3 +23,7 @@ Dirección prevista: https://joseq11692-boop.github.io/JosefineAuto/
 
 - [docs/06-contrato-compraventa.md](docs/06-contrato-compraventa.md): compraventa de carro usado, con anexo de defectos
 - [docs/07-contrato-consignacion.md](docs/07-contrato-consignacion.md): venta a comisión
+
+## Guía del fundador (Visual Companion)
+
+Pasos que solo puede hacer el fundador, con enlaces y casillas: `companion/index.html`, publicada como página privada en https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P

@@ -7,7 +7,7 @@
 
 ## Reglas diamante (prioridad máxima)
 
-1. **Nunca pedir al usuario algo que Claude pueda hacer por sí mismo.** Si algo *inevitablemente* solo lo puede hacer el usuario (llamadas, pagos, cuentas personales, ajustes de GitHub que requieren su sesión, acciones físicas), se entrega una **guía visual paso a paso, nivel niño, con enlaces directos** (el "Visual Companion": la página publicada como Artifact, con fuente en `companion/index.html`). Se actualiza cada vez que aparece una tarea nueva para el usuario.
+1. **Nunca pedir al usuario algo que Claude pueda hacer por sí mismo.** Si algo *inevitablemente* solo lo puede hacer el usuario (llamadas, pagos, cuentas personales, ajustes de GitHub que requieren su sesión, acciones físicas), se entrega una **guía visual paso a paso, nivel niño, con enlaces directos** (el "Visual Companion": https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P, con fuente en `companion/index.html`; se republica desde ese archivo). Se actualiza cada vez que aparece una tarea nueva para el usuario.
 2. **No preguntar lo obvio.** Si una idea, mejora u opción tiene más de un 70% de adecuación al proyecto, se implementa directamente sin preguntar. Solo se pregunta (con opciones) cuando la decisión es genuinamente del usuario y no hay una opción claramente mejor.
 
 ## Contexto del proyecto
