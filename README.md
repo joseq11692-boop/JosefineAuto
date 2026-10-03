@@ -27,3 +27,10 @@ Dirección prevista: https://joseq11692-boop.github.io/JosefineAuto/
 ## Guía del fundador (Visual Companion)
 
 Pasos que solo puede hacer el fundador, con enlaces y casillas: `companion/index.html`, publicada como página privada en https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
+
+## App Josefine Gestión
+
+App instalable (PWA) para el fundador, en `web/panel/`: evaluar carros, embudo de compra y venta, checklist de inspección, mapa de precios, mensajes de WhatsApp y capital. Funciona sin conexión y guarda los datos en el propio celular.
+
+- Instalable: https://joseq11692-boop.github.io/JosefineAuto/panel/ (cuando GitHub Pages esté activo)
+- Uso inmediato: https://claude.ai/artifact/CjZb1UgEMyL12v2fLHZQfB (versión en un solo archivo: `companion/app.html`, generada con `python3 herramientas/build/empaquetar-app.py`)

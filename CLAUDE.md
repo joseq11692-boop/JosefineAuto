@@ -18,3 +18,4 @@
 - Marca **sin cara**: el fundador no aparece en cámara. Ritmo de **1 publicación principal por semana** en Instagram.
 - En el contenido para la audiencia panameña, usar "carro" o "auto" (no "coche").
 - Estrategia y herramientas en `docs/` y `herramientas/` (ver `README.md`).
+- Web pública en `web/`; app del fundador (PWA) en `web/panel/`. Tras cambiar la app, regenerar `companion/app.html` con `python3 herramientas/build/empaquetar-app.py` y republicarla en https://claude.ai/artifact/CjZb1UgEMyL12v2fLHZQfB. Subir `VERSION` en `web/panel/sw.js` al cambiar archivos de la app.
