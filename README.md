@@ -17,7 +17,7 @@ Compraventa de autos seminuevos en Panamá, especializada en deportivos y japone
 
 La web está en `web/`. Para el día a día solo se edita `web/datos.js` (WhatsApp, inventario y proyectos); los colores de la marca, al principio de `web/estilos.css`. Cada cambio en `web/` se publica solo en GitHub Pages mediante `.github/workflows/publicar-web.yml`.
 
-Dirección prevista: https://joseq11692-boop.github.io/JosefineAuto/
+En línea: https://joseq11692-boop.github.io/JosefineAuto/
 
 ## Contratos
 
@@ -32,7 +32,7 @@ Pasos que solo puede hacer el fundador, con enlaces y casillas: `companion/index
 
 App instalable (PWA) para el fundador, en `web/panel/`: evaluar carros, embudo de compra y venta, checklist de inspección, mapa de precios, mensajes de WhatsApp y capital. Funciona sin conexión y guarda los datos en el propio celular.
 
-- Instalable: https://joseq11692-boop.github.io/JosefineAuto/panel/ (cuando GitHub Pages esté activo)
+- Instalable: https://joseq11692-boop.github.io/JosefineAuto/panel/
 - Uso inmediato: https://claude.ai/artifact/CjZb1UgEMyL12v2fLHZQfB (versión en un solo archivo: `companion/app.html`, generada con `python3 herramientas/build/empaquetar-app.py`)
 
 ## Estudio de diseño
