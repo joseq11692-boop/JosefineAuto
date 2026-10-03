@@ -87,7 +87,7 @@ const DESTACADAS = [
   ["vende-el-tuyo", "Vende el tuyo", "M32 8v32m-14-14 14-14 14 14M10 52h44"],
   ["guias", "Guías", "M14 8h28l10 10v38H14zm28 0v10h10M22 30h20m-20 10h20"],
   ["como-trabajamos", "Cómo trabajamos", "M28 12a16 16 0 1 0 0 32 16 16 0 0 0 0-32zm12 28 14 14"],
-  ["proyectos", "Proyectos", '<svg viewBox="0 0 100 64"><g fill="none" stroke="#14161a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 50c0-5 2-7 6-8l12-3c8-9 18-13 31-13 8 0 14 3 20 9l13 3c5 1 8 4 8 8v4h-8a8 8 0 0 0-16 0H34a8 8 0 0 0-16 0z"/><path d="M31 39c7-6 14-9 23-9 6 0 10 2 15 7l-1 2z"/><circle cx="26" cy="50" r="5.5"/><circle cx="78" cy="50" r="5.5"/><g transform="translate(64 1) scale(.95)" stroke-width="3.16"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g></g></svg>'],
+  ["proyectos", "Proyectos", '<svg viewBox="0 0 100 64"><g fill="none" stroke="#14161a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 48v-5l5-4 16-3 15-9 17-2 22 10 13 4 2 5-3 4h-5a8 8 0 0 0-16 0H34a8 8 0 0 0-16 0z"/><path d="M31 36l11-7 15-1 13 7z"/><path d="M4 32h15M9 32l2 6"/><path d="M45 45l12-5M52 46l9-4"/><circle cx="26" cy="48" r="5.6"/><circle cx="79" cy="48" r="5.6"/><circle cx="26" cy="48" r="1.2" fill="#14161a"/><circle cx="79" cy="48" r="1.2" fill="#14161a"/><g transform="translate(72 2) scale(.95)" stroke-width="3.16"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g></g></svg>'],
 ];
 
 (async () => {
