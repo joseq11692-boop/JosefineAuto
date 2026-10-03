@@ -42,3 +42,10 @@ Página interactiva para elegir la identidad visual de la web y la app (12 decis
 ## Vista previa de la web
 
 Mientras GitHub Pages no esté activo, la versión final de la web se ve en https://claude.ai/artifact/LtVvPGkCcAbXdzLRL96FfF (un solo archivo, `companion/web.html`, generado con `python3 herramientas/build/empaquetar-web.py`).
+
+## Contenido y SEO
+
+- **Guías** (`web/guias/`): se escriben en `herramientas/guias/*.md` y se generan con `python3 herramientas/build/generar-guias.py`, que también crea `web/guias.js` (portada), `web/404.html` y `web/sitemap.xml`.
+- **Ficha de carro**: cada carro del inventario tiene enlace propio `…/#carro-marca-modelo-año`, con galería y botón para compartir.
+- **Kit de Instagram** (`web/kit/`, privado y fuera de Google): imágenes de los posts y de las portadas de destacadas, con sus textos. Se regeneran con `NODE_PATH=<node_modules con playwright> node herramientas/build/generar-posts.js`.
+- **Datos estructurados** (schema.org AutoDealer) y metadatos para compartir en `web/index.html`.
