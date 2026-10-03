@@ -55,6 +55,17 @@ p{font-size:38px;line-height:1.35}.claro p{color:#5b6270}.oscuro p{color:#c9ccd3
 .tres div:first-child{grid-row:1/3}
 .contacto{display:grid;gap:18px;font-size:42px;font-weight:600}
 .contacto span{background:#fff;color:#14161a;border-radius:20px;padding:20px 28px}
+
+.unico{padding:150px 80px 140px;gap:30px;align-content:start}
+.unico .firma-u{width:420px}
+.tira{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tira div{height:250px;border-radius:20px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.tira div::after{content:"VENDIDO";position:absolute;top:12px;left:12px;font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:.1em;background:#e11d2e;color:#fff;padding:5px 12px;border-radius:99px}
+.lista3{display:grid;gap:16px}
+.lista3 div{display:flex;gap:20px;align-items:center;font-size:36px;font-weight:600}
+.lista3 i{flex:none;width:58px;height:58px;border-radius:16px;background:#e11d2e;display:grid;place-items:center;font-style:normal;color:#fff;font-size:32px}
+.barra-cta{display:flex;justify-content:space-between;align-items:center;background:#fff;color:#14161a;border-radius:24px;padding:24px 30px;font-size:34px;font-weight:700}
+.barra-cta span{font-family:'Chakra Petch';text-transform:uppercase}
 `;
 const top = (n, claro) => `<div class="top"><img src="${claro ? FIRMA : FIRMA_B}"><span>${n}</span></div>`;
 const pie = () => `<div class="pie"><span>@josefineauto</span><span>JOSEFINE AUTO · PANAMÁ</span></div>`;
@@ -89,6 +100,20 @@ const L = [
     await p.evaluate(() => document.fonts.ready);
     await p.screenshot({ path: path.join(OUT, `post0b-nosotros-${String(i + 1).padStart(2, "0")}.png`) });
   }
+  // Imagen única "Conócenos"
+  const U = `<div class="s oscuro unico"><div class="top" style="top:60px"><span></span><span>@josefineauto</span></div>
+    <img class="firma-u" src="${FIRMA_B}">
+    <h1 style="font-size:104px">Conó<em>cenos</em></h1>${F}
+    <div class="lista3">
+      <div><i>✓</i>Compramos y vendemos carros seleccionados</div>
+      <div><i>✓</i>Vendemos el tuyo a comisión</div>
+      <div><i>✓</i>Proyectos y cultura automotriz</div>
+    </div>
+    <div class="tira">${[V[0], V[1], V[2]].map((u) => `<div style="background-image:url('${u}')"></div>`).join("")}</div>
+    <div class="barra-cta"><span>Escríbenos</span>📲 6698-9569</div></div>`;
+  await p.setContent(base + U + "</body></html>", { waitUntil: "networkidle" });
+  await p.evaluate(() => document.fonts.ready);
+  await p.screenshot({ path: path.join(OUT, "post0c-conocenos-01.png") });
   await b.close();
   console.log("Láminas:", L.length);
 })();
