@@ -1,23 +1,23 @@
 <title>Josefine Gestión</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Josefine Gestión: app del fundador. Misma identidad que la web (oscuro + rojo de marca). */
 :root {
-  /* Identidad "Firma" (del logo): papel, tinta y las cuatro franjas */
-  --acento: #121316;        /* tinta: acción principal */
-  --acento-oscuro: #3438b8; /* índigo al pasar el dedo */
-  --fondo: #fbfbf9;
-  --capa: #f1f1ed;
+  /* Identidad "Firma" con las elecciones del estudio: blanco taller, rojo carrera, esquinas suaves */
+  --acento: #e11d2e;
+  --acento-oscuro: #b3121f;
+  --fondo: #f6f7f8;
+  --capa: #eceef1;
   --tarjeta: #ffffff;
-  --borde: #e2e2dc;
-  --texto: #121316;
-  --suave: #62656d;
+  --borde: #e1e4e8;
+  --texto: #14161a;
+  --suave: #5b6270;
   --verde: #1f8a4c;
   --ambar: #b7860f;
   --azul: #3438b8;
   --rojo: #c8202b;
   --oro: #d9a62a;
-  --radio: 8px;
+  --radio: 22px;
   --nav: 64px;
   color-scheme: light;
 }
@@ -25,10 +25,10 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--fondo); color: var(--texto);
-  font: 16px/1.5 "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.5 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
 }
-h1, h2, h3 { font-family: "Archivo", sans-serif; font-stretch: 112%; margin: 0; line-height: 1.2; text-wrap: balance; }
+h1, h2, h3 { font-family: "Chakra Petch", sans-serif; text-transform: uppercase; letter-spacing: .02em; margin: 0; line-height: 1.2; text-wrap: balance; }
 h2 { font-size: 1.1rem; margin-bottom: 12px; }
 p { margin: 0; }
 a { color: var(--texto); }
@@ -70,14 +70,14 @@ button { font: inherit; }
 .nav svg { width: 24px; height: 24px; fill: currentColor; }
 .nav a.activo { color: var(--texto); }
 .nav a.activo svg { fill: var(--acento); }
-.nav__central svg { background: var(--texto); fill: #fff !important; border-radius: 10px; padding: 4px; width: 32px; height: 32px; }
+.nav__central svg { background: var(--acento); fill: #fff !important; border-radius: 10px; padding: 4px; width: 32px; height: 32px; }
 
 /* Bloques */
 .tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px; display: grid; gap: 12px; }
 .tarjeta > h2 { margin-bottom: 0; }
 .tarjeta--hero { background: var(--tarjeta); border-top: 3px solid var(--azul); gap: 4px; }
 .etq { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--suave); font-weight: 600; }
-.grande { font-family: "Archivo", sans-serif; font-stretch: 115%; font-weight: 800; font-size: 2.3rem; font-variant-numeric: tabular-nums; }
+.grande { font-family: "Chakra Petch", sans-serif; font-weight: 800; font-size: 2.3rem; font-variant-numeric: tabular-nums; }
 .suave { color: var(--suave); font-size: .92rem; }
 .sub { font-size: .95rem; color: var(--suave); text-transform: uppercase; letter-spacing: .06em; }
 .verde { color: var(--verde); } .rojo { color: var(--rojo); }
@@ -141,8 +141,8 @@ button { font: inherit; }
 /* Resultado */
 .resultado { border-radius: var(--radio); padding: 16px; display: grid; gap: 10px; border: 2px solid var(--borde); background: var(--tarjeta); }
 .resultado--si { border-color: var(--verde); background: linear-gradient(160deg, #e6f4ec, var(--tarjeta) 55%); }
-.resultado--no { border-color: var(--rojo); background: linear-gradient(160deg, #fbe8e9, var(--tarjeta) 55%); }
-.resultado__decision { font-family: "Archivo", sans-serif; font-stretch: 115%; font-weight: 800; font-size: 1.6rem; letter-spacing: .02em; }
+.resultado--no { border-color: var(--acento); background: linear-gradient(160deg, #fbe8e9, var(--tarjeta) 55%); }
+.resultado__decision { font-family: "Chakra Petch", sans-serif; font-weight: 800; font-size: 1.6rem; letter-spacing: .02em; }
 .resultado--si .resultado__decision { color: var(--verde); }
 .resultado--no .resultado__decision { color: var(--rojo); }
 .resultado__max strong { font-size: 1.2rem; }
@@ -179,7 +179,7 @@ th { color: var(--suave); font-weight: 600; font-size: .78rem; }
 .boton {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   background: var(--acento); color: #fff; border: 2px solid var(--acento);
-  padding: 12px 18px; border-radius: 12px; font-weight: 700; text-decoration: none; cursor: pointer;
+  padding: 12px 18px; border-radius: 16px; font-weight: 700; text-decoration: none; cursor: pointer;
 }
 .boton:hover { background: var(--acento-oscuro); border-color: var(--acento-oscuro); }
 .boton--borde:hover, .boton--peligro:hover { background: var(--capa); border-color: var(--borde); }

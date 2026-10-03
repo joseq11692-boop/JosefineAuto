@@ -41,16 +41,18 @@
     tarjeta.className = "tarjeta carro" + (vendido ? " carro--vendido" : "");
     tarjeta.innerHTML =
       '<div class="carro__foto"' + (foto ? ' style="background-image:url(\'' + encodeURI(foto) + '\')"' : "") + ">" +
-        (foto ? "" : "Foto próximamente") +
+        (foto ? "" : '<span class="carro__vacia">Foto próximamente</span>') +
         '<span class="carro__estado estado--' + escapar(c.estado) + '">' + escapar(c.estado) + "</span>" +
+        '<div class="carro__sobre">' +
+          "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">A comisión</span>' : "") + "</h3>" +
+          '<ul class="carro__datos">' +
+            "<li>" + numero.format(c.km) + " km</li>" +
+            "<li>" + escapar(c.transmision) + "</li>" +
+          "</ul>" +
+          '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
+        "</div>" +
       "</div>" +
-      '<div class="carro__cuerpo">' +
-        "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">A comisión</span>' : "") + "</h3>" +
-        '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
-        '<ul class="carro__datos">' +
-          "<li>" + numero.format(c.km) + " km</li>" +
-          "<li>" + escapar(c.transmision) + "</li>" +
-        "</ul>" +
+      ((c.destacado || c.defectos || !vendido) ? '<div class="carro__cuerpo">' +
         (c.destacado ? '<p class="carro__destacado">' + escapar(c.destacado) + "</p>" : "") +
         (c.defectos ? '<p class="carro__defectos"><strong>Defectos a la vista:</strong> ' + escapar(c.defectos) + "</p>" : "") +
         (vendido ? "" :
@@ -59,7 +61,7 @@
               enlaceWhatsApp("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible?") + '">Me interesa</a>' +
             (c.informe ? '<a class="boton boton--chico boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">Informe de inspección</a>' : "") +
           "</div>") +
-      "</div>";
+      "</div>" : "");
     lista.appendChild(tarjeta);
   });
 

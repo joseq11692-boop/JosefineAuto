@@ -1,41 +1,46 @@
 /* ============================================================
-   IDENTIDAD "FIRMA": nace del logo de Josefine Auto.
-   Papel blanco + tinta negra (la firma) + las cuatro franjas
-   de velocidad del logo (índigo, tinta, rojo, oro).
+   IDENTIDAD "FIRMA" · elecciones del estudio de diseño (oct 2026)
+   Blanco taller + tinta + rojo carrera como acento.
+   La firma y sus cuatro franjas (índigo, tinta, rojo, oro) son el sello.
+   Títulos Chakra Petch, textos Inter, esquinas suaves.
    ============================================================ */
 :root {
-  --papel: #fbfbf9;
-  --papel-2: #f1f1ed;
-  --tinta: #121316;
+  --papel: #f6f7f8;
+  --papel-2: #eceef1;
+  --tinta: #14161a;
   --tinta-2: #2a2c31;
-  --suave: #62656d;
-  --linea: #e2e2dc;
+  --suave: #5b6270;
+  --linea: #e1e4e8;
+  --acento: #e11d2e;
+  --acento-2: #b3121f;
   --indigo: #3438b8;
   --rojo: #c8202b;
   --oro: #d9a62a;
   --exito: #1f8a4c;
-  --radio: 6px;
-  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --texto: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --radio: 22px;
+  --radio-b: 16px;
+  --display: "Chakra Petch", "Arial Narrow", Arial, sans-serif;
+  --texto: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   color-scheme: light;
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--papel); color: var(--tinta);
-  font: 16px/1.6 var(--texto); font-stretch: 100%;
+  font: 16px/1.6 var(--texto);
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0 0 .5em; text-wrap: balance; }
-h1 { font-size: clamp(2.3rem, 6.4vw, 4.6rem); font-weight: 800; font-stretch: 118%; letter-spacing: -.02em; text-transform: uppercase; }
-h2 { font-size: clamp(1.6rem, 3.8vw, 2.5rem); font-weight: 800; font-stretch: 115%; letter-spacing: -.01em; text-transform: uppercase; }
-h3 { font-size: 1.1rem; font-weight: 700; font-stretch: 105%; }
-em { font-style: normal; color: var(--indigo); }
-:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 700; letter-spacing: .01em; text-transform: uppercase; }
+h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: .01em; text-transform: uppercase; }
+h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+em { font-style: normal; color: var(--acento); }
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
 
 .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
 
@@ -66,13 +71,13 @@ em { font-style: normal; color: var(--indigo); }
 /* Botones: tinta sólida, la acción de la firma */
 .boton {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--tinta); color: var(--papel); border: 2px solid var(--tinta);
-  padding: 13px 24px; border-radius: var(--radio);
-  font: inherit; font-weight: 700; font-stretch: 108%; letter-spacing: .03em; text-transform: uppercase; font-size: .86rem;
+  background: var(--acento); color: #fff; border: 2px solid var(--acento);
+  padding: 13px 24px; border-radius: var(--radio-b);
+  font: inherit; font-family: var(--display); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .88rem;
   text-decoration: none; cursor: pointer; transition: background .2s, color .2s, transform .1s;
 }
 .boton::after { content: "→"; font-weight: 400; transition: transform .2s; }
-.boton:hover { background: var(--indigo); border-color: var(--indigo); }
+.boton:hover { background: var(--acento-2); border-color: var(--acento-2); }
 .boton:hover::after { transform: translateX(3px); }
 .boton:active { transform: scale(.98); }
 .boton--borde { background: transparent; color: var(--tinta); border-color: var(--tinta); }
@@ -80,22 +85,17 @@ em { font-style: normal; color: var(--indigo); }
 .boton--chico { padding: 9px 16px; font-size: .76rem; }
 .boton--chico::after { display: none; }
 
-/* Portada */
-.hero { padding: clamp(56px, 10vw, 120px) 0 clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--linea); overflow: hidden; }
-.hero__in { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
-.hero__txt { display: grid; gap: 20px; justify-items: start; min-width: 0; }
-.etiqueta { color: var(--suave); font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
+/* Portada centrada (premium) */
+.hero { padding: clamp(48px, 9vw, 104px) 0 clamp(48px, 8vw, 96px); border-bottom: 1px solid var(--linea); overflow: hidden; background: #fff; }
+.hero__in { display: grid; justify-items: center; text-align: center; gap: 22px; }
+.hero__firma img { width: min(360px, 70vw); height: auto; }
+.etiqueta { color: var(--suave); font-family: var(--mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin: 0; }
 .hero h1 { margin: 0; }
-.hero__sub { font-size: 1.12rem; color: var(--suave); max-width: 56ch; margin: 0; }
-.hero__sub strong { color: var(--tinta); }
-.hero__acciones { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero__firma { display: grid; justify-items: center; gap: 18px; }
-.hero__firma img { width: min(440px, 100%); height: auto; }
-.ficha { width: min(380px, 100%); border: 1px solid var(--linea); border-radius: var(--radio); background: #fff; padding: 16px 18px; display: grid; gap: 8px; font-size: .9rem; }
-.ficha__t { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--suave); }
-.ficha div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--linea); padding-bottom: 6px; }
-.ficha div:last-child { border: 0; padding: 0; }
-.ficha b { color: var(--exito); }
+.hero .franja { margin-inline: auto; }
+.hero__sub { font-size: clamp(1.1rem, 2.2vw, 1.35rem); color: var(--suave); max-width: 40ch; margin: 0; }
+.hero__acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.sellos { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.sellos li { font-size: .84rem; color: var(--suave); border: 1px solid var(--linea); border-radius: 99px; padding: 5px 14px; background: var(--papel); }
 
 /* Secciones */
 .seccion { padding: clamp(56px, 9vw, 104px) 0; }
@@ -103,28 +103,33 @@ em { font-style: normal; color: var(--indigo); }
 .seccion__cab { display: grid; gap: 10px; margin-bottom: 36px; }
 .seccion__cab h2 { margin: 0; }
 .seccion__sub { color: var(--suave); margin: 0; font-size: 1.05rem; max-width: 60ch; }
-.rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; align-items: start; }
 .rejilla--4 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
 .dos-col { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
 
 /* Tarjetas de carros */
 .tarjeta { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
-.carro { display: grid; transition: transform .2s, box-shadow .2s; }
+.carro { display: grid; align-content: start; transition: transform .2s, box-shadow .2s; }
 .carro:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(18, 19, 22, .08); }
-.carro__foto { aspect-ratio: 4 / 3; background: var(--papel-2) center / cover no-repeat; position: relative; display: grid; place-items: center; color: var(--suave); font-family: var(--mono); font-size: .8rem; }
-.carro__estado { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 4px; font-family: var(--mono); font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
-.estado--disponible { background: var(--tinta); color: var(--papel); }
+.carro__foto { aspect-ratio: 4 / 3; background: linear-gradient(160deg, #3a3e46, #14161a) center / cover no-repeat; position: relative; display: grid; color: #c9ccd3; font-family: var(--mono); font-size: .8rem; }
+.carro__vacia { position: absolute; top: 38%; left: 0; right: 0; text-align: center; }
+.carro__sobre { position: absolute; inset: auto 0 0 0; padding: 48px 20px 18px; background: linear-gradient(transparent, rgba(10, 11, 14, .88) 55%); color: #fff; display: grid; gap: 4px; }
+.carro__sobre h3 { margin: 0; color: #fff; }
+.carro__sobre .carro__datos { color: #d6d9df; }
+.carro__sobre .carro__precio { color: #fff; }
+.carro__estado { position: absolute; top: 14px; left: 14px; padding: 5px 12px; border-radius: 99px; font-family: var(--mono); font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
+.estado--disponible { background: #fff; color: var(--tinta); }
 .estado--reservado { background: var(--oro); color: var(--tinta); }
 .estado--vendido { background: var(--rojo); color: #fff; }
 .carro--vendido .carro__foto { filter: grayscale(.85); opacity: .85; }
-.carro__cuerpo { padding: 18px 20px 22px; display: grid; gap: 8px; border-top: 3px solid var(--tinta); }
+.carro__cuerpo { padding: 16px 20px 20px; display: grid; gap: 8px; }
 .carro__cuerpo h3 { margin: 0; }
-.carro__precio { font-family: var(--display); font-weight: 800; font-stretch: 112%; font-size: 1.6rem; margin: 0; font-variant-numeric: tabular-nums; }
+.carro__precio { font-family: var(--display); font-weight: 700; font-size: 1.7rem; margin: 0; font-variant-numeric: tabular-nums; }
 .carro__datos { display: flex; flex-wrap: wrap; gap: 4px 16px; color: var(--suave); font-family: var(--mono); font-size: .8rem; margin: 0; padding: 0; list-style: none; }
 .carro__destacado { font-size: .93rem; margin: 0; }
 .carro__defectos { font-size: .86rem; color: var(--suave); margin: 0; }
 .carro__acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-.etiqueta-tipo { font-family: var(--mono); font-size: .68rem; font-weight: 500; color: var(--indigo); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: .05em; }
+.etiqueta-tipo { font-family: var(--mono); font-size: .68rem; font-weight: 500; color: #fff; border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: .05em; }
 
 /* Estado vacío */
 .vacio { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: clamp(24px, 4vw, 40px); display: grid; gap: 10px; }
@@ -139,9 +144,9 @@ em { font-style: normal; color: var(--indigo); }
 .formulario label { display: grid; gap: 6px; font-size: .78rem; color: var(--suave); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
 .formulario input, .formulario select, .formulario textarea {
   font: inherit; font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--tinta); background: var(--papel); border: 1px solid var(--linea);
-  border-radius: var(--radio); padding: 12px; width: 100%;
+  border-radius: 12px; padding: 12px; width: 100%;
 }
-.formulario input:focus, .formulario select:focus, .formulario textarea:focus { outline: 2px solid var(--indigo); outline-offset: 0; border-color: transparent; }
+.formulario input:focus, .formulario select:focus, .formulario textarea:focus { outline: 2px solid var(--acento); outline-offset: 0; border-color: transparent; }
 .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pasos { padding-left: 1.2em; margin: 22px 0; display: grid; gap: 10px; }
 .nota { color: var(--suave); margin: 0 0 10px; }
@@ -182,10 +187,7 @@ em { font-style: normal; color: var(--indigo); }
 /* Móvil */
 @media (max-width: 860px) {
   .menu { display: none; }
-  .hero__in, .dos-col { grid-template-columns: 1fr; gap: 32px; }
-  .hero__firma { order: -1; justify-items: start; }
-  .hero__firma img { width: min(300px, 80%); }
-  .ficha { display: none; }
+  .dos-col { grid-template-columns: 1fr; gap: 32px; }
   .pie__in { grid-template-columns: 1fr; }
   .logo img { height: 44px; }
 }

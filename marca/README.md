@@ -15,21 +15,29 @@ La identidad nace del logo de Instagram (@josefineauto): la firma "Josefine" a m
 
 El vector se genera con `python3 herramientas/build/vectorizar-logo.py 0.33` (la firma se traza con potrace; las franjas se redibujan como vectores).
 
-## Colores
+## Colores (elegidos en el estudio de diseño)
 
 | Nombre | Hex | Uso |
 |---|---|---|
-| Papel | `#fbfbf9` | Fondo |
-| Tinta | `#121316` | Texto, botones, la firma |
-| Índigo | `#3438b8` | Franja 1, palabras destacadas, enlaces |
-| Rojo | `#c8202b` | Franja 3, "vendido", alertas |
-| Oro | `#d9a62a` | Franja 4, "reservado" |
-| Gris suave | `#62656d` | Textos secundarios |
+| Blanco taller | `#f6f7f8` | Fondo de la web y la app (tarjetas en `#ffffff`) |
+| Tinta | `#14161a` | Texto, la firma, pie de página |
+| Rojo carrera | `#e11d2e` | Acento: botones, palabras destacadas (hover `#b3121f`) |
+| Índigo / Rojo / Oro | `#3438b8` / `#c8202b` / `#d9a62a` | Solo en las franjas del logo y los sellos |
+| Gris suave | `#5b6270` | Textos secundarios |
 
 ## Letra
 
-- **Archivo** (Google Fonts), ancha (`font-stretch: 115–118%`) y en mayúsculas para títulos; normal para textos. Contrasta con la firma manuscrita.
+- **Chakra Petch** (600/700), en mayúsculas, para títulos y botones: angulosa y técnica, contrasta con la firma manuscrita.
+- **Inter** para textos.
 - **IBM Plex Mono** para datos técnicos: km, etiquetas, fichas.
+
+## Estilo
+
+- Esquinas suaves (tarjetas 22 px, botones 16 px), fondo liso.
+- Botones rojos con flecha →.
+- Portada centrada con tono premium: "Selección Josefine. Pocos carros. Elegidos uno a uno."
+- Tarjetas de carro tipo galería: foto grande con título, km y precio encima.
+- App: menú inferior con el botón central "Evaluar" en rojo.
 
 ## La franja
 

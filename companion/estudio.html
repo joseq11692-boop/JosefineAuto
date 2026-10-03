@@ -270,7 +270,7 @@ button { font: inherit; color: inherit; }
     <div>
       <p class="st-mono">JOSEFINE AUTO · ESTUDIO DE DISEÑO</p>
       <h1>Elige cómo se ve tu marca</h1>
-      <p>La identidad actual nace de tu firma: papel blanco, tinta negra y las cuatro franjas de tu logo. Toca una opción en cada decisión y mira el cambio al instante en la web y en la app. Si quieres un matiz, escríbelo en la nota. Todo se guarda solo y yo lo leo para aplicarlo.</p>
+      <p>La identidad actual nace de tu firma y de tus elecciones: blanco taller, rojo carrera y las cuatro franjas de tu logo. Toca una opción en cada decisión y mira el cambio al instante en la web y en la app. Si quieres un matiz, escríbelo en la nota. Todo se guarda solo y yo lo leo para aplicarlo.</p>
     </div>
     <div class="st-estado">
       <span class="st-pill" id="progreso">0 de 12 decididas</span>
@@ -436,15 +436,15 @@ button { font: inherit; color: inherit; }
   var oscuro = "background:#1b1f26;color:#f2f4f7;";
 
   var DECISIONES = [
-    { id: "paleta", t: "Color de marca", q: "El color que va en botones, precios y detalles.", actual: "firma",
+    { id: "paleta", t: "Color de marca", q: "El color que va en botones, precios y detalles.", actual: "rojo",
       ops: Object.keys(PALETAS).map(function (k) { var p = PALETAS[k]; return { id: k, n: p.n, d: p.d, m: mini("", '<div class="sw"><span style="background:' + p.a + '"></span><span style="background:' + p.a2 + '"></span><span style="background:#0d0f12"></span></div>') }; }) },
-    { id: "tema", t: "Fondo y ambiente", q: "Sobre qué color se presentan los carros.", actual: "papel",
+    { id: "tema", t: "Fondo y ambiente", q: "Sobre qué color se presentan los carros.", actual: "claro",
       ops: Object.keys(TEMAS).map(function (k) { var p = TEMAS[k]; return { id: k, n: p.n, d: p.d, m: mini("background:" + p.f + ";color:" + p.t + ";border:1px solid " + p.b, '<span style="font-weight:700">Aa</span>') }; }) },
-    { id: "titulos", t: "Letra de títulos", q: "La personalidad de la marca en cada titular.", actual: "archivoancha",
+    { id: "titulos", t: "Letra de títulos", q: "La personalidad de la marca en cada titular.", actual: "chakra",
       ops: Object.keys(TITULOS).map(function (k) { var p = TITULOS[k]; return { id: k, n: p.n, d: p.d, m: mini(oscuro, '<span class="fm" style="font-family:' + p.f.replace(/'/g, "") + ";text-transform:" + p.tt + '">Mazda3</span>') }; }) },
-    { id: "cuerpo", t: "Letra de textos", q: "La letra de los párrafos y datos.", actual: "archivo",
+    { id: "cuerpo", t: "Letra de textos", q: "La letra de los párrafos y datos.", actual: "inter",
       ops: Object.keys(CUERPOS).map(function (k) { var p = CUERPOS[k]; return { id: k, n: p.n, d: p.d, m: mini(oscuro, '<span class="fb" style="font-family:' + p.f.replace(/'/g, "") + '">150.000 km · Automática · Papeles al día</span>') }; }) },
-    { id: "radio", t: "Forma de las esquinas", q: "Qué tan redondeados son tarjetas y botones.", actual: "sutil",
+    { id: "radio", t: "Forma de las esquinas", q: "Qué tan redondeados son tarjetas y botones.", actual: "suave",
       ops: Object.keys(RADIOS).map(function (k) { var p = RADIOS[k]; return { id: k, n: p.n, d: p.d, m: mini("background:transparent", '<span style="width:70%;height:40px;border:2px solid currentColor;border-radius:' + p.r + '"></span>') }; }) },
     { id: "botones", t: "Estilo de botones", q: "Cómo se ve la acción principal.", actual: "flecha",
       ops: [
@@ -464,7 +464,7 @@ button { font: inherit; color: inherit; }
         { id: "sello", n: "Sello", d: "Insignia redonda, de club." },
         { id: "franja", n: "Franjas", d: "Con franjas de carreras delante." }
       ].map(function (o) { o.m = mini(oscuro + "--acento:#e11d2e;--acento-2:#e11d2e;--sobre-acento:#fff;--texto:#f2f4f7;--r:14px", muestraLogo(o.id)); return o; }) },
-    { id: "hero", t: "Portada de la web", q: "Lo primero que ve un cliente.", actual: "ficha",
+    { id: "hero", t: "Portada de la web", q: "Lo primero que ve un cliente.", actual: "centrado",
       ops: [
         { id: "izquierda", n: "Texto a la izquierda", d: "Titular grande y botones." },
         { id: "centrado", n: "Centrado", d: "Todo al centro, tipo anuncio." },
@@ -473,7 +473,7 @@ button { font: inherit; color: inherit; }
         { id: "ficha", n: "Con firma y ficha", d: "Tu firma y la lista de inspección junto al titular." },
         { id: "numero", n: "Número gigante", d: "\"48 puntos\" como protagonista." }
       ].map(function (o) { return o; }) },
-    { id: "tarjeta", t: "Tarjeta de carro", q: "Cómo se presenta cada carro del inventario.", actual: "clasica",
+    { id: "tarjeta", t: "Tarjeta de carro", q: "Cómo se presenta cada carro del inventario.", actual: "galeria",
       ops: [
         { id: "clasica", n: "Clásica", d: "Foto arriba, datos abajo. La actual." },
         { id: "horizontal", n: "Horizontal", d: "Foto a la izquierda, como lista." },
@@ -500,7 +500,7 @@ button { font: inherit; color: inherit; }
         { id: "franjas", n: "Franjas de carrera", d: "Dos franjas cruzando la portada." },
         { id: "puntos", n: "Puntos", d: "Trama sutil de puntos." }
       ] },
-    { id: "tono", t: "Tono de los textos", q: "Cómo habla Josefine Auto a sus clientes.", actual: "directo",
+    { id: "tono", t: "Tono de los textos", q: "Cómo habla Josefine Auto a sus clientes.", actual: "premium",
       ops: Object.keys(TONOS).map(function (k) { var p = TONOS[k]; return { id: k, n: p.n, d: p.d, m: mini(oscuro + "padding:6px", '<span class="fb" style="font-weight:700;font-size:.8rem">' + p.h.replace(/<\/?em>/g, "") + "</span>") }; }) }
   ];
   // Muestras para hero, tarjeta, nav y fondo: mini-esquemas.

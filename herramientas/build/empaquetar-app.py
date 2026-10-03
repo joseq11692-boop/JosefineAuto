@@ -12,7 +12,7 @@ css = (panel / "estilos.css").read_text(encoding="utf-8")
 js = (panel / "datos-base.js").read_text(encoding="utf-8") + "\n" + (panel / "app.js").read_text(encoding="utf-8")
 salida = (
     "<title>Josefine Gestión</title>\n"
-    '<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">\n'
+    '<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">\n'
     f"<style>\n{css}\n</style>\n{cuerpo.strip()}\n<script>\nwindow.JA_SIN_DESCARGA = true;\n{js}\n</script>\n"
 )
 destino = raiz / "companion" / "app.html"

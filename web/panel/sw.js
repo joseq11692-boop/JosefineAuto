@@ -1,5 +1,5 @@
 /* Funciona sin conexión: guarda la app en el celular. Sube VERSION al cambiar archivos. */
-var VERSION = "josefine-gestion-v2";
+var VERSION = "josefine-gestion-v3";
 var ARCHIVOS = ["./", "index.html", "estilos.css", "app.js", "datos-base.js", "manifest.webmanifest", "icono.svg", "logo-firma.svg", "icono-192.png", "icono-512.png"];
 
 self.addEventListener("install", function (e) {
