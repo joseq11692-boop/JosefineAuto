@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /panel/
+Disallow: /kit/
 Sitemap: https://joseq11692-boop.github.io/JosefineAuto/sitemap.xml

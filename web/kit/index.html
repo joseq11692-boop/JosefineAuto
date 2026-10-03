@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kit de Instagram · Josefine Auto</title>
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <style>
+    .kit { display: grid; gap: 28px; }
+    .kit__post { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: 22px; display: grid; gap: 16px; min-width: 0; }
+    .kit__post h2 { margin: 0; font-size: 1.4rem; }
+    .kit__meta { font-family: var(--mono); font-size: .78rem; color: var(--suave); text-transform: uppercase; letter-spacing: .08em; }
+    .kit__imgs { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+    .kit__imgs a { flex: none; width: 220px; scroll-snap-align: start; }
+    .kit__imgs img { width: 100%; border-radius: 12px; border: 1px solid var(--linea); }
+    .kit__texto { white-space: pre-wrap; background: var(--papel); border: 1px solid var(--linea); border-radius: 14px; padding: 14px 16px; font-size: .95rem; margin: 0; overflow-wrap: anywhere; }
+    .kit__pasos { margin: 0; padding-left: 1.2em; color: var(--suave); display: grid; gap: 4px; }
+    .kit__dest { display: flex; flex-wrap: wrap; gap: 14px; }
+    .kit__dest a { display: grid; gap: 6px; justify-items: center; width: 110px; text-decoration: none; font-size: .82rem; color: var(--suave); text-align: center; }
+    .kit__dest img { width: 96px; border-radius: 50%; }
+  </style>
+</head>
+<body>
+  <header class="barra">
+    <div class="contenedor barra__in">
+      <a href="../" class="logo" aria-label="Josefine Auto, inicio"><img src="../img/logo-firma.svg" alt="Josefine Auto" width="116" height="82"></a>
+      <span class="etiqueta">Kit de Instagram · privado</span>
+    </div>
+  </header>
+  <main class="seccion">
+    <div class="contenedor kit">
+      <div class="seccion__cab">
+        <h1 style="font-size:clamp(2rem,6vw,3.4rem);margin:0">Kit de Instagram</h1>
+        <div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <p class="seccion__sub">Un post por semana. Para cada uno: <strong>guarda las imágenes</strong> (mantén el dedo encima → "Guardar imagen"), <strong>copia el texto</strong> y publícalo como carrusel en el orden que ves.</p>
+      </div>
+      <div id="posts" class="kit"></div>
+      <section class="kit__post">
+        <h2>Portadas de historias destacadas</h2>
+        <ol class="kit__pasos"><li>Guarda las cinco imágenes.</li><li>En tu perfil, toca una destacada → Editar destacada → Editar portada → elige la imagen.</li></ol>
+        <div class="kit__dest" id="destacadas"></div>
+      </section>
+    </div>
+  </main>
+  <script>
+  (function () {
+    var WEB = "joseq11692-boop.github.io/JosefineAuto";
+    var POSTS = [
+      { id: "post1-como-trabajamos", n: 7, semana: "Semana 1", titulo: "Así compramos un carro",
+        texto: "En el mercado de usados en Panamá, el problema no es encontrar carros. Es encontrar uno que no te dé dolores de cabeza.\n\nPor eso en Josefine Auto cada carro pasa por un proceso antes de llegar a ti:\n✅ Papeles verificados\n✅ Prueba anti-inundación\n✅ Escáner + revisión en taller\n✅ Defectos documentados y a la vista\n\nRechazamos la mayoría de carros que vemos. Los que quedan, te los mostramos tal cual son.\n\n📲 ¿Buscas un japonés o un deportivo? ¿Quieres vender el tuyo? WhatsApp 6698-9569\n🌐 " + WEB + "\n\n#autospanama #carrospanama #autosusadospanama #jdmpanama #panama",
+        nota: "Después de publicarlo, fíjalo en tu perfil (los tres puntos → Fijar en tu perfil)." },
+      { id: "post2-carro-inundado", n: 7, semana: "Semana 2", titulo: "¿Ese carro estuvo bajo el agua?",
+        texto: "🌧️ En temporada de lluvias aparecen muchos \"carros como nuevos\"… que estuvieron bajo el agua.\n\nRevisa esto antes de comprar:\n1️⃣ Barro o humedad bajo la alfombra\n2️⃣ Óxido en rieles y tornillos\n3️⃣ Corrosión verde en conectores\n4️⃣ Marcas de agua en faros o tablero\n5️⃣ Olor a humedad\n\n💡 Si es importado, pide el VIN y revisa el historial. Si dice flood o salvage, mejor no.\n\n📌 Guárdalo y compártelo con alguien que esté buscando carro.\nGuía completa en " + WEB + "/guias\n\n#carrospanama #autosusadospanama #consejosautomotrices #panama #comprarcarro" },
+      { id: "post3-vende-tu-deportivo", n: 6, semana: "Semana 3", titulo: "¿Vendes tu deportivo?",
+        texto: "Tu carro no es \"uno más\". Lleva horas de trabajo, piezas elegidas y cariño. 🔧\n\nVenderlo solo es agotador: curiosos, ofertas ridículas y citas que no llegan.\n\nEn Josefine Auto lo vendemos por ti:\n📸 Contenido profesional para tu carro\n🎯 Llega a entusiastas de verdad\n🛡️ Filtramos compradores y acompañamos las pruebas de manejo\n🤝 Solo cobramos si se vende\n\nJaponeses, deportivos y modificados en Panamá.\n📲 Mándanos marca, modelo, año, km y fotos al 6698-9569\n\n#jdmpanama #autosdeportivospanama #tuningpanama #carrospanama #vendetucarro",
+        nota: "También fíjalo en tu perfil." },
+      { id: "post4-proyecto-portada", n: 1, semana: "Semana 4", titulo: "Proyecto de la casa (portada del reel)",
+        texto: "Proyecto de la casa 🇯🇵\n\nNo todo en Josefine Auto está a la venta. Este es uno de los nuestros. 🔧\n\n✅ Hecho: [modificaciones]\n⏳ Próximo: [siguiente paso]\n\nSíguenos para ver la evolución.\n👇 ¿Qué le harías tú?\n\n#jdmpanama #proyectojdm #tuningpanama #carrospanama",
+        nota: "Esta imagen es la portada del reel. Graba el arranque en frío, una vuelta lenta alrededor del carro y los detalles; al subir el reel, elige esta imagen como portada. Cambia lo que está entre [corchetes]." }
+    ];
+    var DEST = [["en-venta", "En venta"], ["vendidos", "Vendidos"], ["vende-el-tuyo", "Vende el tuyo"], ["guias", "Guías"], ["como-trabajamos", "Cómo trabajamos"]];
+    function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
+    var $p = document.getElementById("posts");
+    POSTS.forEach(function (p, k) {
+      var imgs = "";
+      for (var i = 1; i <= p.n; i++) {
+        var f = "img/" + p.id + "-" + (i < 10 ? "0" : "") + i + ".png";
+        imgs += '<a href="' + f + '" target="_blank" rel="noopener"><img src="' + f + '" alt="' + esc(p.titulo) + ", imagen " + i + '" loading="lazy"></a>';
+      }
+      var s = document.createElement("section");
+      s.className = "kit__post";
+      s.innerHTML = '<span class="kit__meta">' + p.semana + " · " + p.n + (p.n > 1 ? " imágenes (carrusel)" : " imagen") + "</span><h2>" + esc(p.titulo) + "</h2>" +
+        '<div class="kit__imgs">' + imgs + "</div>" +
+        '<pre class="kit__texto" id="t' + k + '">' + esc(p.texto) + "</pre>" +
+        '<div class="carro__acciones"><button type="button" class="boton boton--chico" data-copiar="t' + k + '">Copiar texto</button>' +
+        '<a class="boton boton--borde boton--chico" href="https://www.instagram.com/" target="_blank" rel="noopener">Abrir Instagram</a></div>' +
+        (p.nota ? '<p class="nota nota--chica">' + esc(p.nota) + "</p>" : "");
+      $p.appendChild(s);
+    });
+    document.getElementById("destacadas").innerHTML = DEST.map(function (d) {
+      return '<a href="img/destacada-' + d[0] + '.png" target="_blank" rel="noopener"><img src="img/destacada-' + d[0] + '.png" alt="">' + d[1] + "</a>";
+    }).join("");
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-copiar]"); if (!b) return;
+      var el = document.getElementById(b.getAttribute("data-copiar"));
+      function sel() { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Seleccionado: cópialo"; }
+      try { navigator.clipboard.writeText(el.textContent).then(function () { b.textContent = "¡Copiado!"; setTimeout(function () { b.textContent = "Copiar texto"; }, 1800); }, sel); } catch (err) { sel(); }
+    });
+  })();
+  </script>
+</body>
+</html>
