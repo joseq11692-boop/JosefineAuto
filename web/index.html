@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Josefine Auto | Deportivos y japoneses seleccionados en Panamá</title>
+  <meta name="description" content="Compra y venta de autos seminuevos en Ciudad de Panamá. Japoneses y deportivos revisados, documentados y con papeles al día. Vendemos tu deportivo a comisión.">
+  <meta property="og:title" content="Josefine Auto">
+  <meta property="og:description" content="Deportivos y japoneses seleccionados en Panamá. Revisados y documentados: sabes lo que compras.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="contenedor barra__in">
+      <a href="#inicio" class="logo" aria-label="Josefine Auto, inicio">JOSEFINE<span>AUTO</span></a>
+      <nav class="menu" aria-label="Principal">
+        <a href="#inventario">Inventario</a>
+        <a href="#vende">Vende tu carro</a>
+        <a href="#metodo">Cómo trabajamos</a>
+        <a href="#proyectos">Proyectos</a>
+      </nav>
+      <a class="boton boton--chico" data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="contenedor hero__in">
+        <p class="etiqueta">Ciudad de Panamá</p>
+        <h1>Deportivos y japoneses <em>seleccionados</em>.</h1>
+        <p class="hero__sub">Cada carro pasa papeles, prueba anti-inundación, escáner y taller antes de llegar a ti. Te mostramos hasta los defectos. <strong>Sabes exactamente lo que compras.</strong></p>
+        <div class="hero__acciones">
+          <a href="#inventario" class="boton">Ver inventario</a>
+          <a href="#vende" class="boton boton--borde">Vender mi carro</a>
+        </div>
+        <ul class="sellos" aria-label="Garantías">
+          <li>✅ Papeles verificados</li>
+          <li>💧 Prueba anti-inundación</li>
+          <li>🔧 Revisado en taller</li>
+          <li>📋 Defectos a la vista</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="inventario" class="seccion">
+      <div class="contenedor">
+        <h2>Inventario</h2>
+        <p class="seccion__sub">Carros revisados y documentados. Precio claro, sin sorpresas.</p>
+        <div id="lista-inventario" class="rejilla"></div>
+        <div id="inventario-vacio" class="vacio" hidden>
+          <h3>Estamos seleccionando los próximos carros</h3>
+          <p>Rechazamos la mayoría de los carros que vemos. Dinos qué buscas y te avisamos primero cuando entre uno que encaje.</p>
+          <form id="form-busco" class="formulario formulario--fila">
+            <label>Marca y modelo<input name="modelo" required placeholder="Ej.: Mazda3, Civic, Corolla"></label>
+            <label>Presupuesto (USD)<input name="presupuesto" inputmode="numeric" placeholder="Ej.: 6000"></label>
+            <label>Transmisión
+              <select name="transmision"><option>Automática</option><option>Manual</option><option>Me da igual</option></select>
+            </label>
+            <button class="boton" type="submit">Avisarme por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="vende" class="seccion seccion--alterna">
+      <div class="contenedor dos-col">
+        <div>
+          <h2>¿Vendes tu deportivo?<br><em>Te lo vendemos.</em></h2>
+          <p>Tu carro no es "uno más". Lo presentamos a quien sí lo valora, sin que tengas que atender curiosos.</p>
+          <ol class="pasos">
+            <li><strong>Nos escribes</strong> con los datos y las fotos.</li>
+            <li><strong>Evaluamos</strong> y acordamos el precio por contrato.</li>
+            <li><strong>Lo vendemos:</strong> fotos, video, anuncios y compradores filtrados.</li>
+          </ol>
+          <p class="nota">💰 <strong>Solo cobramos si se vende.</strong> Pruebas de manejo siempre acompañadas.</p>
+          <p class="nota">Japoneses, deportivos y modificados en la Ciudad de Panamá.</p>
+        </div>
+        <form id="form-vende" class="formulario tarjeta">
+          <h3>Cuéntanos de tu carro</h3>
+          <label>Marca y modelo<input name="modelo" required placeholder="Ej.: Nissan 350Z"></label>
+          <div class="fila">
+            <label>Año<input name="anio" inputmode="numeric" required placeholder="2008"></label>
+            <label>Km<input name="km" inputmode="numeric" placeholder="120000"></label>
+          </div>
+          <label>Precio que esperas (USD)<input name="precio" inputmode="numeric" placeholder="14000"></label>
+          <label>Modificaciones (si tiene)<textarea name="mods" rows="3" placeholder="Escape, rines, suspensión..."></textarea></label>
+          <button class="boton" type="submit">Enviar por WhatsApp</button>
+          <p class="nota nota--chica">Se abre WhatsApp con tus datos ya escritos. Ahí mismo nos mandas las fotos.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="metodo" class="seccion">
+      <div class="contenedor">
+        <h2>Así compramos un carro</h2>
+        <p class="seccion__sub">Y por qué rechazamos la mayoría.</p>
+        <div class="rejilla rejilla--4">
+          <article class="paso"><span>01</span><h3>Papeles</h3><p>VIN, ATTT, paz y salvo y gravámenes. Si algo no cuadra, no seguimos.</p></article>
+          <article class="paso"><span>02</span><h3>Anti-inundación</h3><p>Alfombras, rieles, conectores, olor. En Panamá es obligatorio revisarlo.</p></article>
+          <article class="paso"><span>03</span><h3>Escáner y taller</h3><p>Diagnóstico electrónico y revisión en el elevador antes de pagar un dólar.</p></article>
+          <article class="paso"><span>04</span><h3>Transparencia</h3><p>Te mostramos los defectos, las reparaciones y el historial. Sin sorpresas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="seccion seccion--alterna">
+      <div class="contenedor">
+        <h2>Proyectos de la casa</h2>
+        <p class="seccion__sub">No todo está a la venta. Estos son los nuestros.</p>
+        <div id="lista-proyectos" class="rejilla"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__in">
+      <div>
+        <a href="#inicio" class="logo">JOSEFINE<span>AUTO</span></a>
+        <p>Deportivos y japoneses seleccionados · <span id="zona"></span></p>
+      </div>
+      <div class="pie__enlaces">
+        <a data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
+        <a id="enlace-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a id="enlace-correo" href="#" hidden>Correo</a>
+      </div>
+      <p class="pie__legal">© <span id="anio"></span> Josefine Auto. Información sujeta a cambios; confirma disponibilidad por WhatsApp.</p>
+    </div>
+  </footer>
+
+  <a class="wa-flotante" data-wa="Hola Josefine Auto, quiero información." href="#" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
+  </a>
+
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

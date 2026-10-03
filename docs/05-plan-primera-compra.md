@@ -20,11 +20,24 @@ El **coste total** incluye la compra, todos los gastos y el colchón del 8%. No 
 
 > No busques "el carro barato". Busca **el carro que se vende rápido** y compra por debajo de su precio de mercado. La ganancia se hace al comprar, no al vender.
 
-### Modelos candidatos (se confirman con tu Mapa de precios en la semana 1)
+### Precios reales de referencia (búsqueda web, octubre de 2026)
 
-Mazda3 · Mazda2 · Toyota Yaris · Toyota Corolla · Honda Civic · Honda Fit · Nissan Sentra / Versa / Tiida
+Ya rellené la hoja "Mapa de precios" con estos anuncios. Son **precios pedidos**: el precio de venta realista suele ser alrededor de un 10% menor.
 
-Los años y kilometrajes concretos los decide el Mapa de precios: quédate con las versiones cuyo **precio realista de venta** esté entre $4.600 y $5.200.
+| Modelo | Precios pedidos vistos | Venta realista (aprox.) | ¿Sirve para el primer carro? |
+|---|---|---|---|
+| Mazda3 2010 | $4.599–11.000 (la mayoría $6.900–8.900) | unos $5.200 o más | ✅ **Sí**: la mejor relación entre demanda y precio |
+| Honda Civic 2008–2012 | unos $5.950 | unos $5.300 | ✅ **Sí**, si aparece un vendedor con prisa |
+| Toyota Yaris 2010–2012 | $5.750–9.600 | unos $6.200 | ⚠️ Mantiene mucho su valor: es difícil comprarlo barato |
+| Toyota Corolla 2008–2009 | $4.300–5.000 | unos $4.200 | ⚠️ El margen es muy justo |
+| Nissan Sentra 2010–2014 | $3.900–4.995 | unos $4.000 | ⚠️ El margen es muy justo |
+| Hyundai Accent | $3.999–4.200 | unos $3.700 | ❌ No deja margen con tu ganancia mínima |
+
+**Conclusión:** tu primer objetivo es un **Mazda3 de 2008–2010 o un Honda Civic de 2008–2010** que se revenda por $5.000–5.500 y que consigas por **$3.400–3.700** a un vendedor con prisa. Es un 25–30% por debajo del mercado: difícil, pero posible si filtras muchos anuncios. Por eso el embudo es tan exigente.
+
+> **Plan B de capital:** si en 30 días no aparece ese precio, en la hoja "Reglas" baja la ganancia mínima del **primer** carro a $450. El objetivo del primer carro es validar el método y rotar, no maximizar la ganancia. Del segundo carro en adelante vuelve la regla de $600.
+
+Fuentes: búsquedas en [Encuentra24, Mazda3](https://www.encuentra24.com/panama-es/autos-usados/mazda/mazda3), [Cari Autos, Mazda3 2010](https://autos.caripanama.com/autos/mazda-3-2010), [Encuentra24, Yaris](https://www.encuentra24.com/panama-en/cars-auto-trucks-used-car?q=f_make.toyota%7Cf_model.Yaris), [Encuentra24, Corolla](https://www.encuentra24.com/panama-es/autos-usados.2/toyota/corolla), [Encuentra24, Sentra](https://www.encuentra24.com/panama-en/cars-auto-trucks-used-car?q=f_make.Nissan%7Cf_model.sentra), [Encuentra24, Accent](https://www.encuentra24.com/panama-es/autos-usados?q=keyword.Accent), [Encuentra24, Civic](https://www.encuentra24.com/panama-en/cars-auto-trucks-used-car?q=f_make.honda%7Cf_model.Civic).
 
 **Preferencias para el primer carro:**
 - ✅ Transmisión **automática** convencional: es lo que más se vende en la ciudad

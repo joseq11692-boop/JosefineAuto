@@ -12,3 +12,14 @@ Compraventa de autos seminuevos en Panamá, especializada en deportivos y japone
 | [docs/04-primeros-4-posts.md](docs/04-primeros-4-posts.md) | Guiones, láminas, textos y rutina del primer ciclo de Instagram |
 | [docs/05-plan-primera-compra.md](docs/05-plan-primera-compra.md) | Plan de 30 días para comprar el primer carro, venderlo y escalar |
 | [herramientas/calculadora-rentabilidad.xlsx](herramientas/calculadora-rentabilidad.xlsx) | Decide si comprar, precio máximo, comisiones, mapa de precios y registro de operaciones |
+
+## Web
+
+La web está en `web/`. Para el día a día solo se edita `web/datos.js` (WhatsApp, inventario y proyectos); los colores de la marca, al principio de `web/estilos.css`. Cada cambio en `web/` se publica solo en GitHub Pages mediante `.github/workflows/publicar-web.yml`.
+
+Dirección prevista: https://joseq11692-boop.github.io/JosefineAuto/
+
+## Contratos
+
+- [docs/06-contrato-compraventa.md](docs/06-contrato-compraventa.md): compraventa de carro usado, con anexo de defectos
+- [docs/07-contrato-consignacion.md](docs/07-contrato-consignacion.md): venta a comisión
