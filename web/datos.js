@@ -30,6 +30,15 @@ window.CONFIG = {
  *  informe: enlace al informe de inspección (PDF o Google Drive), o ""
  *  tipo:    "propio" (comprado por Josefine Auto) | "consignacion"
  */
+/*
+ * EN BÚSQUEDA: carros que estás buscando. Se muestran mientras no haya carros
+ * disponibles, para que los clientes pidan que les avises.
+ */
+window.BUSCANDO = [
+  { modelo: "Mazda3", anios: "2008–2010", nota: "Automático · Papeles al día" },
+  { modelo: "Honda Civic", anios: "2008–2010", nota: "Automático · Papeles al día" },
+];
+
 window.INVENTARIO = [
   // {
   //   marca: "Mazda",

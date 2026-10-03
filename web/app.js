@@ -5,6 +5,7 @@
   var inventario = window.INVENTARIO || [];
   var proyectos = window.PROYECTOS || [];
 
+  var SILUETA = '<svg viewBox="0 0 300 110" aria-hidden="true"><path fill="#4a4e57" d="M14 80c0-12 6-20 22-23l48-6c16-15 34-25 62-25h40c22 0 36 9 52 24l30 5c12 2 20 10 20 22v6H14z"/><path fill="#c9ccd3" d="M96 52c14-12 28-18 48-18h18v18zm72-18h18c16 0 26 6 38 18h-56z"/><rect x="14" y="70" width="18" height="6" fill="#e11d2e"/><circle cx="76" cy="86" r="18" fill="#fff"/><circle cx="76" cy="86" r="11" fill="#9a9ea8"/><circle cx="232" cy="86" r="18" fill="#fff"/><circle cx="232" cy="86" r="11" fill="#9a9ea8"/></svg>';
   var dinero = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   var numero = new Intl.NumberFormat("es-PA");
 
@@ -41,7 +42,7 @@
     tarjeta.className = "tarjeta carro" + (vendido ? " carro--vendido" : "");
     tarjeta.innerHTML =
       '<div class="carro__foto"' + (foto ? ' style="background-image:url(\'' + encodeURI(foto) + '\')"' : "") + ">" +
-        (foto ? "" : '<span class="carro__vacia">Foto próximamente</span>') +
+        (foto ? "" : '<span class="carro__vacia" aria-label="Foto próximamente">' + SILUETA + "</span>") +
         '<span class="carro__estado estado--' + escapar(c.estado) + '">' + escapar(c.estado) + "</span>" +
         '<div class="carro__sobre">' +
           "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">A comisión</span>' : "") + "</h3>" +
@@ -66,6 +67,24 @@
   });
 
   if (!hayDisponibles) {
+    (window.BUSCANDO || []).forEach(function (b) {
+      var art = document.createElement("article");
+      art.className = "tarjeta carro carro--buscando";
+      art.innerHTML =
+        '<div class="carro__foto"><span class="carro__vacia">' + SILUETA + "</span>" +
+          '<span class="carro__estado estado--buscando">En búsqueda</span>' +
+          '<div class="carro__sobre">' +
+            "<h3>" + escapar(b.modelo) + " " + escapar(b.anios) + "</h3>" +
+            '<ul class="carro__datos"><li>' + escapar(b.nota) + "</li></ul>" +
+            '<p class="carro__precio carro__precio--chico">Próximo ingreso</p>' +
+          "</div>" +
+        "</div>" +
+        '<div class="carro__cuerpo"><div class="carro__acciones">' +
+          '<a class="boton boton--chico" target="_blank" rel="noopener" href="' +
+            enlaceWhatsApp("Hola Josefine Auto, avísenme cuando entre un " + b.modelo + " " + b.anios + ".") + '">Avísame</a>' +
+        "</div></div>";
+      lista.appendChild(art);
+    });
     document.getElementById("inventario-vacio").hidden = false;
   }
 

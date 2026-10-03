@@ -111,17 +111,22 @@ em { font-style: normal; color: var(--acento); }
 .tarjeta { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
 .carro { display: grid; align-content: start; transition: transform .2s, box-shadow .2s; }
 .carro:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(18, 19, 22, .08); }
-.carro__foto { aspect-ratio: 4 / 3; background: linear-gradient(160deg, #3a3e46, #14161a) center / cover no-repeat; position: relative; display: grid; color: #c9ccd3; font-family: var(--mono); font-size: .8rem; }
-.carro__vacia { position: absolute; top: 38%; left: 0; right: 0; text-align: center; }
-.carro__sobre { position: absolute; inset: auto 0 0 0; padding: 48px 20px 18px; background: linear-gradient(transparent, rgba(10, 11, 14, .88) 55%); color: #fff; display: grid; gap: 4px; }
-.carro__sobre h3 { margin: 0; color: #fff; }
-.carro__sobre .carro__datos { color: #d6d9df; }
-.carro__sobre .carro__precio { color: #fff; }
+.carro__foto { aspect-ratio: 4 / 3; background: linear-gradient(160deg, #e3e5e9, #ffffff) center / cover no-repeat; position: relative; display: grid; color: var(--suave); font-family: var(--mono); font-size: .8rem; }
+.carro__vacia { position: absolute; top: 18%; left: 12%; right: 12%; }
+.carro__vacia svg { width: 100%; height: auto; display: block; }
+.carro__sobre { position: absolute; inset: auto 0 0 0; padding: 56px 20px 16px; background: linear-gradient(rgba(255, 255, 255, 0), #fff 55%); color: var(--tinta); display: grid; gap: 4px; }
+.carro__sobre h3 { margin: 0; color: var(--tinta); }
+.carro__sobre .carro__datos { color: var(--suave); }
+.carro__sobre .carro__precio { color: var(--acento); }
 .carro__estado { position: absolute; top: 14px; left: 14px; padding: 5px 12px; border-radius: 99px; font-family: var(--mono); font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
-.estado--disponible { background: #fff; color: var(--tinta); }
+.estado--disponible { background: #22c55e; color: #052e14; }
 .estado--reservado { background: var(--oro); color: var(--tinta); }
 .estado--vendido { background: var(--rojo); color: #fff; }
-.carro--vendido .carro__foto { filter: grayscale(.85); opacity: .85; }
+.carro--vendido .carro__vacia, .carro--vendido .carro__foto[style] { filter: grayscale(1); opacity: .55; }
+.estado--buscando { background: var(--oro); color: var(--tinta); }
+.carro--buscando .carro__vacia { opacity: .45; }
+.carro__precio.carro__precio--chico { font-size: 1.15rem; color: var(--suave); }
+#lista-inventario:not(:empty) { margin-bottom: 24px; }
 .carro__cuerpo { padding: 16px 20px 20px; display: grid; gap: 8px; }
 .carro__cuerpo h3 { margin: 0; }
 .carro__precio { font-family: var(--display); font-weight: 700; font-size: 1.7rem; margin: 0; font-variant-numeric: tabular-nums; }
@@ -129,11 +134,11 @@ em { font-style: normal; color: var(--acento); }
 .carro__destacado { font-size: .93rem; margin: 0; }
 .carro__defectos { font-size: .86rem; color: var(--suave); margin: 0; }
 .carro__acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-.etiqueta-tipo { font-family: var(--mono); font-size: .68rem; font-weight: 500; color: #fff; border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: .05em; }
+.etiqueta-tipo { font-family: var(--mono); font-size: .68rem; font-weight: 500; color: var(--suave); border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: .05em; }
 
 /* Estado vacío */
 .vacio { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio); padding: clamp(24px, 4vw, 40px); display: grid; gap: 10px; }
-.vacio h3 { margin: 0; font-size: 1.3rem; }
+.vacio h3 { margin: 0; font-size: 1.2rem; }
 .vacio p { color: var(--suave); max-width: 640px; margin: 0; }
 
 /* Formularios */
