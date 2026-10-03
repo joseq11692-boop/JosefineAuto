@@ -38,7 +38,7 @@ p{font-size:42px;line-height:1.35}.claro p{color:#5b6270}.oscuro p{color:#c9ccd3
 .foto{border:4px dashed #c9ccd3;border-radius:36px;height:560px;display:grid;place-items:center;color:#9a9ea8;font-size:36px;font-family:'IBM Plex Mono',monospace;text-align:center;padding:40px}
 .hl{width:1080px;height:1080px;display:grid;place-items:center;background:#14161a}
 .hl>div{width:760px;height:760px;border-radius:50%;background:#f6f7f8;display:grid;place-items:center;align-content:center;gap:40px}
-.hl svg{width:300px;height:300px}
+.hl svg{width:300px;height:300px}.hl svg[viewBox="0 0 100 64"]{width:440px;height:282px}
 .hl .f{width:260px}
 `;
 
@@ -87,7 +87,7 @@ const DESTACADAS = [
   ["vende-el-tuyo", "Vende el tuyo", "M32 8v32m-14-14 14-14 14 14M10 52h44"],
   ["guias", "Guías", "M14 8h28l10 10v38H14zm28 0v10h10M22 30h20m-20 10h20"],
   ["como-trabajamos", "Cómo trabajamos", "M28 12a16 16 0 1 0 0 32 16 16 0 0 0 0-32zm12 28 14 14"],
-  ["proyectos", "Proyectos", "M44 8a12 12 0 0 0-11.3 16L10 46.7a5 5 0 0 0 7.1 7.1L39.9 31A12 12 0 0 0 56 19.6l-7.4 7.4-7.4-2.2-2.2-7.4z"],
+  ["proyectos", "Proyectos", '<svg viewBox="0 0 100 64"><g fill="none" stroke="#14161a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 50c0-5 2-7 6-8l12-3c8-9 18-13 31-13 8 0 14 3 20 9l13 3c5 1 8 4 8 8v4h-8a8 8 0 0 0-16 0H34a8 8 0 0 0-16 0z"/><path d="M31 39c7-6 14-9 23-9 6 0 10 2 15 7l-1 2z"/><circle cx="26" cy="50" r="5.5"/><circle cx="78" cy="50" r="5.5"/><g transform="translate(64 1) scale(.95)" stroke-width="3.16"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g></g></svg>'],
 ];
 
 (async () => {
@@ -106,7 +106,7 @@ const DESTACADAS = [
   }
   await p.setViewportSize({ width: 1080, height: 1080 });
   for (const [id, , d] of DESTACADAS) {
-    await p.setContent(base + `<div class="hl"><div><svg viewBox="0 0 64 64"><path d="${d}" fill="none" stroke="#14161a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>${F}</div></div></body></html>`, { waitUntil: "networkidle" });
+    await p.setContent(base + `<div class="hl"><div>${d.startsWith("<svg") ? d : `<svg viewBox="0 0 64 64"><g fill="none" stroke="#14161a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">${d.startsWith("<") ? d : `<path d="${d}"/>`}</g></svg>`}${F}</div></div></body></html>`, { waitUntil: "networkidle" });
     await p.screenshot({ path: path.join(OUT, `destacada-${id}.png`) });
     total++;
   }
