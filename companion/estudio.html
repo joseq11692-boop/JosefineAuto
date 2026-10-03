@@ -242,6 +242,19 @@ button { font: inherit; color: inherit; }
 .pv[data-nav="mayor"] .ph__nav span.on { color: var(--acento); }
 .pv[data-nav="mayor"] .ph__nav { padding: 14px 4px; }
 
+
+/* Logo subido */
+.st-drop { display: grid; justify-items: center; gap: 6px; padding: 18px; border: 2px dashed var(--st-line); border-radius: 12px; background: var(--st-bg); cursor: pointer; text-align: center; font-weight: 600; }
+.st-drop.sobre, .st-drop:hover { border-color: var(--st-ink); }
+.st-drop img { max-height: 120px; max-width: 100%; object-fit: contain; }
+.st-drop small { font-weight: 400; color: var(--st-muted); }
+.st-col { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--st-mono); font-size: .75rem; }
+.st-col span { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--st-line); border-radius: 99px; padding: 3px 10px 3px 4px; }
+.st-col i { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--st-line); }
+.st-tag--logo { border-color: var(--st-ok); color: var(--st-ok); }
+.lg--tuyo img { height: 34px; width: auto; max-width: 160px; object-fit: contain; display: block; }
+.ph__head .lg--tuyo img { height: 22px; }
+
 @media (max-width: 960px) {
   .st-grid { grid-template-columns: 1fr; }
   .st-prev { position: static; order: -1; }
@@ -254,7 +267,7 @@ button { font: inherit; color: inherit; }
     <div>
       <p class="st-mono">JOSEFINE AUTO · ESTUDIO DE DISEÑO</p>
       <h1>Elige cómo se ve tu marca</h1>
-      <p>Toca una opción en cada decisión y mira el cambio al instante en la web y en la app. Si quieres un matiz, escríbelo en la nota. Todo se guarda solo y yo lo leo para aplicarlo.</p>
+      <p>Empieza subiendo tu logo: saco sus colores y te propongo opciones basadas en él. Después toca una opción en cada decisión y mira el cambio al instante en la web y en la app. Si quieres un matiz, escríbelo en la nota. Todo se guarda solo y yo lo leo para aplicarlo.</p>
     </div>
     <div class="st-estado">
       <span class="st-pill" id="progreso">0 de 12 decididas</span>
@@ -493,9 +506,92 @@ button { font: inherit; color: inherit; }
 
   /* ---------- Estado ---------- */
   var LOCAL = "josefine-estudio";
-  var est = { selecciones: {}, notas: {} };
+  var est = { selecciones: {}, notas: {}, logo: null };
   try { var g = JSON.parse(localStorage.getItem(LOCAL)); if (g && g.selecciones) est = g; } catch (e) {}
-  function valor(id) { var d = DECISIONES.filter(function (x) { return x.id === id; })[0]; return est.selecciones[id] || d.actual; }
+  var LOGO_DEF = { paleta: "logo1", tema: "logooscuro", logo: "tuyo" };
+  function dec(id) { return DECISIONES.filter(function (x) { return x.id === id; })[0]; }
+  function existe(id, o) { return dec(id).ops.some(function (x) { return x.id === o; }); }
+  function valor(id) {
+    var sel = est.selecciones[id];
+    if (sel && existe(id, sel)) return sel;
+    if (est.logo && LOGO_DEF[id] && existe(id, LOGO_DEF[id])) return LOGO_DEF[id];
+    return dec(id).actual;
+  }
+
+  /* ---------- Colores a partir del logo ---------- */
+  function hexRgb(h) { h = h.replace("#", ""); return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]; }
+  function rgbHex(r, g, b) { return "#" + [r, g, b].map(function (v) { v = Math.max(0, Math.min(255, Math.round(v))); return (v < 16 ? "0" : "") + v.toString(16); }).join(""); }
+  function rgbHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), h = 0, s = 0, l = (mx + mn) / 2, d = mx - mn;
+    if (d) { s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; }
+    return [h, s, l];
+  }
+  function hsl(h, s, l) {
+    s = Math.max(0, Math.min(1, s)); l = Math.max(0, Math.min(1, l));
+    var c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2, r = 0, g = 0, b = 0;
+    if (h < 60) { r = c; g = x; } else if (h < 120) { r = x; g = c; } else if (h < 180) { g = c; b = x; } else if (h < 240) { g = x; b = c; } else if (h < 300) { r = x; b = c; } else { r = c; b = x; }
+    return rgbHex((r + m) * 255, (g + m) * 255, (b + m) * 255);
+  }
+  function lum(hex) { var c = hexRgb(hex).map(function (v) { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; }
+  function tintaSobre(hex) { return lum(hex) > .4 ? "#111111" : "#ffffff"; }
+
+  function extraer(img) {
+    var max = 120, k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+    var w = Math.max(1, Math.round(img.naturalWidth * k)), h = Math.max(1, Math.round(img.naturalHeight * k));
+    var cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+    var cx = cv.getContext("2d"); cx.drawImage(img, 0, 0, w, h);
+    var px = cx.getImageData(0, 0, w, h).data, cubos = {}, total = 0;
+    for (var i = 0; i < px.length; i += 4) {
+      if (px[i + 3] < 128) continue;
+      var key = (px[i] >> 4) + "," + (px[i + 1] >> 4) + "," + (px[i + 2] >> 4);
+      var c = cubos[key] || (cubos[key] = [0, 0, 0, 0]);
+      c[0] += px[i]; c[1] += px[i + 1]; c[2] += px[i + 2]; c[3]++; total++;
+    }
+    var lista = Object.keys(cubos).map(function (k) { var c = cubos[k]; return { rgb: [c[0] / c[3], c[1] / c[3], c[2] / c[3]], n: c[3] }; }).sort(function (a, b) { return b.n - a.n; });
+    var unidos = [];
+    lista.forEach(function (c) {
+      var cerca = unidos.filter(function (u) { return Math.hypot(u.rgb[0] - c.rgb[0], u.rgb[1] - c.rgb[1], u.rgb[2] - c.rgb[2]) < 48; })[0];
+      if (cerca) cerca.n += c.n; else unidos.push({ rgb: c.rgb, n: c.n });
+    });
+    unidos.sort(function (a, b) { return b.n - a.n; });
+    return unidos.slice(0, 8).filter(function (u) { return u.n / total > .004; }).map(function (u) {
+      var hx = rgbHex(u.rgb[0], u.rgb[1], u.rgb[2]), hs = rgbHsl(u.rgb[0], u.rgb[1], u.rgb[2]);
+      return { hex: hx, peso: Math.round(u.n / total * 100), h: hs[0], s: hs[1], l: hs[2] };
+    });
+  }
+
+  function derivar() {
+    ["paleta", "tema", "logo"].forEach(function (id) { var d = dec(id); d.ops = d.ops.filter(function (o) { return !o.deLogo; }); });
+    Object.keys(PALETAS).forEach(function (k) { if (k.indexOf("logo") === 0) delete PALETAS[k]; });
+    Object.keys(TEMAS).forEach(function (k) { if (k.indexOf("logo") === 0) delete TEMAS[k]; });
+    if (!est.logo || !est.logo.colores || !est.logo.colores.length) return;
+    var cs = est.logo.colores;
+    var crom = cs.filter(function (c) { return c.s > .25 && c.l > .15 && c.l < .85; });
+    var c1 = crom[0] || cs.filter(function (c) { return c.l > .15 && c.l < .85; })[0] || cs[0];
+    var c2 = crom.filter(function (c) { var dh = Math.abs(c.h - c1.h); return Math.min(dh, 360 - dh) > 25; })[0];
+    var oscuro = cs.filter(function (c) { return c.l < .2; })[0], claro = cs.filter(function (c) { return c.l > .85; })[0];
+    var a2 = c2 ? c2.hex : hsl(c1.h, c1.s, Math.min(.8, c1.l + .18));
+    var intenso = hsl(c1.h, Math.min(1, c1.s + .15), Math.max(.38, Math.min(.55, c1.l)));
+    PALETAS.logo1 = { n: "Tu logo", d: "El color principal de tu logo" + (c2 ? " con su segundo color." : "."), a: c1.hex, a2: a2, s: tintaSobre(c1.hex) };
+    PALETAS.logo2 = { n: "Tu logo invertido", d: "El segundo color manda y el principal acompaña.", a: a2, a2: c1.hex, s: tintaSobre(a2) };
+    PALETAS.logo3 = { n: "Tu logo intenso", d: "El color de tu logo más vivo, para destacar en pantalla.", a: intenso, a2: c1.hex, s: tintaSobre(intenso) };
+    var baseT = oscuro || claro, h = baseT && baseT.s > .25 ? baseT.h : c1.h;
+    TEMAS.logooscuro = { n: "Oscuro de tu logo", d: "Fondo oscuro teñido con el tono de tu logo.", f: hsl(h, .3, .06), c: hsl(h, .22, .11), t: hsl(h, .2, .95), s: hsl(h, .12, .7), b: hsl(h, .18, .2) };
+    TEMAS.logoclaro = { n: "Claro de tu logo", d: "Fondo claro con un toque del tono de tu logo.", f: hsl(h, .3, .96), c: "#ffffff", t: hsl(h, .3, .1), s: hsl(h, .12, .38), b: hsl(h, .2, .86) };
+    var base = oscuro || claro;
+    if (base) {
+      var esOsc = base.l < .5, bh = base.h, bs = Math.min(base.s, .35);
+      TEMAS.logopropio = { n: "Fondo de tu logo", d: "El mismo fondo que usa tu logo.", f: base.hex, c: hsl(bh, bs, esOsc ? base.l + .06 : Math.max(0, base.l - .03)), t: esOsc ? "#f4f4f5" : "#151515", s: esOsc ? hsl(bh, .1, .7) : hsl(bh, .1, .38), b: hsl(bh, bs, esOsc ? base.l + .14 : base.l - .1) };
+    }
+    LOGO_DEF.tema = TEMAS.logopropio ? "logopropio" : "logooscuro";
+    var nuevasP = ["logo1", "logo2", "logo3"].map(function (k) { var p = PALETAS[k]; return { id: k, n: p.n, d: p.d, deLogo: true, m: mini("", '<div class="sw"><span style="background:' + p.a + '"></span><span style="background:' + p.a2 + '"></span><span style="background:' + (TEMAS.logooscuro.f) + '"></span></div>') }; });
+    dec("paleta").ops = nuevasP.concat(dec("paleta").ops);
+    var nuevosT = ["logooscuro", "logopropio", "logoclaro"].filter(function (k) { return TEMAS[k]; }).map(function (k) { var p = TEMAS[k]; return { id: k, n: p.n, d: p.d, deLogo: true, m: mini("background:" + p.f + ";color:" + p.t + ";border:1px solid " + p.b, '<span style="font-weight:700">Aa</span>') }; });
+    dec("tema").ops = nuevosT.concat(dec("tema").ops);
+    dec("logo").ops.unshift({ id: "tuyo", n: "Tu logo", d: "Tu imagen tal cual, en la cabecera de la web y la app.", deLogo: true, m: mini("background:" + TEMAS.logooscuro.f, logoSrc() ? '<img src="' + logoSrc() + '" alt="" style="max-height:52px;max-width:90%">' : "") });
+  }
+  function logoSrc() { var l = est.logo; if (!l) return ""; return l.local || (l.id ? "/_blob/" + l.id : l.url || ""); }
 
   var $pv = document.getElementById("pv");
   function aplicar() {
@@ -508,33 +604,55 @@ button { font: inherit; color: inherit; }
     $pv.setAttribute("data-btn", valor("botones")); $pv.setAttribute("data-hero", valor("hero"));
     $pv.setAttribute("data-card", valor("tarjeta")); $pv.setAttribute("data-nav", valor("nav")); $pv.setAttribute("data-fondo", valor("fondo"));
     var lg = valor("logo");
-    Array.prototype.forEach.call($pv.querySelectorAll("[data-logo]"), function (el) { el.className = "lg lg--" + lg; el.innerHTML = logoHTML(lg); });
+    Array.prototype.forEach.call($pv.querySelectorAll("[data-logo]"), function (el) {
+      el.className = "lg lg--" + lg;
+      el.innerHTML = lg === "tuyo" ? '<img src="' + logoSrc() + '" alt="Josefine Auto">' : logoHTML(lg);
+    });
     document.getElementById("pv-h1").innerHTML = to.h;
     document.getElementById("pv-sub").textContent = to.s;
     document.getElementById("pv-cta").innerHTML = to.c + '<span class="fl">→</span>';
-    var n = Object.keys(est.selecciones).length;
+    var n = DECISIONES.filter(function (d) { return est.selecciones[d.id] && existe(d.id, est.selecciones[d.id]); }).length;
     document.getElementById("progreso").textContent = n + " de " + DECISIONES.length + " decididas";
   }
   Array.prototype.forEach.call($pv.querySelectorAll("[data-car]"), function (el) { el.insertAdjacentHTML("afterbegin", CARRO); });
 
   /* ---------- Pintar decisiones ---------- */
   var $dec = document.getElementById("decisiones");
-  DECISIONES.forEach(function (dc, i) {
-    var sec = document.createElement("section");
-    sec.className = "st-sec"; sec.id = "d-" + dc.id;
-    var h = '<div class="st-sec__head"><h2>' + (i + 1) + ". " + dc.t + ' <small data-elegido></small></h2><p>' + dc.q + '</p></div><div class="st-ops">';
-    dc.ops.forEach(function (o) {
-      h += '<button type="button" class="st-op" data-d="' + dc.id + '" data-o="' + o.id + '" aria-pressed="false">' + (o.m || "") +
-        '<span class="st-op__n">' + o.n + (o.id === dc.actual ? '<span class="st-tag">actual</span>' : "") + '</span><span class="st-op__d">' + o.d + "</span></button>";
+  function pintar() {
+    $dec.innerHTML = "";
+    var lg = document.createElement("section");
+    lg.className = "st-sec st-logo"; lg.id = "d-logo-subir";
+    lg.innerHTML = '<div class="st-sec__head"><h2>0. Tu logo <small id="logo-estado">' + (est.logo ? "✓ subido" : "falta subirlo") + '</small></h2><p>Súbelo y saco sus colores. Con ellos te propongo paletas y fondos nuevos, marcados como <span class="st-tag">de tu logo</span>, y los aplico en la vista previa.</p></div>' +
+      '<label class="st-drop" id="logo-drop"><input type="file" id="logo-file" accept="image/*" hidden>' +
+      (logoSrc() ? '<img src="' + logoSrc() + '" alt="Tu logo">' : "") +
+      '<span>' + (est.logo ? "Toca para cambiar el logo" : "Toca aquí para subir tu logo") + '</span><small>o arrastra / pega la imagen</small></label>' +
+      (est.logo && est.logo.colores ? '<div class="st-col">' + est.logo.colores.map(function (c) { return '<span><i style="background:' + c.hex + '"></i>' + c.hex + " · " + c.peso + "%</span>"; }).join("") + "</div>" : "") +
+      '<p class="st-op__d"><strong>Para sacarlo de Instagram:</strong> abre la publicación donde está tu logo, haz una captura de pantalla, recórtala al logo con el editor de fotos del celular y súbela aquí. Si tienes el archivo original (PNG o SVG), mejor todavía.</p>';
+    $dec.appendChild(lg);
+    DECISIONES.forEach(function (dc, i) {
+      var sec = document.createElement("section");
+      sec.className = "st-sec"; sec.id = "d-" + dc.id;
+      var h = '<div class="st-sec__head"><h2>' + (i + 1) + ". " + dc.t + ' <small data-elegido></small></h2><p>' + dc.q + '</p></div><div class="st-ops">';
+      dc.ops.forEach(function (o) {
+        var tag = o.deLogo ? '<span class="st-tag st-tag--logo">de tu logo</span>' : (o.id === dc.actual ? '<span class="st-tag">actual</span>' : "");
+        h += '<button type="button" class="st-op" data-d="' + dc.id + '" data-o="' + o.id + '" aria-pressed="false">' + (o.m || "") +
+          '<span class="st-op__n">' + o.n + tag + '</span><span class="st-op__d">' + o.d + "</span></button>";
+      });
+      h += '</div><textarea class="st-nota" id="nota-' + dc.id + '" rows="1" placeholder="¿Algún matiz? Ej.: el color un poco más oscuro"></textarea>';
+      sec.innerHTML = h;
+      $dec.appendChild(sec);
     });
-    h += '</div><textarea class="st-nota" id="nota-' + dc.id + '" rows="1" placeholder="¿Algún matiz? Ej.: el rojo un poco más oscuro"></textarea>';
-    sec.innerHTML = h;
-    $dec.appendChild(sec);
-  });
-  var fin = document.createElement("section");
-  fin.className = "st-sec st-fin";
-  fin.innerHTML = '<div class="st-sec__head"><h2>¿Algo más?</h2><p>Ideas, marcas o webs que te gusten, colores de tu logo… lo que quieras que tenga en cuenta.</p></div><textarea class="st-nota" id="nota-general" rows="3" placeholder="Escribe aquí"></textarea><button type="button" class="st-btn" id="listo">Listo, aplica mis elecciones</button><p class="st-mono" id="listo-msg"></p>';
-  $dec.appendChild(fin);
+    var fin = document.createElement("section");
+    fin.className = "st-sec st-fin";
+    fin.innerHTML = '<div class="st-sec__head"><h2>¿Algo más?</h2><p>Ideas, marcas o webs que te gusten, lo que quieras que tenga en cuenta.</p></div><textarea class="st-nota" id="nota-general" rows="3" placeholder="Escribe aquí"></textarea><button type="button" class="st-btn" id="listo">Listo, aplica mis elecciones</button><p class="st-mono" id="listo-msg">' + (est.listo ? "Enviado. Dime \"diseño listo\" en el chat." : "") + "</p>";
+    $dec.appendChild(fin);
+    document.getElementById("listo").onclick = function () {
+      est.listo = true; guardar(true);
+      document.getElementById("listo-msg").textContent = "Enviado. Dime en el chat \"diseño listo\" y lo aplico a la web y la app.";
+    };
+    document.getElementById("logo-file").onchange = function (e) { if (e.target.files[0]) cargarLogo(e.target.files[0]); };
+    marcar();
+  }
 
   function marcar() {
     Array.prototype.forEach.call(document.querySelectorAll(".st-op"), function (b) {
@@ -543,15 +661,58 @@ button { font: inherit; color: inherit; }
     });
     DECISIONES.forEach(function (dc) {
       var sec = document.getElementById("d-" + dc.id), sel = est.selecciones[dc.id];
-      sec.classList.toggle("decidida", !!sel);
       var o = sel && dc.ops.filter(function (x) { return x.id === sel; })[0];
-      sec.querySelector("[data-elegido]").textContent = o ? "✓ " + o.n : "sin decidir";
+      sec.classList.toggle("decidida", !!o);
+      var auto = !o && est.logo && LOGO_DEF[dc.id] && existe(dc.id, LOGO_DEF[dc.id]);
+      sec.querySelector("[data-elegido]").textContent = o ? "✓ " + o.n : (auto ? "sugerido: de tu logo" : "sin decidir");
       var ta = document.getElementById("nota-" + dc.id);
       if (document.activeElement !== ta) ta.value = est.notas[dc.id] || "";
     });
     var tg = document.getElementById("nota-general");
     if (document.activeElement !== tg) tg.value = est.notas.general || "";
   }
+
+  /* ---------- Subir logo ---------- */
+  var assetsP = null;
+  function cargarLogo(file) {
+    if (!/^image\//.test(file.type)) { avisoLogo("Ese archivo no es una imagen. Sube PNG, JPG o SVG."); return; }
+    var lector = new FileReader();
+    lector.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var colores;
+        try { colores = extraer(img); } catch (err) { colores = []; }
+        est.logo = { colores: colores, local: lector.result.length < 400000 ? lector.result : "", nombre: file.name };
+        derivar(); pintar(); aplicar(); guardar();
+        avisoLogo("Colores extraídos. Subiendo el logo…");
+        subirAsset(file);
+      };
+      img.onerror = function () { avisoLogo("No pude leer esa imagen. Prueba con una captura en PNG o JPG."); };
+      img.src = lector.result;
+    };
+    lector.readAsDataURL(file);
+  }
+  function subirAsset(file) {
+    if (!assetsP) { avisoLogo("Logo listo en este navegador. Mándamelo también por el chat para usarlo en la web."); return; }
+    assetsP.then(function (a) {
+      if (!a) { avisoLogo("Logo listo en este navegador. Mándamelo también por el chat para usarlo en la web."); return; }
+      return a.upload(file).then(function (r) {
+        est.logo.id = r.id; est.logo.url = r.url; guardar(true);
+        avisoLogo("✓ subido y guardado para Claude");
+      });
+    }).catch(function (err) { avisoLogo("No se pudo subir (" + (err && err.code || "error") + "). Queda en este navegador; mándamelo por el chat."); });
+  }
+  function avisoLogo(t) { var el = document.getElementById("logo-estado"); if (el) el.textContent = t; }
+  document.addEventListener("paste", function (e) {
+    var it = e.clipboardData && Array.prototype.filter.call(e.clipboardData.items, function (x) { return x.type.indexOf("image/") === 0; })[0];
+    if (it) { e.preventDefault(); cargarLogo(it.getAsFile()); }
+  });
+  $dec.addEventListener("dragover", function (e) { if (e.target.closest("#logo-drop")) { e.preventDefault(); e.target.closest("#logo-drop").classList.add("sobre"); } });
+  $dec.addEventListener("dragleave", function (e) { var d = e.target.closest("#logo-drop"); if (d) d.classList.remove("sobre"); });
+  $dec.addEventListener("drop", function (e) {
+    if (!e.target.closest("#logo-drop")) return;
+    e.preventDefault(); var f = e.dataTransfer.files[0]; if (f) cargarLogo(f);
+  });
 
   $dec.addEventListener("click", function (e) {
     var b = e.target.closest(".st-op"); if (!b) return;
@@ -562,10 +723,6 @@ button { font: inherit; color: inherit; }
     if (!e.target.id || e.target.id.indexOf("nota-") !== 0) return;
     est.notas[e.target.id.slice(5)] = e.target.value; guardar();
   });
-  document.getElementById("listo").onclick = function () {
-    est.listo = true; guardar(true);
-    document.getElementById("listo-msg").textContent = "Enviado. Dime en el chat \"diseño listo\" y lo aplico a la web y la app.";
-  };
 
   Array.prototype.forEach.call(document.querySelectorAll("[data-vista]"), function (b) {
     if (b.closest(".pv")) return;
@@ -578,21 +735,23 @@ button { font: inherit; color: inherit; }
   /* ---------- Guardado (para Claude) ---------- */
   var $g = document.getElementById("guardado"), db = null, ref = null, timer = null, puedeEscribir = true;
   function estado(t, ok) { $g.textContent = t; $g.classList.toggle("st-pill--ok", !!ok); }
+  function logoParaDb() { var l = est.logo; return l ? { id: l.id || null, url: l.url || null, nombre: l.nombre || null, colores: l.colores || [] } : null; }
   function guardar(ya) {
-    try { localStorage.setItem(LOCAL, JSON.stringify(est)); } catch (e) {}
+    try { localStorage.setItem(LOCAL, JSON.stringify(est)); } catch (e) { try { var sin = JSON.parse(JSON.stringify(est)); if (sin.logo) sin.logo.local = ""; localStorage.setItem(LOCAL, JSON.stringify(sin)); } catch (e2) {} }
     if (!ref || !puedeEscribir) { estado(db ? "Solo lectura" : "Guardado en este navegador", false); return; }
     clearTimeout(timer);
     estado("Guardando…", false);
     timer = setTimeout(function () {
-      var datos = { selecciones: est.selecciones, notas: est.notas, listo: !!est.listo, actualizado: new Date().toISOString() };
+      var datos = { selecciones: est.selecciones, notas: est.notas, listo: !!est.listo, logo: logoParaDb(), actualizado: new Date().toISOString() };
       ref.set(datos).then(function () { estado("Guardado para Claude ✓", true); })
         .catch(function (err) { if (err && (err.code === "not_granted" || err.code === "forbidden")) puedeEscribir = false; estado("No se pudo guardar; queda en este navegador", false); });
     }, ya ? 0 : 700);
   }
 
-  aplicar(); marcar();
+  derivar(); pintar(); aplicar();
   estado("Guardado en este navegador", false);
   if (window.claude && window.claude.use) {
+    assetsP = window.claude.use("assets").catch(function () { return null; });
     window.claude.use("db").then(function (d) {
       if (!d) return;
       db = d; ref = db.doc("decisiones/estudio");
@@ -601,8 +760,12 @@ button { font: inherit; color: inherit; }
         if (v && v.selecciones) {
           est.selecciones = Object.assign({}, v.selecciones, est.selecciones);
           est.notas = Object.assign({}, v.notas || {}, est.notas);
-          est.listo = !!v.listo;
-          aplicar(); marcar();
+          est.listo = est.listo || !!v.listo;
+          if (v.logo && (v.logo.id || (v.logo.colores && v.logo.colores.length))) {
+            var local = est.logo && est.logo.local;
+            est.logo = { id: v.logo.id, url: v.logo.url, nombre: v.logo.nombre, colores: v.logo.colores || [], local: local || "" };
+          }
+          derivar(); pintar(); aplicar();
         }
         estado("Conectado: se guarda para Claude", true);
       });
