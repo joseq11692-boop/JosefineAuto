@@ -59,7 +59,7 @@ p{font-size:38px;line-height:1.35}.claro p{color:#5b6270}.oscuro p{color:#c9ccd3
 .unico{padding:150px 80px 140px;gap:30px;align-content:start}
 .unico .firma-u{width:420px}
 .tira{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.tira div{height:250px;border-radius:20px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.tira div{height:250px;border-radius:20px;background-size:cover;background-position:center 62%;position:relative;overflow:hidden}
 .tira div::after{content:"VENDIDO";position:absolute;top:12px;left:12px;font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:.1em;background:#e11d2e;color:#fff;padding:5px 12px;border-radius:99px}
 .lista3{display:grid;gap:16px}
 .lista3 div{display:flex;gap:20px;align-items:center;font-size:36px;font-weight:600}
@@ -109,7 +109,7 @@ const L = [
       <div><i>✓</i>Vendemos el tuyo a comisión</div>
       <div><i>✓</i>Proyectos y cultura automotriz</div>
     </div>
-    <div class="tira">${[V[0], V[1], V[2]].map((u) => `<div style="background-image:url('${u}')"></div>`).join("")}</div>
+    <div class="tira">${["audi", "range", "mini"].map((k) => img(`img/conocenos/${k}.jpg`)).map((u) => `<div style="background-image:url('${u}')"></div>`).join("")}</div>
     <div class="barra-cta"><span>Escríbenos</span>📲 6698-9569</div></div>`;
   await p.setContent(base + U + "</body></html>", { waitUntil: "networkidle" });
   await p.evaluate(() => document.fonts.ready);
