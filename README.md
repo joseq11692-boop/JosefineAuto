@@ -2,6 +2,14 @@
 
 Compraventa de autos seminuevos en Panamá, especializada en deportivos y japoneses, más contenido automotriz.
 
+## Cómo se trabaja (reglas del dueño)
+
+- [PENDIENTE-DUENO.md](PENDIENTE-DUENO.md): lo que solo puede hacer el dueño, con pasos y enlaces.
+- [CLAUDE.md](CLAUDE.md): reglas diamante y forma de trabajar; detalle en [docs/referencia.md](docs/referencia.md).
+- [docs/normas.md](docs/normas.md): normas literales del dueño. [docs/reglas/](docs/reglas/): documento completo y bloque para todos los proyectos.
+- Gate: `python3 herramientas/check.py; echo EXIT=$?` (lo ejecutan el hook Stop de Claude y el pre-push de `.githooks/`).
+- [CONTINUAR.md](CONTINUAR.md) para retomar · [IDEAS.md](IDEAS.md) para lo que queda fuera de alcance.
+
 ## Documentos
 
 | Archivo | Contenido |

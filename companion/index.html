@@ -133,7 +133,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       <input type="checkbox" class="check" id="c-dom-dns" aria-label="Marcar como hecho">
       <div class="step__body">
         <div class="meta"><span class="chip">Cloudflare</span><span class="chip chip--time">5 min</span></div>
-        <h3>Conecta el dominio con tu web</h3>
+        <h3>Conecta el dominio con tu web (o pásale a Claude el token de Cloudflare)</h3>
         <ol>
           <li>En Cloudflare toca <strong>josefineauto.com</strong> → menú <strong>DNS</strong> → <strong>Registros</strong>.</li>
           <li>Toca <strong>"Agregar registro"</strong> 5 veces, una por cada línea de abajo. En cada una: elige el <strong>Tipo</strong>, en <strong>Nombre</strong> pon lo de la segunda columna, en <strong>Contenido</strong> lo de la tercera.</li>
@@ -148,17 +148,16 @@ CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-d
       </div>
     </article>
 
-    <article class="step" data-id="dom-github">
-      <input type="checkbox" class="check" id="c-dom-github" aria-label="Marcar como hecho">
+    <article class="step" data-id="dom-remove">
+      <input type="checkbox" class="check" id="c-dom-remove" aria-label="Marcar como hecho">
       <div class="step__body">
-        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">3 min</span></div>
-        <h3>Avísale a GitHub cuál es tu dominio</h3>
+        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">30 seg · URGENTE</span></div>
+        <h3>Vuelve a poner la web en línea</h3>
+        <p>Tu web manda a josefineauto.com, que todavía no tiene DNS, y por eso no abre.</p>
         <ol>
-          <li>Toca el botón. Entra con tu cuenta de GitHub.</li>
-          <li>En <strong>"Custom domain"</strong> escribe <strong>josefineauto.com</strong> y toca <strong>Save</strong>.</li>
-          <li>Espera unos minutos hasta ver el visto verde ✔ ("DNS check successful"). Puede tardar hasta 1 hora.</li>
-          <li>Marca la casilla <strong>"Enforce HTTPS"</strong> (si aún no se puede marcar, vuelve en 30 minutos).</li>
-          <li>Escríbele a Claude: <strong>"dominio listo"</strong>. Claude cambia todos los enlaces de la web, Instagram y Google al nuevo dominio.</li>
+          <li>Toca el botón (entra con la cuenta <strong>joseq11692-boop</strong>).</li>
+          <li>Junto a <strong>josefineauto.com</strong> toca el botón rojo <strong>Remove</strong>.</li>
+          <li>No vuelvas a escribir el dominio ahí: Claude lo conecta solo cuando el DNS esté listo.</li>
         </ol>
         <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/settings/pages" target="_blank" rel="noopener">Abrir ajustes de GitHub Pages</a></div>
       </div>
