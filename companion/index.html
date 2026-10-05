@@ -94,7 +94,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   <section class="done-box">
     <h2>✔ Ya hecho por Claude</h2>
     <ul>
-      <li>Web publicada en internet, con tu firma, tu WhatsApp y tu Instagram</li>
+      <li>Web publicada en <strong>josefineauto.com</strong>, con tu firma, tu WhatsApp y tu Instagram</li>
       <li>Ficha de cada carro con galería y enlace para compartir</li>
       <li>3 guías para atraer compradores desde Google</li>
       <li>App Josefine Gestión para tu celular</li>
@@ -107,59 +107,49 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   <!-- DOMINIO -->
   <section class="phase">
     <div class="phase__head">
-      <h2>Lanzar josefineauto.com · 15 minutos</h2>
-      <p class="phase__when">Está libre. Cuesta unos $10–11 al año en Cloudflare. Necesita tu tarjeta, por eso lo haces tú.</p>
+      <h2>josefineauto.com · casi listo</h2>
+      <p class="phase__when">Dominio comprado y DNS conectado ✔. Faltan 3 toques tuyos.</p>
     </div>
 
-    <article class="step" data-id="dom-comprar">
-      <input type="checkbox" class="check" id="c-dom-comprar" aria-label="Marcar como hecho">
+    <article class="step" data-id="dom-https">
+      <input type="checkbox" class="check" id="c-dom-https" aria-label="Marcar como hecho">
       <div class="step__body">
-        <div class="meta"><span class="chip">Cloudflare</span><span class="chip chip--time">7 min</span></div>
-        <h3>Compra josefineauto.com</h3>
+        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">1 min</span></div>
+        <h3>Activa el candado (HTTPS)</h3>
         <ol>
-          <li>Toca <strong>"Crear cuenta"</strong>, pon tu correo y una contraseña. Abre el correo que te llega y toca el enlace para confirmar.</li>
-          <li>Toca <strong>"Registrar dominio"</strong>. En el buscador escribe <strong>josefineauto.com</strong> y toca <strong>Buscar</strong>.</li>
-          <li>Toca <strong>"Comprar"</strong> (o "Purchase") junto a josefineauto.com. Deja <strong>1 año</strong> y la <strong>renovación automática encendida</strong>.</li>
-          <li>Llena tus datos de contacto (nombre, dirección en Panamá, teléfono 6698-9569) y la tarjeta. Toca <strong>"Completar compra"</strong>.</li>
-          <li>Escríbele a Claude: <strong>"dominio comprado"</strong>.</li>
-        </ol>
-        <div class="copy"><pre id="t-dom">josefineauto.com</pre><button type="button" data-copy="t-dom">Copiar dominio</button></div>
-        <div class="links"><a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Crear cuenta</a><a href="https://dash.cloudflare.com/?to=/:account/domains/register" target="_blank" rel="noopener">Registrar dominio</a></div>
-        <p class="tip"><strong>Ojo:</strong> si Cloudflare te ofrece planes de pago para el sitio, elige <strong>Free</strong>. Solo pagas el dominio.</p>
-      </div>
-    </article>
-
-    <article class="step" data-id="dom-dns">
-      <input type="checkbox" class="check" id="c-dom-dns" aria-label="Marcar como hecho">
-      <div class="step__body">
-        <div class="meta"><span class="chip">Cloudflare</span><span class="chip chip--time">5 min</span></div>
-        <h3>Conecta el dominio con tu web (o pásale a Claude el token de Cloudflare)</h3>
-        <ol>
-          <li>En Cloudflare toca <strong>josefineauto.com</strong> → menú <strong>DNS</strong> → <strong>Registros</strong>.</li>
-          <li>Toca <strong>"Agregar registro"</strong> 5 veces, una por cada línea de abajo. En cada una: elige el <strong>Tipo</strong>, en <strong>Nombre</strong> pon lo de la segunda columna, en <strong>Contenido</strong> lo de la tercera.</li>
-          <li><strong>Muy importante:</strong> en cada registro apaga la nube naranja para que quede <strong>gris ("Solo DNS")</strong>. Si queda naranja, la web no tendrá candado.</li>
-          <li>Toca <strong>Guardar</strong> en cada uno.</li>
-        </ol>
-        <div class="copy"><pre id="t-dns">A      @     185.199.108.153
-A      @     185.199.109.153
-A      @     185.199.110.153
-A      @     185.199.111.153
-CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-dns">Copiar registros</button></div>
-      </div>
-    </article>
-
-    <article class="step" data-id="dom-remove">
-      <input type="checkbox" class="check" id="c-dom-remove" aria-label="Marcar como hecho">
-      <div class="step__body">
-        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">30 seg · URGENTE</span></div>
-        <h3>Vuelve a poner la web en línea</h3>
-        <p>Tu web manda a josefineauto.com, que todavía no tiene DNS, y por eso no abre.</p>
-        <ol>
-          <li>Toca el botón (entra con la cuenta <strong>joseq11692-boop</strong>).</li>
-          <li>Junto a <strong>josefineauto.com</strong> toca el botón rojo <strong>Remove</strong>.</li>
-          <li>No vuelvas a escribir el dominio ahí: Claude lo conecta solo cuando el DNS esté listo.</li>
+          <li>Toca el botón (cuenta <strong>joseq11692-boop</strong>) y luego <strong>Check again</strong>.</li>
+          <li>Cuando salga ✔ <strong>"DNS check successful"</strong>, marca <strong>Enforce HTTPS</strong>.</li>
+          <li>Si la casilla no se deja marcar, GitHub aún crea el certificado: vuelve en 30 minutos.</li>
         </ol>
         <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/settings/pages" target="_blank" rel="noopener">Abrir ajustes de GitHub Pages</a></div>
+      </div>
+    </article>
+
+    <article class="step" data-id="dom-app">
+      <input type="checkbox" class="check" id="c-dom-app" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Tu celular</span><span class="chip chip--time">3 min</span></div>
+        <h3>Pasa los datos de tu app al dominio nuevo (solo si ya guardaste carros)</h3>
+        <ol>
+          <li>Pon el celular en <strong>modo avión</strong> y abre la app Josefine Gestión que ya tienes.</li>
+          <li><strong>Ajustes</strong> → <strong>Descargar copia</strong>.</li>
+          <li>Quita el modo avión, toca el botón, ve a <strong>Ajustes</strong> → <strong>Restaurar copia</strong> y elige ese archivo.</li>
+          <li>Instala la app nueva (Compartir → "Agregar a inicio") y borra la vieja.</li>
+        </ol>
+        <div class="links"><a href="https://josefineauto.com/panel/" target="_blank" rel="noopener">Abrir la app nueva</a></div>
+      </div>
+    </article>
+
+    <article class="step" data-id="dom-ig">
+      <input type="checkbox" class="check" id="c-dom-ig" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Instagram</span><span class="chip chip--time">1 min</span></div>
+        <h3>Pon tu dominio nuevo en Instagram</h3>
+        <ol>
+          <li>Toca el botón → <strong>Enlaces</strong> → cambia el enlace por el de abajo.</li>
+        </ol>
+        <div class="copy"><pre id="t-dom-web">https://josefineauto.com/</pre><button type="button" data-copy="t-dom-web">Copiar enlace</button></div>
+        <div class="links"><a href="https://www.instagram.com/accounts/edit/" target="_blank" rel="noopener">Editar perfil</a></div>
       </div>
     </article>
   </section>
@@ -196,7 +186,7 @@ CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-d
           <li>En <strong>Enlaces</strong> → Agregar enlace externo, pega la dirección de tu web.</li>
           <li>En <strong>Presentación</strong> pega el texto de abajo.</li>
         </ol>
-        <div class="copy"><pre id="t-web">https://joseq11692-boop.github.io/JosefineAuto/</pre><button type="button" data-copy="t-web">Copiar enlace</button></div>
+        <div class="copy"><pre id="t-web">https://josefineauto.com/</pre><button type="button" data-copy="t-web">Copiar enlace</button></div>
         <div class="copy"><pre id="t-ig">Deportivos y japoneses seleccionados en Panamá 🇵🇦
 ✅ Revisados y documentados: sabes lo que compras
 🔁 ¿Vendes tu deportivo? Te lo vendemos a comisión
@@ -216,7 +206,7 @@ CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-d
           <li>Toca "Copiar texto", abre Instagram y publica las imágenes como carrusel, en orden.</li>
           <li>Ahí mismo están las <strong>portadas de tus historias destacadas</strong>.</li>
         </ol>
-        <div class="links"><a href="https://joseq11692-boop.github.io/JosefineAuto/kit/" target="_blank" rel="noopener">Abrir kit de Instagram</a></div>
+        <div class="links"><a href="https://josefineauto.com/kit/" target="_blank" rel="noopener">Abrir kit de Instagram</a></div>
         <p class="tip"><strong>Orden:</strong> semana 1 "Así compramos un carro", semana 2 "Carro inundado", semana 3 "Vendes tu deportivo", semana 4 tu proyecto.</p>
       </div>
     </article>
@@ -230,7 +220,7 @@ CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-d
           <li>Abre el botón rojo <strong>en tu celular</strong>.</li>
           <li><strong>Android:</strong> menú ⋮ → "Instalar app". <strong>iPhone:</strong> en Safari, Compartir → "Agregar a inicio".</li>
         </ol>
-        <div class="links"><a href="https://joseq11692-boop.github.io/JosefineAuto/panel/" target="_blank" rel="noopener">Abrir la app</a></div>
+        <div class="links"><a href="https://josefineauto.com/panel/" target="_blank" rel="noopener">Abrir la app</a></div>
         <p class="tip"><strong>Importante:</strong> tus datos se guardan solo en ese celular. De vez en cuando, Ajustes → "Copiar copia" y mándatela por WhatsApp.</p>
       </div>
     </article>
@@ -248,7 +238,7 @@ CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-d
           <li>Teléfono: <strong>6698-9569</strong>. Sitio web: pega el enlace de abajo.</li>
           <li>Google te pedirá verificar (por SMS o video). Sigue sus pasos.</li>
         </ol>
-        <div class="copy"><pre id="t-web2">https://joseq11692-boop.github.io/JosefineAuto/</pre><button type="button" data-copy="t-web2">Copiar enlace</button></div>
+        <div class="copy"><pre id="t-web2">https://josefineauto.com/</pre><button type="button" data-copy="t-web2">Copiar enlace</button></div>
         <div class="links"><a href="https://business.google.com/create" target="_blank" rel="noopener">Crear perfil en Google</a></div>
       </div>
     </article>

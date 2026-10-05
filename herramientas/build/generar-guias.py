@@ -13,7 +13,7 @@ import html, json, pathlib, re
 RAIZ = pathlib.Path(__file__).resolve().parents[2]
 WEB = RAIZ / "web"
 FUENTES = RAIZ / "herramientas" / "guias"
-BASE = "https://joseq11692-boop.github.io/JosefineAuto/"
+BASE = "https://josefineauto.com/"
 WA = "50766989569"
 
 FRANJA = '<div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div>'
@@ -175,14 +175,14 @@ indice = f"""    <section class="seccion">
 # 404
 error = f"""    <section class="seccion">
       <div class="contenedor" style="display:grid;gap:18px;justify-items:center;text-align:center">
-        <img src="/JosefineAuto/img/logo-firma.svg" alt="" width="220" height="155">
+        <img src="/img/logo-firma.svg" alt="" width="220" height="155">
         <h1>Esta página no existe</h1>
         {FRANJA}
         <p class="seccion__sub">Puede que el carro ya se haya vendido o que el enlace esté mal escrito.</p>
-        <div class="hero__acciones"><a class="boton" href="/JosefineAuto/#inventario">Ver inventario</a><a class="boton boton--borde" href="https://wa.me/{WA}" target="_blank" rel="noopener">Escríbenos</a></div>
+        <div class="hero__acciones"><a class="boton" href="/#inventario">Ver inventario</a><a class="boton boton--borde" href="https://wa.me/{WA}" target="_blank" rel="noopener">Escríbenos</a></div>
       </div>
     </section>"""
-(WEB / "404.html").write_text(pagina("Página no encontrada | Josefine Auto", "Esta página no existe.", BASE + "404.html", error, raiz="/JosefineAuto/"), encoding="utf-8")
+(WEB / "404.html").write_text(pagina("Página no encontrada | Josefine Auto", "Esta página no existe.", BASE + "404.html", error, raiz="/"), encoding="utf-8")
 
 # Sitemap
 urls = [BASE, BASE + "guias/"] + [f"{BASE}guias/{g['slug']}.html" for g in guias]

@@ -17,7 +17,6 @@ from urllib.parse import unquote, urlparse
 
 RAIZ = Path(__file__).resolve().parent.parent
 WEB = RAIZ / "web"
-BASE = "/JosefineAuto/"
 fallos = []
 
 
@@ -96,9 +95,6 @@ def enlaces():
             ruta = unquote(u.path)
             if not ruta:
                 continue
-            # en GitHub Pages la web vive bajo /JosefineAuto/; con dominio propio, en la raíz
-            if ruta.startswith(BASE):
-                ruta = "/" + ruta[len(BASE):]
             destino = (WEB / ruta.lstrip("/")) if ruta.startswith("/") else (pag.parent / ruta)
             if ruta.endswith("/"):
                 destino = destino / "index.html"
@@ -185,9 +181,24 @@ def inventario():
         ok("Inventario", len(carros), f" carros y proyectos, {fotos} fotos")
 
 
+# 8. Guardián de dominio: la web vive en https://josefineauto.com/ (nada de rutas de github.io)
+def dominio():
+    archivos = [f for d in (WEB, RAIZ / "companion") for f in d.rglob("*")
+                if f.suffix in (".html", ".xml", ".txt", ".js", ".json", ".webmanifest")]
+    if not exige("Guardián de dominio", len(archivos)):
+        return
+    patron = re.compile(r"github\.io/JosefineAuto|[\"'(]/JosefineAuto/")
+    malos = [f"{f.relative_to(RAIZ)}:{i}" for f in archivos
+             for i, l in enumerate(f.read_text(encoding="utf-8").splitlines(), 1) if patron.search(l)]
+    for m in malos:
+        fallo("Guardián de dominio", f"{m} usa la dirección vieja; usa https://josefineauto.com/ o rutas relativas")
+    if not malos:
+        ok("Guardián de dominio", len(archivos))
+
+
 def main():
     print("Gate Josefine Auto")
-    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario):
+    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio):
         try:
             paso()
         except Exception as e:  # noqa: BLE001  (si una comprobación revienta, el gate falla cerrado)

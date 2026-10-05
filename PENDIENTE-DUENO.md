@@ -4,29 +4,32 @@ Solo lo que únicamente puedes hacer tú (tu sesión, tu tarjeta, tu teléfono).
 Marca `[x]` cuando lo hagas (o dile "hecho" a Claude): la siguiente sesión lo lee al empezar.
 Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
-## 🔥 Urgente
+## Ahora
 
-- [ ] **DUENO-01 · Volver a poner la web en línea** · 30 segundos
-  La web redirige a josefineauto.com y ese dominio aún no tiene DNS, así que no abre.
-  1. Abre el enlace (entra con la cuenta **joseq11692-boop**).
-  2. Junto a `josefineauto.com` toca el botón rojo **Remove**.
-  3. Listo: la web vuelve a abrir en la dirección de siempre.
+- [ ] **DUENO-05 · Activar el candado (HTTPS) en josefineauto.com** · 1 min
+  El DNS ya apunta bien. GitHub tarda entre 15 min y 1 hora en crear el certificado.
+  1. Abre el enlace (cuenta **joseq11692-boop**) y toca **Check again**.
+  2. Cuando salga ✔ "DNS check successful", marca **Enforce HTTPS**.
+  3. Si la casilla no se deja marcar, vuelve en 30 min.
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/settings/pages
+
+- [ ] **DUENO-06 · Poner el dominio nuevo en tu Instagram** · 1 min
+  Instagram → Editar perfil → Enlaces → cambia el enlace por: https://josefineauto.com/
+  Enlace: https://www.instagram.com/accounts/edit/
+
+- [ ] **DUENO-07 · Pasar los datos de tu app al dominio nuevo** · 3 min · solo si ya guardaste carros en la app
+  La app guarda todo en tu celular, atado a la dirección vieja. En josefineauto.com/panel arranca vacía.
+  1. Pon el celular en **modo avión** y abre la app Josefine Gestión que tienes instalada.
+  2. Ve a **Ajustes** → **Descargar copia** (se guarda en Archivos).
+  3. Quita el modo avión. Abre https://josefineauto.com/panel/ → **Ajustes** → **Restaurar copia** → elige ese archivo.
+  4. Instala la app nueva (Compartir → "Agregar a inicio") y borra la vieja.
+  Enlace: https://josefineauto.com/panel/
 
 ## Esta semana
 
-- [ ] **DUENO-02 · Permiso de DNS para que Claude conecte josefineauto.com** · 2 min
-  Cloudflare solo deja crear este permiso con tu sesión. Con él, Claude crea el DNS, comprueba y conecta el dominio solo.
-  1. Abre el enlace → **Create Token**.
-  2. En **Edit zone DNS** toca **Use template**.
-  3. **Zone Resources** → **Specific zone** → **josefineauto.com**.
-  4. **Continue to summary** → **Create Token** → **Copy**, y pégalo en el chat.
-  Enlace: https://dash.cloudflare.com/profile/api-tokens
-  ⚠️ No vuelvas a escribir el dominio en GitHub: lo hará el workflow `dominio.yml` cuando el DNS esté listo.
-
 - [ ] **DUENO-03 · Datos del cliente del GLE 53 AMG Coupé** · 10 min con el cliente
   Llena la ficha y mándale a Claude una foto o los datos.
-  Enlace: https://joseq11692-boop.github.io/JosefineAuto/kit/ficha-consignacion.html
+  Enlace: https://josefineauto.com/kit/ficha-consignacion.html
 
 - [ ] **DUENO-04 · Reglas diamante en todos tus proyectos** · 2 min en tu computadora
   Claude solo puede escribir en este proyecto. Para que las reglas valgan en todos:
@@ -36,6 +39,8 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/reglas/CLAUDE-global.md
 
 ## Hecho
+
+- [x] DUENO-01 y DUENO-02 · DNS de josefineauto.com creado por el dueño (2026-10-05).
 
 - [x] Comprar josefineauto.com en Cloudflare (2026-10-05).
 - [x] Activar GitHub Pages con "GitHub Actions".

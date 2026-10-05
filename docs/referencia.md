@@ -22,8 +22,8 @@ Trasladado desde `CLAUDE.md` el 2026-10-05, sin borrar nada (regla: al podar se 
 
 ## Web y app
 
-- Web pública en `web/` (GitHub Pages; se publica sola con cada push a la rama por defecto `claude/vibrant-dijkstra-gm1tot`): https://joseq11692-boop.github.io/JosefineAuto/ · app del fundador (PWA) en `/panel/` · kit privado de Instagram en `/kit/`.
-- Dominio propio comprado en Cloudflare el 2026-10-05: **josefineauto.com** (vence 2027-10-05). Pendiente de DNS: ver `PENDIENTE-DUENO.md`. El workflow `.github/workflows/dominio.yml` lo conecta o desconecta según el DNS.
+- Web pública en `web/` (GitHub Pages; se publica sola con cada push a la rama por defecto `claude/vibrant-dijkstra-gm1tot`): https://josefineauto.com/ · app del fundador (PWA) en `/panel/` · kit privado de Instagram en `/kit/`.
+- Dominio propio comprado en Cloudflare el 2026-10-05: **josefineauto.com** (vence 2027-10-05). DNS creado por el dueño el 2026-10-05 (4 A a 185.199.108-111.153 + CNAME www); falta HTTPS (DUENO-05). El workflow `.github/workflows/dominio.yml` lo conecta o desconecta según el DNS.
 - Añadir un carro: fotos en `web/img/carros/<slug>/NN.jpg` y bloque en `INVENTARIO` de `web/datos.js`.
 - Guías: `herramientas/guias/*.md` → `python3 herramientas/build/generar-guias.py` (genera `web/guias/`, `web/guias.js`, `web/404.html`, `web/sitemap.xml`).
 - Kit de Instagram en `web/kit/`; imágenes con `herramientas/build/generar-posts.js`, `generar-post-vendidos.js` y `generar-post-nosotros.js` (Playwright).
