@@ -6,11 +6,14 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-05 · Activar el candado (HTTPS) en josefineauto.com** · 1 min
-  El DNS ya apunta bien. GitHub tarda entre 15 min y 1 hora en crear el certificado.
-  1. Abre el enlace (cuenta **joseq11692-boop**) y toca **Check again**.
-  2. Cuando salga ✔ "DNS check successful", marca **Enforce HTTPS**.
-  3. Si la casilla no se deja marcar, vuelve en 30 min.
+- [ ] **DUENO-05 · Candado de seguridad (HTTPS) en josefineauto.com** · 2 min + esperar
+  GitHub aún no creó el certificado porque el dominio se guardó antes que el DNS. Se arregla volviéndolo a guardar.
+  GitHub no deja que Claude ni una tarea automática lo hagan (probado: error 403).
+  1. Abre el enlace (cuenta **joseq11692-boop**).
+  2. Junto a josefineauto.com toca **Remove**.
+  3. Escribe otra vez `josefineauto.com` en **Custom domain** y toca **Save**.
+  4. Espera a ver ✔ "DNS check successful" (unos minutos).
+  5. Cuando se pueda (hasta 1 hora), marca **Enforce HTTPS**. Si no se deja, vuelve en 30 min.
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/settings/pages
 
 - [ ] **DUENO-06 · Poner el dominio nuevo en tu Instagram** · 1 min

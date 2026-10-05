@@ -111,16 +111,20 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       <p class="phase__when">Dominio comprado y DNS conectado ✔. Faltan 3 toques tuyos.</p>
     </div>
 
-    <article class="step" data-id="dom-https">
-      <input type="checkbox" class="check" id="c-dom-https" aria-label="Marcar como hecho">
+    <article class="step" data-id="dom-https2">
+      <input type="checkbox" class="check" id="c-dom-https2" aria-label="Marcar como hecho">
       <div class="step__body">
-        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">1 min</span></div>
-        <h3>Activa el candado (HTTPS)</h3>
+        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">2 min · IMPORTANTE</span></div>
+        <h3>Activa el candado de seguridad (para que no salga "no seguro")</h3>
+        <p>GitHub no creó el certificado porque el dominio se guardó antes del DNS. Hay que volver a guardarlo. GitHub no deja que Claude lo haga.</p>
         <ol>
-          <li>Toca el botón (cuenta <strong>joseq11692-boop</strong>) y luego <strong>Check again</strong>.</li>
-          <li>Cuando salga ✔ <strong>"DNS check successful"</strong>, marca <strong>Enforce HTTPS</strong>.</li>
-          <li>Si la casilla no se deja marcar, GitHub aún crea el certificado: vuelve en 30 minutos.</li>
+          <li>Toca el botón (cuenta <strong>joseq11692-boop</strong>).</li>
+          <li>Junto a josefineauto.com toca <strong>Remove</strong>.</li>
+          <li>Escribe otra vez <strong>josefineauto.com</strong> en <strong>Custom domain</strong> y toca <strong>Save</strong>.</li>
+          <li>Espera el ✔ <strong>"DNS check successful"</strong>.</li>
+          <li>Cuando se pueda (hasta 1 hora), marca <strong>Enforce HTTPS</strong>.</li>
         </ol>
+        <div class="copy"><pre id="t-dom2">josefineauto.com</pre><button type="button" data-copy="t-dom2">Copiar dominio</button></div>
         <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/settings/pages" target="_blank" rel="noopener">Abrir ajustes de GitHub Pages</a></div>
       </div>
     </article>
