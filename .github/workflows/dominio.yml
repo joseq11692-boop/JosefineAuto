@@ -13,6 +13,11 @@ on:
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
+    inputs:
+      repedir:
+        description: "Volver a pedir el certificado (quita y pone el dominio una vez; solo con el DNS ya correcto)"
+        type: boolean
+        default: false
 
 permissions:
   pages: write
@@ -43,6 +48,14 @@ jobs:
 
           if ! grep -q "185.199.108.153" <<<"$ips"; then
             echo "El DNS no apunta a GitHub Pages: no se cambia nada."
+            exit 0
+          fi
+          if [ "${{ inputs.repedir }}" = "true" ] && [ "$cert" != "approved" ]; then
+            # Solo a mano y con el DNS ya comprobado arriba: GitHub pide el certificado al guardar el dominio
+            gh api -X PUT "repos/$REPO/pages" -F cname=null -f build_type=workflow
+            sleep 5
+            gh api -X PUT "repos/$REPO/pages" -f cname="$DOMINIO" -f build_type=workflow
+            echo "Dominio vuelto a guardar: GitHub pide el certificado de nuevo (tarda hasta 1 hora)."
             exit 0
           fi
           if [ "$cname" != "$DOMINIO" ]; then
