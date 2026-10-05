@@ -4,7 +4,8 @@ name: Dominio propio
 # - si el DNS apunta a GitHub Pages y falta el dominio, lo pone;
 # - cuando el certificado está emitido, activa "Enforce HTTPS";
 # - si el certificado falla, avisa (arreglarlo exige quitar y poner el dominio: lo decide el dueño).
-# Nunca quita el dominio: un fallo momentáneo de DNS no puede tumbar la web (lección patron_dominio-antes-dns).
+# Nunca quita el dominio por sí solo; solo a mano con repedir=true (lo quita y lo pone una vez, con reintentos).
+# Un fallo momentáneo de DNS no puede tumbar la web (lección patron_dominio-antes-dns).
 on:
   push:
     branches: [claude/vibrant-dijkstra-gm1tot]
@@ -54,7 +55,16 @@ jobs:
             # Solo a mano y con el DNS ya comprobado arriba: GitHub pide el certificado al guardar el dominio
             gh api -X PUT "repos/$REPO/pages" -F cname=null -f build_type=workflow
             sleep 5
-            gh api -X PUT "repos/$REPO/pages" -f cname="$DOMINIO" -f build_type=workflow
+            # Volver a poner el dominio pase lo que pase: reintentos y comprobación final
+            for i in 1 2 3 4 5; do
+              gh api -X PUT "repos/$REPO/pages" -f cname="$DOMINIO" -f build_type=workflow && break || true
+              sleep 10
+            done
+            vuelta=$(gh api "repos/$REPO/pages" --jq '.cname // ""' || true)
+            if [ "$vuelta" != "$DOMINIO" ]; then
+              echo "::error::El dominio no quedó puesto (está: '${vuelta:-ninguno}'). El cron lo vuelve a poner en 15 min; si no, ponlo en Settings → Pages."
+              exit 1
+            fi
             echo "Dominio vuelto a guardar: GitHub pide el certificado de nuevo (tarda hasta 1 hora)."
             exit 0
           fi
