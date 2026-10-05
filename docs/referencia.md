@@ -14,8 +14,7 @@ Trasladado desde `CLAUDE.md` el 2026-10-05, sin borrar nada (regla: al podar se 
 
 ## Historial real (Instagram @josefineauto, "JoseFine Automotive")
 
-- En la web como vendidos: Ford Edge 2016, Range Rover Sport 2019, BMW 320i 2006, BMW X6 M50i, Maserati Ghibli SQ4 2019, Honda Pilot Elite 2022.
-- Vendidos encontrados en publicaciones antiguas, aún sin añadir a la web: Audi A3 2014 rojo (1.8T, Stage 3, IS38), Mini Countryman 2012 blanco, Mazda 2 2016, Suzuki Vitara Turbo Allgrip 2019, Lexus LX450 1997 (conversión manual), Range Rover Sport HSE 2006 negro.
+- En la web como vendidos (los 12 posts "VENDIDO" de Instagram): Ford Edge 2016, Range Rover Sport 2019, BMW 320i 2006, BMW X6 M50i, Maserati Ghibli SQ4 2019, Honda Pilot Elite 2022, Mazda 2 2016, Mini Countryman 2012, Suzuki Vitara Turbo Allgrip 2019, Audi A3 2014, Lexus LX450 1997, Range Rover Sport HSE 2006.
 - Proyectos: Lancer Evolution VI GSR 1999 y Honda Civic Si 2008.
 - Fotos en `web/img/carros/`, `web/img/proyectos/`, `web/img/escena/`, `web/img/conocenos/`.
 - Datos de Instagram: el endpoint público `i.instagram.com/api/v1/users/web_profile_info/?username=josefineauto` (cabecera `x-ig-app-id: 936619743392459`) y `www.instagram.com/api/v1/feed/user/josefineauto/username/` se usaron para leer el propio perfil. **Desde 2026-10-05 rige la norma "solo APIs oficiales"** (ver `docs/normas.md`): no volver a usarlos sin el OK del dueño.

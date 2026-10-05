@@ -169,7 +169,7 @@ def inventario():
         nombre = c.get("titulo") or c.get("nombre") or " ".join(str(c.get(k, "")) for k in ("marca", "modelo", "anio")).strip()
         if not nombre:
             malos.append(f"carro sin nombre: {json.dumps(c)[:80]}")
-        for f in c.get("fotos", []):
+        for f in c.get("fotos", []) + ([c["foto"]] if c.get("foto") else []):
             fotos += 1
             if not (WEB / f).exists():
                 malos.append(f"{nombre}: falta web/{f}")

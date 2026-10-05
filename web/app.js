@@ -111,7 +111,8 @@
       "</dl>" +
       (c.destacado ? '<p class="carro__destacado">' + escapar(c.destacado) + "</p>" : "") +
       (c.defectos ? '<p class="carro__defectos"><strong>Defectos a la vista:</strong> ' + escapar(c.defectos) + "</p>" : "") +
-      '<ul class="ficha-carro__sellos"><li>Papeles verificados</li><li>Prueba anti-inundación</li><li>Revisado en taller</li></ul>' +
+      // Sellos solo si se comprobaron en ESTE carro (campo "sellos" en datos.js); nada se afirma por defecto
+      (c.sellos && c.sellos.length ? '<ul class="ficha-carro__sellos">' + c.sellos.map(function (x) { return "<li>" + escapar(x) + "</li>"; }).join("") + "</ul>" : "") +
       '<div class="carro__acciones">' +
         (vendido
           ? '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, vi que vendieron el " + titulo + ". Busco algo parecido.") + '">Busco uno parecido</a>'

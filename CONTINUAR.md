@@ -15,6 +15,7 @@ Para retomar el trabajo en una sesión nueva. Se actualiza al cerrar cada sesió
 3. Proponer al dueño quitar la rama "quitar dominio" de `.github/workflows/dominio.yml` (🔴): un fallo momentáneo de DNS quitaría el dominio una hora.
 
 ## Lecciones
+- **patron_sellos-por-carro** (2026-10-05): la ficha de cada carro afirmaba "Papeles verificados / Prueba anti-inundación / Revisado en taller" en todos, sin comprobarlo. Causa: sellos fijos en `web/app.js`. Prevención: ahora solo salen si el carro trae `sellos` en `web/datos.js` (nada se afirma por defecto).
 - **patron_cambio-de-origen** (2026-10-05): cambiar de dominio cambia el origen del navegador y la PWA pierde su localStorage. Causa: los datos de la app viven solo en el celular. Prevención: antes de cambiar de dominio, tarea de migración con copia de seguridad (DUENO-07); el guardián de dominio impide rutas viejas.
 - **patron_dominio-antes-dns** (2026-10-05): poner el dominio propio en GitHub Pages antes de que el DNS apunte tumba la web, porque github.io redirige al dominio. Causa: las instrucciones permitían hacer el paso de GitHub antes de confirmar el DNS. Prevención: el workflow `dominio.yml` solo pone el dominio cuando el DNS ya apunta, y en la lista del dueño el paso de GitHub ya no se le pide.
 - **gotcha_scraping-portales** (2026-10-04): Encuentra24, Marketplace, CarroCarros y Locanto bloquean la lectura automática (Cloudflare o login). No se fuerzan los captchas; los datos de mercado salen de agregadores públicos (Cari Autos) y los teléfonos se piden al dueño.
