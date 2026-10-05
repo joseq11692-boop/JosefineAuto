@@ -1,38 +1,66 @@
 name: Dominio propio
 
-# Conecta o desconecta josefineauto.com según si su DNS ya apunta a GitHub Pages.
-# Mientras el DNS no esté listo, deja la web en joseq11692-boop.github.io para que no se caiga.
+# Mantiene josefineauto.com conectado y seguro (HTTPS) sin que el dueño toque GitHub:
+# - si el DNS apunta a GitHub Pages y falta el dominio, lo pone;
+# - cuando el certificado está emitido, activa "Enforce HTTPS";
+# - si el certificado falla, avisa (arreglarlo exige quitar y poner el dominio: lo decide el dueño).
+# Nunca quita el dominio: un fallo momentáneo de DNS no puede tumbar la web (lección patron_dominio-antes-dns).
 on:
   push:
+    branches: [claude/vibrant-dijkstra-gm1tot]
     paths:
       - ".github/workflows/dominio.yml"
   schedule:
-    - cron: "17 * * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
   pages: write
   contents: read
 
+concurrency:
+  group: dominio
+  cancel-in-progress: false
+
 jobs:
   revisar:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - name: Revisar DNS y ajustar el dominio
+      - name: Revisar DNS, certificado y HTTPS
         env:
           GH_TOKEN: ${{ github.token }}
           DOMINIO: josefineauto.com
+          REPO: ${{ github.repository }}
         run: |
           ips=$(dig +short A "$DOMINIO" | sort | tr '\n' ' ')
           echo "DNS de $DOMINIO: ${ips:-sin registros}"
-          actual=$(gh api "repos/${{ github.repository }}/pages" --jq '.cname // ""')
-          echo "Dominio configurado en Pages: ${actual:-ninguno}"
-          if echo "$ips" | grep -q "185.199.108.153"; then
-            if [ "$actual" != "$DOMINIO" ]; then
-              gh api -X PUT "repos/${{ github.repository }}/pages" -f cname="$DOMINIO" -f build_type=workflow
-              echo "Dominio conectado."
-            fi
-          elif [ -n "$actual" ]; then
-            gh api -X PUT "repos/${{ github.repository }}/pages" -F cname=null -f build_type=workflow
-            echo "DNS aún no listo: dominio quitado para que la web siga abriendo."
+          pages=$(gh api "repos/$REPO/pages")
+          cname=$(jq -r '.cname // ""' <<<"$pages")
+          forzado=$(jq -r '.https_enforced // false' <<<"$pages")
+          cert=$(jq -r '.https_certificate.state // "sin certificado"' <<<"$pages")
+          echo "Dominio en Pages: ${cname:-ninguno} · certificado: $cert · HTTPS forzado: $forzado"
+
+          if ! grep -q "185.199.108.153" <<<"$ips"; then
+            echo "El DNS no apunta a GitHub Pages: no se cambia nada."
+            exit 0
           fi
+          if [ "$cname" != "$DOMINIO" ]; then
+            gh api -X PUT "repos/$REPO/pages" -f cname="$DOMINIO" -f build_type=workflow
+            echo "Dominio conectado; GitHub pedirá el certificado."
+            exit 0
+          fi
+          case "$cert" in
+            approved)
+              if [ "$forzado" != "true" ]; then
+                gh api -X PUT "repos/$REPO/pages" -F https_enforced=true -f build_type=workflow
+                echo "HTTPS activado."
+              else
+                echo "Todo en orden: certificado emitido y HTTPS forzado."
+              fi ;;
+            errored|bad_authz|destroy_pending|dns_changed|authorization_revoked)
+              # No se arregla solo sin quitar el dominio (prohibido): solo se avisa
+              echo "::warning::Certificado con problema ($cert). Hace falta el dueño: Settings → Pages → Remove y volver a poner el dominio." ;;
+            *)
+              echo "Certificado en proceso ($cert): se revisa de nuevo en 15 minutos." ;;
+          esac

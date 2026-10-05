@@ -187,11 +187,19 @@ def dominio():
                 if f.suffix in (".html", ".xml", ".txt", ".js", ".json", ".webmanifest")]
     if not exige("Guardián de dominio", len(archivos)):
         return
-    patron = re.compile(r"github\.io/JosefineAuto|[\"'(]/JosefineAuto/")
+    # también nada cargado por http:// (rompe el candado HTTPS en el navegador)
+    patron = re.compile(
+        r"github\.io/JosefineAuto|[\"'(]/JosefineAuto/"
+        r"|\b(src|srcset|action|poster|data)\s*=\s*[\"']?\s*http://"      # recursos de la página
+        r"|<link\b[^>]*\bhref\s*=\s*[\"']?\s*http://"                  # hojas de estilo, iconos
+        r"|url\(\s*[\"']?\s*http://|@import\s+[\"']?http://|fetch\(\s*[\"']http://"
+        r"|\"(url|src|icon|start_url)\"\s*:\s*\"http://",
+        re.IGNORECASE,
+    )
     malos = [f"{f.relative_to(RAIZ)}:{i}" for f in archivos
              for i, l in enumerate(f.read_text(encoding="utf-8").splitlines(), 1) if patron.search(l)]
     for m in malos:
-        fallo("Guardián de dominio", f"{m} usa la dirección vieja; usa https://josefineauto.com/ o rutas relativas")
+        fallo("Guardián de dominio", f"{m} usa la dirección vieja o http://; usa https://josefineauto.com/ o rutas relativas")
     if not malos:
         ok("Guardián de dominio", len(archivos))
 

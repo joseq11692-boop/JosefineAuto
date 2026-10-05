@@ -11,6 +11,7 @@ Lo que está aquí no se vuelve a preguntar. Si dos normas chocan, manda la más
 | N04 | 2026-09 | Instagram | «cuando abras el instagram no entres automaticamente permiteme poner los datos nuevamente» | Chat |
 | N05 | 2026-09 | Contenido | Usar "carro" o "auto", no "coche", para la audiencia panameña. | `CLAUDE.md` (guardián en `herramientas/check.py`) |
 | N06 | 2026-10-05 | Todos los proyectos | «Te voy a dar reglas que quiero que implementes desde este momento a todos los proyectos, son reglas diamante» | Chat + `docs/reglas/Reglas-y-forma-de-trabajar-con-Claude-Code.docx` |
+| N07 | 2026-10-05 | Web | «pon mayor cantidad de atencion en que no salga como sitio inseguro quiero que se pueda entrar correctamente» + "Sí, actívalo" al proceso automático de HTTPS cada 15 min | Chat |
 
 ## Consecuencias de N06 en este proyecto (2026-10-05)
 - Gate `herramientas/check.py` en hook Stop y pre-push; lista `PENDIENTE-DUENO.md`; este registro; `CONTINUAR.md`; `IDEAS.md`; agente revisor.
