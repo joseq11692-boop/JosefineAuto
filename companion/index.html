@@ -104,6 +104,67 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
     </ul>
   </section>
 
+  <!-- DOMINIO -->
+  <section class="phase">
+    <div class="phase__head">
+      <h2>Lanzar josefineauto.com · 15 minutos</h2>
+      <p class="phase__when">Está libre. Cuesta unos $10–11 al año en Cloudflare. Necesita tu tarjeta, por eso lo haces tú.</p>
+    </div>
+
+    <article class="step" data-id="dom-comprar">
+      <input type="checkbox" class="check" id="c-dom-comprar" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Cloudflare</span><span class="chip chip--time">7 min</span></div>
+        <h3>Compra josefineauto.com</h3>
+        <ol>
+          <li>Toca <strong>"Crear cuenta"</strong>, pon tu correo y una contraseña. Abre el correo que te llega y toca el enlace para confirmar.</li>
+          <li>Toca <strong>"Registrar dominio"</strong>. En el buscador escribe <strong>josefineauto.com</strong> y toca <strong>Buscar</strong>.</li>
+          <li>Toca <strong>"Comprar"</strong> (o "Purchase") junto a josefineauto.com. Deja <strong>1 año</strong> y la <strong>renovación automática encendida</strong>.</li>
+          <li>Llena tus datos de contacto (nombre, dirección en Panamá, teléfono 6698-9569) y la tarjeta. Toca <strong>"Completar compra"</strong>.</li>
+          <li>Escríbele a Claude: <strong>"dominio comprado"</strong>.</li>
+        </ol>
+        <div class="copy"><pre id="t-dom">josefineauto.com</pre><button type="button" data-copy="t-dom">Copiar dominio</button></div>
+        <div class="links"><a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Crear cuenta</a><a href="https://dash.cloudflare.com/?to=/:account/domains/register" target="_blank" rel="noopener">Registrar dominio</a></div>
+        <p class="tip"><strong>Ojo:</strong> si Cloudflare te ofrece planes de pago para el sitio, elige <strong>Free</strong>. Solo pagas el dominio.</p>
+      </div>
+    </article>
+
+    <article class="step" data-id="dom-dns">
+      <input type="checkbox" class="check" id="c-dom-dns" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Cloudflare</span><span class="chip chip--time">5 min</span></div>
+        <h3>Conecta el dominio con tu web</h3>
+        <ol>
+          <li>En Cloudflare toca <strong>josefineauto.com</strong> → menú <strong>DNS</strong> → <strong>Registros</strong>.</li>
+          <li>Toca <strong>"Agregar registro"</strong> 5 veces, una por cada línea de abajo. En cada una: elige el <strong>Tipo</strong>, en <strong>Nombre</strong> pon lo de la segunda columna, en <strong>Contenido</strong> lo de la tercera.</li>
+          <li><strong>Muy importante:</strong> en cada registro apaga la nube naranja para que quede <strong>gris ("Solo DNS")</strong>. Si queda naranja, la web no tendrá candado.</li>
+          <li>Toca <strong>Guardar</strong> en cada uno.</li>
+        </ol>
+        <div class="copy"><pre id="t-dns">A      @     185.199.108.153
+A      @     185.199.109.153
+A      @     185.199.110.153
+A      @     185.199.111.153
+CNAME  www   joseq11692-boop.github.io</pre><button type="button" data-copy="t-dns">Copiar registros</button></div>
+      </div>
+    </article>
+
+    <article class="step" data-id="dom-github">
+      <input type="checkbox" class="check" id="c-dom-github" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">GitHub</span><span class="chip chip--time">3 min</span></div>
+        <h3>Avísale a GitHub cuál es tu dominio</h3>
+        <ol>
+          <li>Toca el botón. Entra con tu cuenta de GitHub.</li>
+          <li>En <strong>"Custom domain"</strong> escribe <strong>josefineauto.com</strong> y toca <strong>Save</strong>.</li>
+          <li>Espera unos minutos hasta ver el visto verde ✔ ("DNS check successful"). Puede tardar hasta 1 hora.</li>
+          <li>Marca la casilla <strong>"Enforce HTTPS"</strong> (si aún no se puede marcar, vuelve en 30 minutos).</li>
+          <li>Escríbele a Claude: <strong>"dominio listo"</strong>. Claude cambia todos los enlaces de la web, Instagram y Google al nuevo dominio.</li>
+        </ol>
+        <div class="links"><a href="https://github.com/joseq11692-boop/JosefineAuto/settings/pages" target="_blank" rel="noopener">Abrir ajustes de GitHub Pages</a></div>
+      </div>
+    </article>
+  </section>
+
   <!-- FASE 1 -->
   <section class="phase">
     <div class="phase__head">
