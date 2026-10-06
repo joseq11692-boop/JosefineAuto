@@ -33,14 +33,16 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           ips=$(dig +short A "$DOMINIO" | sort | tr '\n' ' ')
+          ips6=$(dig +short AAAA "$DOMINIO" | sort | tr '\n' ' ')
           pages=$(gh api "repos/$REPO/pages")
           cname=$(jq -r '.cname // ""' <<<"$pages")
           forzado=$(jq -r '.https_enforced // false' <<<"$pages")
           cert=$(jq -r '.https_certificate.state // "sin certificado"' <<<"$pages")
-          resumen="DNS: ${ips:-sin registros} · dominio en Pages: ${cname:-ninguno} · certificado: $cert · HTTPS forzado: $forzado"
+          resumen="DNS: ${ips:-sin registros} · IPv6: ${ips6:-ninguna} · dominio en Pages: ${cname:-ninguno} · certificado: $cert · HTTPS forzado: $forzado"
           echo "$resumen"
           echo "### Estado de $DOMINIO" >> "$GITHUB_STEP_SUMMARY"
           echo "$resumen" >> "$GITHUB_STEP_SUMMARY"
+          for ip6 in $ips6; do case "$ip6" in 2606:50c0:800[0-3]::153) ;; *) echo "::warning::AAAA $ip6 no es de GitHub Pages (deben ser 2606:50c0:8000-8003::153).";; esac; done
           if ! grep -q "185.199.108.153" <<<"$ips"; then echo "::warning::El DNS de $DOMINIO no apunta a GitHub Pages."; fi
           if [ "$cname" != "$DOMINIO" ]; then echo "::warning::El dominio no está puesto en Settings → Pages."; fi
           if [ "$cert" = "approved" ] && [ "$forzado" != "true" ]; then echo "::warning::Certificado listo: falta marcar Enforce HTTPS en Settings → Pages."; fi
