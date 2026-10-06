@@ -6,11 +6,9 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-05 · Candado de seguridad (HTTPS) en josefineauto.com** · 1 min + esperar
-  Claude corrigió los registros AAAA de Cloudflare (2026-10-06): apuntaban a IPv6 que no son las de GitHub Pages. Ahora toca volver a guardar el dominio.
-  1. Abre el enlace (cuenta **joseq11692-boop**) → **Remove** → escribe `josefineauto.com` → **Save**.
-  2. Cuando se pueda (hasta 1 hora), marca **Enforce HTTPS**.
-  3. Borra la llave de Cloudflare que le diste a Claude: https://dash.cloudflare.com/profile/api-tokens → los 3 puntos de la llave → **Delete**.
+- [ ] **DUENO-05 · Activar el candado (HTTPS)** · 10 segundos · ¡el certificado ya está listo! (2026-10-06 01:45 UTC)
+  1. Abre el enlace (cuenta **joseq11692-boop**) y marca la casilla **Enforce HTTPS**.
+  2. Borra la llave de Cloudflare que le diste a Claude: https://dash.cloudflare.com/profile/api-tokens → los 3 puntos → **Delete**.
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/settings/pages
 
 - [ ] **DUENO-06 · Poner el dominio nuevo en tu Instagram** · 1 min
