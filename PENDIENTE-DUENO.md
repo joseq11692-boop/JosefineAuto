@@ -30,9 +30,15 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Esta semana
 
-- [ ] **DUENO-03 · Datos del cliente del GLE 53 AMG Coupé** · 10 min con el cliente
-  Llena la ficha y mándale a Claude una foto o los datos.
+- [ ] **DUENO-03 · Firmar la consignación del GLE 53 con el cliente** · 15 min
+  Se publica a $65,000 en la web y el kit. Antes de mostrarlo a compradores:
+  1. Firmen el contrato de consignación (3 %, mínimo $1.500; la comisión sale del precio de venta).
+  2. Pide al cliente el **VIN** y mándaselo a Claude. Claude hace gratis la consulta de robo/pérdida total (NICB VINCheck). El historial completo de USA (Carfax) tiene costo: solo si tú lo decides.
   Enlace: https://josefineauto.com/kit/ficha-consignacion.html
+
+- [ ] **DUENO-08 · Publicar el carrusel del GLE 53 en Instagram** · 5 min
+  En el kit: guarda las 7 imágenes en orden, toca "Copiar texto" y publícalo como carrusel. Fija el post en tu perfil.
+  Enlace: https://josefineauto.com/kit/
 
 - [ ] **DUENO-04 · Reglas diamante en todos tus proyectos** · 2 min en tu computadora
   Claude solo puede escribir en este proyecto. Para que las reglas valgan en todos:
