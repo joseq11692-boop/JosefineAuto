@@ -15,6 +15,7 @@ Para retomar el trabajo en una sesión nueva. Se actualiza al cerrar cada sesió
 3. Proponer al dueño quitar la rama "quitar dominio" de `.github/workflows/dominio.yml` (🔴): un fallo momentáneo de DNS quitaría el dominio una hora.
 
 ## Lecciones
+- **gotcha_repo-publico** (2026-10-06): el repo joseq11692-boop/JosefineAuto es PÚBLICO. Nunca escribir datos de clientes (mínimos de precio, VIN, nombres, teléfonos) en ningún archivo: se quedan en el historial de git. El mínimo del GLE 53 llegó a subirse en el commit 14cabc7; desde 8787007+ ya no está en los archivos, pero sigue en el historial (borrarlo exigiría reescribir la historia, ⛔ sin el dueño).
 - **gotcha_pages-token-403** (2026-10-05): el GITHUB_TOKEN de Actions puede LEER la configuración de Pages pero no cambiarla (PUT → 403 "Resource not accessible by integration", ejecución 37391234867). Dominio, certificado y Enforce HTTPS los cambia el dueño (DUENO-05). `dominio.yml` quedó como vigilante de solo lectura cada hora. El guardián del gate rechaza recursos por http://.
 - **gotcha_certificado-sin-pedir** (2026-10-05): si el dominio se guarda en Pages antes de que exista el DNS, GitHub no pide el certificado: hay que quitarlo y volver a ponerlo con el DNS ya correcto.
 - **patron_sellos-por-carro** (2026-10-05): la ficha de cada carro afirmaba "Papeles verificados / Prueba anti-inundación / Revisado en taller" en todos, sin comprobarlo. Causa: sellos fijos en `web/app.js`. Prevención: ahora solo salen si el carro trae `sellos` en `web/datos.js` (nada se afirma por defecto).

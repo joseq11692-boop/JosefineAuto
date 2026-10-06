@@ -13,7 +13,7 @@ Lo que está aquí no se vuelve a preguntar. Si dos normas chocan, manda la más
 | N06 | 2026-10-05 | Todos los proyectos | «Te voy a dar reglas que quiero que implementes desde este momento a todos los proyectos, son reglas diamante» | Chat + `docs/reglas/Reglas-y-forma-de-trabajar-con-Claude-Code.docx` |
 | N07 | 2026-10-05 | Web | «pon mayor cantidad de atencion en que no salga como sitio inseguro quiero que se pueda entrar correctamente» + "Sí, actívalo" al proceso automático de HTTPS cada 15 min | Chat |
 | N08 | 2026-10-05 | Web | "Sí, hazlo ahora" a quitar y volver a poner josefineauto.com una vez (workflow `dominio.yml`, repedir=true) para que GitHub emita el certificado HTTPS | Chat (pregunta de opción múltiple) |
-| N09 | 2026-10-06 | GLE 53 | Precio de publicación: «dejale lo que dice el ciente y de en lo que se venda de ahi se saca la comision» → $65,000; la comisión sale del precio final | Chat |
+| N09 | 2026-10-06 | GLE 53 | Precio de publicación: «dejale lo que dice el ciente y de en lo que se venda de ahi se saca la comision» → precio del cliente (ya no se publica, ver N10); la comisión sale del precio final | Chat |
 | N10 | 2026-10-06 | GLE 53 | «quita el precio y quita mi numero y di que precio al DM» (post y ficha web; reemplaza el precio publicado de N09) | Chat |
 
 ## Consecuencias de N06 en este proyecto (2026-10-05)
