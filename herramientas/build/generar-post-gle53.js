@@ -1,5 +1,5 @@
 /* Carrusel de venta: Mercedes-AMG GLE 53 Coupé (consignación). 7 láminas 1080x1350.
-   Solo datos visibles en las fotos o dados por el dueño; precio fijado por el dueño del carro ($65,000, 2026-10-06).
+   Solo datos visibles en las fotos o dados por el dueño; precio solo por DM (orden del dueño, 2026-10-06).
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-gle53.js
    Salida: web/kit/img/post5-gle53-XX.png */
 const { chromium } = require("playwright");
@@ -49,7 +49,7 @@ const T = 7;
 
 const LAMINAS = [
   `<div class="s"><div class="bg" style="background-image:url('${foto(1)}');background-position:center 62%"></div><div class="velo"></div>${top(`1/${T}`)}
-    <div class="txt"><span class="tag">En venta · $65,000</span><h1>Mercedes-AMG<br><em>GLE 53</em> Coupé</h1>${F}
+    <div class="txt"><span class="tag">En venta</span><h1>Mercedes-AMG<br><em>GLE 53</em> Coupé</h1>${F}
     <div class="chips"><span>2021</span><span>56,000 km</span><span>Automático</span><span>Blanco</span></div></div>${pie}</div>`,
   `<div class="s"><div class="ancha" style="background-image:url('${foto(3)}')"></div>${top(`2/${T}`)}
     <div class="txt"><h2>Silueta<br><em>coupé</em></h2>${F}<div class="chips"><span>Parrilla AMG Panamericana</span><span>Estribos laterales</span><span>Faros LED</span></div></div>${pie}</div>`,
@@ -62,7 +62,7 @@ const LAMINAS = [
   `<div class="s"><div class="bg" style="background-image:url('${foto(2)}');background-position:center 40%"></div><div class="velo"></div>${top(`6/${T}`)}
     <div class="txt"><h2>Lo que<br><em>trae</em></h2>${F}<div class="chips"><span>XPEL PPF en todo el carro</span><span>Michelin nuevas</span><span>Importado de USA</span><span>Sin choques</span><span>Libre para traspaso</span><span>Gasolina 95</span></div></div>${pie}</div>`,
   `<div class="s cta">${top(`7/${T}`)}<div class="txt"><h2>¿Te interesa<br>el GLE 53?</h2>${F}<p>Comenta</p><span class="comenta">GLE</span>
-    <div class="lista"><span>💵 $65,000 negociable</span><span>📲 WhatsApp 6698-9569</span></div></div>${pie}</div>`,
+    <div class="lista"><span>💬 Precio por DM</span></div></div>${pie}</div>`,
 ];
 
 (async () => {

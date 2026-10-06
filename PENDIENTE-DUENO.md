@@ -31,7 +31,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 ## Esta semana
 
 - [ ] **DUENO-03 · Firmar la consignación del GLE 53 con el cliente** · 15 min
-  Se publica a $65,000 en la web y el kit. Antes de mostrarlo a compradores:
+  Publicado con "Precio por DM" (mínimo del cliente: $65,000). Antes de mostrarlo a compradores:
   1. Firmen el contrato de consignación (3 %, mínimo $1.500; la comisión sale del precio de venta).
   2. Pide al cliente el **VIN** y mándaselo a Claude. Claude hace gratis la consulta de robo/pérdida total (NICB VINCheck). El historial completo de USA (Carfax) tiene costo: solo si tú lo decides.
   Enlace: https://josefineauto.com/kit/ficha-consignacion.html

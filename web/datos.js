@@ -64,7 +64,6 @@ window.INVENTARIO = [
     "anio": 2021,
     "km": 56000,
     "transmision": "Automática",
-    "precio": 65000,
     "estado": "disponible",
     "tipo": "consignacion",
     "fotos": [

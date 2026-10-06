@@ -64,7 +64,7 @@
         '<div class="carro__sobre">' +
           "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">A comisión</span>' : "") + "</h3>" +
           '<ul class="carro__datos">' + datosDe(c).map(function (d) { return "<li>" + escapar(d) + "</li>"; }).join("") + "</ul>" +
-          '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
+          '<p class="carro__precio">' + (vendido ? "Vendido" : (c.precio ? dinero.format(c.precio) : "Precio por DM")) + "</p>" +
         "</div>" +
       "</div>" +
       ((c.destacado || c.defectos || !vendido) ? '<div class="carro__cuerpo">' +
@@ -102,7 +102,7 @@
     document.getElementById("ficha-info").innerHTML =
       '<span class="carro__estado estado--' + escapar(c.estado) + ' ficha-carro__estado">' + escapar(c.estado) + "</span>" +
       '<h2 id="ficha-titulo">' + escapar(titulo) + "</h2>" +
-      '<p class="carro__precio">' + (vendido ? "Vendido" : dinero.format(c.precio)) + "</p>" +
+      '<p class="carro__precio">' + (vendido ? "Vendido" : (c.precio ? dinero.format(c.precio) : "Precio por DM")) + "</p>" +
       '<dl class="ficha-carro__datos">' +
         [["Año", c.anio], ["Kilometraje", c.km ? numero.format(c.km) + " km" : ""], ["Motor", c.motor], ["Transmisión", c.transmision],
          ["Venta", c.tipo === "consignacion" ? "A comisión" : (c.tipo === "propio" ? "Josefine Auto" : "")]]
