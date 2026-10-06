@@ -34,7 +34,7 @@ em{font-style:normal;color:#e11d2e}
 .chips span{font-family:'IBM Plex Mono',monospace;font-size:28px;border:2px solid rgba(255,255,255,.7);border-radius:99px;padding:9px 24px;background:rgba(20,22,26,.35)}
 .dos{position:absolute;left:0;right:0;top:0;height:1000px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .dos div{background-size:cover;background-position:center}
-.ancha{position:absolute;left:0;right:0;top:170px;height:610px;background-size:cover;background-position:center}
+.ancha{position:absolute;left:0;right:0;top:290px;height:608px;background-size:cover;background-position:center}
 .cta{background:#e11d2e}
 .cta .f span:nth-child(3){background:#14161a}.cta em{color:#14161a}
 .cta .txt{bottom:auto;top:260px;gap:34px}
@@ -52,11 +52,11 @@ const LAMINAS = [
     <div class="txt"><span class="tag">En venta</span><h1>Mercedes-AMG<br><em>GLE 53</em> Coupé</h1>${F}
     <div class="chips"><span>2021</span><span>56,000 km</span><span>Automático</span><span>Blanco</span></div></div>${pie}</div>`,
   `<div class="s"><div class="ancha" style="background-image:url('${foto(3)}')"></div>${top(`2/${T}`)}
-    <div class="txt"><h2>Silueta<br><em>coupé</em></h2>${F}<div class="chips"><span>Parrilla AMG Panamericana</span><span>Estribos laterales</span><span>Faros LED</span></div></div>${pie}</div>`,
+    <div class="txt"><div class="chips"><span>Parrilla AMG Panamericana</span><span>Estribos laterales</span><span>Faros LED</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(4)}')"></div><div style="background-image:url('${foto(5)}')"></div></div><div class="velo"></div>${top(`3/${T}`)}
-    <div class="txt"><h2>Detrás,<br><em>pura AMG</em></h2><div class="chips"><span>4 salidas de escape</span><span>Alerón forrado en negro</span></div></div>${pie}</div>`,
+    <div class="txt"><div class="chips"><span>4 salidas de escape</span><span>Alerón forrado en negro</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(6)}')"></div><div style="background-image:url('${foto(7)}')"></div></div><div class="velo"></div>${top(`4/${T}`)}
-    <div class="txt"><h2>Cabina<br><em>AMG</em></h2><div class="chips"><span>Volante AMG en Alcantara</span><span>Interior negro</span><span>Pedales deportivos</span></div></div>${pie}</div>`,
+    <div class="txt"><div class="chips"><span>Volante AMG en Alcantara</span><span>Interior negro</span><span>Pedales deportivos</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(8)}')"></div><div style="background-image:url('${foto(9)}')"></div></div><div class="velo"></div>${top(`5/${T}`)}
     <div class="txt"><h2>Rines AMG<br><em>22"</em></h2><div class="chips"><span>Michelin nuevas</span><span>Cálipers pintados en rojo</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(2)}');background-position:center 40%"></div><div class="velo"></div>${top(`6/${T}`)}
