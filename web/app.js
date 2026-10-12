@@ -170,15 +170,18 @@
     document.getElementById("inventario-vacio").hidden = false;
   }
 
-  // Formulario "Busco carro"
+  // Formulario "Te lo conseguimos"
   document.getElementById("form-busco").addEventListener("submit", function (e) {
     e.preventDefault();
     var d = new FormData(e.target);
-    var texto = "Hola Josefine Auto, estoy buscando carro.\n" +
-      "• Modelo: " + d.get("modelo") + "\n" +
+    var texto = "Hola Josefine Auto, busco un auto en particular. ¿Me lo consiguen?\n" +
+      "• Nombre: " + d.get("nombre") + "\n" +
+      "• WhatsApp: " + d.get("telefono") + "\n" +
+      "• Carro: " + d.get("modelo") + (d.get("anios") ? " " + d.get("anios") : "") + "\n" +
       "• Presupuesto: " + (d.get("presupuesto") ? "$" + d.get("presupuesto") : "por definir") + "\n" +
       "• Transmisión: " + d.get("transmision") + "\n" +
-      "Avísenme cuando entre uno.";
+      "• Detalles: " + (d.get("detalles") || "ninguno") + "\n" +
+      "Avísenme cuando lo encuentren.";
     window.open(enlaceWhatsApp(texto), "_blank", "noopener");
   });
 

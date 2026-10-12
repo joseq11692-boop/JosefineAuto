@@ -100,6 +100,7 @@ em { font-style: normal; color: var(--acento); }
 
 /* Secciones */
 .seccion { padding: clamp(56px, 9vw, 104px) 0; }
+section[id] { scroll-margin-top: 76px; }
 .seccion--alterna { background: var(--papel-2); border-block: 1px solid var(--linea); }
 .seccion__cab { display: grid; gap: 10px; margin-bottom: 36px; }
 .seccion__cab h2 { margin: 0; }
@@ -174,7 +175,6 @@ em { font-style: normal; color: var(--acento); }
 .formulario { display: grid; gap: 14px; }
 .formulario.tarjeta { padding: 26px; }
 .formulario h3 { margin: 0; }
-.formulario--fila { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); align-items: end; margin-top: 12px; }
 .formulario label { display: grid; gap: 6px; font-size: .78rem; color: var(--suave); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
 .formulario input, .formulario select, .formulario textarea {
   font: inherit; font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--tinta); background: var(--papel); border: 1px solid var(--linea);
@@ -256,6 +256,7 @@ em { font-style: normal; color: var(--acento); }
 }
 
 /* Móvil */
+@media (max-width: 1080px) { .menu { gap: 16px; } .menu a { font-size: .84rem; } }
 @media (max-width: 860px) {
   .menu { display: none; }
   .dos-col { grid-template-columns: 1fr; gap: 32px; }

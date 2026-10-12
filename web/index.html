@@ -32,6 +32,7 @@
       <a href="#inicio" class="logo" aria-label="Josefine Auto, inicio"><img src="img/logo-firma.svg" alt="Josefine Auto" width="116" height="82"></a>
       <nav class="menu" aria-label="Principal">
         <a href="#inventario">Inventario</a>
+        <a href="#consigue">Te lo conseguimos</a>
         <a href="#vende">Vende tu carro</a>
         <a href="#metodo">Cómo trabajamos</a>
         <a href="#vendidos">Vendidos</a>
@@ -71,14 +72,7 @@
         <div id="inventario-vacio" class="vacio" hidden>
           <h3>Estamos seleccionando los próximos carros</h3>
           <p>Rechazamos la mayoría de los carros que vemos. Dinos qué buscas y te avisamos primero cuando entre uno que encaje.</p>
-          <form id="form-busco" class="formulario formulario--fila">
-            <label>Marca y modelo<input name="modelo" required placeholder="Ej.: Mazda3, Civic, Corolla"></label>
-            <label>Presupuesto (USD)<input name="presupuesto" inputmode="numeric" placeholder="Ej.: 6000"></label>
-            <label>Transmisión
-              <select name="transmision"><option>Automática</option><option>Manual</option><option>Me da igual</option></select>
-            </label>
-            <button class="boton" type="submit">Avisarme por WhatsApp</button>
-          </form>
+          <a class="boton" href="#consigue" style="justify-self:start">Dinos qué buscas</a>
         </div>
       </div>
     </section>
@@ -87,6 +81,39 @@
       <div class="contenedor">
         <div class="seccion__cab"><h2>Vendidos recientemente</h2><div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div><p class="seccion__sub">Desde un BMW 320i hasta un Maserati Ghibli. Toca cualquiera para ver sus fotos.</p></div>
         <div id="lista-vendidos" class="rejilla"></div>
+      </div>
+    </section>
+
+    <section id="consigue" class="seccion">
+      <div class="contenedor dos-col">
+        <div>
+          <h2>¿Buscas un auto en particular?<br><em>Te lo conseguimos.</em></h2>
+          <div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <p>¿Buscas un modelo específico y no lo ves en el inventario? Escríbenos y lo buscamos por ti.</p>
+          <ol class="pasos">
+            <li><strong>Nos dices</strong> qué carro buscas y tu presupuesto.</li>
+            <li><strong>Lo buscamos</strong> y lo revisamos con nuestro método.</li>
+            <li><strong>Te escribimos</strong> cuando encontremos uno que encaje.</li>
+          </ol>
+        </div>
+        <form id="form-busco" class="formulario tarjeta">
+          <h3>Déjanos tus datos</h3>
+          <div class="fila">
+            <label>Tu nombre<input name="nombre" required autocomplete="name" placeholder="Ej.: Carlos"></label>
+            <label>Tu WhatsApp<input name="telefono" type="tel" required autocomplete="tel" inputmode="tel" placeholder="6000-0000"></label>
+          </div>
+          <label>Marca y modelo que buscas<input name="modelo" required placeholder="Ej.: Civic Si, Mazda3, 4Runner"></label>
+          <div class="fila">
+            <label>Años<input name="anios" placeholder="Ej.: 2015-2019"></label>
+            <label>Presupuesto $<input name="presupuesto" inputmode="numeric" placeholder="Ej.: 12000"></label>
+          </div>
+          <label>Transmisión
+            <select name="transmision"><option>Me da igual</option><option>Automática</option><option>Manual</option></select>
+          </label>
+          <label>Detalles (color, km, extras)<textarea name="detalles" rows="3" placeholder="Ej.: negro, menos de 100,000 km"></textarea></label>
+          <button class="boton" type="submit">Enviar por WhatsApp</button>
+          <p class="nota nota--chica">Se abre WhatsApp con tus datos ya escritos. La web no guarda tus datos.</p>
+        </form>
       </div>
     </section>
 
