@@ -1,20 +1,22 @@
 /* Post de agradecimiento: 100 seguidores en @josefineauto (dato dado por el dueño, 2026-10-13). 1 lámina 1080x1350.
-   Fondo: mosaico con la primera foto de los 12 carros vendidos de web/datos.js.
+   Fondo (pedido del dueño): carros de sus historias de racing y car spotting. Racing: fotos que mandó el dueño
+   (placa tapada con la de Josefine) en herramientas/build/fotos-post-100/ + proyectos; car spotting: web/img/escena/.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-100.js [chakra-petch-700.ttf]
    (el .ttf opcional se incrusta si Google Fonts no carga)
    Salida: web/kit/img/post6-100-01.png */
 const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
-const vm = require("vm");
 
 const RAIZ = path.resolve(__dirname, "../..");
 const OUT = path.join(RAIZ, "web", "kit", "img");
-const ctx = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(RAIZ, "web/datos.js"), "utf8"), ctx);
-const inventario = ctx.window.INVENTARIO;
-const vendidos = inventario.filter((c) => c.estado === "vendido");
-const foto = (c) => "data:image/jpeg;base64," + fs.readFileSync(path.join(RAIZ, "web", c.fotos[0])).toString("base64");
+const FONDOS = [ // racing y los más llamativos en las columnas laterales; el centro queda tapado por el texto
+  "herramientas/build/fotos-post-100/integra-type-r.jpg", "web/img/escena/lexus-santa-maria/02.jpg", "herramientas/build/fotos-post-100/bmw-m3.jpg",
+  "web/img/proyectos/lancer-evo-vi-gsr-1999.jpg", "web/img/escena/lexus-santa-maria/04.jpg", "herramientas/build/fotos-post-100/civic-si.jpg",
+  "web/img/escena/the-collection-mexico/02.jpg", "web/img/escena/lexus-santa-maria/03.jpg", "web/img/escena/the-collection-mexico/03.jpg",
+  "web/img/escena/jetour-g700/02.jpg", "web/img/escena/the-collection-mexico/01.jpg", "web/img/escena/the-collection-mexico/04.jpg",
+];
+const foto = (f) => "data:image/jpeg;base64," + fs.readFileSync(path.join(RAIZ, f)).toString("base64");
 const FIRMA_B = "data:image/svg+xml;base64," + fs.readFileSync(path.join(RAIZ, "web/img/logo-firma-blanco.svg")).toString("base64");
 
 const TTF = process.argv[2] ? `@font-face{font-family:'Chakra Petch';font-weight:700;src:url(data:font/ttf;base64,${fs.readFileSync(process.argv[2]).toString("base64")})}` : "";
@@ -38,7 +40,7 @@ body{width:1080px;height:1350px;font-family:Inter,sans-serif;overflow:hidden;bac
 .msg em{font-style:normal;color:#e11d2e}
 .pie{position:absolute;bottom:56px;left:70px;right:70px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:.08em;opacity:.9;z-index:3}
 `;
-const html = `<div class="s"><div class="mosaico">${vendidos.slice(0, 12).map((c) => `<div style="background-image:url('${foto(c)}')"></div>`).join("")}</div><div class="velo"></div>
+const html = `<div class="s"><div class="mosaico">${FONDOS.map((c) => `<div style="background-image:url('${foto(c)}')"></div>`).join("")}</div><div class="velo"></div>
 <div class="top"><img src="${FIRMA_B}"></div>
 <div class="centro"><div class="gracias">¡Gracias!</div><div class="cien">100</div><div class="seg">seguidores</div>
 <div class="f"><span></span><span></span><span></span><span></span></div>
@@ -50,7 +52,7 @@ const html = `<div class="s"><div class="mosaico">${vendidos.slice(0, 12).map((c
   const p = await b.newPage({ viewport: { width: 1080, height: 1350 }, ignoreHTTPSErrors: true });
   await p.setContent(`<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet"><style>${CSS}</style></head><body>${html}</body></html>`, { waitUntil: "networkidle" });
   await p.evaluate(() => document.fonts.ready);
-  console.log("Lámina lista · carros vendidos en el mosaico:", Math.min(vendidos.length, 12));
+  console.log("Lámina lista · fotos en el mosaico:", FONDOS.length);
   await p.screenshot({ path: path.join(OUT, "post6-100-01.png") });
   await b.close();
 })();
