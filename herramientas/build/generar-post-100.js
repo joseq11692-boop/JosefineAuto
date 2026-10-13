@@ -1,0 +1,56 @@
+/* Post de agradecimiento: 100 seguidores en @josefineauto (dato dado por el dueño, 2026-10-13). 1 lámina 1080x1350.
+   Fondo: mosaico con la primera foto de los 12 carros vendidos de web/datos.js.
+   Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-100.js [chakra-petch-700.ttf]
+   (el .ttf opcional se incrusta si Google Fonts no carga)
+   Salida: web/kit/img/post6-100-01.png */
+const { chromium } = require("playwright");
+const fs = require("fs");
+const path = require("path");
+const vm = require("vm");
+
+const RAIZ = path.resolve(__dirname, "../..");
+const OUT = path.join(RAIZ, "web", "kit", "img");
+const ctx = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(RAIZ, "web/datos.js"), "utf8"), ctx);
+const inventario = ctx.window.INVENTARIO;
+const vendidos = inventario.filter((c) => c.estado === "vendido");
+const foto = (c) => "data:image/jpeg;base64," + fs.readFileSync(path.join(RAIZ, "web", c.fotos[0])).toString("base64");
+const FIRMA_B = "data:image/svg+xml;base64," + fs.readFileSync(path.join(RAIZ, "web/img/logo-firma-blanco.svg")).toString("base64");
+
+const TTF = process.argv[2] ? `@font-face{font-family:'Chakra Petch';font-weight:700;src:url(data:font/ttf;base64,${fs.readFileSync(process.argv[2]).toString("base64")})}` : "";
+const CSS = TTF + `
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1350px;font-family:Inter,sans-serif;overflow:hidden;background:#14161a;color:#fff}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden}
+.mosaico{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:6px;filter:grayscale(.35) brightness(.55)}
+.mosaico div{background-size:cover;background-position:center}
+.velo{position:absolute;inset:0;background:radial-gradient(ellipse 70% 52% at 50% 50%,rgba(20,22,26,.94) 0%,rgba(20,22,26,.82) 55%,rgba(20,22,26,.35) 100%)}
+.top{position:absolute;top:60px;left:70px;right:70px;display:flex;justify-content:center;z-index:3}
+.top img{height:104px}
+.centro{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;gap:6px;z-index:2}
+.gracias{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:64px;letter-spacing:.24em;text-transform:uppercase;margin-left:.24em}
+.cien{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:400px;line-height:.82;color:#e11d2e;letter-spacing:-.02em}
+.seg{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:62px;letter-spacing:.1em;text-transform:uppercase}
+.f{display:grid;gap:10px;width:380px;margin:26px 0 30px}.f span{display:block;height:9px;border-radius:9px}
+.f span:nth-child(1){background:#3438b8}.f span:nth-child(2){background:#fff;width:88%;margin-left:12%}
+.f span:nth-child(3){background:#c8202b;width:62%;margin-left:30%}.f span:nth-child(4){background:#d9a62a;width:40%;margin-left:42%}
+.msg{font-size:38px;line-height:1.35;max-width:780px;font-weight:600}
+.msg em{font-style:normal;color:#e11d2e}
+.pie{position:absolute;bottom:56px;left:70px;right:70px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:.08em;opacity:.9;z-index:3}
+`;
+const html = `<div class="s"><div class="mosaico">${vendidos.slice(0, 12).map((c) => `<div style="background-image:url('${foto(c)}')"></div>`).join("")}</div><div class="velo"></div>
+<div class="top"><img src="${FIRMA_B}"></div>
+<div class="centro"><div class="gracias">¡Gracias!</div><div class="cien">100</div><div class="seg">seguidores</div>
+<div class="f"><span></span><span></span><span></span><span></span></div>
+<p class="msg">Gracias por cada like,<br>cada comentario y cada DM.<br>Esto apenas <em>arranca</em>. 🏁</p></div>
+<div class="pie"><span>@josefineauto</span><span>JOSEFINEAUTO.COM</span></div></div>`;
+
+(async () => {
+  const b = await chromium.launch();
+  const p = await b.newPage({ viewport: { width: 1080, height: 1350 }, ignoreHTTPSErrors: true });
+  await p.setContent(`<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet"><style>${CSS}</style></head><body>${html}</body></html>`, { waitUntil: "networkidle" });
+  await p.evaluate(() => document.fonts.ready);
+  console.log("Lámina lista · carros vendidos en el mosaico:", Math.min(vendidos.length, 12));
+  await p.screenshot({ path: path.join(OUT, "post6-100-01.png") });
+  await b.close();
+})();
