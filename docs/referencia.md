@@ -22,7 +22,7 @@ Trasladado desde `CLAUDE.md` el 2026-10-05, sin borrar nada (regla: al podar se 
 ## Web y app
 
 - Web pública en `web/` (GitHub Pages; se publica sola con cada push a la rama por defecto `claude/vibrant-dijkstra-gm1tot`): https://josefineauto.com/ · app del fundador (PWA) en `/panel/` · kit privado de Instagram en `/kit/`.
-- Dominio propio comprado en Cloudflare el 2026-10-05: **josefineauto.com** (vence 2027-10-05). DNS creado por el dueño el 2026-10-05 (4 A a 185.199.108-111.153 + CNAME www); falta HTTPS (DUENO-05). El workflow `.github/workflows/dominio.yml` lo conecta o desconecta según el DNS.
+- Dominio propio comprado en Cloudflare el 2026-10-05: **josefineauto.com** (vence 2027-10-05). DNS creado por el dueño el 2026-10-05 (4 A a 185.199.108-111.153 + CNAME www); AAAA 2606:50c0:8000-8003::153. HTTPS forzado desde el 2026-10-13 (verificado con `dominio.yml`, ejecución 38348672493). `dominio.yml` es un vigilante de solo lectura cada hora.
 - Añadir un carro: fotos en `web/img/carros/<slug>/NN.jpg` y bloque en `INVENTARIO` de `web/datos.js`.
 - Guías: `herramientas/guias/*.md` → `python3 herramientas/build/generar-guias.py` (genera `web/guias/`, `web/guias.js`, `web/404.html`, `web/sitemap.xml`).
 - Kit de Instagram en `web/kit/`; imágenes con `herramientas/build/generar-posts.js`, `generar-post-vendidos.js` y `generar-post-nosotros.js` (Playwright).

@@ -6,10 +6,9 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-05 · Activar el candado (HTTPS)** · 10 segundos · ¡el certificado ya está listo! (2026-10-06 01:45 UTC)
-  1. Abre el enlace (cuenta **joseq11692-boop**) y marca la casilla **Enforce HTTPS**.
-  2. Borra la llave de Cloudflare que le diste a Claude: https://dash.cloudflare.com/profile/api-tokens → los 3 puntos → **Delete**.
-  Enlace: https://github.com/joseq11692-boop/JosefineAuto/settings/pages
+- [ ] **DUENO-09 · Borrar la llave de Cloudflare** · 1 min · ya no hace falta
+  En la llave que creaste para Claude: los 3 puntos → **Delete**.
+  Enlace: https://dash.cloudflare.com/profile/api-tokens
 
 - [ ] **DUENO-06 · Poner el dominio nuevo en tu Instagram** · 1 min
   Instagram → Editar perfil → Enlaces → cambia el enlace por: https://josefineauto.com/
@@ -44,6 +43,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Hecho
 
+- [x] DUENO-05 · Enforce HTTPS marcado (2026-10-13). Verificado: monitor `dominio.yml` ejecución 38348672493 → "certificado: approved · HTTPS forzado: true".
 - [x] DUENO-01 y DUENO-02 · DNS de josefineauto.com creado por el dueño (2026-10-05).
 
 - [x] Comprar josefineauto.com en Cloudflare (2026-10-05).
