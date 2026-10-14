@@ -15,6 +15,7 @@ Lo que está aquí no se vuelve a preguntar. Si dos normas chocan, manda la más
 | N08 | 2026-10-05 | Web | "Sí, hazlo ahora" a quitar y volver a poner josefineauto.com una vez (workflow `dominio.yml`, repedir=true) para que GitHub emita el certificado HTTPS | Chat (pregunta de opción múltiple) |
 | N09 | 2026-10-06 | GLE 53 | Precio de publicación: «dejale lo que dice el ciente y de en lo que se venda de ahi se saca la comision» → precio del cliente (ya no se publica, ver N10); la comisión sale del precio final | Chat |
 | N10 | 2026-10-06 | GLE 53 | «quita el precio y quita mi numero y di que precio al DM» (post y ficha web; reemplaza el precio publicado de N09) | Chat |
+| N11 | 2026-10-14 | Web: GLE 53 y BMW X3 | «En el mercedes quita el Precio a comisiones y pon 65,000 y al Bmw 11,500» → GLE 53 sin etiqueta "A comisión" y $65,000; BMW X3 M Sport 2014 $11,500 (reemplaza N10 para la web). Publicado en la misma sesión por elección del dueño ("Hazlo aquí, por esta vez"), excepción a la regla diamante de precios en sesión nueva | Chat (pregunta de opción múltiple) |
 
 ## Consecuencias de N06 en este proyecto (2026-10-05)
 - Gate `herramientas/check.py` en hook Stop y pre-push; lista `PENDIENTE-DUENO.md`; este registro; `CONTINUAR.md`; `IDEAS.md`; agente revisor.

@@ -64,8 +64,8 @@ window.INVENTARIO = [
     "anio": 2021,
     "km": 56000,
     "transmision": "Automática",
+    "precio": 65000,
     "estado": "disponible",
-    "tipo": "consignacion",
     "fotos": [
       "img/carros/mercedes-amg-gle-53-coupe/01.jpg",
       "img/carros/mercedes-amg-gle-53-coupe/02.jpg",
@@ -87,6 +87,7 @@ window.INVENTARIO = [
     "anio": 2014,
     "km": 150590,
     "transmision": "Automática",
+    "precio": 11500,
     "estado": "disponible",
     "fotos": [
       "img/carros/bmw-x3-m-sport-2014/01.jpg",
