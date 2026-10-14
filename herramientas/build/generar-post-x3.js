@@ -1,5 +1,5 @@
-/* Carrusel de venta: BMW X3 M Sport 2014. 7 láminas 1080x1350.
-   Solo datos dados por el dueño (modelo y año, 2026-10-14) o visibles en las fotos (km del tablero, emblemas M,
+/* Carrusel de venta: BMW X3 xDrive28i M Sport 2014 (xDrive28i dado por el dueño). 7 láminas 1080x1350.
+   Solo datos dados por el dueño (modelo y año, 2026-10-14) o visibles en las fotos (km del tablero, insignias M Sport,
    levas, doble escape, motor TwinPower Turbo); placa real tapada con la de Josefine; precio solo por DM.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-x3.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post7-x3-XX.png */
@@ -51,12 +51,12 @@ const T = 7;
 
 const LAMINAS = [
   `<div class="s"><div class="bg" style="background-image:url('${foto(1)}');background-position:center 70%"></div><div class="velo"></div>${top(`1/${T}`)}
-    <div class="txt"><span class="tag">En venta</span><h1>BMW X3<br><em>M Sport</em></h1>${F}
+    <div class="txt"><span class="tag">En venta</span><h1>BMW X3 <span style="text-transform:none">xDrive28i</span><br><em>M Sport</em></h1>${F}
     <div class="chips"><span>2014</span><span>150,590 km</span><span>Automática</span><span>Negro</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(2)}');background-position:center 70%"></div><div class="velo"></div>${top(`2/${T}`)}
     <div class="txt"><div class="chips"><span>Paquete M Sport</span><span>Rines oscuros</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(3)}')"></div><div style="background-image:url('${foto(4)}')"></div></div><div class="velo"></div>${top(`3/${T}`)}
-    <div class="txt"><div class="chips"><span>Doble salida de escape</span><span>Emblema M</span></div></div>${pie}</div>`,
+    <div class="txt"><div class="chips"><span>Doble salida de escape</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(6)}')"></div><div style="background-image:url('${foto(7)}')"></div></div><div class="velo"></div>${top(`4/${T}`)}
     <div class="txt"><div class="chips"><span>Volante M con levas</span><span>Interior negro</span><span>Pantalla con mapa</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(8)}')"></div><div style="background-image:url('${foto(9)}')"></div></div><div class="velo"></div>${top(`5/${T}`)}
