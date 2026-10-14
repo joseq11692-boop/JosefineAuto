@@ -6,10 +6,6 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-06 · Poner el dominio nuevo en tu Instagram** · 1 min
-  Instagram → Editar perfil → Enlaces → cambia el enlace por: https://josefineauto.com/
-  Enlace: https://www.instagram.com/accounts/edit/
-
 - [ ] **DUENO-07 · Pasar los datos de tu app al dominio nuevo** · 3 min · solo si ya guardaste carros en la app
   La app guarda todo en tu celular, atado a la dirección vieja. En josefineauto.com/panel arranca vacía.
   1. Pon el celular en **modo avión** y abre la app Josefine Gestión que tienes instalada.
@@ -39,6 +35,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Hecho
 
+- [x] DUENO-06 · josefineauto.com puesto en el perfil de @josefineauto (2026-10-14). El dueño mantiene su Instagram personal separado "por ahora".
 - [x] DUENO-09 · Llave de Cloudflare "Edit zone DNS" borrada por el dueño (2026-10-14). Queda "josefineauto build token" (de Cloudflare, no tocar).
 - [x] DUENO-10 · Contador de visitas de Cloudflare activado (2026-10-14). Las visitas se ven en https://dash.cloudflare.com/?to=/:account/web-analytics
 - [x] DUENO-05 · Enforce HTTPS marcado (2026-10-13). Verificado: monitor `dominio.yml` ejecución 38348672493 → "certificado: approved · HTTPS forzado: true".
