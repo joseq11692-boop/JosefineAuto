@@ -9,7 +9,7 @@ Te escribo porque nos dedicamos a vender carros a consignación aquí en Panamá
 
 Básicamente nosotros nos encargamos de todo: fotos, anuncios y atender a los interesados, así tú no pierdes tiempo con gente que no va en serio. El precio lo decides tú y solo cobramos si el carro se vende.
 
-Si quieres ver cómo trabajamos, puedes revisar josefineauto.com o buscarnos en Instagram y TikTok como @josefineauto.
+Si quieres ver cómo trabajamos, puedes revisar josefineauto.com o buscarnos en Instagram como @josefineauto y en TikTok como @josefine.auto.
 
 Cualquier cosa me avisas y te explico, sin compromiso.
 ```

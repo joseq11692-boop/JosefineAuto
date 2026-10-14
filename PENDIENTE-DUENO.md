@@ -35,7 +35,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Hecho
 
-- [x] DUENO-12 · Cuenta de TikTok https://www.tiktok.com/@josefineauto activa (2026-10-14, verificada: uniqueId josefineauto).
+- [x] DUENO-12 · Cuenta de TikTok del negocio: https://www.tiktok.com/@josefine.auto (2026-10-14). OJO: @josefineauto (sin punto) es una cuenta vieja del dueño ("JoseFine Automotive") a la que no puede entrar; no es la del negocio. Corrección: el 2026-10-14 se verificó por error esa cuenta vieja.
 - [x] DUENO-11 · Correo admin@josefineauto.com (Cloudflare Email Routing → Gmail del dueño) (2026-10-14). MX route1-3.mx.cloudflare.net verificados.
 - [x] DUENO-13 · Gmail envía como admin@josefineauto.com por smtp.gmail.com; SPF `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all` verificado (2026-10-14).
 - [x] DUENO-06 · josefineauto.com puesto en el perfil de @josefineauto (2026-10-14). El dueño mantiene su Instagram personal separado "por ahora".
