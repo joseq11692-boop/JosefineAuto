@@ -128,6 +128,23 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
       </div>
     </article>
 
+    <article class="step" data-id="enviar-como">
+      <input type="checkbox" class="check" id="c-enviar-como" aria-label="Marcar como hecho">
+      <div class="step__body">
+        <div class="meta"><span class="chip">Gmail + Cloudflare</span><span class="chip chip--time">10 min · computadora</span></div>
+        <h3>Envía correos como admin@josefineauto.com desde tu Gmail</h3>
+        <ol>
+          <li><strong>Contraseña de aplicación:</strong> toca el primer botón → nombre <strong>Josefine admin</strong> → <strong>Crear</strong> → copia las 16 letras. Es secreta: no se la mandes a nadie, tampoco a Claude.</li>
+          <li><strong>Gmail:</strong> toca el segundo botón → <strong>Enviar correo como</strong> → <strong>Añadir otra dirección de correo</strong>. Nombre <strong>Josefine Auto</strong>, correo <strong>admin@josefineauto.com</strong> → Siguiente.</li>
+          <li>Servidor <strong>smtp.gmail.com</strong>, puerto <strong>587</strong>, usuario tu Gmail completo, contraseña las 16 letras, <strong>TLS</strong> → <strong>Añadir cuenta</strong>. Abre el correo de confirmación que te llega y toca el enlace.</li>
+          <li><strong>Cloudflare:</strong> josefineauto.com → <strong>DNS</strong> → <strong>Records</strong> → edita el TXT que empieza por <strong>v=spf1</strong>, pega el texto de abajo y toca <strong>Save</strong>.</li>
+          <li>Dile "envío listo" a Claude.</li>
+        </ol>
+        <div class="copy"><pre id="t-spf">v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all</pre><button type="button" data-copy="t-spf">Copiar SPF</button></div>
+        <div class="links"><a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">1 · Contraseña de aplicación</a><a href="https://mail.google.com/mail/u/0/#settings/accounts" target="_blank" rel="noopener">2 · Ajustes de Gmail</a><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">3 · Cloudflare</a></div>
+      </div>
+    </article>
+
     <article class="step" data-id="tiktok">
       <input type="checkbox" class="check" id="c-tiktok" aria-label="Marcar como hecho">
       <div class="step__body">

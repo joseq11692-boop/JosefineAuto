@@ -15,6 +15,18 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Enlace: https://dash.cloudflare.com/?to=/:account/email-service/routing
   Guía oficial: https://developers.cloudflare.com/email-service/get-started/route-emails/
 
+- [ ] **DUENO-13 · Enviar correos como admin@josefineauto.com desde tu Gmail (gratis)** · 10 min · mejor en la computadora
+  A. Contraseña de aplicación (necesita la verificación en 2 pasos de Google activada):
+     abre https://myaccount.google.com/apppasswords → nombre `Josefine admin` → **Crear** → copia las 16 letras. Es secreta: no se la mandes a nadie, tampoco a Claude.
+  B. En Gmail: https://mail.google.com/mail/u/0/#settings/accounts → **Enviar correo como** → **Añadir otra dirección de correo**:
+     Nombre `Josefine Auto` · Correo `admin@josefineauto.com` → Siguiente →
+     Servidor SMTP `smtp.gmail.com` · Puerto `587` · Usuario: tu Gmail completo · Contraseña: las 16 letras · TLS → **Añadir cuenta**.
+     Gmail manda un código a admin@josefineauto.com, que te llega a tu mismo Gmail: ábrelo y toca el enlace.
+  C. Para que no caiga en spam, en Cloudflare: josefineauto.com → **DNS** → **Records** → edita el **TXT** que empieza por `v=spf1` y déjalo así:
+     `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all` → **Save**.
+  Dile "envío listo" a Claude: comprueba el DNS.
+  Enlace: https://myaccount.google.com/apppasswords
+
 - [ ] **DUENO-12 · Abrir la cuenta de TikTok @josefineauto** · 5 min · después de DUENO-11
   1. Descarga TikTok y toca **Registrarte** → **Usar correo** → `admin@josefineauto.com`. El código te llega a tu Gmail.
   2. Usuario: `josefineauto`. Nombre: `Josefine Auto`.
