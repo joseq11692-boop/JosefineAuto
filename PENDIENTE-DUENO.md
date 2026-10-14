@@ -14,6 +14,11 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   4. Instala la app nueva (Compartir → "Agregar a inicio") y borra la vieja.
   Enlace: https://josefineauto.com/panel/
 
+- [ ] **DUENO-14 · Recuperar la cuenta vieja de TikTok @josefineauto (para pasarle ese nombre a @josefine.auto)** · sin prisa
+  Descartado (2026-10-14): Gmail del dueño (está en @josefine.auto), "Continuar con Google" (abre @josefine.auto) y el número del negocio (abre la cuenta personal).
+  Falta probar, UN intento al día (TikTok bloquea por "demasiados intentos"): 1) Continuar con Instagram, 2) Continuar con Facebook, 3) Continuar con Apple, 4) "Reset with phone number" con el otro celular del dueño a mano. Si nada funciona: soporte de TikTok (Configuración y privacidad → Informar de un problema).
+  Enlace: https://www.tiktok.com/login
+
 ## Esta semana
 
 - [ ] **DUENO-03 · Firmar la consignación del GLE 53 con el cliente** · 15 min
