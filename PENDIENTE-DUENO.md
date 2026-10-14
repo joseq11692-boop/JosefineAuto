@@ -13,6 +13,8 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   4. Biografía (cópiala): `Carros seleccionados en Panamá 🇵🇦 Compra, venta y car culture 🏁`
   5. Ajustes → Cuenta → **Cambiar a cuenta de empresa** (categoría Automotriz). Si te deja, en **Sitio web** pon `josefineauto.com`.
   Foto: https://josefineauto.com/kit/img/perfil-tiktok.png
+  Estado 2026-10-14: TikTok bloqueó por "máximo de intentos". El número del negocio ya tiene otra cuenta de TikTok. Reintentar pasadas 24 h, una sola vez, desde la app del iPhone, con otro número propio o entrando a la cuenta vieja para convertirla.
+
 - [ ] **DUENO-07 · Pasar los datos de tu app al dominio nuevo** · 3 min · solo si ya guardaste carros en la app
   La app guarda todo en tu celular, atado a la dirección vieja. En josefineauto.com/panel arranca vacía.
   1. Pon el celular en **modo avión** y abre la app Josefine Gestión que tienes instalada.
