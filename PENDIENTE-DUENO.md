@@ -6,7 +6,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-11 · Crear el correo hola@josefineauto.com (gratis, llega a tu Gmail)** · 5 min
+- [ ] **DUENO-11 · Crear el correo admin@josefineauto.com (gratis, llega a tu Gmail)** · 5 min
   1. Abre el enlace (tu cuenta de Cloudflare) → **Onboard Domain** → elige **josefineauto.com** → **Done**. (Solo añade registros de correo; la web no se toca.)
   2. Pestaña **Destination Addresses**: escribe tu Gmail y envíalo. Abre tu Gmail y toca **Verify email address**.
   3. Vuelve, toca **josefineauto.com** → pestaña **Routing Rules** → **Create routing rule**:
@@ -16,7 +16,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Guía oficial: https://developers.cloudflare.com/email-service/get-started/route-emails/
 
 - [ ] **DUENO-12 · Abrir la cuenta de TikTok @josefineauto** · 5 min · después de DUENO-11
-  1. Descarga TikTok y toca **Registrarte** → **Usar correo** → `hola@josefineauto.com`. El código te llega a tu Gmail.
+  1. Descarga TikTok y toca **Registrarte** → **Usar correo** → `admin@josefineauto.com`. El código te llega a tu Gmail.
   2. Usuario: `josefineauto`. Nombre: `Josefine Auto`.
   3. Foto de perfil: guárdala desde el enlace de abajo.
   4. Biografía (cópiala): `Carros seleccionados en Panamá 🇵🇦 Compra, venta y car culture 🏁`
