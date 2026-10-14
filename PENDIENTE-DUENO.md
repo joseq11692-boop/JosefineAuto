@@ -6,6 +6,22 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
+- [ ] **DUENO-11 · Crear el correo hola@josefineauto.com (gratis, llega a tu Gmail)** · 5 min
+  1. Abre el enlace (tu cuenta de Cloudflare) → **Onboard Domain** → elige **josefineauto.com** → **Done**. (Solo añade registros de correo; la web no se toca.)
+  2. Pestaña **Destination Addresses**: escribe tu Gmail y envíalo. Abre tu Gmail y toca **Verify email address**.
+  3. Vuelve, toca **josefineauto.com** → pestaña **Routing Rules** → **Create routing rule**:
+     Email pattern `hola` · Action **Send to an email** · Destination tu Gmail → **Save**.
+  4. Dile "correo listo" a Claude: comprueba que funciona.
+  Enlace: https://dash.cloudflare.com/?to=/:account/email-service/routing
+  Guía oficial: https://developers.cloudflare.com/email-service/get-started/route-emails/
+
+- [ ] **DUENO-12 · Abrir la cuenta de TikTok @josefineauto** · 5 min · después de DUENO-11
+  1. Descarga TikTok y toca **Registrarte** → **Usar correo** → `hola@josefineauto.com`. El código te llega a tu Gmail.
+  2. Usuario: `josefineauto`. Nombre: `Josefine Auto`.
+  3. Foto de perfil: guárdala desde el enlace de abajo.
+  4. Biografía (cópiala): `Carros seleccionados en Panamá 🇵🇦 Compra, venta y car culture 🏁`
+  5. Ajustes → Cuenta → **Cambiar a cuenta de empresa** (categoría Automotriz). Si te deja, en **Sitio web** pon `josefineauto.com`.
+  Foto: https://josefineauto.com/kit/img/perfil-tiktok.png
 - [ ] **DUENO-07 · Pasar los datos de tu app al dominio nuevo** · 3 min · solo si ya guardaste carros en la app
   La app guarda todo en tu celular, atado a la dirección vieja. En josefineauto.com/panel arranca vacía.
   1. Pon el celular en **modo avión** y abre la app Josefine Gestión que tienes instalada.
