@@ -25,6 +25,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   C. Para que no caiga en spam, en Cloudflare: josefineauto.com → **DNS** → **Records** → edita el **TXT** que empieza por `v=spf1` y déjalo así:
      `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all` → **Save**.
   Dile "envío listo" a Claude: comprueba el DNS.
+  Estado 2026-10-14: A hecho; B da "No se pudo terminar de configurar esta cuenta" (cuenta correcta, 587/TLS y 465/SSL probados). Reintentar al día siguiente con una contraseña de aplicación nueva escrita a mano, 16 letras sin espacios.
   Enlace: https://myaccount.google.com/apppasswords
 
 - [ ] **DUENO-12 · Abrir la cuenta de TikTok @josefineauto** · 5 min · después de DUENO-11
