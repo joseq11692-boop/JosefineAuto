@@ -218,9 +218,22 @@ def visitas():
         ok("Contador de visitas", len(paginas))
 
 
+# 10. La copia empaquetada de la web en la guía (companion/web.html) tiene que coincidir con web/.
+#     Se quedó desfasada sin que nadie lo notara (2026-10-14). Arreglo: python3 herramientas/build/empaquetar-web.py
+def copia_web():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("empaquetar_web", RAIZ / "herramientas/build/empaquetar-web.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    if mod.destino.read_text(encoding="utf-8") != mod.construir():
+        fallo("Copia de la web en la guía", "companion/web.html no coincide con web/; corre python3 herramientas/build/empaquetar-web.py")
+    else:
+        ok("Copia de la web en la guía", 1)
+
+
 def main():
     print("Gate Josefine Auto")
-    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas):
+    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas, copia_web):
         try:
             paso()
         except Exception as e:  # noqa: BLE001  (si una comprobación revienta, el gate falla cerrado)
