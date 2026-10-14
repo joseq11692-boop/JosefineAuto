@@ -6,12 +6,6 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-10 · Activar el contador de visitas (Cloudflare Web Analytics, gratis)** · 2 min
-  1. Abre el enlace (tu cuenta de Cloudflare) y toca **Add a site**.
-  2. En **Hostname** escribe `josefineauto.com` y toca **Done**.
-  3. Te muestra un código (JS snippet). Cópialo entero y mándaselo a Claude por el chat (no es secreto: va dentro de la web).
-  Enlace: https://dash.cloudflare.com/?to=/:account/web-analytics
-
 - [ ] **DUENO-09 · Borrar la llave de Cloudflare** · 1 min · ya no hace falta
   En la llave que creaste para Claude: los 3 puntos → **Delete**.
   Enlace: https://dash.cloudflare.com/profile/api-tokens
@@ -49,6 +43,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Hecho
 
+- [x] DUENO-10 · Contador de visitas de Cloudflare activado (2026-10-14). Las visitas se ven en https://dash.cloudflare.com/?to=/:account/web-analytics
 - [x] DUENO-05 · Enforce HTTPS marcado (2026-10-13). Verificado: monitor `dominio.yml` ejecución 38348672493 → "certificado: approved · HTTPS forzado: true".
 - [x] DUENO-01 y DUENO-02 · DNS de josefineauto.com creado por el dueño (2026-10-05).
 

@@ -204,9 +204,23 @@ def dominio():
         ok("Guardián de dominio", len(archivos))
 
 
+# 9. Contador de visitas: cada página pública lleva el beacon de Cloudflare Web Analytics (DUENO-10).
+#    El panel (app privada del dueño, funciona sin conexión) no lo lleva a propósito.
+def visitas():
+    paginas = [f for f in WEB.rglob("*.html") if "panel" not in f.relative_to(WEB).parts]
+    if not exige("Contador de visitas", len(paginas)):
+        return
+    malos = [str(f.relative_to(RAIZ)) for f in paginas
+             if f.read_text(encoding="utf-8").count("static.cloudflareinsights.com/beacon.min.js") != 1]
+    for m in malos:
+        fallo("Contador de visitas", f"{m} no lleva el beacon de Cloudflare (o lo lleva repetido)")
+    if not malos:
+        ok("Contador de visitas", len(paginas))
+
+
 def main():
     print("Gate Josefine Auto")
-    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio):
+    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas):
         try:
             paso()
         except Exception as e:  # noqa: BLE001  (si una comprobación revienta, el gate falla cerrado)
