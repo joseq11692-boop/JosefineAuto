@@ -6,15 +6,6 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-12 · Abrir la cuenta de TikTok @josefineauto** · 5 min · ya se puede
-  1. Descarga TikTok y toca **Registrarte** → **Usar correo** → `admin@josefineauto.com`. El código te llega a tu Gmail.
-  2. Usuario: `josefineauto`. Nombre: `Josefine Auto`.
-  3. Foto de perfil: guárdala desde el enlace de abajo.
-  4. Biografía (cópiala): `Carros seleccionados en Panamá 🇵🇦 Compra, venta y car culture 🏁`
-  5. Ajustes → Cuenta → **Cambiar a cuenta de empresa** (categoría Automotriz). Si te deja, en **Sitio web** pon `josefineauto.com`.
-  Foto: https://josefineauto.com/kit/img/perfil-tiktok.png
-  Estado 2026-10-14: TikTok bloqueó por "máximo de intentos". El número del negocio ya tiene otra cuenta de TikTok. Reintentar pasadas 24 h, una sola vez, desde la app del iPhone, con otro número propio o entrando a la cuenta vieja para convertirla.
-
 - [ ] **DUENO-07 · Pasar los datos de tu app al dominio nuevo** · 3 min · solo si ya guardaste carros en la app
   La app guarda todo en tu celular, atado a la dirección vieja. En josefineauto.com/panel arranca vacía.
   1. Pon el celular en **modo avión** y abre la app Josefine Gestión que tienes instalada.
@@ -44,6 +35,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Hecho
 
+- [x] DUENO-12 · Cuenta de TikTok https://www.tiktok.com/@josefineauto activa (2026-10-14, verificada: uniqueId josefineauto).
 - [x] DUENO-11 · Correo admin@josefineauto.com (Cloudflare Email Routing → Gmail del dueño) (2026-10-14). MX route1-3.mx.cloudflare.net verificados.
 - [x] DUENO-13 · Gmail envía como admin@josefineauto.com por smtp.gmail.com; SPF `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all` verificado (2026-10-14).
 - [x] DUENO-06 · josefineauto.com puesto en el perfil de @josefineauto (2026-10-14). El dueño mantiene su Instagram personal separado "por ahora".
