@@ -6,10 +6,6 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Ahora
 
-- [ ] **DUENO-09 · Borrar la llave de Cloudflare** · 1 min · ya no hace falta
-  En la llave que creaste para Claude: los 3 puntos → **Delete**.
-  Enlace: https://dash.cloudflare.com/profile/api-tokens
-
 - [ ] **DUENO-06 · Poner el dominio nuevo en tu Instagram** · 1 min
   Instagram → Editar perfil → Enlaces → cambia el enlace por: https://josefineauto.com/
   Enlace: https://www.instagram.com/accounts/edit/
@@ -43,6 +39,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 ## Hecho
 
+- [x] DUENO-09 · Llave de Cloudflare "Edit zone DNS" borrada por el dueño (2026-10-14). Queda "josefineauto build token" (de Cloudflare, no tocar).
 - [x] DUENO-10 · Contador de visitas de Cloudflare activado (2026-10-14). Las visitas se ven en https://dash.cloudflare.com/?to=/:account/web-analytics
 - [x] DUENO-05 · Enforce HTTPS marcado (2026-10-13). Verificado: monitor `dominio.yml` ejecución 38348672493 → "certificado: approved · HTTPS forzado: true".
 - [x] DUENO-01 y DUENO-02 · DNS de josefineauto.com creado por el dueño (2026-10-05).
