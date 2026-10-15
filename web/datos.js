@@ -130,6 +130,7 @@ window.INVENTARIO = [
     "modelo": "Corolla LE",
     "anio": 2018,
     "km": 92000,
+    "transmision": "Automática",
     "precio": 10000,
     "estado": "disponible",
     "fotos": [

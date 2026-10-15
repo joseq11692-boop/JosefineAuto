@@ -52,7 +52,7 @@ const T = 4;
 const LAMINAS = [
   `<div class="s"><div class="bg" style="background-image:url('${foto(1)}');background-position:center 60%"></div><div class="velo"></div>${top(`1/${T}`)}
     <div class="txt"><span class="tag">En venta</span><h1>Toyota<br><em>Corolla</em> LE</h1>${F}
-    <div class="chips"><span>2018</span><span>92,000 km</span><span>Gris</span></div></div>${pie}</div>`,
+    <div class="chips"><span>2018</span><span>92,000 km</span><span>Automático</span><span>Gris</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(2)}');background-position:center 60%"></div><div class="velo"></div>${top(`2/${T}`)}
     <div class="txt"><div class="chips"><span>Sedán</span><span>Rines de aluminio</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(3)}');background-position:center 60%"></div><div class="velo"></div>${top(`3/${T}`)}
