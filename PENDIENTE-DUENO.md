@@ -33,6 +33,16 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/11-google-ads-campana.md
   Google Ads: https://ads.google.com
 
+- [ ] **DUENO-17 · Crear la página de Facebook "Josefine Auto"** · 10 min · desde tu Facebook personal (no se crea perfil nuevo)
+  1. Abre el enlace → **Crear página**. Nombre: `Josefine Auto`. Categoría: **Concesionario de automóviles** (o "Automóviles"). Biografía: `Carros seleccionados en Panamá 🇵🇦 Compra, venta y consignación. Precio y fotos en josefineauto.com`
+  2. Foto de perfil: https://josefineauto.com/kit/img/perfil-tiktok.png · Portada: https://josefineauto.com/kit/img/facebook-portada.png
+  3. Contacto: web `https://josefineauto.com`, WhatsApp `+507 6698-9569`, correo `admin@josefineauto.com`, ubicación Ciudad de Panamá.
+  4. Botón de la página: **Enviar mensaje de WhatsApp** (6698-9569).
+  5. Conectar Instagram: Configuración de la página → **Cuentas vinculadas** → Instagram → @josefineauto.
+  6. Nombre de usuario de la página: `josefineauto` (facebook.com/josefineauto).
+  Avisa a Claude con el enlace de la página: la añade a la web y al mensaje de Marketplace.
+  Enlace: https://www.facebook.com/pages/create
+
 ## Esta semana
 
 - [ ] **DUENO-03 · Firmar la consignación del GLE 53 con el cliente** · 15 min
