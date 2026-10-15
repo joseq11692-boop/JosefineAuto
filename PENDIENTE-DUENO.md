@@ -28,6 +28,11 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   A los 3 días manda captura de los resultados a Claude.
   Los nombres de los botones pueden cambiar un poco según la versión de la app.
 
+- [ ] **DUENO-16 · Crear la campaña de Google Ads (solo la web)** · 15 min en la computadora · gasta dinero: solo con el monto que TÚ decidas
+  Todo listo para copiar y pegar (configuración, palabras clave, títulos, descripciones y pasos):
+  Enlace: https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/11-google-ads-campana.md
+  Google Ads: https://ads.google.com
+
 ## Esta semana
 
 - [ ] **DUENO-03 · Firmar la consignación del GLE 53 con el cliente** · 15 min
