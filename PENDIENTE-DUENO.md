@@ -19,6 +19,15 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Falta: en @josefine.auto → Editar perfil → Nombre de usuario → `josefineauto` → Guardar. TikTok dio "Couldn't update username" justo después de liberarlo: reintentar a diario (el nombre solo se puede cambiar 1 vez cada 30 días). La cuenta @josefineautomotive NO se borra: el dueño la guarda para otro proyecto (2026-10-14).
   Enlace: https://www.tiktok.com/@josefine.auto
 
+- [ ] **DUENO-15 · Primer anuncio pagado en Instagram hacia la web (cuando decidas el monto)** · 5 min · gasta dinero: solo si tú quieres
+  1. Publica primero el post de la CX-5 (kit). En el post toca **Promocionar**.
+  2. Objetivo: **Más visitas al sitio web** → pega `https://josefineauto.com/#inventario` → botón **Ver más**.
+  3. Público: **Crear el tuyo** → Ubicación **Panamá** (quita lo demás) → edad 25-55 → intereses: Automóviles, SUV, Mazda.
+  4. Presupuesto y duración: el monto que TÚ decidas (prueba sugerida: poco por día, 7 días).
+  5. Revisa y toca **Promocionar publicación**. Instagram pide tarjeta solo aquí.
+  A los 3 días manda captura de los resultados a Claude.
+  Los nombres de los botones pueden cambiar un poco según la versión de la app.
+
 ## Esta semana
 
 - [ ] **DUENO-03 · Firmar la consignación del GLE 53 con el cliente** · 15 min
