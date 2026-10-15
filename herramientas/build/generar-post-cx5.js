@@ -1,5 +1,5 @@
 /* Carrusel de venta: Mazda CX-5 2015. 6 láminas 1080x1350.
-   Año dado por el dueño (2026-10-15); lo demás visible en las fotos (SkyActiv, automática, blanca, interior negro).
+   Año y km dados por el dueño (2026-10-15); lo demás visible en las fotos (SkyActiv, automática, blanca, interior negro).
    Placa real tapada con la de Josefine; precio solo por DM.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-cx5.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post8-cx5-XX.png */
@@ -52,7 +52,7 @@ const T = 6;
 const LAMINAS = [
   `<div class="s"><div class="bg" style="background-image:url('${foto(1)}');background-position:center 55%"></div><div class="velo"></div>${top(`1/${T}`)}
     <div class="txt"><span class="tag">En venta</span><h1>Mazda<br><em>CX-5</em></h1>${F}
-    <div class="chips"><span>2015</span><span>Automática</span><span>Blanca</span></div></div>${pie}</div>`,
+    <div class="chips"><span>2015</span><span>60,000 km</span><span>Automática</span><span>Blanca</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(2)}');background-position:45% 60%"></div><div class="velo"></div>${top(`2/${T}`)}
     <div class="txt"><div class="chips"><span>SUV familiar</span><span>Rines de aluminio</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(4)}')"></div><div style="background-image:url('${foto(3)}');background-position:60% center"></div></div><div class="velo"></div>${top(`3/${T}`)}

@@ -108,7 +108,9 @@ window.INVENTARIO = [
     "marca": "Mazda",
     "modelo": "CX-5",
     "anio": 2015,
+    "km": 60000,
     "transmision": "Automática",
+    "precio": 8500,
     "estado": "disponible",
     "fotos": [
       "img/carros/mazda-cx-5-2015/01.jpg",
