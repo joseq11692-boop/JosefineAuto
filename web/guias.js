@@ -1,5 +1,11 @@
 window.GUIAS = [
  {
+  "titulo": "Refiere y gana: cómo funciona el sistema de referidos",
+  "descripcion": "Recomienda a alguien que vende o busca carro y gana una comisión cuando se cierra el negocio. Paso a paso y preguntas frecuentes.",
+  "url": "guias/referidos-josefine-auto.html",
+  "fecha": "2026-10-17"
+ },
+ {
   "titulo": "Cómo detectar un carro inundado en Panamá",
   "descripcion": "Cinco revisiones de cinco minutos para no comprar un carro que estuvo bajo el agua, más qué hacer si es importado de una subasta.",
   "url": "guias/carro-inundado-panama.html",
