@@ -35,6 +35,7 @@
         <a href="#consigue">Te lo conseguimos</a>
         <a href="#vende">Vende tu carro</a>
         <a href="#metodo">Cómo trabajamos</a>
+        <a href="#referidos">Referidos</a>
         <a href="#vendidos">Vendidos</a>
         <a href="#proyectos">Proyectos</a>
         <a href="guias/">Guías</a>
@@ -155,6 +156,39 @@
           <article class="paso"><span>PASO 3</span><h3>Escáner y taller</h3><p>Diagnóstico electrónico y revisión en el elevador antes de pagar un dólar.</p></article>
           <article class="paso"><span>PASO 4</span><h3>Transparencia</h3><p>Te mostramos los defectos, las reparaciones y el historial. Sin sorpresas.</p></article>
         </div>
+      </div>
+    </section>
+
+    <section id="referidos" class="seccion seccion--alterna">
+      <div class="contenedor dos-col">
+        <div>
+          <h2>Refiere y gana.<br><em>Te pagamos por cada negocio.</em></h2>
+          <div class="franja franja--chica" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <p>¿Conoces a alguien que vende su carro o anda buscando uno? Recomiéndanos y te pagamos una comisión cuando se cierre el negocio.</p>
+          <ol class="pasos">
+            <li><strong>Nos pasas</strong> su contacto y qué carro vende o busca.</li>
+            <li><strong>Nosotros lo atendemos</strong> y le decimos que viene de tu parte.</li>
+            <li><strong>Se cierra el negocio</strong> y te pagamos tu comisión.</li>
+          </ol>
+          <p class="nota"><strong>Vende o compra: los dos cuentan.</strong> Solo pagamos con negocio cerrado.</p>
+        </div>
+        <form id="form-referido" class="formulario tarjeta">
+          <h3>Refiere a alguien</h3>
+          <div class="fila">
+            <label>Tu nombre<input name="nombre" required autocomplete="name" placeholder="Ej.: Carlos"></label>
+            <label>Tu WhatsApp<input name="telefono" type="tel" required autocomplete="tel" inputmode="tel" placeholder="6000-0000"></label>
+          </div>
+          <div class="fila">
+            <label>Nombre de tu referido<input name="refnombre" required placeholder="Ej.: Ana"></label>
+            <label>Su WhatsApp<input name="reftelefono" type="tel" required inputmode="tel" placeholder="6000-0000"></label>
+          </div>
+          <label>Tu referido…
+            <select name="tipo"><option>Vende su carro</option><option>Busca un carro</option></select>
+          </label>
+          <label>¿Qué carro? (marca, modelo, año)<input name="carro" placeholder="Ej.: Toyota Corolla 2018"></label>
+          <button class="boton" type="submit">Enviar por WhatsApp</button>
+          <p class="nota nota--chica">Se abre WhatsApp con los datos ya escritos. La web no guarda nada. Avísale a tu referido que le escribiremos.</p>
+        </form>
       </div>
     </section>
 

@@ -65,7 +65,7 @@ em { font-style: normal; color: var(--acento); }
 .logo { display: block; text-decoration: none; }
 .logo img { height: 60px; width: auto; }
 .menu { display: flex; gap: 28px; }
-.menu a { text-decoration: none; color: var(--suave); font-weight: 600; font-size: .92rem; letter-spacing: .02em; }
+.menu a { white-space: nowrap; text-decoration: none; color: var(--suave); font-weight: 600; font-size: .92rem; letter-spacing: .02em; }
 .menu a:hover { color: var(--tinta); }
 
 /* Botones: tinta sólida, la acción de la firma */
@@ -256,7 +256,10 @@ section[id] { scroll-margin-top: 76px; }
 }
 
 /* Móvil */
-@media (max-width: 1080px) { .menu { gap: 16px; } .menu a { font-size: .84rem; } }
+@media (max-width: 1280px) { .menu { gap: 16px; } .menu a { font-size: .84rem; } }
+@media (max-width: 1080px) { .menu { gap: 11px; } .menu a { font-size: .76rem; letter-spacing: 0; } }
+/* 8 enlaces no caben bajo ~890 px: se oculta el menú (como en móvil) */
+@media (max-width: 900px) { .menu { display: none; } }
 @media (max-width: 860px) {
   .menu { display: none; }
   .dos-col { grid-template-columns: 1fr; gap: 32px; }

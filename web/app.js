@@ -198,6 +198,18 @@
     window.open(enlaceWhatsApp(texto), "_blank", "noopener");
   });
 
+  // Formulario "Refiere y gana"
+  document.getElementById("form-referido").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var d = new FormData(e.target);
+    var texto = "Hola Josefine Auto, les quiero referir a alguien.\n" +
+      "• Yo: " + d.get("nombre") + " (" + d.get("telefono") + ")\n" +
+      "• Referido: " + d.get("refnombre") + " (" + d.get("reftelefono") + ")\n" +
+      "• " + d.get("tipo") + ": " + (d.get("carro") || "por confirmar") + "\n" +
+      "Ya le avisé que le van a escribir.";
+    window.open(enlaceWhatsApp(texto), "_blank", "noopener");
+  });
+
   // Guías
   var listaGuias = document.getElementById("lista-guias");
   if (listaGuias) {
