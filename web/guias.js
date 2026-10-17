@@ -1,7 +1,7 @@
 window.GUIAS = [
  {
   "titulo": "Refiere y gana: cómo funciona el sistema de referidos",
-  "descripcion": "Recomienda a alguien que vende o busca carro y gana una comisión cuando se cierra el negocio. Paso a paso y preguntas frecuentes.",
+  "descripcion": "Recomienda a alguien que vende o busca carro y gana una comisión cuando se cierra el negocio. Paso a paso.",
   "url": "guias/referidos-josefine-auto.html",
   "fecha": "2026-10-17"
  },
