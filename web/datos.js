@@ -159,7 +159,7 @@ window.INVENTARIO = [
       "img/carros/geely-coolray-2026/07.jpg",
       "img/carros/geely-coolray-2026/08.jpg"
     ],
-    "destacado": "Prácticamente nuevo · Color blanco · Pantalla táctil con Apple CarPlay · Asientos negros con costura blanca · Rines de aluminio"
+    "destacado": "Prácticamente nuevo · Color blanco · Pantalla táctil con Apple CarPlay · Asientos de cuero · Rines de aluminio"
   },
 
   // ===== VENDIDOS (de Instagram @josefineauto) =====

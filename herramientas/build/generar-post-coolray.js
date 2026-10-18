@@ -1,5 +1,5 @@
 /* Carrusel de venta: Geely Coolray 2026. 5 láminas 1080x1350.
-   Año, km y transmisión dados por el dueño (2026-10-18, N15); lo demás visible en las fotos (blanco, pantalla con Apple CarPlay, asientos negros, rines de aluminio).
+   Año, km y transmisión dados por el dueño (2026-10-18, N15); lo demás visible en las fotos (blanco, pantalla con Apple CarPlay, rines; asientos de cuero según el dueño de aluminio).
    Placa real tapada con la de Josefine; precio solo por DM.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-coolray.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post10-coolray-XX.png */
@@ -58,7 +58,7 @@ const LAMINAS = [
   `<div class="s"><div class="bg" style="background-image:url('${foto(5)}');background-position:center"></div><div class="velo"></div>${top(`3/${T}`)}
     <div class="txt"><div class="chips"><span>Pantalla táctil</span><span>Apple CarPlay</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(6)}')"></div><div style="background-image:url('${foto(7)}')"></div></div><div class="velo"></div>${top(`4/${T}`)}
-    <div class="txt"><div class="chips"><span>Asientos negros</span><span>Costura blanca</span></div></div>${pie}</div>`,
+    <div class="txt"><div class="chips"><span>Asientos de cuero</span></div></div>${pie}</div>`,
   `<div class="s cta">${top(`5/${T}`)}<div class="txt"><h2>¿Te interesa<br>el Coolray?</h2>${F}<p>Comenta</p><span class="comenta">COOLRAY</span>
     <div class="lista"><span>💬 Precio por DM</span></div></div>${pie}</div>`,
 ];
