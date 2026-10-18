@@ -88,7 +88,7 @@ def pagina(titulo, descripcion, url, cuerpo, raiz="../", extra_head=""):
       <a href="{raiz}" class="logo" aria-label="Josefine Auto, inicio"><img src="{raiz}img/logo-firma.svg" alt="Josefine Auto" width="116" height="82"></a>
       <nav class="menu" aria-label="Principal">
         <a href="{raiz}#inventario">Inventario</a>
-        <a href="{raiz}#vende">Vende tu carro</a>
+        <a href="{raiz}#vende">Vende tu auto</a>
         <a href="{raiz}guias/">Guías</a>
       </nav>
       <a class="boton boton--chico" href="https://wa.me/{WA}?text={html.escape('Hola Josefine Auto, quiero información.')}" target="_blank" rel="noopener">WhatsApp</a>
@@ -119,8 +119,8 @@ def pagina(titulo, descripcion, url, cuerpo, raiz="../", extra_head=""):
 
 def cta():
     return f"""      <aside class="guia__cta">
-        <h2>¿Buscas carro sin sorpresas?</h2>
-        <p>Cada carro de Josefine Auto pasa papeles, prueba anti-inundación, escáner y taller antes de publicarse.</p>
+        <h2>¿Buscas auto sin sorpresas?</h2>
+        <p>Cada auto de Josefine Auto pasa papeles, prueba anti-inundación, escáner y taller antes de publicarse.</p>
         <div class="hero__acciones">
           <a class="boton" href="../#inventario">Ver inventario</a>
           <a class="boton boton--borde" href="https://wa.me/{WA}?text={html.escape('Hola Josefine Auto, leí su guía y quiero información.')}" target="_blank" rel="noopener">Escríbenos</a>
@@ -158,14 +158,14 @@ tarjetas = "\n".join(
     for g in guias)
 indice = f"""    <section class="seccion">
       <div class="contenedor">
-        <div class="seccion__cab"><h1>Guías</h1>{FRANJA}<p class="seccion__sub">Lo que revisamos antes de comprar un carro, contado para que tú también lo puedas hacer.</p></div>
+        <div class="seccion__cab"><h1>Guías</h1>{FRANJA}<p class="seccion__sub">Lo que revisamos antes de comprar un auto, contado para que tú también lo puedas hacer.</p></div>
         <div class="rejilla">
 {tarjetas}
         </div>
       </div>
     </section>"""
-(WEB / "guias" / "index.html").write_text(pagina("Guías para comprar y vender carros en Panamá | Josefine Auto",
-    "Guías prácticas para comprar un carro usado en Panamá sin sorpresas: papeles, inundación, inspección y cómo vender tu deportivo.",
+(WEB / "guias" / "index.html").write_text(pagina("Guías para comprar y vender autos en Panamá | Josefine Auto",
+    "Guías prácticas para comprar un auto usado en Panamá sin sorpresas: papeles, inundación, inspección y cómo vender tu deportivo.",
     BASE + "guias/", indice), encoding="utf-8")
 
 # Datos para la portada (últimas guías)
@@ -179,7 +179,7 @@ error = f"""    <section class="seccion">
         <img src="/img/logo-firma.svg" alt="" width="220" height="155">
         <h1>Esta página no existe</h1>
         {FRANJA}
-        <p class="seccion__sub">Puede que el carro ya se haya vendido o que el enlace esté mal escrito.</p>
+        <p class="seccion__sub">Puede que el auto ya se haya vendido o que el enlace esté mal escrito.</p>
         <div class="hero__acciones"><a class="boton" href="/#inventario">Ver inventario</a><a class="boton boton--borde" href="https://wa.me/{WA}" target="_blank" rel="noopener">Escríbenos</a></div>
       </div>
     </section>"""

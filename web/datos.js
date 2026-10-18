@@ -77,7 +77,7 @@ window.INVENTARIO = [
       "img/carros/mercedes-amg-gle-53-coupe/08.jpg",
       "img/carros/mercedes-amg-gle-53-coupe/09.jpg"
     ],
-    "destacado": "XPEL PPF en todo el carro · Michelin nuevas · Rines AMG 22\" · Cálipers pintados en rojo · Alerón forrado en negro · Importado de USA · Sin choques · Libre para traspaso · Gasolina 95"
+    "destacado": "XPEL PPF en todo el auto · Michelin nuevas · Rines AMG 22\" · Cálipers pintados en rojo · Alerón forrado en negro · Importado de USA · Sin choques · Libre para traspaso · Gasolina 95"
   },
 
   {

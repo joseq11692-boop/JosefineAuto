@@ -1,15 +1,15 @@
 ---
-titulo: Papeles para comprar un carro usado en Panamá
+titulo: Papeles para comprar un auto usado en Panamá
 descripcion: Qué documentos revisar antes de pagar, cómo evitar multas y prendas ajenas y cómo cerrar el traspaso de forma segura.
 fecha: 2026-10-02
 ---
-El carro puede estar perfecto y aun así darte problemas si los papeles no están en orden: multas que heredas, una prenda de un banco o un traspaso que nunca se completa. Esta es la lista que usamos antes de pagar un solo dólar.
+El auto puede estar perfecto y aun así darte problemas si los papeles no están en orden: multas que heredas, una prenda de un banco o un traspaso que nunca se completa. Esta es la lista que usamos antes de pagar un solo dólar.
 
-## Antes de ver el carro
+## Antes de ver el auto
 
 - Pregunta si el vendedor es el **dueño registrado** y si puede mostrarte el registro vehicular.
 - Pide el **número de chasis (VIN)** para revisar el historial si es importado.
-- Pregunta si tiene **revisado y paz y salvo** al día, y si el carro está **financiado**.
+- Pregunta si tiene **revisado y paz y salvo** al día, y si el auto está **financiado**.
 
 ## Cuando tengas los papeles en la mano
 
@@ -21,7 +21,7 @@ El carro puede estar perfecto y aun así darte problemas si los papeles no está
 6. Verifica el **paz y salvo municipal** y el **revisado** vigentes.
 7. Confirma que no tiene **prendas ni gravámenes**. Si está financiado, pide la carta del banco con el saldo y cómo se cancela.
 
-> Si algo no cuadra, no sigas. Hay muchos carros; un problema legal puede costarte el carro entero.
+> Si algo no cuadra, no sigas. Hay muchos autos; un problema legal puede costarte el auto entero.
 
 ## El día del cierre
 
@@ -34,4 +34,4 @@ Los requisitos pueden cambiar: confirma siempre el procedimiento vigente con la 
 
 ## Cómo lo hacemos nosotros
 
-En Josefine Auto revisamos todo esto antes de comprar cada carro. Cuando nos compras uno, te entregamos los papeles verificados y te acompañamos en el traspaso.
+En Josefine Auto revisamos todo esto antes de comprar cada auto. Cuando nos compras uno, te entregamos los papeles verificados y te acompañamos en el traspaso.

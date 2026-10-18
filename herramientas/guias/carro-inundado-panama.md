@@ -1,15 +1,15 @@
 ---
-titulo: Cómo detectar un carro inundado en Panamá
-descripcion: Cinco revisiones de cinco minutos para no comprar un carro que estuvo bajo el agua, más qué hacer si es importado de una subasta.
+titulo: Cómo detectar un auto inundado en Panamá
+descripcion: Cinco revisiones de cinco minutos para no comprar un auto que estuvo bajo el agua, más qué hacer si es importado de una subasta.
 fecha: 2026-10-03
 ---
-En Panamá llueve fuerte buena parte del año, y muchos carros usados llegan importados de subastas de Estados Unidos. Algunos estuvieron bajo el agua. Por fuera pueden verse impecables. Por dentro, la humedad sigue trabajando: corroe conectores, daña módulos electrónicos y aparece meses después como fallas eléctricas difíciles de encontrar.
+En Panamá llueve fuerte buena parte del año, y muchos autos usados llegan importados de subastas de Estados Unidos. Algunos estuvieron bajo el agua. Por fuera pueden verse impecables. Por dentro, la humedad sigue trabajando: corroe conectores, daña módulos electrónicos y aparece meses después como fallas eléctricas difíciles de encontrar.
 
-Estas son las revisiones que hacemos en cada carro antes de comprarlo. No necesitas herramientas: solo una linterna y cinco minutos.
+Estas son las revisiones que hacemos en cada auto antes de comprarlo. No necesitas herramientas: solo una linterna y cinco minutos.
 
 ## 1. Levanta la alfombra
 
-Busca barro seco, arena, manchas de agua o humedad debajo de las alfombras del piso y del maletero. Un carro que se mojó por una ventana abierta tiene la alfombra húmeda; uno inundado suele tener sedimento debajo.
+Busca barro seco, arena, manchas de agua o humedad debajo de las alfombras del piso y del maletero. Un auto que se mojó por una ventana abierta tiene la alfombra húmeda; uno inundado suele tener sedimento debajo.
 
 ## 2. Mira los rieles de los asientos y los tornillos
 
@@ -25,14 +25,14 @@ Una línea de condensación o sedimento dentro de los faros, o manchas en el cua
 
 ## 5. Confía en tu nariz
 
-El olor a humedad o moho no se quita con ambientador. Si el carro huele fuerte a perfume, sospecha.
+El olor a humedad o moho no se quita con ambientador. Si el auto huele fuerte a perfume, sospecha.
 
-## Si el carro es importado
+## Si el auto es importado
 
 Pide el **número de chasis (VIN)** y consulta su historial en servicios como Carfax o AutoCheck. Si aparece como *flood* (inundado), *salvage* (pérdida total) o *rebuilt* (reconstruido), mejor no.
 
-> Un carro inundado puede verse perfecto el día que lo compras. Lo barato sale caro.
+> Un auto inundado puede verse perfecto el día que lo compras. Lo barato sale caro.
 
 ## Lo que hacemos en Josefine Auto
 
-Cada carro pasa esta prueba, además de la revisión de papeles, el escáner de diagnóstico y el elevador en taller. Si falla un punto crítico, no lo compramos. Por eso te podemos mostrar cada carro tal como es, incluidos sus defectos.
+Cada auto pasa esta prueba, además de la revisión de papeles, el escáner de diagnóstico y el elevador en taller. Si falla un punto crítico, no lo compramos. Por eso te podemos mostrar cada auto tal como es, incluidos sus defectos.

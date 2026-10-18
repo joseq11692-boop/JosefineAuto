@@ -231,9 +231,29 @@ def copia_web():
         ok("Copia de la web en la guía", 1)
 
 
+# 11. En la web pública se dice "auto", no "carro" (N16). Solo el texto visible: clases, ids y rutas pueden seguir con "carro".
+def auto_no_carro():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("idioma_auto", RAIZ / "herramientas/build/idioma_auto.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    archivos = [WEB / "index.html", WEB / "404.html", WEB / "app.js", WEB / "datos.js", WEB / "guias.js"] + sorted((WEB / "guias").glob("*.html")) + sorted((RAIZ / "herramientas/guias").glob("*.md"))
+    if not exige("Guardián «auto, no carro» (web)", len(archivos)):
+        return
+    malos = []
+    for f in archivos:
+        s = f.read_text(encoding="utf-8")
+        if mod.convertir(str(f), s) != s:
+            malos.append(str(f.relative_to(RAIZ)))
+    for m in malos:
+        fallo("Guardián «auto, no carro» (web)", f"{m} dice «carro»; corre python3 herramientas/build/idioma_auto.py {m}")
+    if not malos:
+        ok("Guardián «auto, no carro» (web)", len(archivos))
+
+
 def main():
     print("Gate Josefine Auto")
-    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas, copia_web):
+    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas, copia_web, auto_no_carro):
         try:
             paso()
         except Exception as e:  # noqa: BLE001  (si una comprobación revienta, el gate falla cerrado)

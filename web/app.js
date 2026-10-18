@@ -177,7 +177,7 @@
     var texto = "Hola Josefine Auto, busco un auto en particular. ¿Me lo consiguen?\n" +
       "• Nombre: " + d.get("nombre") + "\n" +
       "• WhatsApp: " + d.get("telefono") + "\n" +
-      "• Carro: " + d.get("modelo") + (d.get("anios") ? " " + d.get("anios") : "") + "\n" +
+      "• Auto: " + d.get("modelo") + (d.get("anios") ? " " + d.get("anios") : "") + "\n" +
       "• Presupuesto: " + (d.get("presupuesto") ? "$" + d.get("presupuesto") : "por definir") + "\n" +
       "• Transmisión: " + d.get("transmision") + "\n" +
       "• Detalles: " + (d.get("detalles") || "ninguno") + "\n" +
@@ -189,8 +189,8 @@
   document.getElementById("form-vende").addEventListener("submit", function (e) {
     e.preventDefault();
     var d = new FormData(e.target);
-    var texto = "Hola Josefine Auto, quiero vender mi carro a comisión.\n" +
-      "• Carro: " + d.get("modelo") + " " + d.get("anio") + "\n" +
+    var texto = "Hola Josefine Auto, quiero vender mi auto a comisión.\n" +
+      "• Auto: " + d.get("modelo") + " " + d.get("anio") + "\n" +
       "• Km: " + (d.get("km") || "por confirmar") + "\n" +
       "• Precio esperado: " + (d.get("precio") ? "$" + d.get("precio") : "por definir") + "\n" +
       "• Modificaciones: " + (d.get("mods") || "ninguna") + "\n" +
