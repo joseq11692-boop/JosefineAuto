@@ -57,7 +57,8 @@
   function num(v) { if (v === "" || v == null) return null; var n = Number(String(v).replace(/[^0-9.\-]/g, "")); return isNaN(n) ? null : n; }
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function id() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
-  function hoy() { return new Date().toISOString().slice(0, 10); }
+  // Fecha local (Panamá, UTC-5), no UTC: si no, después de las 7 p. m. ya contaba el día siguiente
+  function hoy() { var t = new Date(); return new Date(t - t.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
   function diasEntre(a, b) { if (!a) return null; var f = b ? new Date(b) : new Date(); return Math.max(0, Math.round((f - new Date(a)) / 86400000)); }
   function estadoT(e) { for (var i = 0; i < ESTADOS.length; i++) if (ESTADOS[i].id === e) return ESTADOS[i].t; return e; }
   function suma(o) { var s = 0; for (var k in o) s += Number(o[k]) || 0; return s; }
