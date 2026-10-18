@@ -227,6 +227,23 @@
     var insp = S.carros.filter(function (c) { return checklistResumen(c).hechos >= 10; }).length;
 
     var h = '<section class="tarjeta tarjeta--hero"><p class="etq">Capital disponible para comprar</p><p class="grande">' + d(cap.disponible) + '</p><p class="suave">Total ' + d(cap.total) + " · en stock " + d(cap.invertido) + " · reserva " + d(S.reglas.reserva) + "</p></section>";
+    // Este mes: ganancia de los carros vendidos este mes vs. la meta que fija el dueño en Ajustes
+    var mes = hoy().slice(0, 7);
+    var delMes = vendidos.filter(function (c) { return (c.fechaVenta || "").slice(0, 7) === mes; });
+    var ganMes = delMes.reduce(function (a, c) { return a + resultadoReal(c); }, 0);
+    var metaMes = Number(S.reglas.metaMensual) || 0;
+    h += '<section class="tarjeta"><h2>Este mes</h2>';
+    if (metaMes > 0) {
+      var falta = Math.max(0, metaMes - ganMes);
+      var porCarro = ganMed > 0 ? ganMed : S.reglas.gananciaMin;
+      h += '<ul class="metas"><li><div class="meta__fila"><span>Ganancia del mes</span><strong>' + d(ganMes) + " / " + d(metaMes) + '</strong></div><div class="barra"><span style="width:' + Math.min(100, Math.round(ganMes / metaMes * 100)) + '%"></span></div></li></ul>' +
+        '<p class="suave">' + delMes.length + (delMes.length === 1 ? " carro vendido" : " carros vendidos") + " este mes. " +
+        (falta > 0 ? "Te faltan " + d(falta) + (porCarro > 0 ? " (unos " + Math.ceil(falta / porCarro) + " carros más a " + d(porCarro) + " cada uno)." : ".") : "¡Meta cumplida! 🏁") + "</p>";
+    } else {
+      h += '<p class="suave">' + delMes.length + (delMes.length === 1 ? " carro vendido" : " carros vendidos") + " este mes · ganancia " + d(ganMes) + '.</p><p class="suave">Pon tu meta mensual en <a href="#mas">Ajustes</a> para ver cuánto te falta.</p>';
+    }
+    h += "</section>";
+
     h += '<div class="kpis">' +
       '<div class="kpi"><span>Ganancia realizada</span><strong>' + d(cap.ganado) + "</strong></div>" +
       '<div class="kpi"><span>Carros vendidos</span><strong>' + vendidos.length + "</strong></div>" +
@@ -460,6 +477,7 @@
     $titulo.textContent = "Ajustes";
     var r = S.reglas;
     var h = '<form class="tarjeta" id="form-reglas"><h2>Tus reglas de compra</h2><div class="campos">' +
+      campo("metaMensual", "Meta de ganancia al mes (para vivir de esto)", r.metaMensual || "", { pre: "USD" }) +
       campo("gananciaMin", "Ganancia mínima por carro", r.gananciaMin, { pre: "USD" }) +
       campo("margenMin", "Margen mínimo (%)", Math.round(r.margenMin * 1000) / 10) +
       campo("diasMax", "Días máximos para vender", r.diasMax) +
@@ -480,6 +498,7 @@
     var form = document.getElementById("form-reglas");
     form.addEventListener("input", function () {
       var g = function (n) { return num(form[n].value); };
+      r.metaMensual = g("metaMensual") || 0;
       r.gananciaMin = g("gananciaMin") || 0; r.margenMin = (g("margenMin") || 0) / 100; r.diasMax = g("diasMax") || 0;
       r.colchon = (g("colchon") || 0) / 100; r.capital = g("capital") || 0; r.reserva = g("reserva") || 0; r.descuentoVenta = (g("descuentoVenta") || 0) / 100;
       guardar();
