@@ -1,5 +1,5 @@
 /* Carrusel de venta: Geely Coolray 2026. 5 láminas 1080x1350.
-   Año, km y transmisión dados por el dueño (2026-10-18, N15); lo demás visible en las fotos (blanco, pantalla con Apple CarPlay, rines; asientos de cuero según el dueño de aluminio).
+   Año, km y transmisión dados por el dueño (2026-10-18, N15); lo demás visible en las fotos (blanco, pantalla con Apple CarPlay, rines de aluminio; asientos de cuero según el dueño).
    Placa real tapada con la de Josefine; precio solo por DM.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-coolray.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post10-coolray-XX.png */
