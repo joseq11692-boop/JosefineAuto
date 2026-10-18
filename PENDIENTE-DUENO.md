@@ -33,6 +33,19 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/11-google-ads-campana.md
   Google Ads: https://ads.google.com
 
+- [ ] **DUENO-18 · Crear el Perfil de Empresa en Google (sales en Google Maps)** · 15 min · con tu Gmail (Claude no puede: Google pide tu cuenta y verificar el negocio)
+  1. Abre el enlace → **Administrar ahora** → nombre: `Josefine Auto`.
+  2. Categoría: escribe "usados" y elige **Concesionario de automóviles usados** (si no sale, "Concesionario de automóviles").
+  3. ¿Ubicación que los clientes pueden visitar? → **No** (así tu dirección no se publica). Zona de servicio: `Ciudad de Panamá`.
+  4. Teléfono: `+507 6698-9569` · Sitio web: `https://josefineauto.com`
+  5. Verificación: Google te pedirá código por SMS, correo o un video corto. Sigue sus pasos.
+  6. Descripción (copiar y pegar):
+     `Compra, venta y consignación de carros seleccionados en Ciudad de Panamá. Cada carro se revisa antes de publicarse: papeles, prueba anti-inundación, escáner y prueba de manejo, y te mostramos los defectos antes de que vengas. ¿Vendes tu carro? Nos encargamos de fotos, anuncios y compradores, y solo cobramos si se vende. ¿Buscas uno en particular? Te lo conseguimos. Mira fotos, kilometraje y precio en josefineauto.com o escríbenos por WhatsApp.`
+  7. Fotos: logo https://josefineauto.com/kit/img/perfil-tiktok.png · portada https://josefineauto.com/kit/img/facebook-portada.png · y fotos de tus carros.
+  8. Horario: el que tú atiendes.
+  Después: a cada comprador o vendedor pídele una reseña en Google (es lo que más confianza da). Avisa a Claude cuando esté verificado: pone el enlace de reseñas en la web.
+  Enlace: https://business.google.com/create
+
 - [ ] **DUENO-17 · Crear la página de Facebook "Josefine Auto"** · 10 min · desde tu Facebook personal (no se crea perfil nuevo)
   1. Abre el enlace → **Crear página**. Nombre: `Josefine Auto`. Categoría: **Concesionario de automóviles** (o "Automóviles"). Biografía: `Carros seleccionados en Panamá 🇵🇦 Compra, venta y consignación. Precio y fotos en josefineauto.com`
   2. Foto de perfil: https://josefineauto.com/kit/img/perfil-tiktok.png · Portada: https://josefineauto.com/kit/img/facebook-portada.png
