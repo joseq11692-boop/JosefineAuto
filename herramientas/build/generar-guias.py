@@ -93,6 +93,16 @@ def pagina(titulo, descripcion, url, cuerpo, raiz="../", extra_head=""):
       </nav>
       <a class="boton boton--chico" href="https://wa.me/{WA}?text={html.escape('Hola Josefine Auto, quiero información.')}" target="_blank" rel="noopener">WhatsApp</a>
     </div>
+    <nav class="menu-movil" aria-label="Secciones">
+      <a href="{raiz}#inventario">Inventario</a>
+      <a href="{raiz}#vendidos">Vendidos</a>
+      <a href="{raiz}#consigue">Te lo conseguimos</a>
+      <a href="{raiz}#vende">Vende tu auto</a>
+      <a href="{raiz}#metodo">Cómo trabajamos</a>
+      <a href="{raiz}#referidos">Referidos</a>
+      <a href="{raiz}#proyectos">Proyectos</a>
+      <a href="{raiz}guias/">Guías</a>
+    </nav>
   </header>
   <main>
 {cuerpo}
