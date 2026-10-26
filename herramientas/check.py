@@ -251,9 +251,46 @@ def auto_no_carro():
         ok("Guardián «auto, no carro» (web)", len(archivos))
 
 
+# 12. Versión en inglés (web/en/): cada texto de datos.js que se ve en la web tiene su traducción en en/en.js
+def ingles():
+    script = (
+        "global.window={};require(process.argv[1]);require(process.argv[2]);"
+        "console.log(JSON.stringify({inv:window.INVENTARIO||[],pro:window.PROYECTOS||[],esc:window.ESCENA||[],bus:window.BUSCANDO||[],en:window.EN||{}}))"
+    )
+    r = subprocess.run(["node", "-e", script, str(WEB / "datos.js"), str(WEB / "en/en.js")], capture_output=True, text=True)
+    if r.returncode != 0:
+        fallo("Versión en inglés", f"datos.js o en/en.js no cargan: {r.stderr.strip()[:200]}")
+        return
+    d = json.loads(r.stdout)
+    en, malos = d["en"], []
+    autos, palabras = en.get("autos", {}), en.get("palabras", {})
+    for c in d["inv"]:
+        for campo in ("destacado", "defectos"):
+            if c.get(campo) and not autos.get(c.get("id"), {}).get(campo):
+                malos.append(f"{c.get('id')}: falta «{campo}» en inglés en web/en/en.js")
+        for campo in ("motor", "transmision", "estado"):
+            v = c.get(campo)
+            if v and re.search(r"[a-záéíóúñ]{4,}", v) and v not in palabras and not re.fullmatch(r"[\w.\- ·]*(Turbo|AWD|4x4|V\d|I\d)[\w.\- ·]*", v):
+                malos.append(f"{c.get('id')}: «{v}» sin traducir en EN.palabras (web/en/en.js)")
+    for p in d["pro"]:
+        if p.get("estado") and p["estado"] not in palabras:
+            malos.append(f"proyecto {p.get('nombre')}: estado «{p['estado']}» sin traducir")
+    for b in d["bus"]:
+        if b.get("nota") and b["nota"] not in palabras:
+            malos.append(f"BUSCANDO {b.get('modelo')}: nota «{b['nota']}» sin traducir")
+    if len(en.get("proyectos", [])) != len(d["pro"]):
+        malos.append(f"EN.proyectos tiene {len(en.get('proyectos', []))} textos y PROYECTOS {len(d['pro'])}")
+    if len(en.get("escena", [])) != len(d["esc"]):
+        malos.append(f"EN.escena tiene {len(en.get('escena', []))} textos y ESCENA {len(d['esc'])}")
+    for m in malos:
+        fallo("Versión en inglés", m)
+    if not malos:
+        ok("Versión en inglés", len(d["inv"]) + len(d["pro"]) + len(d["esc"]))
+
+
 def main():
     print("Gate Josefine Auto")
-    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas, copia_web, auto_no_carro):
+    for paso in (js, jsons, enlaces, coche, guias, service_worker, inventario, dominio, visitas, copia_web, auto_no_carro, ingles):
         try:
             paso()
         except Exception as e:  # noqa: BLE001  (si una comprobación revienta, el gate falla cerrado)

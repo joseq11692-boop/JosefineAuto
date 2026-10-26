@@ -245,7 +245,7 @@ section[id] { scroll-margin-top: 76px; }
 .pie__in { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: start; }
 .pie .logo img { height: 64px; }
 .pie p { margin: 10px 0 0; }
-.pie__enlaces { display: flex; gap: 22px; }
+.pie__enlaces { display: flex; flex-wrap: wrap; gap: 12px 22px; }
 .pie__enlaces a { text-decoration: none; color: #e8e9ec; font-weight: 600; }
 .pie__enlaces a:hover { color: #fff; }
 .pie__legal { grid-column: 1 / -1; font-size: .8rem; margin: 0; border-top: 1px solid #2a2c31; padding-top: 18px; }
@@ -261,8 +261,8 @@ section[id] { scroll-margin-top: 76px; }
 /* Móvil */
 @media (max-width: 1280px) { .menu { gap: 16px; } .menu a { font-size: .84rem; } }
 @media (max-width: 1080px) { .menu { gap: 11px; } .menu a { font-size: .76rem; letter-spacing: 0; } }
-/* 8 enlaces no caben bajo ~890 px: se oculta el menú (como en móvil) */
-@media (max-width: 900px) { .menu { display: none; } }
+/* 8 enlaces + botón de idioma no caben bajo ~970 px: se oculta el menú (como en móvil) */
+@media (max-width: 980px) { .menu { display: none; } }
 @media (max-width: 860px) {
   .menu { display: none; }
   .dos-col { grid-template-columns: 1fr; gap: 32px; }
@@ -273,7 +273,7 @@ section[id] { scroll-margin-top: 76px; }
 
 /* Móvil: fila de botones de sección bajo la barra (pedido del dueño: no tener que bajar todo) + botón de volver arriba */
 .menu-movil, .subir { display: none; }
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .menu-movil { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .menu-movil::-webkit-scrollbar { display: none; }
   .menu-movil a { flex: none; white-space: nowrap; text-decoration: none; font-weight: 600; font-size: .82rem; color: var(--tinta); background: var(--papel-2); border: 1px solid var(--linea); border-radius: 999px; padding: 7px 14px; }
@@ -281,6 +281,11 @@ section[id] { scroll-margin-top: 76px; }
   section[id] { scroll-margin-top: 124px; }
   .subir { display: grid; place-items: center; position: fixed; left: 16px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); width: 46px; height: 46px; border-radius: 50%; background: var(--tinta); color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: 700; box-shadow: 0 6px 18px rgba(0,0,0,.25); z-index: 20; }
 }
+
+/* Botón de idioma (ES / EN) junto al de WhatsApp */
+.barra__acciones { display: flex; align-items: center; gap: 10px; flex: none; }
+.idioma { display: grid; place-items: center; min-width: 40px; height: 36px; padding: 0 10px; border: 1.5px solid var(--tinta); border-radius: 999px; font-family: var(--mono); font-size: .78rem; font-weight: 500; letter-spacing: .06em; color: var(--tinta); text-decoration: none; }
+.idioma:hover, .idioma:focus-visible { background: var(--tinta); color: #fff; }
 
 </style>
 <header class="barra">
@@ -296,7 +301,10 @@ section[id] { scroll-margin-top: 76px; }
         <a href="#proyectos">Proyectos</a>
         <a href="guias/">Guías</a>
       </nav>
-      <a class="boton boton--chico" data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
+      <div class="barra__acciones">
+        <a class="idioma" href="en/" hreflang="en" lang="en" aria-label="View in English">EN</a>
+        <a class="boton boton--chico" data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
+      </div>
     </div>
     <nav class="menu-movil" aria-label="Secciones">
       <a href="#inventario">Inventario</a>
@@ -492,6 +500,7 @@ section[id] { scroll-margin-top: 76px; }
         <a data-wa="Hola Josefine Auto, quiero información." href="#">WhatsApp</a>
         <a id="enlace-ig" href="#" target="_blank" rel="noopener">Instagram</a>
         <a href="guias/">Guías</a>
+        <a href="en/" hreflang="en" lang="en">English</a>
         <a id="enlace-correo" href="#" hidden>Correo</a>
       </div>
       <p class="pie__legal">© <span id="anio"></span> Josefine Auto. Información sujeta a cambios; confirma disponibilidad por WhatsApp.</p>
@@ -1030,6 +1039,14 @@ window.GUIAS = [
   var dinero = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   var numero = new Intl.NumberFormat("es-PA");
 
+  // Idioma: la página en inglés (web/en/) pone lang="en" y carga en/en.js (window.EN).
+  var EN = document.documentElement.lang === "en" && window.EN;
+  var RAIZ = EN ? EN.raiz || "" : "";
+  if (EN) numero = new Intl.NumberFormat("en-US");
+  function T(es, en) { return EN ? en : es; }
+  function W(s) { return EN && s && EN.palabras && EN.palabras[s] || s; }
+  function texto(c, campo) { return EN && EN.autos && EN.autos[c.id] && EN.autos[c.id][campo] || c[campo]; }
+
   function enlaceWhatsApp(texto) {
     return "https://wa.me/" + (config.whatsapp || "") + "?text=" + encodeURIComponent(texto);
   }
@@ -1057,10 +1074,10 @@ window.GUIAS = [
   var listaVendidos = document.getElementById("lista-vendidos");
   function tituloDe(c) { return [c.marca, c.modelo, c.anio].filter(Boolean).join(" "); }
   function datosDe(c) {
-    return [c.km ? numero.format(c.km) + " km" : "", c.motor || "", c.transmision || ""].filter(Boolean);
+    return [c.km ? numero.format(c.km) + " km" : "", W(c.motor) || "", W(c.transmision) || ""].filter(Boolean);
   }
 
-  function ruta(u) { return /^(data:|https?:)/.test(u) ? u : encodeURI(u); }
+  function ruta(u) { return /^(data:|https?:)/.test(u) ? u : encodeURI(RAIZ + u); }
   function slug(c) {
     return (c.id || tituloDe(c)).toString().toLowerCase()
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -1077,25 +1094,25 @@ window.GUIAS = [
     tarjeta.setAttribute("data-slug", slug(c));
     tarjeta.tabIndex = 0;
     tarjeta.setAttribute("role", "button");
-    tarjeta.setAttribute("aria-label", "Ver ficha del " + titulo);
+    tarjeta.setAttribute("aria-label", T("Ver ficha del ", "View details: ") + titulo);
     tarjeta.innerHTML =
       '<div class="carro__foto"' + (foto ? ' style="background-image:url(\'' + ruta(foto) + '\')"' : "") + ">" +
-        (foto ? "" : '<span class="carro__vacia" aria-label="Foto próximamente">' + SILUETA + "</span>") +
-        '<span class="carro__estado estado--' + escapar(c.estado) + '">' + escapar(c.estado) + "</span>" +
+        (foto ? "" : '<span class="carro__vacia" aria-label="' + T("Foto próximamente", "Photo coming soon") + '">' + SILUETA + "</span>") +
+        '<span class="carro__estado estado--' + escapar(c.estado) + '">' + escapar(W(c.estado)) + "</span>" +
         '<div class="carro__sobre">' +
-          "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">A comisión</span>' : "") + "</h3>" +
+          "<h3>" + escapar(titulo) + (c.tipo === "consignacion" ? '<span class="etiqueta-tipo">' + T("A comisión", "On consignment") + "</span>" : "") + "</h3>" +
           '<ul class="carro__datos">' + datosDe(c).map(function (d) { return "<li>" + escapar(d) + "</li>"; }).join("") + "</ul>" +
-          '<p class="carro__precio">' + (vendido ? "Vendido" : (c.precio ? dinero.format(c.precio) : "Precio por DM")) + "</p>" +
+          '<p class="carro__precio">' + (vendido ? T("Vendido", "Sold") : (c.precio ? dinero.format(c.precio) : T("Precio por DM", "Price by DM"))) + "</p>" +
         "</div>" +
       "</div>" +
       ((c.destacado || c.defectos || !vendido) ? '<div class="carro__cuerpo">' +
-        (c.destacado ? '<p class="carro__destacado">' + escapar(c.destacado) + "</p>" : "") +
-        (c.defectos ? '<p class="carro__defectos"><strong>Defectos a la vista:</strong> ' + escapar(c.defectos) + "</p>" : "") +
+        (c.destacado ? '<p class="carro__destacado">' + escapar(texto(c, "destacado")) + "</p>" : "") +
+        (c.defectos ? '<p class="carro__defectos"><strong>' + T("Defectos a la vista:", "Visible flaws:") + "</strong> " + escapar(texto(c, "defectos")) + "</p>" : "") +
         (vendido ? "" :
           '<div class="carro__acciones">' +
             '<a class="boton boton--chico" target="_blank" rel="noopener" href="' +
-              enlaceWhatsApp("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible?") + '">Me interesa</a>' +
-            (c.informe ? '<a class="boton boton--chico boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">Informe de inspección</a>' : "") +
+              enlaceWhatsApp(T("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible?", "Hi Josefine Auto, I'm interested in the " + titulo + ". Is it still available?")) + '">' + T("Me interesa", "I'm interested") + "</a>" +
+            (c.informe ? '<a class="boton boton--chico boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">' + T("Informe de inspección", "Inspection report") + "</a>" : "") +
           "</div>") +
       "</div>" : "");
     (vendido && listaVendidos ? listaVendidos : lista).appendChild(tarjeta);
@@ -1111,35 +1128,35 @@ window.GUIAS = [
     var vendido = c.estado === "vendido";
     var $foto = document.getElementById("ficha-foto");
     function verFoto(i) {
-      $foto.innerHTML = fotos.length ? '<img src="' + ruta(fotos[i]) + '" alt="' + escapar(titulo) + ', foto ' + (i + 1) + '">' : '<span class="carro__vacia">' + SILUETA + "</span>";
+      $foto.innerHTML = fotos.length ? '<img src="' + ruta(fotos[i]) + '" alt="' + escapar(titulo) + ', ' + T("foto ", "photo ") + (i + 1) + '">' : '<span class="carro__vacia">' + SILUETA + "</span>";
       Array.prototype.forEach.call(document.querySelectorAll("#ficha-miniaturas button"), function (b, k) { b.setAttribute("aria-current", String(k === i)); });
     }
     document.getElementById("ficha-miniaturas").innerHTML = fotos.length > 1 ? fotos.map(function (f, i) {
-      return '<button type="button" data-i="' + i + '" aria-label="Foto ' + (i + 1) + '"><img src="' + ruta(f) + '" alt="" loading="lazy"></button>';
+      return '<button type="button" data-i="' + i + '" aria-label="' + T("Foto ", "Photo ") + (i + 1) + '"><img src="' + ruta(f) + '" alt="" loading="lazy"></button>';
     }).join("") : "";
     verFoto(0);
     document.getElementById("ficha-miniaturas").onclick = function (e) { var b = e.target.closest("button"); if (b) verFoto(Number(b.getAttribute("data-i"))); };
-    var compartir = "Mira este " + titulo + " en Josefine Auto: " + urlCarro(c);
+    var compartir = T("Mira este " + titulo + " en Josefine Auto: ", "Check out this " + titulo + " at Josefine Auto: ") + urlCarro(c);
     document.getElementById("ficha-info").innerHTML =
-      '<span class="carro__estado estado--' + escapar(c.estado) + ' ficha-carro__estado">' + escapar(c.estado) + "</span>" +
+      '<span class="carro__estado estado--' + escapar(c.estado) + ' ficha-carro__estado">' + escapar(W(c.estado)) + "</span>" +
       '<h2 id="ficha-titulo">' + escapar(titulo) + "</h2>" +
-      '<p class="carro__precio">' + (vendido ? "Vendido" : (c.precio ? dinero.format(c.precio) : "Precio por DM")) + "</p>" +
+      '<p class="carro__precio">' + (vendido ? T("Vendido", "Sold") : (c.precio ? dinero.format(c.precio) : T("Precio por DM", "Price by DM"))) + "</p>" +
       '<dl class="ficha-carro__datos">' +
-        [["Año", c.anio], ["Kilometraje", c.km ? numero.format(c.km) + " km" : ""], ["Motor", c.motor], ["Transmisión", c.transmision],
-         ["Venta", c.tipo === "consignacion" ? "A comisión" : (c.tipo === "propio" ? "Josefine Auto" : "")]]
+        [[T("Año", "Year"), c.anio], [T("Kilometraje", "Mileage"), c.km ? numero.format(c.km) + " km" : ""], [T("Motor", "Engine"), W(c.motor)], [T("Transmisión", "Transmission"), W(c.transmision)],
+         [T("Venta", "Sale"), c.tipo === "consignacion" ? T("A comisión", "On consignment") : (c.tipo === "propio" ? "Josefine Auto" : "")]]
           .filter(function (d) { return d[1]; })
           .map(function (d) { return "<div><dt>" + d[0] + "</dt><dd>" + escapar(d[1]) + "</dd></div>"; }).join("") +
       "</dl>" +
-      (c.destacado ? '<p class="carro__destacado">' + escapar(c.destacado) + "</p>" : "") +
-      (c.defectos ? '<p class="carro__defectos"><strong>Defectos a la vista:</strong> ' + escapar(c.defectos) + "</p>" : "") +
+      (c.destacado ? '<p class="carro__destacado">' + escapar(texto(c, "destacado")) + "</p>" : "") +
+      (c.defectos ? '<p class="carro__defectos"><strong>' + T("Defectos a la vista:", "Visible flaws:") + "</strong> " + escapar(texto(c, "defectos")) + "</p>" : "") +
       // Sellos solo si se comprobaron en ESTE carro (campo "sellos" en datos.js); nada se afirma por defecto
       (c.sellos && c.sellos.length ? '<ul class="ficha-carro__sellos">' + c.sellos.map(function (x) { return "<li>" + escapar(x) + "</li>"; }).join("") + "</ul>" : "") +
       '<div class="carro__acciones">' +
         (vendido
-          ? '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, vi que vendieron el " + titulo + ". Busco algo parecido.") + '">Busco uno parecido</a>'
-          : '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible? " + urlCarro(c)) + '">Me interesa</a>') +
-        (c.informe ? '<a class="boton boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">Informe de inspección</a>' : "") +
-        '<a class="boton boton--borde boton--chico" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(compartir) + '">Compartir</a>' +
+          ? '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp(T("Hola Josefine Auto, vi que vendieron el " + titulo + ". Busco algo parecido.", "Hi Josefine Auto, I saw you sold the " + titulo + ". I'm looking for something similar.")) + '">' + T("Busco uno parecido", "Find me a similar one") + "</a>"
+          : '<a class="boton" target="_blank" rel="noopener" href="' + enlaceWhatsApp(T("Hola Josefine Auto, me interesa el " + titulo + ". ¿Sigue disponible? ", "Hi Josefine Auto, I'm interested in the " + titulo + ". Is it still available? ") + urlCarro(c)) + '">' + T("Me interesa", "I'm interested") + "</a>") +
+        (c.informe ? '<a class="boton boton--borde" target="_blank" rel="noopener" href="' + encodeURI(c.informe) + '">' + T("Informe de inspección", "Inspection report") + "</a>" : "") +
+        '<a class="boton boton--borde boton--chico" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(compartir) + '">' + T("Compartir", "Share") + "</a>" +
       "</div>";
     if (!$ficha.open) { try { $ficha.showModal(); } catch (e) { $ficha.setAttribute("open", ""); } }
     if (location.hash !== "#carro-" + slug(c)) history.replaceState(null, "", "#carro-" + slug(c));
@@ -1175,16 +1192,16 @@ window.GUIAS = [
       art.className = "tarjeta carro carro--buscando";
       art.innerHTML =
         '<div class="carro__foto"><span class="carro__vacia">' + SILUETA + "</span>" +
-          '<span class="carro__estado estado--buscando">En búsqueda</span>' +
+          '<span class="carro__estado estado--buscando">' + T("En búsqueda", "Searching") + "</span>" +
           '<div class="carro__sobre">' +
             "<h3>" + escapar(b.modelo) + " " + escapar(b.anios) + "</h3>" +
-            '<ul class="carro__datos"><li>' + escapar(b.nota) + "</li></ul>" +
-            '<p class="carro__precio carro__precio--chico">Próximo ingreso</p>' +
+            '<ul class="carro__datos"><li>' + escapar(W(b.nota)) + "</li></ul>" +
+            '<p class="carro__precio carro__precio--chico">' + T("Próximo ingreso", "Coming soon") + "</p>" +
           "</div>" +
         "</div>" +
         '<div class="carro__cuerpo"><div class="carro__acciones">' +
           '<a class="boton boton--chico" target="_blank" rel="noopener" href="' +
-            enlaceWhatsApp("Hola Josefine Auto, avísenme cuando entre un " + b.modelo + " " + b.anios + ".") + '">Avísame</a>' +
+            enlaceWhatsApp(T("Hola Josefine Auto, avísenme cuando entre un ", "Hi Josefine Auto, let me know when you get a ") + b.modelo + " " + b.anios + ".") + '">' + T("Avísame", "Notify me") + "</a>" +
         "</div></div>";
       lista.appendChild(art);
     });
@@ -1195,7 +1212,15 @@ window.GUIAS = [
   document.getElementById("form-busco").addEventListener("submit", function (e) {
     e.preventDefault();
     var d = new FormData(e.target);
-    var texto = "Hola Josefine Auto, busco un auto en particular. ¿Me lo consiguen?\n" +
+    var texto = EN ? "Hi Josefine Auto, I'm looking for a specific car. Can you find it for me?\n" +
+      "• Name: " + d.get("nombre") + "\n" +
+      "• WhatsApp: " + d.get("telefono") + "\n" +
+      "• Car: " + d.get("modelo") + (d.get("anios") ? " " + d.get("anios") : "") + "\n" +
+      "• Budget: " + (d.get("presupuesto") ? "$" + d.get("presupuesto") : "to be defined") + "\n" +
+      "• Transmission: " + d.get("transmision") + "\n" +
+      "• Details: " + (d.get("detalles") || "none") + "\n" +
+      "Let me know when you find it." :
+      "Hola Josefine Auto, busco un auto en particular. ¿Me lo consiguen?\n" +
       "• Nombre: " + d.get("nombre") + "\n" +
       "• WhatsApp: " + d.get("telefono") + "\n" +
       "• Auto: " + d.get("modelo") + (d.get("anios") ? " " + d.get("anios") : "") + "\n" +
@@ -1210,7 +1235,13 @@ window.GUIAS = [
   document.getElementById("form-vende").addEventListener("submit", function (e) {
     e.preventDefault();
     var d = new FormData(e.target);
-    var texto = "Hola Josefine Auto, quiero vender mi auto a comisión.\n" +
+    var texto = EN ? "Hi Josefine Auto, I want to sell my car on consignment.\n" +
+      "• Car: " + d.get("modelo") + " " + d.get("anio") + "\n" +
+      "• Km: " + (d.get("km") || "to be confirmed") + "\n" +
+      "• Asking price: " + (d.get("precio") ? "$" + d.get("precio") : "to be defined") + "\n" +
+      "• Modifications: " + (d.get("mods") || "none") + "\n" +
+      "I'll send you the photos here." :
+      "Hola Josefine Auto, quiero vender mi auto a comisión.\n" +
       "• Auto: " + d.get("modelo") + " " + d.get("anio") + "\n" +
       "• Km: " + (d.get("km") || "por confirmar") + "\n" +
       "• Precio esperado: " + (d.get("precio") ? "$" + d.get("precio") : "por definir") + "\n" +
@@ -1223,7 +1254,12 @@ window.GUIAS = [
   document.getElementById("form-referido").addEventListener("submit", function (e) {
     e.preventDefault();
     var d = new FormData(e.target);
-    var texto = "Hola Josefine Auto, les quiero referir a alguien.\n" +
+    var texto = EN ? "Hi Josefine Auto, I'd like to refer someone to you.\n" +
+      "• Me: " + d.get("nombre") + " (" + d.get("telefono") + ")\n" +
+      "• Referral: " + d.get("refnombre") + " (" + d.get("reftelefono") + ")\n" +
+      "• " + d.get("tipo") + ": " + (d.get("carro") || "to be confirmed") + "\n" +
+      "I already told them you'll message them." :
+      "Hola Josefine Auto, les quiero referir a alguien.\n" +
       "• Yo: " + d.get("nombre") + " (" + d.get("telefono") + ")\n" +
       "• Referido: " + d.get("refnombre") + " (" + d.get("reftelefono") + ")\n" +
       "• " + d.get("tipo") + ": " + (d.get("carro") || "por confirmar") + "\n" +
@@ -1236,8 +1272,8 @@ window.GUIAS = [
   if (listaGuias) {
     (window.GUIAS || []).slice(0, 3).forEach(function (g) {
       var a = document.createElement("a");
-      a.className = "paso guia__tarjeta"; a.href = g.url;
-      a.innerHTML = "<span>GUÍA</span><h3>" + escapar(g.titulo) + "</h3><p>" + escapar(g.descripcion) + "</p>";
+      a.className = "paso guia__tarjeta"; a.href = RAIZ + g.url;
+      a.innerHTML = "<span>" + T("GUÍA", "GUIDE · IN SPANISH") + "</span><h3>" + escapar(g.titulo) + "</h3><p>" + escapar(g.descripcion) + "</p>";
       listaGuias.appendChild(a);
     });
     if (!listaGuias.children.length) document.getElementById("guias").hidden = true;
@@ -1245,18 +1281,18 @@ window.GUIAS = [
 
   // Proyectos
   var listaProyectos = document.getElementById("lista-proyectos");
-  proyectos.forEach(function (p) {
+  proyectos.forEach(function (p, i) {
     var art = document.createElement("article");
     art.className = "tarjeta";
     art.innerHTML =
-      '<div class="proyecto__foto"' + (p.foto ? ' style="background-image:url(\'' + encodeURI(p.foto) + '\')"' : "") + ">" +
-        (p.foto ? "" : "Fotos muy pronto") +
+      '<div class="proyecto__foto"' + (p.foto ? ' style="background-image:url(\'' + encodeURI(RAIZ + p.foto) + '\')"' : "") + ">" +
+        (p.foto ? "" : T("Fotos muy pronto", "Photos coming soon")) +
       "</div>" +
       '<div class="carro__cuerpo">' +
-        "<h3>" + escapar(p.nombre) + '<span class="etiqueta-tipo">' + escapar(p.estado) + "</span></h3>" +
-        '<p class="carro__defectos">' + escapar(p.descripcion) + "</p>" +
+        "<h3>" + escapar(p.nombre) + '<span class="etiqueta-tipo">' + escapar(W(p.estado)) + "</span></h3>" +
+        '<p class="carro__defectos">' + escapar(EN && EN.proyectos && EN.proyectos[i] || p.descripcion) + "</p>" +
         '<a class="boton boton--chico boton--borde" target="_blank" rel="noopener" href="https://instagram.com/' +
-          encodeURIComponent(config.instagram || "") + '">Ver en Instagram</a>' +
+          encodeURIComponent(config.instagram || "") + '">' + T("Ver en Instagram", "See on Instagram") + "</a>" +
       "</div>";
     listaProyectos.appendChild(art);
   });
@@ -1264,7 +1300,8 @@ window.GUIAS = [
   // En la escena (eventos y car spotting)
   var listaEscena = document.getElementById("lista-escena");
   if (listaEscena) {
-    (window.ESCENA || []).forEach(function (e) {
+    (window.ESCENA || []).forEach(function (e, i) {
+      if (EN && EN.escena && EN.escena[i]) e = Object.assign({}, e, EN.escena[i]);
       var art = document.createElement("article");
       art.className = "escena";
       art.innerHTML = '<div class="escena__fotos">' + (e.fotos || []).map(function (f) {
@@ -1277,7 +1314,7 @@ window.GUIAS = [
   }
 
   // Pie
-  document.getElementById("zona").textContent = config.zona || "Panamá";
+  document.getElementById("zona").textContent = EN ? "Panama City, Panama" : config.zona || "Panamá";
   document.getElementById("anio").textContent = new Date().getFullYear();
   document.getElementById("enlace-ig").href = "https://instagram.com/" + encodeURIComponent(config.instagram || "");
   if (config.correo) {

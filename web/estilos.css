@@ -242,7 +242,7 @@ section[id] { scroll-margin-top: 76px; }
 .pie__in { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: start; }
 .pie .logo img { height: 64px; }
 .pie p { margin: 10px 0 0; }
-.pie__enlaces { display: flex; gap: 22px; }
+.pie__enlaces { display: flex; flex-wrap: wrap; gap: 12px 22px; }
 .pie__enlaces a { text-decoration: none; color: #e8e9ec; font-weight: 600; }
 .pie__enlaces a:hover { color: #fff; }
 .pie__legal { grid-column: 1 / -1; font-size: .8rem; margin: 0; border-top: 1px solid #2a2c31; padding-top: 18px; }
@@ -258,8 +258,8 @@ section[id] { scroll-margin-top: 76px; }
 /* Móvil */
 @media (max-width: 1280px) { .menu { gap: 16px; } .menu a { font-size: .84rem; } }
 @media (max-width: 1080px) { .menu { gap: 11px; } .menu a { font-size: .76rem; letter-spacing: 0; } }
-/* 8 enlaces no caben bajo ~890 px: se oculta el menú (como en móvil) */
-@media (max-width: 900px) { .menu { display: none; } }
+/* 8 enlaces + botón de idioma no caben bajo ~970 px: se oculta el menú (como en móvil) */
+@media (max-width: 980px) { .menu { display: none; } }
 @media (max-width: 860px) {
   .menu { display: none; }
   .dos-col { grid-template-columns: 1fr; gap: 32px; }
@@ -270,7 +270,7 @@ section[id] { scroll-margin-top: 76px; }
 
 /* Móvil: fila de botones de sección bajo la barra (pedido del dueño: no tener que bajar todo) + botón de volver arriba */
 .menu-movil, .subir { display: none; }
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .menu-movil { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .menu-movil::-webkit-scrollbar { display: none; }
   .menu-movil a { flex: none; white-space: nowrap; text-decoration: none; font-weight: 600; font-size: .82rem; color: var(--tinta); background: var(--papel-2); border: 1px solid var(--linea); border-radius: 999px; padding: 7px 14px; }
@@ -278,3 +278,8 @@ section[id] { scroll-margin-top: 76px; }
   section[id] { scroll-margin-top: 124px; }
   .subir { display: grid; place-items: center; position: fixed; left: 16px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); width: 46px; height: 46px; border-radius: 50%; background: var(--tinta); color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: 700; box-shadow: 0 6px 18px rgba(0,0,0,.25); z-index: 20; }
 }
+
+/* Botón de idioma (ES / EN) junto al de WhatsApp */
+.barra__acciones { display: flex; align-items: center; gap: 10px; flex: none; }
+.idioma { display: grid; place-items: center; min-width: 40px; height: 36px; padding: 0 10px; border: 1.5px solid var(--tinta); border-radius: 999px; font-family: var(--mono); font-size: .78rem; font-weight: 500; letter-spacing: .06em; color: var(--tinta); text-decoration: none; }
+.idioma:hover, .idioma:focus-visible { background: var(--tinta); color: #fff; }

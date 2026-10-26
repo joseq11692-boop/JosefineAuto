@@ -196,7 +196,7 @@ error = f"""    <section class="seccion">
 (WEB / "404.html").write_text(pagina("Página no encontrada | Josefine Auto", "Esta página no existe.", BASE + "404.html", error, raiz="/"), encoding="utf-8")
 
 # Sitemap
-urls = [BASE, BASE + "guias/"] + [f"{BASE}guias/{g['slug']}.html" for g in guias]
+urls = [BASE, BASE + "en/", BASE + "guias/"] + [f"{BASE}guias/{g['slug']}.html" for g in guias]
 (WEB / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
 print("Guías:", len(guias), "· sitemap:", len(urls), "URLs")
