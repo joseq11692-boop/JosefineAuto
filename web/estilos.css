@@ -267,3 +267,14 @@ section[id] { scroll-margin-top: 76px; }
   .logo img { height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Móvil: fila de botones de sección bajo la barra (pedido del dueño: no tener que bajar todo) + botón de volver arriba */
+.menu-movil, .subir { display: none; }
+@media (max-width: 900px) {
+  .menu-movil { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .menu-movil::-webkit-scrollbar { display: none; }
+  .menu-movil a { flex: none; white-space: nowrap; text-decoration: none; font-weight: 600; font-size: .82rem; color: var(--tinta); background: var(--papel-2); border: 1px solid var(--linea); border-radius: 999px; padding: 7px 14px; }
+  .menu-movil a:active { background: var(--tinta); color: #fff; }
+  section[id] { scroll-margin-top: 124px; }
+  .subir { display: grid; place-items: center; position: fixed; left: 16px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); width: 46px; height: 46px; border-radius: 50%; background: var(--tinta); color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: 700; box-shadow: 0 6px 18px rgba(0,0,0,.25); z-index: 20; }
+}
