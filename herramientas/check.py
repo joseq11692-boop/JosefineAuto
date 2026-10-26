@@ -270,7 +270,8 @@ def ingles():
                 malos.append(f"{c.get('id')}: falta «{campo}» en inglés en web/en/en.js")
         for campo in ("motor", "transmision", "estado"):
             v = c.get(campo)
-            if v and re.search(r"[a-záéíóúñ]{4,}", v) and v not in palabras and not re.fullmatch(r"[\w.\- ·]*(Turbo|AWD|4x4|V\d|I\d)[\w.\- ·]*", v):
+            # Sin traducir = tiene una palabra en minúscula que no es término técnico (Turbo, AWD, 4x4, V8…)
+            if v and v not in palabras and re.search(r"(?<![A-Z])[a-záéíóúñ]{4,}", re.sub(r"\b(Turbo|Twin|AWD|SkyActiv)\b", "", v)):
                 malos.append(f"{c.get('id')}: «{v}» sin traducir en EN.palabras (web/en/en.js)")
     for p in d["pro"]:
         if p.get("estado") and p["estado"] not in palabras:
@@ -278,10 +279,12 @@ def ingles():
     for b in d["bus"]:
         if b.get("nota") and b["nota"] not in palabras:
             malos.append(f"BUSCANDO {b.get('modelo')}: nota «{b['nota']}» sin traducir")
-    if len(en.get("proyectos", [])) != len(d["pro"]):
-        malos.append(f"EN.proyectos tiene {len(en.get('proyectos', []))} textos y PROYECTOS {len(d['pro'])}")
-    if len(en.get("escena", [])) != len(d["esc"]):
-        malos.append(f"EN.escena tiene {len(en.get('escena', []))} textos y ESCENA {len(d['esc'])}")
+    for p in d["pro"]:
+        if p.get("descripcion") and p.get("nombre") not in en.get("proyectos", {}):
+            malos.append(f"proyecto «{p.get('nombre')}» sin texto en EN.proyectos (web/en/en.js)")
+    for e in d["esc"]:
+        if e.get("titulo") not in en.get("escena", {}):
+            malos.append(f"evento «{e.get('titulo')}» sin texto en EN.escena (web/en/en.js)")
     for m in malos:
         fallo("Versión en inglés", m)
     if not malos:

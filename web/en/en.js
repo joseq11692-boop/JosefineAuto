@@ -29,13 +29,14 @@ window.EN = {
     "disponible": "available", "reservado": "reserved", "vendido": "sold",
     "En construcción": "In progress", "Automático · Papeles al día": "Automatic · Papers up to date"
   },
-  proyectos: [
-    "A rally classic. Our house project, step by step on Instagram.",
-    "The 8th-gen Si, with its K20 and the 8,000 rpm redline."
-  ],
-  escena: [
-    { titulo: "Jetour G700 launch", fecha: "May 2026", texto: "A model that impresses with its presence and capabilities." },
-    { titulo: "Lexus Santa María soft opening", fecha: "October 2025", texto: "Luxury, precision and Japanese style at their best." },
-    { titulo: "Car spotting at The Collection, Mexico", fecha: "September 2025", texto: "Some of the most exclusive cars in the world, in one place." }
-  ]
+  // Proyectos y eventos: por el nombre/título en español de datos.js (así no se cruzan si se reordenan).
+  proyectos: {
+    "Mitsubishi Lancer Evolution VI GSR 1999": "A rally classic. Our house project, step by step on Instagram.",
+    "Honda Civic Si 2008": "The 8th-gen Si, with its K20 and the 8,000 rpm redline."
+  },
+  escena: {
+    "Lanzamiento del Jetour G700": { titulo: "Jetour G700 launch", fecha: "May 2026", texto: "A model that impresses with its presence and capabilities." },
+    "Soft Opening de Lexus Santa María": { titulo: "Lexus Santa María soft opening", fecha: "October 2025", texto: "Luxury, precision and Japanese style at their best." },
+    "Car spotting en The Collection, México": { titulo: "Car spotting at The Collection, Mexico", fecha: "September 2025", texto: "Some of the most exclusive cars in the world, in one place." }
+  }
 };

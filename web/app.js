@@ -251,7 +251,7 @@
 
   // Proyectos
   var listaProyectos = document.getElementById("lista-proyectos");
-  proyectos.forEach(function (p, i) {
+  proyectos.forEach(function (p) {
     var art = document.createElement("article");
     art.className = "tarjeta";
     art.innerHTML =
@@ -260,7 +260,7 @@
       "</div>" +
       '<div class="carro__cuerpo">' +
         "<h3>" + escapar(p.nombre) + '<span class="etiqueta-tipo">' + escapar(W(p.estado)) + "</span></h3>" +
-        '<p class="carro__defectos">' + escapar(EN && EN.proyectos && EN.proyectos[i] || p.descripcion) + "</p>" +
+        '<p class="carro__defectos">' + escapar(EN && EN.proyectos && EN.proyectos[p.nombre] || p.descripcion) + "</p>" +
         '<a class="boton boton--chico boton--borde" target="_blank" rel="noopener" href="https://instagram.com/' +
           encodeURIComponent(config.instagram || "") + '">' + T("Ver en Instagram", "See on Instagram") + "</a>" +
       "</div>";
@@ -270,8 +270,8 @@
   // En la escena (eventos y car spotting)
   var listaEscena = document.getElementById("lista-escena");
   if (listaEscena) {
-    (window.ESCENA || []).forEach(function (e, i) {
-      if (EN && EN.escena && EN.escena[i]) e = Object.assign({}, e, EN.escena[i]);
+    (window.ESCENA || []).forEach(function (e) {
+      if (EN && EN.escena && EN.escena[e.titulo]) e = Object.assign({}, e, EN.escena[e.titulo]);
       var art = document.createElement("article");
       art.className = "escena";
       art.innerHTML = '<div class="escena__fotos">' + (e.fotos || []).map(function (f) {
