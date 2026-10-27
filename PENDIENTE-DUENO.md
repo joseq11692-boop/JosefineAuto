@@ -33,6 +33,17 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/11-google-ads-campana.md
   Google Ads: https://ads.google.com
 
+- [ ] **DUENO-19 · Poner el logo como foto de admin@josefineauto.com** · 10 min · desde tu celular (Claude no puede: Google pide crear la cuenta y un código)
+  El correo admin@ no es una cuenta de Google, por eso sale sin foto. Se le crea una cuenta de Google con ese mismo correo (gratis, sin Gmail nuevo):
+  1. Descarga el logo: https://josefineauto.com/kit/img/perfil-tiktok.png (mantén el dedo encima → Guardar imagen).
+  2. Abre el enlace de abajo. Nombre: `Josefine` · Apellido: `Auto`. Fecha de nacimiento y género: los tuyos.
+  3. Cuando pida correo, toca **Usar tu dirección de correo electrónico actual** y escribe `admin@josefineauto.com`.
+  4. Google manda un código a ese correo: te llega a tu Gmail de siempre. Cópialo y pégalo. Pon una contraseña nueva y guárdala.
+  5. Ya dentro: toca el círculo de la foto arriba a la derecha → **Agregar foto de perfil** → elige el logo que guardaste.
+  6. En https://aboutme.google.com mira que la foto diga **Visible para cualquier persona**.
+  La foto puede tardar hasta 24 h en verse y solo la ven quienes usan Gmail.
+  Enlace: https://accounts.google.com/signup
+
 - [ ] **DUENO-18 · Crear el Perfil de Empresa en Google (sales en Google Maps)** · 15 min · con tu Gmail (Claude no puede: Google pide tu cuenta y verificar el negocio)
   1. Abre el enlace → **Administrar ahora** → nombre: `Josefine Auto`.
   2. Categoría: escribe "usados" y elige **Concesionario de automóviles usados** (si no sale, "Concesionario de automóviles").
