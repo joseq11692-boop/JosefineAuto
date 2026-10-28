@@ -10,6 +10,7 @@ window.EN = {
     "toyota-corolla-le-2018": { destacado: "LE trim · Sedan · Gray · Alloy wheels" },
     "geely-coolray-2026": { destacado: "Practically new · White · Touchscreen with Apple CarPlay · Leather seats · Alloy wheels" },
     "fiat-500-sport-2012": { destacado: "Sport trim · Sport wheels · Rear spoiler · Touchscreen · Silver", defectos: "Dent on the front right bumper · Torn driver's seat upholstery · Hazy headlights" },
+    "audi-q5-2011": { destacado: "quattro all-wheel drive · 2.0 Turbo engine · Leather seats · Wood trim · White", defectos: "Scuffs on the lower front bumper · Scratches on the rear bumper · Wear on the driver's seat leather" },
     "ford-edge-2016": { destacado: "One owner · New battery, engine mounts and A/C evaporator · Recent maintenance" },
     "range-rover-sport-2019": { destacado: "Excellent physical and mechanical condition" },
     "bmw-320i-2006": { destacado: "Interior in good condition", defectos: "Paint details" },
@@ -25,7 +26,7 @@ window.EN = {
   },
   palabras: {
     "Automática": "Automatic", "Manual": "Manual", "Manual (conversión 4 cambios de LC70)": "Manual (LC70 4-speed conversion)",
-    "1.4 gasolina": "1.4 gasoline", "1.6 gasolina": "1.6 gasoline", "1.8T · Turbo IS38 · Stage 3 (más de 300 HP)": "1.8T · IS38 turbo · Stage 3 (over 300 HP)",
+    "1.4 gasolina": "1.4 gasoline", "2.0 Turbo · quattro": "2.0 Turbo · quattro", "1.6 gasolina": "1.6 gasoline", "1.8T · Turbo IS38 · Stage 3 (más de 300 HP)": "1.8T · IS38 turbo · Stage 3 (over 300 HP)",
     "disponible": "available", "reservado": "reserved", "vendido": "sold",
     "En construcción": "In progress", "Automático · Papeles al día": "Automatic · Papers up to date"
   },
