@@ -204,7 +204,7 @@ window.INVENTARIO = [
       "img/carros/audi-q5-2013/08.jpg"
     ],
     "destacado": "Tracción quattro · Motor 2.0 Turbo · Asientos de cuero · Detalles de madera · Color blanco",
-    "defectos": "Raspones en la parte baja del parachoques delantero · Rayones en el parachoques trasero · Desgaste en el cuero del asiento del conductor"
+    "defectos": "Raspones en la parte baja del parachoques delantero · Rayones en el parachoques trasero"
   },
 
   // ===== VENDIDOS (de Instagram @josefineauto) =====
