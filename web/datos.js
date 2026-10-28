@@ -110,7 +110,7 @@ window.INVENTARIO = [
     "anio": 2015,
     "km": 60000,
     "transmision": "Automática",
-    "precio": 8500,
+    "precio": 10000,
     "estado": "disponible",
     "fotos": [
       "img/carros/mazda-cx-5-2015/01.jpg",
