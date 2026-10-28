@@ -16,7 +16,7 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
 
 - [ ] **DUENO-14 · Pasar el nombre @josefineauto a la cuenta nueva de TikTok** · 1 min · un intento al día
   Hecho 2026-10-14: la cuenta vieja se recuperó (entra con "Continuar con Facebook" / Hotmail del dueño) y se renombró a @josefineautomotive; el nombre josefineauto quedó libre.
-  Falta: en @josefine.auto → Editar perfil → Nombre de usuario → `josefineauto` → Guardar. TikTok dio "Couldn't update username" justo después de liberarlo: reintentar a diario (el nombre solo se puede cambiar 1 vez cada 30 días). La cuenta @josefineautomotive NO se borra: el dueño la guarda para otro proyecto (2026-10-14).
+  Falta: en @josefine.auto → Editar perfil → Nombre de usuario → `josefineauto` → Guardar. TikTok dio "Couldn't update username" justo después de liberarlo: reintentar a diario (el nombre solo se puede cambiar 1 vez cada 30 días). 2026-10-28: sigue sin dejar. TikTok puede retener un nombre liberado hasta 30 días (fuentes no oficiales): si el 2026-11-13 sigue fallando, insistir en el ticket de soporte con captura del error. La cuenta @josefineautomotive NO se borra: el dueño la guarda para otro proyecto (2026-10-14).
   Enlace: https://www.tiktok.com/@josefine.auto
 
 - [ ] **DUENO-15 · Primer anuncio pagado en Instagram hacia la web (cuando decidas el monto)** · 5 min · gasta dinero: solo si tú quieres
