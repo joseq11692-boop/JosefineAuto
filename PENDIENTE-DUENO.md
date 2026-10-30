@@ -33,6 +33,13 @@ Versión visual con botones: https://claude.ai/artifact/5RDfy3zfV5AY6sxEmkVG4P
   Enlace: https://github.com/joseq11692-boop/JosefineAuto/blob/claude/vibrant-dijkstra-gm1tot/docs/11-google-ads-campana.md
   Google Ads: https://ads.google.com
 
+- [ ] **DUENO-20 · Conectar Claude a tu MacBook Pro nueva (cuando la tengas)** · 15 min · en la Mac (Claude no puede: hay que instalar y aceptar en tu Mac)
+  1. En la Mac, descarga la app de Claude: https://claude.ai/download → ábrela y entra con tu misma cuenta.
+  2. Avísale a Claude: te deja la carpeta de trabajo (copia de JosefineAuto) lista con un comando para pegar.
+  3. En la app: **Settings → Claude Code → Remote Control** → actívalo y elige esa carpeta.
+  4. Deja la Mac encendida y la app abierta. Cuando Claude pida usar la Mac, te sale un aviso: toca **Permitir**.
+  Puedes desconectarlo cuando quieras desde ese mismo menú. Dinero, borrados y publicaciones siguen necesitando tu «sí».
+
 - [ ] **DUENO-19 · Poner el logo como foto de admin@josefineauto.com** · 10 min · desde tu celular (Claude no puede: Google pide crear la cuenta y un código)
   El correo admin@ no es una cuenta de Google, por eso sale sin foto. Se le crea una cuenta de Google con ese mismo correo (gratis, sin Gmail nuevo):
   1. Descarga el logo: https://josefineauto.com/kit/img/perfil-tiktok.png (mantén el dedo encima → Guardar imagen).
