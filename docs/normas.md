@@ -28,6 +28,7 @@ Lo que está aquí no se vuelve a preguntar. Si dos normas chocan, manda la más
 | N20b | 2026-10-28 | Web: Audi Q5 año 2013 | Herramienta de preguntas «¿Publico en la web el Audi Q5 2013 a $5,000? (Confírmame el año con el registro: por la forma de los faros parece de 2011–2012.)» → «Sí: 2013 a $5,000» | Chat |
 | N20c | 2026-10-28 | Audi Q5: defectos | «Quitale el defecto del cuero del asiento del conductor» → se quita «Desgaste en el cuero del asiento del conductor» de los defectos en la web (ES y EN) | Chat |
 | N21 | 2026-10-28 | Web: Mazda CX-5 2015 a $10,000 | «Y sube la cx5 a 10 / Mil» + herramienta de preguntas «La Mazda CX-5 2015 está en la web a $8,500. ¿La subo a $10,000?» → «Sí, a $10,000» → precio $8,500 → $10,000 (sustituye a N12 en el precio) | Chat |
+| N22 | 2026-11-01 | Web: Fiat 500 Sport 2012 retirado | «Necesito que bajes por favor el Fiat 500 de la página porque Fiat 500, F-I-A-T, porque ya no se va a vender. El dueño se lo decidió quedar.» → se quita el Fiat del inventario de la web (ES y EN). Las fotos se quedan en web/img/carros/fiat-500-sport-2012/ (sin enlaces) porque borrar archivos necesita su «sí» | Chat |
 
 ## Consecuencias de N06 en este proyecto (2026-10-05)
 - Gate `herramientas/check.py` en hook Stop y pre-push; lista `PENDIENTE-DUENO.md`; este registro; `CONTINUAR.md`; `IDEAS.md`; agente revisor.

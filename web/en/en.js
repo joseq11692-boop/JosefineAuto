@@ -9,7 +9,6 @@ window.EN = {
     "mazda-cx-5-2015": { destacado: "SkyActiv engine · Automatic · White · Black interior", defectos: "Scratches on the front right bumper · Small dent on the tailgate" },
     "toyota-corolla-le-2018": { destacado: "LE trim · Sedan · Gray · Alloy wheels" },
     "geely-coolray-2026": { destacado: "Practically new · White · Touchscreen with Apple CarPlay · Leather seats · Alloy wheels" },
-    "fiat-500-sport-2012": { destacado: "Sport trim · Sport wheels · Rear spoiler · Touchscreen · Silver", defectos: "Dent on the front right bumper · Torn driver's seat upholstery · Hazy headlights" },
     "audi-q5-2013": { destacado: "quattro all-wheel drive · 2.0 Turbo engine · Leather seats · Wood trim · White", defectos: "Scuffs on the lower front bumper · Scratches on the rear bumper" },
     "ford-edge-2016": { destacado: "One owner · New battery, engine mounts and A/C evaporator · Recent maintenance" },
     "range-rover-sport-2019": { destacado: "Excellent physical and mechanical condition" },
