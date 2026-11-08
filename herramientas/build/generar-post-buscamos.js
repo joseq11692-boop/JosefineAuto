@@ -9,7 +9,7 @@ const RAIZ = path.join(__dirname, "../..");
 const foto = (n) => "data:image/jpeg;base64," + fs.readFileSync(path.join(__dirname, "fotos-buscamos", n + ".jpg")).toString("base64");
 const FIRMA = "data:image/svg+xml;base64," + fs.readFileSync(path.join(RAIZ, "web/img/logo-firma-blanco.svg")).toString("base64");
 const AUTOS = [["accent", "Hyundai Accent", "50% 60%"], ["elantra", "Hyundai Elantra", "50% 60%"], ["rio", "Kia Rio", "55% 60%"],
-  ["forte", "Kia Forte", "50% 60%"], ["civic", "Honda Civic", "40% 65%"], ["yaris", "Toyota Yaris", "50% 70%"]];
+  ["forte", "Kia Forte", "50% 60%"], ["civic", "Honda Civic", "30% 80%", "118%"], ["yaris", "Toyota Yaris", "50% 70%"]];
 const CSS = `*{box-sizing:border-box;margin:0}body{font-family:Inter,sans-serif;background:#14161a;color:#fff;overflow:hidden}
 h1{font-family:'Chakra Petch',sans-serif;font-weight:700;text-transform:uppercase;line-height:.95}h1 em{font-style:normal;color:#e11d2e}
 .top{display:flex;justify-content:space-between;align-items:center}.top img{height:84px}
@@ -22,7 +22,7 @@ h1{font-family:'Chakra Petch',sans-serif;font-weight:700;text-transform:uppercas
 .chips{display:flex;flex-wrap:wrap;gap:12px}.chips span{font-family:'IBM Plex Mono',monospace;font-size:27px;border:2px solid rgba(255,255,255,.7);border-radius:99px;padding:8px 22px}
 .cta{font-size:38px;font-weight:600}.pie{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:25px;letter-spacing:.08em;opacity:.85}`;
 const F = `<div class="f"><span></span><span></span><span></span><span></span></div>`;
-const grid = (h) => `<div class="grid">${AUTOS.map(([f, n, pos]) => `<div class="c" style="height:${h}px;background-image:url('${foto(f)}');background-position:${pos}"><span>${n}</span></div>`).join("")}</div>`;
+const grid = (h) => `<div class="grid">${AUTOS.map(([f, n, pos, zoom]) => `<div class="c" style="height:${h}px;background-image:url('${foto(f)}');background-position:${pos}${zoom ? ';background-size:' + zoom : ''}"><span>${n}</span></div>`).join("")}</div>`;
 const texto = `<span class="tag">Se busca</span><h1 style="font-size:84px">Sedán <em>automático</em><br>2013 – 2021</h1>${F}
   <div class="chips"><span>Hyundai</span><span>Kia</span><span>Honda</span><span>Toyota</span><span>Menos de 200,000 km</span></div>
   <p class="cta">¿Vendes el tuyo? Escríbenos al DM 💬</p>`;
