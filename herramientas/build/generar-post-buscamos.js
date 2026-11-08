@@ -9,7 +9,7 @@ const RAIZ = path.join(__dirname, "../..");
 const foto = (n) => "data:image/jpeg;base64," + fs.readFileSync(path.join(__dirname, "fotos-buscamos", n + ".jpg")).toString("base64");
 const FIRMA = "data:image/svg+xml;base64," + fs.readFileSync(path.join(RAIZ, "web/img/logo-firma-blanco.svg")).toString("base64");
 const AUTOS = [["accent", "Hyundai Accent", "50% 60%"], ["elantra", "Hyundai Elantra", "50% 60%"], ["rio", "Kia Rio", "55% 60%"],
-  ["forte", "Kia Forte", "50% 60%"], ["civic", "Honda Civic", "30% 80%", "118%"], ["yaris", "Toyota Yaris", "50% 75%"]];
+  ["forte", "Kia Forte", "50% 60%"], ["civic", "Honda Civic", "30% 80%", "118%"], ["yaris", "Toyota Yaris", "50% 62%"]];
 const CSS = `*{box-sizing:border-box;margin:0}body{font-family:Inter,sans-serif;background:#14161a;color:#fff;overflow:hidden}
 h1{font-family:'Chakra Petch',sans-serif;font-weight:700;text-transform:uppercase;line-height:.95}h1 em{font-style:normal;color:#e11d2e}
 .top{display:flex;justify-content:space-between;align-items:center}.top img{height:84px}
