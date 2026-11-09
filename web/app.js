@@ -240,10 +240,10 @@
   // Guías
   var listaGuias = document.getElementById("lista-guias");
   if (listaGuias) {
-    (window.GUIAS || []).slice(0, 3).forEach(function (g) {
+    ((EN && window.GUIAS_EN) || window.GUIAS || []).slice(0, 3).forEach(function (g) {
       var a = document.createElement("a");
       a.className = "paso guia__tarjeta"; a.href = RAIZ + g.url;
-      a.innerHTML = "<span>" + T("GUÍA", "GUIDE · IN SPANISH") + "</span><h3>" + escapar(g.titulo) + "</h3><p>" + escapar(g.descripcion) + "</p>";
+      a.innerHTML = "<span>" + T("GUÍA", window.GUIAS_EN ? "GUIDE" : "GUIDE · IN SPANISH") + "</span><h3>" + escapar(g.titulo) + "</h3><p>" + escapar(g.descripcion) + "</p>";
       listaGuias.appendChild(a);
     });
     if (!listaGuias.children.length) document.getElementById("guias").hidden = true;

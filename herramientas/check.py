@@ -129,9 +129,12 @@ def guias():
     md = sorted((RAIZ / "herramientas/guias").glob("*.md"))
     if not exige("Guías generadas", len(md)):
         return
-    faltan = [m.stem for m in md if not (WEB / "guias" / f"{m.stem}.html").exists()]
+    faltan = [f"web/guias/{m.stem}.html" for m in md if not (WEB / "guias" / f"{m.stem}.html").exists()]
+    # cada guía tiene su versión en inglés (herramientas/guias/en/ → web/en/guias/)
+    faltan += [f"herramientas/guias/en/{m.name} (traducción al inglés)" for m in md if not (RAIZ / "herramientas/guias/en" / m.name).exists()]
+    faltan += [f"web/en/guias/{m.stem}.html" for m in md if not (WEB / "en/guias" / f"{m.stem}.html").exists()]
     for f in faltan:
-        fallo("Guías generadas", f"falta web/guias/{f}.html: ejecuta python3 herramientas/build/generar-guias.py")
+        fallo("Guías generadas", f"falta {f}: escríbela si es la traducción y ejecuta python3 herramientas/build/generar-guias.py")
     if not faltan:
         ok("Guías generadas", len(md))
 
