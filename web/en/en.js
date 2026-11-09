@@ -32,7 +32,8 @@ window.EN = {
   // Proyectos y eventos: por el nombre/título en español de datos.js (así no se cruzan si se reordenan).
   proyectos: {
     "Mitsubishi Lancer Evolution VI GSR 1999": "A rally classic. Our house project, step by step on Instagram.",
-    "Honda Civic Si 2008": "The 8th-gen Si, with its K20 and the 8,000 rpm redline."
+    "Honda Civic Si 2008": "The 8th-gen Si, with its K20 and the 8,000 rpm redline.",
+    "BMW 535i 2012": "Our German sedan. The build, step by step on Instagram."
   },
   escena: {
     "Lanzamiento del Jetour G700": { titulo: "Jetour G700 launch", fecha: "May 2026", texto: "A model that impresses with its presence and capabilities." },
