@@ -162,6 +162,28 @@ window.INVENTARIO = [
     "destacado": "Prácticamente nuevo · Color blanco · Pantalla táctil con Apple CarPlay · Asientos de cuero · Rines de aluminio"
   },
   {
+    "id": "toyota-yaris-2015",
+    "marca": "Toyota",
+    "modelo": "Yaris",
+    "anio": 2015,
+    "km": 106394,
+    "transmision": "Automática",
+    "estado": "disponible",
+    "fotos": [
+      "img/carros/toyota-yaris-2015/01.jpg",
+      "img/carros/toyota-yaris-2015/02.jpg",
+      "img/carros/toyota-yaris-2015/03.jpg",
+      "img/carros/toyota-yaris-2015/04.jpg",
+      "img/carros/toyota-yaris-2015/05.jpg",
+      "img/carros/toyota-yaris-2015/06.jpg",
+      "img/carros/toyota-yaris-2015/07.jpg",
+      "img/carros/toyota-yaris-2015/08.jpg",
+      "img/carros/toyota-yaris-2015/09.jpg"
+    ],
+    "destacado": "Hatchback 5 puertas · Versión E · Controles de audio en el volante · Color gris",
+    "defectos": "Parachoques delantero desalineado del lado derecho · Falta un tapacubos delantero · Tapicería trasera con manchas"
+  },
+  {
     "id": "audi-q5-2013",
     "marca": "Audi",
     "modelo": "Q5",
