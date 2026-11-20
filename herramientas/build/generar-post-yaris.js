@@ -60,7 +60,7 @@ const LAMINAS = [
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(5)}');background-position:35% center"></div><div style="background-image:url('${foto(6)}');background-position:60% center"></div></div><div class="velo"></div>${top(`4/${T}`)}
     <div class="txt"><div class="chips"><span>Controles en el volante</span><span>Asientos de tela</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(8)}');background-position:center 45%"></div><div class="velo"></div>${top(`5/${T}`)}
-    <div class="txt"><h2>Motor<br><em style="text-transform:none">VVT-i</em></h2>${F}<div class="chips"><span>Caja automática</span></div></div>${pie}</div>`,
+    <div class="txt"><h2>Motor<br><em style="text-transform:none">Dual VVT-i</em></h2>${F}<div class="chips"><span>Caja automática</span></div></div>${pie}</div>`,
   `<div class="s cta">${top(`6/${T}`)}<div class="txt"><h2>¿Te interesa<br>el Yaris?</h2>${F}<p>Comenta</p><span class="comenta">YARIS</span>
     <div class="lista"><span>💬 Precio por DM</span></div></div>${pie}</div>`,
 ];
