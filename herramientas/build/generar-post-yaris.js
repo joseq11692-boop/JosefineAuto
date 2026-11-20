@@ -1,5 +1,5 @@
 /* Carrusel de venta: Toyota Yaris 2015. 6 láminas 1080x1350 + historia.
-   Año dado por el dueño (N23); km y automático del tablero; versión E y controles en el volante visibles en las fotos.
+   Año dado por el dueño (N23); km y automático del tablero; versión E y controles en el volante visibles en las fotos. «Dual VVT-i»: dato del dueño en el chat («Pon dual vvt-i»), N23c.
    Placa real tapada con la de Josefine; precio solo por DM.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-yaris.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post13-yaris-XX.png */
