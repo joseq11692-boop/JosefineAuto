@@ -1,7 +1,7 @@
 /* Carrusel de venta: Toyota Yaris 2015. 6 láminas 1080x1350 + historia.
    Año dado por el dueño (N23); km y automático del tablero; versión E y controles en el volante visibles en las fotos.
    Placa real tapada con la de Josefine; precio solo por DM.
-   Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-cx5.js [chakra-petch-700.ttf]
+   Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-yaris.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post13-yaris-XX.png */
 const { chromium } = require("playwright");
 const fs = require("fs");
@@ -56,11 +56,11 @@ const LAMINAS = [
   `<div class="s"><div class="ancha" style="top:220px;height:640px;background-image:url('${foto(2)}');background-position:center 82%"></div>${top(`2/${T}`)}
     <div class="txt"><div class="chips"><span>Hatchback 5 puertas</span><span>Versión E</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(4)}');background-position:center 60%"></div><div style="background-image:url('${foto(3)}');background-position:40% center"></div></div><div class="velo"></div>${top(`3/${T}`)}
-    <div class="txt"><div class="chips"><span>Económico</span><span>Ideal para la ciudad</span></div></div>${pie}</div>`,
+    <div class="txt"><div class="chips"><span>Hatchback compacto</span><span>Color gris</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(5)}');background-position:35% center"></div><div style="background-image:url('${foto(6)}');background-position:60% center"></div></div><div class="velo"></div>${top(`4/${T}`)}
     <div class="txt"><div class="chips"><span>Controles en el volante</span><span>Asientos de tela</span></div></div>${pie}</div>`,
   `<div class="s"><div class="bg" style="background-image:url('${foto(8)}');background-position:center 45%"></div><div class="velo"></div>${top(`5/${T}`)}
-    <div class="txt"><h2>Motor<br><em>VVT-i</em></h2>${F}<div class="chips"><span>Caja automática</span></div></div>${pie}</div>`,
+    <div class="txt"><h2>Motor<br><em style="text-transform:none">VVT-i</em></h2>${F}<div class="chips"><span>Caja automática</span></div></div>${pie}</div>`,
   `<div class="s cta">${top(`6/${T}`)}<div class="txt"><h2>¿Te interesa<br>el Yaris?</h2>${F}<p>Comenta</p><span class="comenta">YARIS</span>
     <div class="lista"><span>💬 Precio por DM</span></div></div>${pie}</div>`,
 ];
