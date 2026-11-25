@@ -1,5 +1,5 @@
-/* Carrusel de venta: Toyota Yaris 2015. 6 láminas 1080x1350 + historia.
-   Año dado por el dueño (N23); km y automático del tablero; versión E y controles en el volante visibles en las fotos. «Dual VVT-i»: dato del dueño en el chat («Pon dual vvt-i»), N23c.
+/* Carrusel de venta: Toyota Yaris 2017. 6 láminas 1080x1350 + historia.
+   Año dado por el dueño (N23d: 2017); km y automático del tablero; versión E y controles en el volante visibles en las fotos. «Dual VVT-i»: dato del dueño en el chat («Pon dual vvt-i»), N23c.
    Placa real tapada con la de Josefine; precio solo por DM.
    Uso: NODE_PATH=<node_modules con playwright> node herramientas/build/generar-post-yaris.js [chakra-petch-700.ttf]
    Salida: web/kit/img/post13-yaris-XX.png */
@@ -9,7 +9,7 @@ const path = require("path");
 
 const RAIZ = path.resolve(__dirname, "../..");
 const OUT = path.join(RAIZ, "web", "kit", "img");
-const foto = (n) => "data:image/jpeg;base64," + fs.readFileSync(path.join(RAIZ, "web/img/carros/toyota-yaris-2015", `${String(n).padStart(2, "0")}.jpg`)).toString("base64");
+const foto = (n) => "data:image/jpeg;base64," + fs.readFileSync(path.join(RAIZ, "web/img/carros/toyota-yaris-2017", `${String(n).padStart(2, "0")}.jpg`)).toString("base64");
 const svg = (f) => "data:image/svg+xml;base64," + fs.readFileSync(path.join(RAIZ, "web/img", f)).toString("base64");
 const FIRMA_B = svg("logo-firma-blanco.svg");
 
@@ -52,7 +52,7 @@ const T = 6;
 const LAMINAS = [
   `<div class="s"><div class="ancha" style="top:200px;height:700px;background-image:url('${foto(1)}');background-position:center 72%"></div>${top(`1/${T}`)}
     <div class="txt"><span class="tag">En venta</span><h1>Toyota<br><em>Yaris</em></h1>${F}
-    <div class="chips"><span>2015</span><span>106,394 km</span><span>Automático</span><span>Gris</span></div></div>${pie}</div>`,
+    <div class="chips"><span>2017</span><span>106,394 km</span><span>Automático</span><span>Gris</span></div></div>${pie}</div>`,
   `<div class="s"><div class="ancha" style="top:220px;height:640px;background-image:url('${foto(2)}');background-position:center 82%"></div>${top(`2/${T}`)}
     <div class="txt"><div class="chips"><span>Hatchback 5 puertas</span><span>Versión E</span></div></div>${pie}</div>`,
   `<div class="s"><div class="dos"><div style="background-image:url('${foto(4)}');background-position:center 60%"></div><div style="background-image:url('${foto(3)}');background-position:40% center"></div></div><div class="velo"></div>${top(`3/${T}`)}
@@ -66,7 +66,7 @@ const LAMINAS = [
 ];
 const HIST = `<div class="s" style="height:1920px"><div class="ancha" style="top:300px;height:900px;background-image:url('${foto(1)}');background-position:center 62%"></div>${top("")}
   <div class="txt" style="bottom:300px"><span class="tag">En venta</span><h1>Toyota<br><em>Yaris</em></h1>${F}
-  <div class="chips"><span>2015</span><span>106,394 km</span><span>Automático</span><span>Gris</span></div><p style="font-size:44px">💬 DM</p></div>
+  <div class="chips"><span>2017</span><span>106,394 km</span><span>Automático</span><span>Gris</span></div><p style="font-size:44px">💬 DM</p></div>
   <div class="pie" style="bottom:200px"><span>@josefineauto</span><span>JOSEFINEAUTO.COM</span></div></div>`;
 
 (async () => {
